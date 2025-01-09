@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bux5s4cf5dm4m"]
+
+[ext_resource type="Texture2D" uid="uid://34b8vafea0g4" path="res://assets/Cards/torinn inn.png" id="1_4w27c"]
+[ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="2_el3gp"]
+[ext_resource type="Script" path="res://Code/color_rect.gd" id="2_uvjea"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_flv3t"]
+font = ExtResource("2_el3gp")
+font_size = 29
+
+[node name="Card" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.114819, 0.114819)
+texture = ExtResource("1_4w27c")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 83.0
+offset_top = -190.0
+offset_right = 116.0
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_flv3t")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.5
+offset_top = -201.0
+offset_right = 141.5
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("2_uvjea")
+
+[connection signal="mouse_entered" from="ColorRect" to="ColorRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect" to="ColorRect" method="_on_mouse_exited"]

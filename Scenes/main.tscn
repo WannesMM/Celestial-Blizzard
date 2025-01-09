@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm1d0h3kirocm"]
+
+[ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/card_layout.tscn" id="2_irtsu"]
+[ext_resource type="PackedScene" uid="uid://b01lkl2l8uhmq" path="res://Scenes/right_slider.tscn" id="2_j1048"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Right Slider" parent="CanvasLayer" instance=ExtResource("2_j1048")]
+visible = false
+
+[node name="CardLayout" parent="CanvasLayer" instance=ExtResource("2_irtsu")]
