@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm1d0h3kirocm"]
+[gd_scene load_steps=4 format=3 uid="uid://bm1d0h3kirocm"]
 
 [ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/card_layout.tscn" id="2_irtsu"]
 [ext_resource type="PackedScene" uid="uid://b01lkl2l8uhmq" path="res://Scenes/right_slider.tscn" id="2_j1048"]
+[ext_resource type="PackedScene" uid="uid://bytpcr0d24q6y" path="res://Scenes/card_hand.tscn" id="3_0jii5"]
 
 [node name="Main" type="Node2D"]
 
@@ -9,5 +10,9 @@
 
 [node name="Right Slider" parent="CanvasLayer" instance=ExtResource("2_j1048")]
 visible = false
+mouse_filter = 1
 
 [node name="CardLayout" parent="CanvasLayer" instance=ExtResource("2_irtsu")]
+
+[node name="Card Hand" parent="CanvasLayer" instance=ExtResource("3_0jii5")]
+mouse_filter = 1

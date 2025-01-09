@@ -9,14 +9,17 @@ func _ready() -> void:
 	modulate.a = 0.0
 	visible = true
 
-func _on_mouse_entered() -> void:
+func mouseEntered():
 	mouseInside = true
-	target_alpha = 0.5  # Set target alpha to 50% transparency
+	target_alpha = 0.5
 
-func _on_mouse_exited() -> void:
+func mouseExited():
 	mouseInside = false
-	target_alpha = 0.0  # Set target alpha to fully transparent
+	target_alpha = 0.0
 
 func _process(delta: float) -> void:
 	# Smoothly interpolate the current alpha towards the target alpha
 	modulate.a = lerp(modulate.a, target_alpha, delta * transition_speed)
+
+func pulseTransparacy():
+	pass

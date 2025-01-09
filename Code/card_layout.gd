@@ -31,7 +31,7 @@ func arrange_cards():
 		card.scale = Vector2(CARD_SCALE, CARD_SCALE)
 		if card is Node2D:
 			card.position = Vector2(arrayStart + ((i + 1) * cardOffset) + CENTER_X , CENTER_Y)
-			print("my position is " + str(card.position))
+			#print("my position is " + str(card.position))
 
 func addCard():
 	var cardScene = load("res://Scenes/card.tscn")
@@ -43,6 +43,9 @@ func addCard():
 		arrange_cards()  # Optionally call your arrange function to reposition cards
 	else:
 		print("Failed to load the card scene!")
+	
+func increaseSize():
+	pass
 	
 func addInitialCards():
 	addCard()
