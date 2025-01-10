@@ -4,7 +4,7 @@ extends Control
 var ARRAY_WIDTH = 700
 var CENTER_Y = 150
 var CENTER_X = 0
-var CARD_SCALE = 0.5
+var CARD_SCALE = 1
 
 func _ready():
 	assignConstants()
@@ -12,10 +12,10 @@ func _ready():
 	arrange_cards()
 	
 func assignConstants():
-	ARRAY_WIDTH = 700
-	CENTER_Y = 150
-	CENTER_X = 0
-	CARD_SCALE = 0.5
+	ARRAY_WIDTH = ARRAY_WIDTH
+	CENTER_Y = CENTER_Y
+	CENTER_X = CENTER_X
+	CARD_SCALE = CARD_SCALE
 	
 # Arrange Node2D cards dynamically
 func arrange_cards():
@@ -28,7 +28,6 @@ func arrange_cards():
 	# Position each card
 	for i in range(num_cards):
 		var card = get_child(i)
-		card.scale = Vector2(CARD_SCALE, CARD_SCALE)
 		if card is Node2D:
 			card.position = Vector2(arrayStart + ((i + 1) * cardOffset) + CENTER_X , CENTER_Y)
 			#print("my position is " + str(card.position))
@@ -39,7 +38,9 @@ func addCard():
 	
 	if cardScene is PackedScene:  # Ensure it is a PackedScene
 		var newCard = cardScene.instantiate()  # Create an instance of the card scene
+		newCard.assignDefaultScale(Vector2(CARD_SCALE,CARD_SCALE))
 		add_child(newCard)  # Add the new card to the parent node
+		
 		arrange_cards()  # Optionally call your arrange function to reposition cards
 	else:
 		print("Failed to load the card scene!")

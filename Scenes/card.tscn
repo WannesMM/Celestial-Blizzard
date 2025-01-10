@@ -1,38 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bux5s4cf5dm4m"]
+[gd_scene load_steps=5 format=3 uid="uid://bux5s4cf5dm4m"]
 
 [ext_resource type="Texture2D" uid="uid://34b8vafea0g4" path="res://assets/Cards/torinn inn.png" id="1_4w27c"]
 [ext_resource type="Script" path="res://Code/card.gd" id="1_oc3ix"]
-[ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="2_el3gp"]
 [ext_resource type="Script" path="res://Code/color_rect.gd" id="2_uvjea"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_flv3t"]
-font = ExtResource("2_el3gp")
-font_size = 29
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqyo8"]
-size = Vector2(285, 398)
+size = Vector2(125, 177)
 
 [node name="Card" type="Node2D"]
 position = Vector2(608, 331)
 script = ExtResource("1_oc3ix")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.114819, 0.114819)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_4w27c")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 83.0
-offset_top = -190.0
-offset_right = 116.0
-offset_bottom = -154.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-text = "10"
-label_settings = SubResource("LabelSettings_flv3t")
-horizontal_alignment = 1
-vertical_alignment = 1
-visible_characters = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -41,20 +22,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -141.5
-offset_top = -201.0
-offset_right = 141.5
-offset_bottom = 201.0
+offset_left = -62.0
+offset_top = -88.0
+offset_right = 63.0
+offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 script = ExtResource("2_uvjea")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 35.0
+offset_top = -86.0
+offset_right = 55.0
+offset_bottom = -66.0
+text = "10
+"
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CardCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_fqyo8")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

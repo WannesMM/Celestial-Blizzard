@@ -1,29 +1,39 @@
 extends Node2D
 
-const DEFAULTSCALE = Vector2(1,1)
-const ANIMATIONSCALE = Vector2(1,1)
-const ANIMATIONDURATION: float = 0.7
+var DEFAULTSCALE = null
+const ANIMATIONSCALE = Vector2(1.19,1.19)
+const ANIMATIONDURATION: float = 0.19
 
-#var scaleTween: Tween = null
+var scaleTween: Tween = null
 
 func _ready() -> void:
-	pass
+	DEFAULTSCALE = self.scale
 
+func assignDefaultScale(scaled: Vector2):
+	DEFAULTSCALE = scaled
+	self.scale = scaled
+	
 func _on_area_2d_mouse_entered() -> void:
 	print("Entered cardcollision")
 	$ColorRect.mouseEntered()
-	scaleTo(ANIMATIONSCALE,ANIMATIONDURATION)
+	scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 	
 func _on_area_2d_mouse_exited() -> void:
 	print("Exited cardcollision")
 	$ColorRect.mouseExited()
-	scaleTo(DEFAULTSCALE,ANIMATIONDURATION)
+	scaleRelative(Vector2(1,1), ANIMATIONDURATION)
+
+func scaleRelative(target_ratio, duration):
+	
+	var scaler = DEFAULTSCALE.x * target_ratio.x
+	scaleTo(Vector2(scaler, scaler), duration)
 
 func scaleTo(target_scale: Vector2, duration: float):
-	#if scaleTween:
-		#scaleTween.kill()
 	
-	var scaleTween = get_tree().create_tween()
+	if scaleTween:
+		scaleTween.kill
+	
+	scaleTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	print(str(scaleTween))
 	scaleTween.tween_property(self, "scale", target_scale, duration)
 	
