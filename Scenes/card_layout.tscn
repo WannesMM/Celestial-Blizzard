@@ -35,3 +35,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("3_pn1nx")
+
+[connection signal="mouse_entered" from="." to="AllyLayout" method="_on_card_layout_mouse_entered"]

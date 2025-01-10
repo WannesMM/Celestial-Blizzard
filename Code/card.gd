@@ -5,6 +5,10 @@ const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
 
 var scaleTween: Tween = null
+var movementTween: Tween = null
+
+signal cardMouseEntered
+signal cardMouseExited
 
 func _ready() -> void:
 	DEFAULTSCALE = self.scale
@@ -14,32 +18,34 @@ func assignDefaultScale(scaled: Vector2):
 	self.scale = scaled
 	
 func _on_area_2d_mouse_entered() -> void:
-	print("Entered cardcollision")
 	$ColorRect.mouseEntered()
 	scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+	emit_signal("cardMouseEntered", self)
 	
 func _on_area_2d_mouse_exited() -> void:
-	print("Exited cardcollision")
 	$ColorRect.mouseExited()
 	scaleRelative(Vector2(1,1), ANIMATIONDURATION)
+	emit_signal("cardMouseExited", self)
 
-func scaleRelative(target_ratio, duration):
+func scaleRelative(target_ratio, duration = ANIMATIONDURATION):
 	
 	var scaler = DEFAULTSCALE.x * target_ratio.x
 	scaleTo(Vector2(scaler, scaler), duration)
 
-func scaleTo(target_scale: Vector2, duration: float):
+func scaleTo(target_scale: Vector2, duration: float = ANIMATIONDURATION):
 	
 	if scaleTween:
 		scaleTween.kill
 	
 	scaleTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	print(str(scaleTween))
 	scaleTween.tween_property(self, "scale", target_scale, duration)
 	
-func _on_color_rect_mouse_entered() -> void:
-	pass # Replace with function body.
-
-
-func _on_color_rect_mouse_exited() -> void:
-	pass # Replace with function body.
+	
+func moveRelativeAnimation(vector: Vector2, duration: float = ANIMATIONDURATION):
+	var targetPosition = self.position + vector
+	
+	if movementTween:
+		movementTween.kill
+	
+	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	movementTween.tween_property(self, "position", targetPosition, duration)

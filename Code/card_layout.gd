@@ -5,6 +5,7 @@ var ARRAY_WIDTH = 700
 var CENTER_Y = 150
 var CENTER_X = 0
 var CARD_SCALE = 1
+var ADDEDCARDS = []
 
 func _ready():
 	assignConstants()
@@ -16,6 +17,18 @@ func assignConstants():
 	CENTER_Y = CENTER_Y
 	CENTER_X = CENTER_X
 	CARD_SCALE = CARD_SCALE
+	
+func connectSignal(card):
+	if card.has_signal("cardMouseEntered"):
+		card.connect("cardMouseEntered", Callable(self, "cardMouseEntered"))
+	if card.has_signal("cardMouseExited"):
+		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
+	
+func cardMouseEntered(card):
+	card.moveRelativeAnimation(Vector2(0,-25))
+	
+func cardMouseExited(card):
+	card.moveRelativeAnimation(Vector2(0,25))
 	
 # Arrange Node2D cards dynamically
 func arrange_cards():
@@ -34,19 +47,19 @@ func arrange_cards():
 
 func addCard():
 	var cardScene = load("res://Scenes/card.tscn")
-	print(cardScene)
 	
 	if cardScene is PackedScene:  # Ensure it is a PackedScene
 		var newCard = cardScene.instantiate()  # Create an instance of the card scene
+		
 		newCard.assignDefaultScale(Vector2(CARD_SCALE,CARD_SCALE))
+		connectSignal(newCard)
+		
 		add_child(newCard)  # Add the new card to the parent node
+		ADDEDCARDS.append(newCard)
 		
 		arrange_cards()  # Optionally call your arrange function to reposition cards
 	else:
 		print("Failed to load the card scene!")
-	
-func increaseSize():
-	pass
 	
 func addInitialCards():
 	addCard()
