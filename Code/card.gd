@@ -2,10 +2,9 @@ extends Node2D
 
 var DEFAULTSCALE = null
 const ANIMATIONSCALE = Vector2(1.19,1.19)
-const ANIMATIONDURATION: float = 0.19
+const ANIMATIONDURATION: float = 1 #0.19
 
 var scaleTween: Tween = null
-var movementTween: Tween = null
 
 signal cardMouseEntered
 signal cardMouseExited
@@ -40,12 +39,10 @@ func scaleTo(target_scale: Vector2, duration: float = ANIMATIONDURATION):
 	scaleTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	scaleTween.tween_property(self, "scale", target_scale, duration)
 	
-	
 func moveRelativeAnimation(vector: Vector2, duration: float = ANIMATIONDURATION):
+		
 	var targetPosition = self.position + vector
 	
-	if movementTween:
-		movementTween.kill
-	
-	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	var movementTween: Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", targetPosition, duration)
+	movementTween.chain()
