@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 # Constants for card size in pixels (A4 vertical size in your game) 210
 var ARRAY_WIDTH = 700

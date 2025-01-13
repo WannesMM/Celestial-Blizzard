@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt7en87xfgel0"]
+
+[ext_resource type="Script" path="res://card_placement_collision.gd" id="1_ntdmb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x270y"]
+size = Vector2(956, 421.875)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+script = ExtResource("1_ntdmb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -47.9375)
+shape = SubResource("RectangleShape2D_x270y")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

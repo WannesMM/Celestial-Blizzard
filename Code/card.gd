@@ -79,3 +79,5 @@ func moveCardDownSelect(duration: float = ANIMATIONDURATION):
 	movementTween.tween_property(self, "position", basePosition, duration)
 	await movementTween.finished
 	
+
+	
