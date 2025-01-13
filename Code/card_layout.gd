@@ -25,10 +25,10 @@ func connectSignal(card):
 		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
 	
 func cardMouseEntered(card):
-	card.moveRelativeAnimation(Vector2(0,-25))
+	card.moveCardUpSelect(Vector2(0,-25))
 	
 func cardMouseExited(card):
-	card.moveRelativeAnimation(Vector2(0,25))
+	card.moveCardDownSelect()
 	
 # Arrange Node2D cards dynamically
 func arrange_cards():
@@ -43,6 +43,7 @@ func arrange_cards():
 		var card = get_child(i)
 		if card is Node2D:
 			card.position = Vector2(arrayStart + ((i + 1) * cardOffset) + CENTER_X , CENTER_Y)
+			card.setBasePosition(card.position)
 			#print("my position is " + str(card.position))
 
 func addCard():
