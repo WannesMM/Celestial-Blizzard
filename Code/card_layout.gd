@@ -7,10 +7,18 @@ var CENTER_X = 0
 var CARD_SCALE = 1
 var ADDEDCARDS = []
 
+var cardBeingDragged
+var screenSize
+
 func _ready():
+	screenSize = get_viewport_rect().size
 	assignConstants()
 	addInitialCards()
 	arrange_cards()
+	
+func _process(delta: float) -> void:
+	cardFollowMouse()
+	
 	
 func assignConstants():
 	ARRAY_WIDTH = ARRAY_WIDTH
@@ -25,10 +33,12 @@ func connectSignal(card):
 		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
 	
 func cardMouseEntered(card):
-	card.moveCardUpSelect(Vector2(0,-25))
+	#card.moveCardUpSelect(Vector2(0,-25))
+	pass
 	
 func cardMouseExited(card):
-	card.moveCardDownSelect()
+	#card.moveCardDownSelect()
+	pass
 	
 # Arrange Node2D cards dynamically
 func arrange_cards():
@@ -66,3 +76,29 @@ func addInitialCards():
 	addCard()
 	addCard()
 	addCard()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed: 
+			var card = raycastCheckForCard()
+			if card:
+				cardBeingDragged = card
+		else:
+			cardBeingDragged = null
+		
+func raycastCheckForCard():
+	var space_state = get_world_2d().direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = get_global_mouse_position()
+	parameters.collide_with_areas = true
+	parameters.collision_mask = 1
+	var result = space_state.intersect_point(parameters)
+	if(result.size() > 0):
+		return result[0].collider.get_parent()
+	return null
+
+func cardFollowMouse():
+	if cardBeingDragged:
+		var mouse_pos = get_global_mouse_position()
+		cardBeingDragged.position = Vector2(clamp(mouse_pos.x, 0, screenSize.x),clamp(mouse_pos.y, 0, screenSize.y))
+	
