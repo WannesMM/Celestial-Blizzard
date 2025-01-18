@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/card_layout.tscn" id="2_irtsu"]
 [ext_resource type="PackedScene" uid="uid://b01lkl2l8uhmq" path="res://Scenes/right_slider.tscn" id="2_j1048"]
-[ext_resource type="PackedScene" uid="uid://bytpcr0d24q6y" path="res://Scenes/card_hand.tscn" id="3_0jii5"]
+[ext_resource type="PackedScene" uid="uid://nguo3bhhp25g" path="res://card_hand_layout.tscn" id="3_we6u8"]
 
 [node name="Main" type="Node2D"]
 
@@ -14,5 +14,4 @@ mouse_filter = 1
 
 [node name="CardLayout" parent="CanvasLayer" instance=ExtResource("2_irtsu")]
 
-[node name="Card Hand" parent="CanvasLayer" instance=ExtResource("3_0jii5")]
-mouse_filter = 1
+[node name="Card Hand Layout" parent="CanvasLayer" instance=ExtResource("3_we6u8")]
