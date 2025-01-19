@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://nguo3bhhp25g"]
+
+[ext_resource type="PackedScene" uid="uid://bytpcr0d24q6y" path="res://Scenes/card_hand.tscn" id="1_gkp0e"]
+
+[node name="Card Hand Layout" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Card Hand" parent="." instance=ExtResource("1_gkp0e")]

@@ -9,9 +9,12 @@ var ADDEDCARDS = []
 
 var cardBeingDragged
 var screenSize
+var anchorPosition: Vector2 = Vector2(0,0)
 
 func _ready():
 	screenSize = get_viewport_rect().size
+	if get_parent():
+		anchorPosition = get_parent().position
 	assignConstants()
 	addInitialCards()
 	arrange_cards()
@@ -100,5 +103,7 @@ func raycastCheckForCard():
 func cardFollowMouse():
 	if cardBeingDragged:
 		var mouse_pos = get_global_mouse_position()
-		cardBeingDragged.position = Vector2(clamp(mouse_pos.x, 0, screenSize.x),clamp(mouse_pos.y, 0, screenSize.y))
+		var vect = Vector2(clamp(mouse_pos.x, 0, screenSize.x),clamp(mouse_pos.y, 0, screenSize.y))
+		cardBeingDragged.position = vect - Vector2(anchorPosition)
+
 	
