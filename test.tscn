@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://4o2y4c662gke"]
+
+[ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/card_layout.tscn" id="1_1kifm"]
+[ext_resource type="PackedScene" uid="uid://nguo3bhhp25g" path="res://card_hand_layout.tscn" id="2_ktuoj"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardLayout" parent="." instance=ExtResource("1_1kifm")]
+layout_mode = 1
+
+[node name="Card Hand Layout" parent="." instance=ExtResource("2_ktuoj")]
+layout_mode = 1

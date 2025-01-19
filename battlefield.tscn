@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg4dd53dv5m3"]
+
+[ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/card_layout.tscn" id="2_318lk"]
+[ext_resource type="PackedScene" uid="uid://nguo3bhhp25g" path="res://card_hand_layout.tscn" id="3_jhoq2"]
+
+[node name="Battlefield" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="CardLayout" parent="." instance=ExtResource("2_318lk")]
+layout_mode = 1
+
+[node name="Card Hand Layout" parent="." instance=ExtResource("3_jhoq2")]
+layout_mode = 1
