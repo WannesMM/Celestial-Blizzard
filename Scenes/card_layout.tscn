@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm5jf67wsb0j0"]
+[gd_scene load_steps=4 format=3 uid="uid://bm5jf67wsb0j0"]
 
 [ext_resource type="Script" path="res://Code/ally_character_card_layout.gd" id="1_6l3h5"]
+[ext_resource type="PackedScene" uid="uid://dt7en87xfgel0" path="res://Scenes/cardPlacementCollision.tscn" id="2_lggap"]
 [ext_resource type="Script" path="res://Code/enemy_layout.gd" id="3_pn1nx"]
 
 [node name="CardLayout" type="Control"]
@@ -15,6 +16,11 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
+
+[node name="CardPlacementCollision" parent="." instance=ExtResource("2_lggap")]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 1.0
 
 [node name="AllyLayout" type="Node2D" parent="."]
 script = ExtResource("1_6l3h5")

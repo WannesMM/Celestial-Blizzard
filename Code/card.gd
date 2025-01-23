@@ -67,6 +67,9 @@ var basePosition = Vector2(0,0)
 func setBasePosition(pos: Vector2):
 	basePosition = pos
 
+func getBasePosition():
+	return basePosition
+
 func moveCardUpSelect(vector: Vector2, duration: float = ANIMATIONDURATION):
 	var targetPosition = basePosition + vector
 	

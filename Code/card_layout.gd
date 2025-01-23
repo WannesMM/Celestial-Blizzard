@@ -6,10 +6,13 @@ var CENTER_Y = 150
 var CENTER_X = 0
 var CARD_SCALE = 1
 var ADDEDCARDS = []
+var CARD_LAYOUT_TYPE = "AllyLayout"
 
 var cardBeingDragged
 var screenSize
 var anchorPosition: Vector2 = Vector2(0,0)
+
+signal signalAddExistingCard
 
 func _ready():
 	screenSize = get_viewport_rect().size
@@ -26,12 +29,14 @@ func assignConstants():
 	CENTER_Y = CENTER_Y
 	CENTER_X = CENTER_X
 	CARD_SCALE = CARD_SCALE
+	CARD_LAYOUT_TYPE = CARD_LAYOUT_TYPE
 	
 func connectSignal(card):
 	if card.has_signal("cardMouseEntered"):
 		card.connect("cardMouseEntered", Callable(self, "cardMouseEntered"))
 	if card.has_signal("cardMouseExited"):
 		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
+	self.connect("signalAddExistingCard", Callable(self, "addExistingCard"))
 	
 func cardMouseEntered(card):
 	#card.moveCardUpSelect(Vector2(0,-25))
@@ -57,6 +62,9 @@ func arrange_cards():
 			card.setBasePosition(card.position)
 			#print("my position is " + str(card.position))
 
+func returnToBasePosition(card):
+	card.position = card.getBasePosition()
+
 func addCard():
 	var cardScene = load("res://Scenes/card.tscn")
 	
@@ -73,6 +81,21 @@ func addCard():
 	else:
 		print("Failed to load the card scene!")
 	
+func addExistingCard(card, cardSlot):
+	print("It Executes")
+	if CARD_LAYOUT_TYPE == "AllyLayout":
+		print("Card Added")
+		add_child(card)  # Add the new card to the parent node
+		ADDEDCARDS.append(card)
+		
+		arrange_cards()
+	
+func addCardToLayout(card, cardSlot):
+	emit_signal("signalAddExistingCard", card, cardSlot)
+	
+func moveCardBasePosition(card):
+	card.position = card.getBasePosition()
+	
 func addInitialCards():
 	addCard()
 	addCard()
@@ -81,11 +104,23 @@ func addInitialCards():
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed: 
-			var card = raycastCheckForCard()
-			if card:
-				cardBeingDragged = card
+			startDrag()
 		else:
-			cardBeingDragged = null
+			if cardBeingDragged:
+				finishDrag()
+	
+func startDrag():
+	var card = raycastCheckForCard()
+	if card:
+		cardBeingDragged = card
+		
+func finishDrag():
+	var cardSlotFound = raycastCheckForCardSlot()
+	if cardSlotFound:
+		addCardToLayout(cardBeingDragged, cardSlotFound)
+	else:
+		moveCardBasePosition(cardBeingDragged)
+	cardBeingDragged = null
 		
 func raycastCheckForCard():
 	var space_state = get_world_2d().direct_space_state
@@ -97,11 +132,20 @@ func raycastCheckForCard():
 	if(result.size() > 0):
 		return result[0].collider.get_parent()
 	return null
+	
+func raycastCheckForCardSlot():
+	var space_state = get_world_2d().direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = get_global_mouse_position()
+	parameters.collide_with_areas = true
+	parameters.collision_mask = 2
+	var result = space_state.intersect_point(parameters)
+	if(result.size() > 0):
+		return result[0].collider.get_parent()
+	return null
 
 func cardFollowMouse():
 	if cardBeingDragged:
 		var mouse_pos = get_global_mouse_position()
 		var vect = Vector2(clamp(mouse_pos.x, 0, screenSize.x),clamp(mouse_pos.y, 0, screenSize.y))
 		cardBeingDragged.global_position = vect
-
-	
