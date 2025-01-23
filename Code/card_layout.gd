@@ -13,8 +13,6 @@ var anchorPosition: Vector2 = Vector2(0,0)
 
 func _ready():
 	screenSize = get_viewport_rect().size
-	if get_parent():
-		anchorPosition = get_parent().position
 	assignConstants()
 	addInitialCards()
 	arrange_cards()
@@ -104,6 +102,6 @@ func cardFollowMouse():
 	if cardBeingDragged:
 		var mouse_pos = get_global_mouse_position()
 		var vect = Vector2(clamp(mouse_pos.x, 0, screenSize.x),clamp(mouse_pos.y, 0, screenSize.y))
-		cardBeingDragged.position = vect - Vector2(anchorPosition)
+		cardBeingDragged.global_position = vect
 
 	
