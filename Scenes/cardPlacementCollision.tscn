@@ -3,19 +3,9 @@
 [ext_resource type="Script" path="res://Code/card_placement_collision.gd" id="1_ntdmb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x270y"]
-size = Vector2(956, 421.875)
+size = Vector2(533, 190)
 
-[node name="CardPlacementCollision" type="Control"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-mouse_filter = 2
+[node name="CardPlacementCollision" type="Node2D"]
 script = ExtResource("1_ntdmb")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -23,14 +13,13 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -47.9375)
 shape = SubResource("RectangleShape2D_x270y")
 
 [node name="ColorRect" type="ColorRect" parent="Area2D"]
-offset_left = -477.0
-offset_top = -259.0
-offset_right = 475.0
-offset_bottom = 167.0
+offset_left = -269.0
+offset_top = -96.0
+offset_right = 269.0
+offset_bottom = 94.0
 color = Color(0.54099, 0.54099, 0.54099, 1)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

@@ -1,6 +1,7 @@
-extends Control
+extends Node2D
 
 var validPlacement: bool = false
+var cardLayout = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,3 +19,9 @@ func _on_area_2d_mouse_exited() -> void:
 
 func getValidPlacement():
 	return validPlacement
+
+func initializeRespectiveCardLayout(newCardLayout):
+	cardLayout = newCardLayout
+
+func getRespectiveCardLayout():
+	return cardLayout

@@ -36,7 +36,6 @@ func connectSignal(card):
 		card.connect("cardMouseEntered", Callable(self, "cardMouseEntered"))
 	if card.has_signal("cardMouseExited"):
 		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
-	self.connect("signalAddExistingCard", Callable(self, "addExistingCard"))
 	
 func cardMouseEntered(card):
 	#card.moveCardUpSelect(Vector2(0,-25))
@@ -81,17 +80,19 @@ func addCard():
 	else:
 		print("Failed to load the card scene!")
 	
-func addExistingCard(card, cardSlot):
+func addExistingCard(card):
 	print("It Executes")
-	if CARD_LAYOUT_TYPE == "AllyLayout":
-		print("Card Added")
-		add_child(card)  # Add the new card to the parent node
-		ADDEDCARDS.append(card)
+	add_child(card)  # Add the new card to the parent node
+	ADDEDCARDS.append(card)
 		
-		arrange_cards()
+	arrange_cards()
 	
 func addCardToLayout(card, cardSlot):
-	emit_signal("signalAddExistingCard", card, cardSlot)
+	var layout = cardSlot.getRespectiveCardLayout()
+	print(layout)
+	remove_child(card)
+	layout.addExistingCard(card)
+	arrange_cards()
 	
 func moveCardBasePosition(card):
 	card.position = card.getBasePosition()
