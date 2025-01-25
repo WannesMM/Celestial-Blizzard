@@ -12,6 +12,7 @@ signal cardMouseExited
 
 func _ready() -> void:
 	DEFAULTSCALE = self.scale
+	initializeCard()
 
 func assignDefaultScale(scaled: Vector2):
 	DEFAULTSCALE = scaled
@@ -82,5 +83,27 @@ func moveCardDownSelect(duration: float = ANIMATIONDURATION):
 	movementTween.tween_property(self, "position", basePosition, duration)
 	await movementTween.finished
 	
+#---------------------------------------------------------------------------------------------------------------------
 
+var cardName: String = "Card Unknown"
+var cardType: String = "Type Unknown"
+
+func cardConstructor():
+	pass
+
+func initializeCard():
+	cardConstructor()
 	
+	loadCardImage()
+	
+func loadCardImage():
+	var imagePath = "res://assets/Cards/" + cardType + "/" + cardName + ".png"
+	
+	var texture = ResourceLoader.load(imagePath)
+	if texture and texture is Texture2D:
+		$Sprite2D.texture = texture
+	else:
+		$Sprite2D.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/image not found.png")
+
+func getCardName():
+	return cardName

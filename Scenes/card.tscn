@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bux5s4cf5dm4m"]
 
-[ext_resource type="Texture2D" uid="uid://34b8vafea0g4" path="res://assets/Cards/torinn inn.png" id="1_4w27c"]
-[ext_resource type="Script" path="res://Code/card.gd" id="1_oc3ix"]
-[ext_resource type="Script" path="res://Code/color_rect.gd" id="2_uvjea"]
+[ext_resource type="Script" path="res://Code/BattleUI/card.gd" id="1_oc3ix"]
+[ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/image not found.png" id="2_r2txn"]
+[ext_resource type="Script" path="res://Code/BattleUI/color_rect.gd" id="2_uvjea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqyo8"]
 size = Vector2(125, 177)
@@ -13,7 +13,7 @@ script = ExtResource("1_oc3ix")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_4w27c")
+texture = ExtResource("2_r2txn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkb285s13a8td"
-path="res://.godot/imported/Bartholomew Balderstone.png-aed197c90e2eb69af232de3af4657186.ctex"
+uid="uid://34b8vafea0g4"
+path="res://.godot/imported/torinn inn.png-dfb79d24f36764e5e19325613b5cca59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cards/Bartholomew Balderstone.png"
-dest_files=["res://.godot/imported/Bartholomew Balderstone.png-aed197c90e2eb69af232de3af4657186.ctex"]
+source_file="res://assets/Cards/CharacterCard/torinn inn.png"
+dest_files=["res://.godot/imported/torinn inn.png-dfb79d24f36764e5e19325613b5cca59.ctex"]
 
 [params]
 

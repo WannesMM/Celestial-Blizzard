@@ -64,11 +64,14 @@ func arrange_cards():
 func returnToBasePosition(card):
 	card.position = card.getBasePosition()
 
-func addCard():
+func addCard(cardType, cardName):
 	var cardScene = load("res://Scenes/card.tscn")
 	
 	if cardScene is PackedScene:  # Ensure it is a PackedScene
 		var newCard = cardScene.instantiate()  # Create an instance of the card scene
+		
+		if cardName != "Card Unknown":
+			setScript(cardType, cardName, cardScene)
 		
 		newCard.assignDefaultScale(Vector2(CARD_SCALE,CARD_SCALE))
 		connectSignal(newCard)
@@ -79,6 +82,11 @@ func addCard():
 		arrange_cards()  # Optionally call your arrange function to reposition cards
 	else:
 		print("Failed to load the card scene!")
+	
+func setScript(cardType, cardName, cardScene: PackedScene):
+	var cardScriptPath: String = "res://Code/CardLogic/" + cardType + "/" + cardName + ".gd"
+	var cardScript = load(cardScriptPath)
+	cardScene.set_script(cardScript)
 	
 func addExistingCard(card):
 	print("It Executes")
@@ -98,9 +106,10 @@ func moveCardBasePosition(card):
 	card.position = card.getBasePosition()
 	
 func addInitialCards():
-	addCard()
-	addCard()
-	addCard()
+	addCard("CharacterCard", "Torinn Inn")
+	addCard("CharacterCard", "Torinn Inn")
+	addCard("CharacterCard", "Torinn Inn")
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

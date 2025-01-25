@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crr7lce1ujbgc"
-path="res://.godot/imported/Noma Greon - skin1.png-3d05f9badd935f1ee06210fd7b4d3b42.ctex"
+path="res://.godot/imported/Noma Greon - skin1.png-c7536214bff3e746e16490a395533a3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cards/Noma Greon - skin1.png"
-dest_files=["res://.godot/imported/Noma Greon - skin1.png-3d05f9badd935f1ee06210fd7b4d3b42.ctex"]
+source_file="res://assets/Cards/CharacterCard/Noma Greon - skin1.png"
+dest_files=["res://.godot/imported/Noma Greon - skin1.png-c7536214bff3e746e16490a395533a3a.ctex"]
 
 [params]
 

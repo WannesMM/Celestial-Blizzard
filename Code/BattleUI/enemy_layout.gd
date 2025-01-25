@@ -1,4 +1,4 @@
-extends "res://Code/card_layout.gd"
+extends "res://Code/BattleUI/card_layout.gd"
 
 func assignConstants():
 	ARRAY_WIDTH = 700
