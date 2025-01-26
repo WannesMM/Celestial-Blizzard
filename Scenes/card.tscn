@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bux5s4cf5dm4m"]
 
 [ext_resource type="Script" path="res://Code/BattleUI/card.gd" id="1_oc3ix"]
-[ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/image not found.png" id="2_r2txn"]
+[ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/cardNotFound.png" id="2_r2txn"]
 [ext_resource type="Script" path="res://Code/BattleUI/color_rect.gd" id="2_uvjea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqyo8"]

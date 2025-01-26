@@ -12,8 +12,7 @@ signal cardMouseExited
 
 func _ready() -> void:
 	DEFAULTSCALE = self.scale
-	initializeCard()
-
+	
 func assignDefaultScale(scaled: Vector2):
 	DEFAULTSCALE = scaled
 	self.scale = scaled
@@ -85,25 +84,21 @@ func moveCardDownSelect(duration: float = ANIMATIONDURATION):
 	
 #---------------------------------------------------------------------------------------------------------------------
 
-var cardName: String = "Card Unknown"
-var cardType: String = "Type Unknown"
+var cardLogic: CardLogic = null
 
-func cardConstructor():
-	pass
-
-func initializeCard():
-	cardConstructor()
-	
+func setCard(card):
+	cardLogic = card
 	loadCardImage()
 	
+func getCardLogic():
+	return cardLogic
+	
 func loadCardImage():
-	var imagePath = "res://assets/Cards/" + cardType + "/" + cardName + ".png"
+	var imagePath = "res://assets/Cards/" + cardLogic.getCardType() + "/" + cardLogic.getCardName() + ".png"
 	
 	var texture = ResourceLoader.load(imagePath)
 	if texture and texture is Texture2D:
 		$Sprite2D.texture = texture
 	else:
-		$Sprite2D.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/image not found.png")
-
-func getCardName():
-	return cardName
+		print("card Image does not exist")
+		$Sprite2D.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")

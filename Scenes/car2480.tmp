@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm5jf67wsb0j0"]
+
+[ext_resource type="Script" path="res://Code/BattleUI/ally_character_card_layout.gd" id="1_6l3h5"]
+[ext_resource type="Script" path="res://Code/BattleUI/layout_manager.gd" id="1_7mkg5"]
+[ext_resource type="PackedScene" uid="uid://dt7en87xfgel0" path="res://Scenes/cardPlacementCollision.tscn" id="2_lggap"]
+[ext_resource type="Script" path="res://Code/BattleUI/enemy_layout.gd" id="3_pn1nx"]
+
+[node name="CardLayout" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+script = ExtResource("1_7mkg5")
+
+[node name="AllyCollider" parent="." instance=ExtResource("2_lggap")]
+position = Vector2(1, 123)
+
+[node name="EnemyCollider" parent="." instance=ExtResource("2_lggap")]
+position = Vector2(-1, -123)
+
+[node name="AllyLayout" type="Node2D" parent="."]
+script = ExtResource("1_6l3h5")
+
+[node name="EnemyLayout" type="Node2D" parent="."]
+script = ExtResource("3_pn1nx")
