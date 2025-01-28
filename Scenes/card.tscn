@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bux5s4cf5dm4m"]
+[gd_scene load_steps=8 format=3 uid="uid://bux5s4cf5dm4m"]
 
 [ext_resource type="Script" path="res://Code/BattleUI/card.gd" id="1_oc3ix"]
 [ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/cardNotFound.png" id="2_r2txn"]
 [ext_resource type="Script" path="res://Code/BattleUI/color_rect.gd" id="2_uvjea"]
 [ext_resource type="Texture2D" uid="uid://nn3ccgf1of5e" path="res://assets/Cards/CardAssets/character card template.png" id="3_5px6h"]
+[ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="4_pywow"]
 [ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_hr42r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqyo8"]
@@ -18,8 +19,13 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_r2txn")
 
 [node name="CardBorder" type="Sprite2D" parent="."]
+clip_children = 2
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_5px6h")
+
+[node name="CardShader" type="Sprite2D" parent="CardBorder"]
+scale = Vector2(3.555, 3.555)
+texture = ExtResource("4_pywow")
 
 [node name="Highlight" type="Sprite2D" parent="."]
 visible = false
@@ -38,6 +44,7 @@ text = "10
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CardCollision" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_fqyo8")
 

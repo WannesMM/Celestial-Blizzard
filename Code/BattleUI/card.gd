@@ -89,6 +89,7 @@ var cardLogic: CardLogic = null
 func setCard(card):
 	cardLogic = card
 	loadCardImage()
+	generateShaderColor()
 	
 func getCardLogic():
 	return cardLogic
@@ -102,3 +103,12 @@ func loadCardImage():
 	else:
 		print("card Image does not exist")
 		$cardImage.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")
+
+func generateShaderColor():
+	var texture = $cardImage.texture
+	
+	var image_width = texture.get_width()
+	var image_height = texture.get_height()
+	var sample_color = texture.get_image().get_pixel(image_width / 2, image_height / 2)
+	
+	$CardBorder/CardShader.modulate = sample_color
