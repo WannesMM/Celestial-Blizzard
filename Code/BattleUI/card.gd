@@ -18,14 +18,16 @@ func assignDefaultScale(scaled: Vector2):
 	self.scale = scaled
 	
 func _on_area_2d_mouse_entered() -> void:
-	$Highlight.mouseEntered()
-	scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 	emit_signal("cardMouseEntered", self)
 	
 func _on_area_2d_mouse_exited() -> void:
-	$Highlight.mouseExited()
-	scaleRelative(Vector2(1,1), ANIMATIONDURATION)
 	emit_signal("cardMouseExited", self)
+
+func highlightCard():
+	$Highlight.mouseEntered()
+	
+func undoHighlightCard():
+	$Highlight.mouseExited()
 
 func scaleRelative(target_ratio, duration = ANIMATIONDURATION):
 	
@@ -111,4 +113,5 @@ func generateShaderColor():
 	var image_height = texture.get_height()
 	var sample_color = texture.get_image().get_pixel(image_width / 2, image_height / 2)
 	
-	$CardBorder/CardShader.modulate = sample_color
+	$CardBorder.modulate = sample_color
+	#$CardBorder/CardShader.self_modulate = sample_color

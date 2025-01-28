@@ -7,10 +7,16 @@ var CENTER_X = 0
 var CARD_SCALE = 1
 var ADDEDCARDS = []
 var CARD_LAYOUT_TYPE = "AllyLayout"
+const ANIMATIONSCALE = Vector2(1.19,1.19)
+const ANIMATIONDURATION: float = 0.19
+const SELECTMOVEMENT = Vector2(0,-25)
+const HOLDTRESHHOLD = 0.5
 
 var cardBeingDragged
 var screenSize
 var anchorPosition: Vector2 = Vector2(0,0)
+var isPressed = false
+var holdTimer = 0.0
 
 signal signalAddExistingCard
 
@@ -22,6 +28,9 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	cardFollowMouse()
+	if isPressed:
+		print(holdTimer)
+		holdTimer += delta
 	
 	
 func assignConstants():
@@ -38,12 +47,15 @@ func connectSignal(card):
 		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
 	
 func cardMouseEntered(card):
-	#card.moveCardUpSelect(Vector2(0,-25))
-	pass
+	if !cardBeingDragged:
+		card.highlightCard()
+		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+		#card.moveCardUpSelect(SELECTMOVEMENT)
 	
 func cardMouseExited(card):
+	card.undoHighlightCard()
+	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
 	#card.moveCardDownSelect()
-	pass
 	
 # Arrange Node2D cards dynamically
 func arrange_cards():
@@ -110,11 +122,24 @@ func addInitialCards():
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed: 
-			startDrag()
-		else:
+		if event.pressed:
 			if cardBeingDragged:
-				finishDrag()
+					print("finishdrag")
+					finishDrag()
+					isPressed = false
+			else:
+				print("timer start")
+				isPressed = true
+				holdTimer = 0.0
+		else:
+			if holdTimer < HOLDTRESHHOLD:
+				print("click")
+				holdTimer = 0.0
+			else:
+				print("hold")
+				startDrag()
+				holdTimer = 0.0
+				
 	
 func startDrag():
 	var card = raycastCheckForCard()
@@ -123,7 +148,7 @@ func startDrag():
 		
 func finishDrag():
 	var cardSlotFound = raycastCheckForCardSlot()
-	if cardSlotFound:
+	if cardSlotFound and (cardSlotFound.getRespectiveCardLayout() != self):
 		addCardToLayout(cardBeingDragged, cardSlotFound)
 	else:
 		moveCardBasePosition(cardBeingDragged)
