@@ -1,4 +1,4 @@
-extends ColorRect
+extends Sprite2D
 
 var mouseInside = false
 var target_alpha = 0.0  # The desired alpha value

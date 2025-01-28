@@ -4,8 +4,9 @@ class_name CardLogic
 
 #-----------------------------------------------------------------------------------
 
-var cardName: String = "Card Unknown"
+var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
+var imageLink: String = "Card Unknown"
 
 func _init() -> void:
 	cardConstructor()
@@ -18,3 +19,6 @@ func getCardName():
 	
 func getCardType():
 	return cardType
+
+func getImageLink():
+	return imageLink

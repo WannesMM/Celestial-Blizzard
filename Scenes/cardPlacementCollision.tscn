@@ -20,6 +20,7 @@ offset_left = -269.0
 offset_top = -96.0
 offset_right = 269.0
 offset_bottom = 94.0
+mouse_filter = 1
 color = Color(0.54099, 0.54099, 0.54099, 1)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

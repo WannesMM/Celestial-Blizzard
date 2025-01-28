@@ -18,12 +18,12 @@ func assignDefaultScale(scaled: Vector2):
 	self.scale = scaled
 	
 func _on_area_2d_mouse_entered() -> void:
-	$ColorRect.mouseEntered()
+	$Highlight.mouseEntered()
 	scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 	emit_signal("cardMouseEntered", self)
 	
 func _on_area_2d_mouse_exited() -> void:
-	$ColorRect.mouseExited()
+	$Highlight.mouseExited()
 	scaleRelative(Vector2(1,1), ANIMATIONDURATION)
 	emit_signal("cardMouseExited", self)
 
@@ -94,11 +94,11 @@ func getCardLogic():
 	return cardLogic
 	
 func loadCardImage():
-	var imagePath = "res://assets/Cards/" + cardLogic.getCardType() + "/" + cardLogic.getCardName() + ".png"
+	var imagePath = "res://assets/Cards/" + cardLogic.getCardType() + "/" + cardLogic.getImageLink() + ".png"
 	
 	var texture = ResourceLoader.load(imagePath)
 	if texture and texture is Texture2D:
-		$Sprite2D.texture = texture
+		$cardImage.texture = texture
 	else:
 		print("card Image does not exist")
-		$Sprite2D.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")
+		$cardImage.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")
