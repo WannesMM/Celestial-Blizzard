@@ -92,18 +92,15 @@ func addCard(cardLogic):
 		print("Failed to load the card scene!")
 	
 func addExistingCard(card):
-	print("It Executes")
 	add_child(card)  # Add the new card to the parent node
 	ADDEDCARDS.append(card)
 		
 	arrange_cards()
 	
 func addCardToLayout(card, cardSlot):
-	print(self)
-	print(card.getCardLogic().getCardName())
 	var layout = cardSlot.getRespectiveCardLayout()
-	print("add to " + str(layout))
 	remove_child(card)
+	ADDEDCARDS.erase(card)
 	layout.addExistingCard(card)
 	arrange_cards()
 	
@@ -142,7 +139,7 @@ func clickAndHoldLogic(delta):
 	
 func startDrag():
 	var card = raycastCheckForCard()
-	if card:
+	if card and (card in ADDEDCARDS):
 		cardBeingDragged = card
 		
 func finishDrag():
