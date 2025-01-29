@@ -10,7 +10,7 @@ var CARD_LAYOUT_TYPE = "AllyLayout"
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
 const SELECTMOVEMENT = Vector2(0,-25)
-const HOLDTRESHHOLD = 0.5
+const HOLDTRESHHOLD = 0.15
 
 var cardBeingDragged
 var screenSize
@@ -28,10 +28,7 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	cardFollowMouse()
-	if isPressed:
-		print(holdTimer)
-		holdTimer += delta
-	
+	clickAndHoldLogic(delta)
 	
 func assignConstants():
 	ARRAY_WIDTH = ARRAY_WIDTH
@@ -102,8 +99,10 @@ func addExistingCard(card):
 	arrange_cards()
 	
 func addCardToLayout(card, cardSlot):
+	print(self)
+	print(card.getCardLogic().getCardName())
 	var layout = cardSlot.getRespectiveCardLayout()
-	print(layout)
+	print("add to " + str(layout))
 	remove_child(card)
 	layout.addExistingCard(card)
 	arrange_cards()
@@ -123,23 +122,23 @@ func addInitialCards():
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
+			holdTimer = 0.0
+			isPressed = true
+		else:
 			if cardBeingDragged:
-					print("finishdrag")
 					finishDrag()
 					isPressed = false
-			else:
-				print("timer start")
-				isPressed = true
+			elif holdTimer < HOLDTRESHHOLD:
 				holdTimer = 0.0
-		else:
-			if holdTimer < HOLDTRESHHOLD:
-				print("click")
-				holdTimer = 0.0
-			else:
-				print("hold")
-				startDrag()
-				holdTimer = 0.0
-				
+				isPressed = false		
+
+func clickAndHoldLogic(delta):
+	if isPressed:
+		holdTimer += delta
+		if holdTimer >= HOLDTRESHHOLD and !(cardBeingDragged):
+			startDrag()
+			isPressed == false
+			holdTimer = 0.0
 	
 func startDrag():
 	var card = raycastCheckForCard()
