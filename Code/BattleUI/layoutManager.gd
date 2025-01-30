@@ -84,30 +84,23 @@ func cardFollowMouse():
 		cardBeingDragged.global_position = vect
 
 func selectCard():
-	pass
+	var card = raycastCheckForCard()
+	if card:
+		if selectedCard != null:
+			undoSelect()
+		selectedCard = card
+		highlightSelect()
+		displayCardInformation()
+	
+func undoSelect():
+	selectedCard.undoHighlightCard()
+	selectedCard.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
+	selectedCard.moveCardDownSelect()
+	
+func highlightSelect():
+	selectedCard.highlightCard()
+	selectedCard.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+	selectedCard.moveCardUpSelect(SELECTMOVEMENT)
 
-#func selectCard():
-	#var card = raycastCheckForCard()
-	#var previousSelected = selectedCard
-	#if card and (card in ADDEDCARDS):
-		#selectedCard = card
-		#highlightSelected(previousSelected)
-		#displayCardInformation()
-	#
-#func undoSelect():
-	#selectedCard.undoHighlightCard()
-	#selectedCard.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-	#selectedCard.moveCardDownSelect()
-	#
-	#
-#func highlightSelected(previousSelected):
-	#selectedCard.highlightCard()
-	#selectedCard.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
-	#selectedCard.moveCardUpSelect(SELECTMOVEMENT)
-	#if previousSelected and (previousSelected != selectedCard):
-		#previousSelected.undoHighlightCard()
-		#previousSelected.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-		#previousSelected.moveCardDownSelect()
-#
-#func displayCardInformation():
-	#pass
+func displayCardInformation():
+	$"Right Slider".displayCardInformation(selectedCard)
