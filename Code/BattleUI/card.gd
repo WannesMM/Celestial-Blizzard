@@ -10,6 +10,8 @@ var currentlyAnimating = false
 signal cardMouseEntered
 signal cardMouseExited
 
+var currentLayout
+
 func _ready() -> void:
 	DEFAULTSCALE = self.scale
 	
@@ -83,6 +85,12 @@ func moveCardDownSelect(duration: float = ANIMATIONDURATION):
 	var movementTween: Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", basePosition, duration)
 	await movementTween.finished
+	
+func setLayout(layout):
+	currentLayout = layout
+	
+func getLayout():
+	return currentLayout
 	
 #---------------------------------------------------------------------------------------------------------------------
 

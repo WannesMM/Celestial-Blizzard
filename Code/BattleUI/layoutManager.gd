@@ -18,23 +18,6 @@ func _process(delta: float) -> void:
 	cardFollowMouse()
 	clickAndHoldLogic(delta)
 	
-func connectSignal(card):
-	if card.has_signal("cardMouseEntered"):
-		card.connect("cardMouseEntered", Callable(self, "cardMouseEntered"))
-	if card.has_signal("cardMouseExited"):
-		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
-
-func cardMouseEntered(card):
-	if !cardBeingDragged:
-		card.highlightCard()
-		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
-		#card.moveCardUpSelect(SELECTMOVEMENT)
-	
-func cardMouseExited(card):
-	card.undoHighlightCard()
-	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-	#card.moveCardDownSelect()
-	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -59,15 +42,17 @@ func clickAndHoldLogic(delta):
 	
 func startDrag():
 	var card = raycastCheckForCard()
-	if card and (card in ADDEDCARDS):
+	if card:
 		cardBeingDragged = card
 		
 func finishDrag():
 	var cardSlotFound = raycastCheckForCardSlot()
-	if cardSlotFound and (cardSlotFound.getRespectiveCardLayout() != self):
-		addCardToLayout(cardBeingDragged, cardSlotFound)
+	if cardSlotFound:
+		var layout = cardSlotFound.getRespectiveCardLayout()
+		print(layout)
+		layout.addCardToLayout(cardBeingDragged, layout)
 	else:
-		moveCardBasePosition(cardBeingDragged)
+		cardBeingDragged.position = cardBeingDragged.getBasePosition()
 	cardBeingDragged = null
 		
 func raycastCheckForCard():

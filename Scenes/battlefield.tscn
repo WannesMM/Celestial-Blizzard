@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dg4dd53dv5m3"]
 
 [ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/card_layout.tscn" id="1_n8f8j"]
-[ext_resource type="Script" path="res://Scenes/battlefield.gd" id="1_w7qd3"]
+[ext_resource type="Script" path="res://Code/BattleUI/layoutManager.gd" id="1_w7qd3"]
 [ext_resource type="PackedScene" uid="uid://nguo3bhhp25g" path="res://Scenes/card_hand_layout.tscn" id="2_yoii6"]
 [ext_resource type="PackedScene" uid="uid://b01lkl2l8uhmq" path="res://Scenes/right_slider.tscn" id="3_i0k80"]
 
