@@ -6,17 +6,17 @@ func characterCardConstructor():
 	cardName = "Torinn Inn"
 	imageLink = "Torinn Inn test"
 	
-	var maxHP: int = 10
-	var HP: int = 10
-	var maxEnergy: int = 3
-	var energy: int = 0
-	var NAdmg: int = 2
-	var NAcost: int = 2
-	var SAdmg: int = 0
-	var SAcost: int = 3
-	var CAdmg: int = 0
-	var CAcost: int = 3
-	var CAenergyCost: int = 3
+	maxHP = 10
+	HP = 10
+	maxEnergy = 3
+	energy = 0
+	NAdmg = 2
+	NAcost = 2
+	SAdmg = 0
+	SAcost = 3
+	CAdmg = 0
+	CAcost = 3
+	CAenergyCost = 3
 
 #-------------------------------------------------------------------------------
 

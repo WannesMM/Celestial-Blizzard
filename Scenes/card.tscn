@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bux5s4cf5dm4m"]
+[gd_scene load_steps=9 format=3 uid="uid://bux5s4cf5dm4m"]
 
 [ext_resource type="Script" path="res://Code/BattleUI/card.gd" id="1_oc3ix"]
 [ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/cardNotFound.png" id="2_r2txn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nn3ccgf1of5e" path="res://assets/Cards/CardAssets/character card template.png" id="3_5px6h"]
 [ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="4_pywow"]
 [ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_hr42r"]
+[ext_resource type="Script" path="res://Scenes/darken.gd" id="7_bxov3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqyo8"]
 size = Vector2(125, 177)
@@ -40,6 +41,13 @@ offset_right = 55.0
 offset_bottom = -66.0
 text = "10
 "
+
+[node name="Darken" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_hr42r")
+script = ExtResource("7_bxov3")
 
 [node name="Area2D" type="Area2D" parent="."]
 
