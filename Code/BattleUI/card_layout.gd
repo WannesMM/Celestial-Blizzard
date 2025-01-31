@@ -1,11 +1,24 @@
 extends Node2D
 
-# Constants for card size in pixels (A4 vertical size in your game) 210
+class_name CardLayout
+
+var addedCards = []
+var gamestate: PlayerState = null
+
+func getAddedCards():
+	return addedCards
+	
+func cardLayoutConstructor():
+	pass
+
+#---------------------------------------------------------------------------------------------------
+
 var ARRAY_WIDTH = 700
 var CENTER_Y = 150
 var CENTER_X = 0
 var CARD_SCALE = 1
 var CARD_LAYOUT_TYPE = "AllyLayout"
+
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
 const SELECTMOVEMENT = Vector2(0,-25)
@@ -19,13 +32,11 @@ var isPressed = false
 var holdTimer = 0.0
 var allied = true
 
-var addedCards = []
-
 signal signalAddExistingCard
 
 func _ready():
 	screenSize = get_viewport_rect().size
-	assignConstants()
+	cardLayoutConstructor()
 	
 func connectSignal(card):
 	if card.has_signal("cardMouseEntered"):
@@ -47,13 +58,6 @@ func cardMouseExited(card):
 
 func _process(delta: float) -> void:
 	pass
-	
-func assignConstants():
-	ARRAY_WIDTH = ARRAY_WIDTH
-	CENTER_Y = CENTER_Y
-	CENTER_X = CENTER_X
-	CARD_SCALE = CARD_SCALE
-	CARD_LAYOUT_TYPE = CARD_LAYOUT_TYPE
 
 # Arrange Node2D cards dynamically
 func arrange_cards():
@@ -75,32 +79,33 @@ func arrange_cards():
 func returnToBasePosition(card):
 	card.position = card.getBasePosition()
 
-func addCard(cardLogic):
+#Create a new cardScene with given card logic and add it to this layout
+func createCard(cardLogic):
 	var cardScene = load("res://Scenes/card.tscn")
-	
-	if cardScene is PackedScene:  # Ensure it is a PackedScene
-		var newCard = cardScene.instantiate()  # Create an instance of the card scene
-		
+	if cardScene is PackedScene: 
+		var newCard = cardScene.instantiate() 
 		newCard.setCard(cardLogic)
-		
 		newCard.assignDefaultScale(Vector2(CARD_SCALE,CARD_SCALE))
-		
 		connectSignal(newCard)
-		add_child(newCard)  # Add the new card to the parent node
-		addedCards.append(newCard)
-		newCard.setLayout(self)
-		
-		arrange_cards()  # Optionally call your arrange function to reposition cards
+		addExistingCard(newCard) 
 	else:
 		print("Failed to load the card scene!")
 	
+#Create multiple new cards with a given array of cardLogic and add them to this layout
+func addCards(cards):
+	for card in cards:
+		createCard(card)
+	arrange_cards()
+	
+#Add an already existing cardScene to this layout
 func addExistingCard(card):
-	add_child(card)  # Add the new card to the parent node
+	add_child(card)  
 	addedCards.append(card)
 	card.setLayout(self)
 		
 	arrange_cards()
 
+#Removes an existing cardScene form this layout
 func removeExistingCard(card):
 	remove_child(card)
 	addedCards.erase(card)
@@ -108,17 +113,15 @@ func removeExistingCard(card):
 	
 	arrange_cards()
 
+#Add an already existing cardScene from a different layout to this layout
 func addCardToLayout(card, layout):
 	card.getLayout().removeExistingCard(card)
-	
 	layout.addExistingCard(card)
 	arrange_cards()
 	
+#The card moves back to its base position, not sure why this code is here actually
 func moveCardBasePosition(card):
 	card.position = card.getBasePosition()
 	
-func addCards(cards):
-	for card in cards:
-		addCard(card)
-	arrange_cards()
+
 	

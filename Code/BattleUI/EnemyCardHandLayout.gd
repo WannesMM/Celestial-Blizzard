@@ -1,18 +1,9 @@
-extends "res://Code/BattleUI/card_layout.gd"
+extends CardLayout
 
-func assignConstants():
+func cardLayoutConstructor():
 	ARRAY_WIDTH = 700
 	CENTER_Y = 40
 	CENTER_X = 0
 	CARD_SCALE = 1
 	CARD_LAYOUT_TYPE = "CardHand"
 	allied = false
-
-func addInitialCards():
-	var greon = HatsuneMiku.new()
-	var bartholomew = BartholomewBalderstone.new()
-	var torinn = HatsuneMiku.new()
-	
-	addCard(greon)
-	addCard(bartholomew)
-	addCard(torinn)

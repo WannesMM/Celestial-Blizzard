@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bm5jf67wsb0j0"]
 
-[ext_resource type="Script" path="res://Code/BattleUI/ally_character_card_layout.gd" id="1_6l3h5"]
+[ext_resource type="Script" path="res://Code/BattleUI/AllyCharacterCardLayout.gd" id="1_6l3h5"]
 [ext_resource type="Script" path="res://Code/BattleUI/colliderManager.gd" id="1_7mkg5"]
 [ext_resource type="PackedScene" uid="uid://dt7en87xfgel0" path="res://Scenes/cardPlacementCollision.tscn" id="2_lggap"]
-[ext_resource type="Script" path="res://Code/BattleUI/enemy_layout.gd" id="3_pn1nx"]
+[ext_resource type="Script" path="res://Code/BattleUI/EnemyCharacterCardLayout.gd" id="3_pn1nx"]
 
 [node name="CardLayout" type="Control"]
 layout_mode = 3
