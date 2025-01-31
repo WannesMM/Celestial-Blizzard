@@ -1,4 +1,4 @@
-extends CardLayout
+extends CharacterCardLayout
 
 func cardLayoutConstructor():
 	ARRAY_WIDTH = 700

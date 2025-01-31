@@ -1,4 +1,4 @@
-extends "res://Code/BattleUI/card_layout.gd"
+extends CharacterCardLayout
 
 func cardLayoutConstructor():
 	ARRAY_WIDTH = 700

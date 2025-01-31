@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://bux5s4cf5dm4m"]
 
-[ext_resource type="Script" path="res://Code/BattleUI/card.gd" id="1_oc3ix"]
+[ext_resource type="Script" path="res://Code/BattleUI/Card/Card.gd" id="1_oc3ix"]
 [ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/cardNotFound.png" id="2_r2txn"]
-[ext_resource type="Script" path="res://Code/BattleUI/color_rect.gd" id="2_uvjea"]
+[ext_resource type="Script" path="res://Code/BattleUI/Card/CardHighlight.gd" id="2_uvjea"]
 [ext_resource type="Texture2D" uid="uid://nn3ccgf1of5e" path="res://assets/Cards/CardAssets/character card template.png" id="3_5px6h"]
 [ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="4_pywow"]
 [ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_hr42r"]
-[ext_resource type="Script" path="res://Code/BattleUI/darken.gd" id="7_bxov3"]
+[ext_resource type="Script" path="res://Code/BattleUI/Card/Darken.gd" id="7_bxov3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqyo8"]
 size = Vector2(125, 177)

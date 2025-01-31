@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt7en87xfgel0"]
 
-[ext_resource type="Script" path="res://Code/BattleUI/card_placement_collision.gd" id="1_ntdmb"]
+[ext_resource type="Script" path="res://Code/BattleUI/LayoutManagers/LayoutCollision.gd" id="1_ntdmb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x270y"]
 size = Vector2(533, 190)
