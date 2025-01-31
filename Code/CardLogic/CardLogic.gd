@@ -4,6 +4,8 @@ class_name CardLogic
 
 #-----------------------------------------------------------------------------------
 
+var card: Card = null
+
 var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
 var cardCost: int = 1
@@ -23,3 +25,9 @@ func getCardType():
 
 func getImageLink():
 	return imageLink
+
+func getCard():
+	return card
+	
+func setCard(cardToAssign):
+	card = cardToAssign

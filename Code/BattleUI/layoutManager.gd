@@ -1,5 +1,7 @@
 extends Control
 
+class_name LayoutManager
+
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
 const SELECTMOVEMENT = Vector2(0,-25)
@@ -13,6 +15,7 @@ var holdTimer = 0.0
 
 func _ready():
 	screenSize = get_viewport_rect().size
+	initializeBattle()
 	
 func _process(delta: float) -> void:
 	cardFollowMouse()
@@ -100,7 +103,15 @@ func undoSelect():
 func highlightSelect():
 	selectedCard.highlightCard()
 	selectedCard.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
-	selectedCard.moveCardUpSelect(SELECTMOVEMENT)
+	if(selectedCard.getLayout().allied == true):
+		selectedCard.moveCardUpSelect(SELECTMOVEMENT)
+	else:
+		selectedCard.moveCardUpSelect(-SELECTMOVEMENT)
 
 func displayCardInformation():
 	$"Right Slider".displayCardInformation(selectedCard)
+
+# BattleManager ------------------------------------------------------------------------------------
+
+func initializeBattle():
+	pass

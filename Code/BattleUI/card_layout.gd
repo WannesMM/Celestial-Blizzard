@@ -5,7 +5,6 @@ var ARRAY_WIDTH = 700
 var CENTER_Y = 150
 var CENTER_X = 0
 var CARD_SCALE = 1
-var ADDEDCARDS = []
 var CARD_LAYOUT_TYPE = "AllyLayout"
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
@@ -18,14 +17,15 @@ var selectedCard
 var screenSize
 var isPressed = false
 var holdTimer = 0.0
+var allied = true
+
+var addedCards = []
 
 signal signalAddExistingCard
 
 func _ready():
 	screenSize = get_viewport_rect().size
 	assignConstants()
-	addInitialCards()
-	arrange_cards()
 	
 func connectSignal(card):
 	if card.has_signal("cardMouseEntered"):
@@ -61,15 +61,16 @@ func arrange_cards():
 	if num_cards == 0:
 		return
 	
+	var i = 0
 	var arrayStart = 0 - (ARRAY_WIDTH / 2)
 	var cardOffset = ARRAY_WIDTH / (num_cards + 1)
 	# Position each card
-	for i in range(num_cards):
-		var card = get_child(i)
+	for card in addedCards:
 		if card is Node2D:
 			card.position = Vector2(arrayStart + ((i + 1) * cardOffset) + CENTER_X , CENTER_Y)
 			card.setBasePosition(card.position)
 			#print("my position is " + str(card.position))
+			i = i + 1
 
 func returnToBasePosition(card):
 	card.position = card.getBasePosition()
@@ -86,7 +87,7 @@ func addCard(cardLogic):
 		
 		connectSignal(newCard)
 		add_child(newCard)  # Add the new card to the parent node
-		ADDEDCARDS.append(newCard)
+		addedCards.append(newCard)
 		newCard.setLayout(self)
 		
 		arrange_cards()  # Optionally call your arrange function to reposition cards
@@ -95,14 +96,14 @@ func addCard(cardLogic):
 	
 func addExistingCard(card):
 	add_child(card)  # Add the new card to the parent node
-	ADDEDCARDS.append(card)
+	addedCards.append(card)
 	card.setLayout(self)
 		
 	arrange_cards()
 
 func removeExistingCard(card):
 	remove_child(card)
-	ADDEDCARDS.erase(card)
+	addedCards.erase(card)
 	card.setLayout(null)
 	
 	arrange_cards()
@@ -116,13 +117,8 @@ func addCardToLayout(card, layout):
 func moveCardBasePosition(card):
 	card.position = card.getBasePosition()
 	
-func addInitialCards():
-	var greon = NomaGreon.new()
-	var bartholomew = BartholomewBalderstone.new()
-	var torinn = TorinnInn.new()
-	
-	addCard(greon)
-	addCard(bartholomew)
-	addCard(torinn)
-	
+func addCards(cards):
+	for card in cards:
+		addCard(card)
+	arrange_cards()
 	

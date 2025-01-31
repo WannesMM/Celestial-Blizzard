@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Card
+
 var DEFAULTSCALE = null
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
@@ -96,10 +98,11 @@ func getLayout():
 
 var cardLogic: CardLogic = null
 
-func setCard(card):
+func setCard(card: CardLogic):
 	cardLogic = card
 	loadCardImage()
 	generateShaderColor()
+	cardLogic.setCard(self)
 	
 func getCardLogic():
 	return cardLogic

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nn3ccgf1of5e" path="res://assets/Cards/CardAssets/character card template.png" id="3_5px6h"]
 [ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="4_pywow"]
 [ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_hr42r"]
-[ext_resource type="Script" path="res://Scenes/darken.gd" id="7_bxov3"]
+[ext_resource type="Script" path="res://Code/BattleUI/darken.gd" id="7_bxov3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqyo8"]
 size = Vector2(125, 177)

@@ -6,5 +6,6 @@ func assignConstants():
 	CENTER_X = 0
 	CARD_SCALE = 1
 	CARD_LAYOUT_TYPE = "EnemyLayout"
+	allied = false
 
 #-125
