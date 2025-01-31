@@ -21,6 +21,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
+[editor]
+
+movie_writer/movie_file="C:\\Users\\wanne\\Desktop\\Celestial TCG\\Blizzard.avi"
+
 [gui]
 
 theme/custom="res://assets/Theme/panelTheme.tres"
