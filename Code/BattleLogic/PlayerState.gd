@@ -5,8 +5,9 @@ class_name PlayerState
 var gameState: GameState
 var inputHandler: InputHandler
 
-var characterCards: Array[CharacterCardLogic] = []
-var cardHand: Array[CardLogic] = []
+var characterCards: CardLayout = null
+var cardHand: CardLayout = null
+
 var activeCharacter: CharacterCardLogic = null
 var gold: int = 0
 var deck: Deck = null
@@ -15,13 +16,20 @@ var roundEnded: bool = false
 
 var drawPile: Array[CardLogic] = []
 
-func _init(newDeck: Deck, input: InputHandler) -> void:
+func _init(newDeck: Deck, input: InputHandler, characterLayout: CardLayout, handLayout: CardLayout) -> void:
 	deck = newDeck
 	inputHandler = input
 	
-	characterCards = deck.getCharacterCards()
+	characterCards = characterLayout
+	cardHand = handLayout
 
 # Actual Functionality -----------------------------------------------------------------------------
+
+func setStartingCharacters():
+	characterCards.addCards(deck.getCharacterCards())
+	
+func setStartingHand():
+	cardHand.addCards(deck.getCharacterCards())
 
 # Getters and Setters ------------------------------------------------------------------------------
 
@@ -40,7 +48,7 @@ func setInputHandler(handler: InputHandler):
 func getCharacterCards():
 	return characterCards
 	
-func setCharacterCards(cards: Array[CharacterCardLogic]):
+func setCharacterCards(cards: CardLayout):
 	characterCards = cards
 	
 func getActiveCharacter():
@@ -58,7 +66,7 @@ func setGold(amt: int):
 func getCardHand():
 	return cardHand
 	
-func setCardHand(hand: Array[CardLogic]):
+func setCardHand(hand: CardLayout):
 	cardHand = hand
 	
 func getDeck():

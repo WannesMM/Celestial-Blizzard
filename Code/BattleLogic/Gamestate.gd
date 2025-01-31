@@ -7,14 +7,23 @@ var layoutManager: LayoutManager = null
 var allyState: PlayerState
 var enemyState: PlayerState
 
-func _init(allyDeck: Deck, allyInput: InputHandler, enemyDeck: Deck, enemyInput: InputHandler, layout: LayoutManager) -> void:
+func _init(allyDeck: Deck, allyInput: InputHandler, allyCharacterLayout: CardLayout, allyHandLayout: CardLayout, enemyDeck: Deck, enemyInput: InputHandler, enemyCharacterLayout: CardLayout, enemyHandLayout: CardLayout, layout: LayoutManager) -> void:
 	setLayoutManager(layout)
 	
-	allyState = PlayerState.new(allyDeck, allyInput)
+	allyState = PlayerState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout)
+	enemyState = PlayerState.new(enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout)
 	
-	enemyState = PlayerState.new(enemyDeck, enemyInput)
+	startGame()
 	
-# Getter and Setters -----------------------------------------------------------
+# GameLogic ----------------------------------------------------------------------------------------
+
+func startGame():
+	allyState.setStartingCharacters()
+	allyState.setStartingHand()
+	enemyState.setStartingCharacters()
+	enemyState.setStartingHand()
+	
+# Getter and Setters -------------------------------------------------------------------------------
 
 func getLayoutManager():
 	return layoutManager
