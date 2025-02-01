@@ -7,6 +7,8 @@ var inputHandler: InputHandler
 
 var characterCards: CardLayout = null
 var cardHand: CardLayout = null
+var areaSupportCards: AreaSupportLayout = null
+var entityCards: EntityLayout = null
 
 var activeCharacter: CharacterCardLogic = null
 var gold: int = 0
@@ -16,12 +18,14 @@ var roundEnded: bool = false
 
 var drawPile: Array[CardLogic] = []
 
-func _init(newDeck: Deck, input: InputHandler, characterLayout: CardLayout, handLayout: CardLayout) -> void:
+func _init(newDeck: Deck, input: InputHandler, characterLayout: CardLayout, handLayout: CardLayout, areaSupportLayout: AreaSupportLayout, entityLayout: EntityLayout) -> void:
 	deck = newDeck
 	inputHandler = input
 	
 	characterCards = characterLayout
 	cardHand = handLayout
+	areaSupportCards = areaSupportLayout
+	entityCards = entityLayout
 
 # Actual Functionality -----------------------------------------------------------------------------
 

@@ -5,7 +5,7 @@ class_name LayoutManager
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
 const SELECTMOVEMENT = Vector2(0,-25)
-const HOLDTRESHHOLD = 0.15
+const HOLDTRESHHOLD = 0.14
 
 var cardBeingDragged
 var selectedCard
