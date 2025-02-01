@@ -1,3 +1,3 @@
 extends RectangleCardLayout
 
-class_name AreaSupportLayout
+class_name EntityLayout
