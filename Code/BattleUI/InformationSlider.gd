@@ -37,3 +37,51 @@ func displayCardInformation(card):
 		$PanelContainer/MarginContainer/VBoxContainer/CAdescription.text = ""
 		$PanelContainer/MarginContainer/VBoxContainer/AbilityName.text = ""
 		$PanelContainer/MarginContainer/VBoxContainer/AbilityDescription.text = ""
+	elif(logic.getCardType() == "SupporterCard"):
+		$PanelContainer/MarginContainer/VBoxContainer/CardName.text = logic.getCardName()
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value1.text = "Cost:"
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value2.text = str(logic.getCardCost()) + "g"
+		$PanelContainer/MarginContainer/VBoxContainer/NAname.text = logic.getEffectName()
+		$PanelContainer/MarginContainer/VBoxContainer/NAdescription.text = logic.getCardDescription()
+		$PanelContainer/MarginContainer/VBoxContainer/SAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/SAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityName.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityDescription.text = ""
+	elif(logic.getCardType() == "EventCard"):
+		$PanelContainer/MarginContainer/VBoxContainer/CardName.text = logic.getCardName()
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value1.text = "Cost:"
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value2.text = str(logic.getCardCost()) + "g"
+		$PanelContainer/MarginContainer/VBoxContainer/NAname.text = logic.getEffectName()
+		$PanelContainer/MarginContainer/VBoxContainer/NAdescription.text = logic.getCardDescription()
+		$PanelContainer/MarginContainer/VBoxContainer/SAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/SAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityName.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityDescription.text = ""
+	elif(logic.getCardType() == "EquipmentCard"):
+		$PanelContainer/MarginContainer/VBoxContainer/CardName.text = logic.getCardName()
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value1.text = "Cost:"
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value2.text = str(logic.getCardCost()) + "g"
+		$PanelContainer/MarginContainer/VBoxContainer/NAname.text = logic.getEffectName()
+		$PanelContainer/MarginContainer/VBoxContainer/NAdescription.text = logic.getCardDescription()
+		$PanelContainer/MarginContainer/VBoxContainer/SAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/SAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityName.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityDescription.text = ""
+	elif(logic.getCardType() == "EntityCard"):
+		$PanelContainer/MarginContainer/VBoxContainer/CardName.text = logic.getCardName()
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value1.text = "Cost:"
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value2.text = str(logic.getCardCost()) + "g"
+		$PanelContainer/MarginContainer/VBoxContainer/NAname.text = logic.getEffectName()
+		$PanelContainer/MarginContainer/VBoxContainer/NAdescription.text = logic.getCardDescription()
+		$PanelContainer/MarginContainer/VBoxContainer/SAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/SAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityName.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityDescription.text = ""

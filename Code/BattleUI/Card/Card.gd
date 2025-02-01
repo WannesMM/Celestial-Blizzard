@@ -5,6 +5,7 @@ class_name Card
 var DEFAULTSCALE = null
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
+var defaultZIndex = self.z_index
 
 var scaleTween: Tween = null
 var currentlyAnimating = false
@@ -28,9 +29,11 @@ func _on_area_2d_mouse_exited() -> void:
 	emit_signal("cardMouseExited", self)
 
 func highlightCard():
+	self.z_index = 1
 	$Highlight.mouseEntered()
 	
 func undoHighlightCard():
+	self.z_index = defaultZIndex
 	$Highlight.mouseExited()
 
 func scaleRelative(target_ratio, duration = ANIMATIONDURATION):

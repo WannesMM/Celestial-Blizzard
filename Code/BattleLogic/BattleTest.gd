@@ -23,36 +23,17 @@ var dqMall: AreaCardLogic = null
 var monsterMayhem: AreaCardLogic = null
 
 var deck1: Deck = null
-var deck2: Deck = null
+var deck2: Deck = Deck.new([HatsuneMiku.new()])
 var deck3: Deck = null
 
+var burningDeck: Deck = Deck.new([TorinnInn.new(), Kin.new(), FragmentumGeneral.new(), Berlaar.new(), Berlaar.new(), TowersRegion.new(), TowersRegion.new(),
+	Homunculus.new(), Homunculus.new(), PseudoDragon.new(), PseudoDragon.new(), PseudoDragon.new(), MonsterMayhem.new(), MonsterMayhem.new(), Hermit.new(), Hermit.new(),
+	DQMall.new(), DQMall.new(), NieuwToren.new(), Ballista.new(), Ballista.new(), GreonsCookingPot.new(), GreonsCookingPot.new(), GreonsCookingPot. new()
+	])
+
 func _init() -> void:
-	TorinnInn1 = TorinnInn.new()
-	TorinnInn2 = TorinnInn.new()
-	TorinnInn3 = TorinnInn.new()
+	pass
 	
-	NomaGreon1 = NomaGreon.new()
-	NomaGreon2 = NomaGreon.new()
-	NomaGreon3 = NomaGreon.new()
 	
-	BartholomewBalderstone1 = BartholomewBalderstone.new()
-	BartholomewBalderstone2 = BartholomewBalderstone.new()
-	BartholomewBalderstone3 = BartholomewBalderstone.new()
 	
-	HatsuneMiku1 = HatsuneMiku.new()
-	HatsuneMiku2 = HatsuneMiku.new()
-	HatsuneMiku3 = HatsuneMiku.new()
-	
-	berlaar = Berlaar.new()
-	dqMall = DQMall.new()
-	monsterMayhem = MonsterMayhem.new()
-	var nieuwToren = NieuwToren.new()
-	var nomaMountains = NomaMountains.new()
-	var towersRegion = TowersRegion.new()
-	var kin = Kin.new()
-	var fragmentumGeneral = FragmentumGeneral.new()
-	
-	deck1 = Deck.new([TorinnInn1, NomaGreon1, BartholomewBalderstone1, HatsuneMiku1, berlaar, monsterMayhem, nieuwToren, nomaMountains])
-	deck2 = Deck.new([HatsuneMiku1, kin, fragmentumGeneral, dqMall, towersRegion])
-	deck3 = Deck.new([TorinnInn1])
 	

@@ -29,7 +29,8 @@ func setStartingCharacters():
 	characterCards.addCards(deck.getCharacterCards())
 	
 func setStartingHand():
-	cardHand.addCards(deck.getAreaCards())
+	var arr = deck.getAreaCards() + deck.getEnitityCards() + deck.getEquipmentCards() + deck.getSupporterCards() + deck.getEventCards()
+	cardHand.addCards(arr)
 
 # Getters and Setters ------------------------------------------------------------------------------
 
