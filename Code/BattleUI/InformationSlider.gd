@@ -85,3 +85,6 @@ func displayCardInformation(card):
 		$PanelContainer/MarginContainer/VBoxContainer/CAdescription.text = ""
 		$PanelContainer/MarginContainer/VBoxContainer/AbilityName.text = ""
 		$PanelContainer/MarginContainer/VBoxContainer/AbilityDescription.text = ""
+
+func closeCardInformation():
+	visible = false

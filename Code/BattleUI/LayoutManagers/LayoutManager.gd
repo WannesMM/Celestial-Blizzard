@@ -91,9 +91,19 @@ func selectCard():
 	if card:
 		if selectedCard != null:
 			undoSelect()
-		selectedCard = card
-		highlightSelect()
-		displayCardInformation()
+		if card == selectedCard:
+			undoSelect()
+			closeCardInformation()
+			selectedCard = null
+		else:
+			selectedCard = card
+			highlightSelect()
+			displayCardInformation()
+	else:
+		if selectedCard:
+			undoSelect()
+			closeCardInformation()
+			selectedCard = null
 	
 func undoSelect():
 	selectedCard.undoHighlightCard()
@@ -107,6 +117,9 @@ func highlightSelect():
 		selectedCard.moveCardUpSelect(SELECTMOVEMENT)
 	else:
 		selectedCard.moveCardUpSelect(-SELECTMOVEMENT)
+
+func closeCardInformation():
+	$"Right Slider".closeCardInformation()
 
 func displayCardInformation():
 	$"Right Slider".displayCardInformation(selectedCard)
