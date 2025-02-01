@@ -25,3 +25,15 @@ func displayCardInformation(card):
 		$PanelContainer/MarginContainer/VBoxContainer/CAdescription.text = logic.getCADescription()
 		$PanelContainer/MarginContainer/VBoxContainer/AbilityName.text = logic.getAbilityName()
 		$PanelContainer/MarginContainer/VBoxContainer/AbilityDescription.text = logic.getAbilityDescription()
+	elif(logic.getCardType() == "AreaCard"):
+		$PanelContainer/MarginContainer/VBoxContainer/CardName.text = logic.getCardName()
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value1.text = "Cost:"
+		$PanelContainer/MarginContainer/VBoxContainer/KeyValues/Value2.text = str(logic.getCardCost()) + "g"
+		$PanelContainer/MarginContainer/VBoxContainer/NAname.text = logic.getEffectName()
+		$PanelContainer/MarginContainer/VBoxContainer/NAdescription.text = logic.getCardDescription()
+		$PanelContainer/MarginContainer/VBoxContainer/SAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/SAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAname.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/CAdescription.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityName.text = ""
+		$PanelContainer/MarginContainer/VBoxContainer/AbilityDescription.text = ""

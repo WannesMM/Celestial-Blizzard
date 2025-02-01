@@ -114,7 +114,9 @@ func loadCardImage():
 	if texture and texture is Texture2D:
 		$cardImage.texture = texture
 	else:
-		print("card Image does not exist")
+		print("card Image does not exist:")
+		print(cardLogic.getCardType())
+		print(cardLogic.getImageLink())
 		$cardImage.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")
 
 func generateShaderColor():

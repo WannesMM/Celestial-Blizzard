@@ -31,3 +31,9 @@ func getCard():
 	
 func setCard(cardToAssign):
 	card = cardToAssign
+
+func getCardCost():
+	return cardCost
+	
+func setCardCost(cost):
+	cardCost = cost

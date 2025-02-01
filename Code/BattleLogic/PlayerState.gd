@@ -29,7 +29,7 @@ func setStartingCharacters():
 	characterCards.addCards(deck.getCharacterCards())
 	
 func setStartingHand():
-	cardHand.addCards(deck.getCharacterCards())
+	cardHand.addCards(deck.getAreaCards())
 
 # Getters and Setters ------------------------------------------------------------------------------
 

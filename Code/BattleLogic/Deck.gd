@@ -5,6 +5,7 @@ class_name Deck
 var cards: Array[CardLogic]
 
 var characterCards: Array[CharacterCardLogic] = []
+var areaCards: Array[AreaCardLogic] = []
 
 func _init(newDeck: Array[CardLogic] = []) -> void:
 	cards = newDeck
@@ -14,12 +15,20 @@ func _init(newDeck: Array[CardLogic] = []) -> void:
 
 func updateDeck():
 	updateCharacterCards()
+	updateAreaCards()
 
 func updateCharacterCards():
 	characterCards = []
 	for card in cards:
 		if card.getCardType() == "CharacterCard":
 			characterCards.append(card)
+			
+func updateAreaCards():
+	areaCards = []
+	for card in cards:
+		if card.getCardType() == "AreaCard":
+			areaCards.append(card)
+
 			
 # Getter and Setters -----------------------------------------------------------
 
@@ -32,3 +41,6 @@ func setCards(newCards: Array[CardLogic]):
 
 func getCharacterCards():
 	return characterCards
+	
+func getAreaCards():
+	return areaCards

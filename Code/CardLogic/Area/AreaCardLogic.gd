@@ -4,9 +4,9 @@ class_name AreaCardLogic
 
 func cardConstructor():
 	cardType = "AreaCard"
-	AreaCardConstructor()
+	areaCardConstructor()
 
-func AreaCardConstructor():
+func areaCardConstructor():
 	pass
 
 #---------------------------------------------------------------------------------------------------

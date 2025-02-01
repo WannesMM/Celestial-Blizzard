@@ -18,6 +18,10 @@ var HatsuneMiku1: CharacterCardLogic = null
 var HatsuneMiku2: CharacterCardLogic = null
 var HatsuneMiku3: CharacterCardLogic = null
 
+var berlaar: AreaCardLogic = null
+var dqMall: AreaCardLogic = null
+var monsterMayhem: AreaCardLogic = null
+
 var deck1: Deck = null
 var deck2: Deck = null
 var deck3: Deck = null
@@ -39,7 +43,16 @@ func _init() -> void:
 	HatsuneMiku2 = HatsuneMiku.new()
 	HatsuneMiku3 = HatsuneMiku.new()
 	
-	deck1 = Deck.new([TorinnInn1, NomaGreon1, BartholomewBalderstone1, HatsuneMiku1])
-	deck2 = Deck.new([HatsuneMiku1, HatsuneMiku2, HatsuneMiku3])
+	berlaar = Berlaar.new()
+	dqMall = DQMall.new()
+	monsterMayhem = MonsterMayhem.new()
+	var nieuwToren = NieuwToren.new()
+	var nomaMountains = NomaMountains.new()
+	var towersRegion = TowersRegion.new()
+	var kin = Kin.new()
+	var fragmentumGeneral = FragmentumGeneral.new()
+	
+	deck1 = Deck.new([TorinnInn1, NomaGreon1, BartholomewBalderstone1, HatsuneMiku1, berlaar, monsterMayhem, nieuwToren, nomaMountains])
+	deck2 = Deck.new([HatsuneMiku1, kin, fragmentumGeneral, dqMall, towersRegion])
 	deck3 = Deck.new([TorinnInn1])
 	
