@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bytpcr0d24q6y"]
 
-[ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/AllyCardHandLayout.gd" id="1_lea4p"]
+[ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/CardHand/AllyCardHandLayout.gd" id="1_lea4p"]
 
 [node name="Card Hand" type="Node2D"]
 script = ExtResource("1_lea4p")

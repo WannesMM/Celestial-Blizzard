@@ -16,9 +16,9 @@ var enemyHandLayout: CardLayout = null
 
 # In de param voor deze functie komen uiteindelijk de parameters voor een battle (denk ik)
 func initializeBattle():
-	allyCharacterLayout = $CardLayout/AllyLayout
+	allyCharacterLayout = $CharacterCardLayout/AllyLayout
 	allyHandLayout = $AllyCardHandLayout/"Card Hand"
-	enemyCharacterLayout = $CardLayout/EnemyLayout
+	enemyCharacterLayout = $CharacterCardLayout/EnemyLayout
 	enemyHandLayout = $EnemyCardHandLayout/"Card Hand"
 	
 	var test = BattleTest.new()

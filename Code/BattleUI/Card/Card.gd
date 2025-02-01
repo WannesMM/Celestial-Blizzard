@@ -9,6 +9,7 @@ var defaultZIndex = self.z_index
 
 var scaleTween: Tween = null
 var currentlyAnimating = false
+var currentlySelected = false
 
 signal cardMouseEntered
 signal cardMouseExited
@@ -29,11 +30,11 @@ func _on_area_2d_mouse_exited() -> void:
 	emit_signal("cardMouseExited", self)
 
 func highlightCard():
-	self.z_index = 1
+	increaseZIndex()
 	$Highlight.mouseEntered()
 	
 func undoHighlightCard():
-	self.z_index = defaultZIndex
+	resetZIndex()
 	$Highlight.mouseExited()
 
 func scaleRelative(target_ratio, duration = ANIMATIONDURATION):
@@ -80,6 +81,8 @@ func getBasePosition():
 	return basePosition
 
 func moveCardUpSelect(vector: Vector2, duration: float = ANIMATIONDURATION):
+	currentlySelected = true
+	increaseZIndex()
 	var targetPosition = basePosition + vector
 	
 	var movementTween: Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
@@ -87,6 +90,8 @@ func moveCardUpSelect(vector: Vector2, duration: float = ANIMATIONDURATION):
 	await movementTween.finished
 	
 func moveCardDownSelect(duration: float = ANIMATIONDURATION):
+	currentlySelected = false
+	resetZIndex()
 	var movementTween: Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", basePosition, duration)
 	await movementTween.finished
@@ -97,6 +102,13 @@ func setLayout(layout):
 func getLayout():
 	return currentLayout
 	
+func increaseZIndex():
+	self.z_index = 1
+	
+func resetZIndex():
+	if !currentlySelected:
+		self.z_index = defaultZIndex
+
 #---------------------------------------------------------------------------------------------------------------------
 
 var cardLogic: CardLogic = null
