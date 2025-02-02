@@ -2,17 +2,11 @@ extends Node
 
 class_name InputHandler
 
-func playCard():
-	pass
+var layoutManager: LayoutManager = null
+
+func _init(layoutMan: LayoutManager) -> void:
+	layoutManager = layoutMan
 	
-func useMove():
-	pass
-	
-func discardCard():
-	pass
-	
-func endRound():
-	pass
-	
-func resign():
+
+func chooseStartingCharacter():
 	pass

@@ -36,7 +36,25 @@ func updateCardArrays():
 				equipmentCards.append(card)
 			"SupporterCard":
 				supporterCards.append(card)
-			
+
+# Gamefunctionality ------------------------------------------------------------
+
+var stack: Array[CardLogic] = []
+
+func createStack():
+	stack = cards.duplicate(true)
+	
+func shuffleStack():
+	stack.shuffle()
+	
+func drawCards(count: int) -> Array:
+	var drawn_cards = stack.slice(0, count) 
+	stack = stack.slice(count, stack.size()) 
+	return drawn_cards
+
+func addToBottom(cards: Array[CardLogic]):
+	stack.append(cards)
+
 # Getter and Setters -----------------------------------------------------------
 
 func getCards():

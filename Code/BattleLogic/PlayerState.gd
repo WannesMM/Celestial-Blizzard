@@ -3,7 +3,7 @@ extends Node
 class_name PlayerState
 
 var gameState: GameState
-var inputHandler: InputHandler
+var input: InputHandler
 
 var characterCards: CardLayout = null
 var cardHand: CardLayout = null
@@ -18,9 +18,9 @@ var roundEnded: bool = false
 
 var drawPile: Array[CardLogic] = []
 
-func _init(newDeck: Deck, input: InputHandler, characterLayout: CardLayout, handLayout: CardLayout, areaSupportLayout: AreaSupportLayout, entityLayout: EntityLayout) -> void:
+func _init(newDeck: Deck, inputhandler: InputHandler, characterLayout: CardLayout, handLayout: CardLayout, areaSupportLayout: AreaSupportLayout, entityLayout: EntityLayout) -> void:
 	deck = newDeck
-	inputHandler = input
+	input = inputhandler
 	
 	characterCards = characterLayout
 	cardHand = handLayout
@@ -36,6 +36,31 @@ func setStartingHand():
 	var arr = deck.getAreaCards() + deck.getEnitityCards() + deck.getEquipmentCards() + deck.getSupporterCards() + deck.getEventCards()
 	cardHand.addCards(arr)
 
+func playCard(card, layout):
+	var cardType = card.getCardLogic().getCardType()
+	match cardType:
+		"CharacterCard":
+			getCharacterCards().addCardToLayout(card)
+		"EventCard":
+			pass
+		"AreaCard":
+			getAreaSupportCards().addCardToLayout(card)
+		"SupporterCard":
+			pass
+		"EntityCard":
+			getEntityCards().addCardToLayout(card)
+		"EquipmentCard":
+			pass
+			
+func drawCards(amt: int):
+	cardHand.addCards(deck.drawCards(amt))
+	
+func shuffleDeck():
+	deck.shuffleStack()
+	
+func chooseStartingCharacter():
+	input.chooseStartingCharacter()
+	
 # Getters and Setters ------------------------------------------------------------------------------
 
 func getGameState():
@@ -45,16 +70,28 @@ func setGameState(state: GameState):
 	gameState = state
 	
 func getInputhandler():
-	return inputHandler
+	return input
 	
 func setInputHandler(handler: InputHandler):
-	inputHandler = handler
+	input = handler
 	
 func getCharacterCards():
 	return characterCards
 	
+func getAreaSupportCards():
+	return areaSupportCards
+	
+func getEntityCards():
+	return entityCards
+	
 func setCharacterCards(cards: CardLayout):
 	characterCards = cards
+	
+func setAreaSupportCards(cards: CardLayout):
+	areaSupportCards = cards
+	
+func setEntityCards(cards: CardLayout):
+	entityCards = cards
 	
 func getActiveCharacter():
 	return activeCharacter

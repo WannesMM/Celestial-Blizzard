@@ -19,11 +19,26 @@ layout: LayoutManager) -> void:
 	
 # GameLogic ----------------------------------------------------------------------------------------
 
+var allyTurn: bool = true
+
 func startGame():
+	allyState.getDeck().createStack()
+	enemyState.getDeck().createStack()
+	allyState.shuffleDeck()
+	enemyState.shuffleDeck()
 	allyState.setStartingCharacters()
-	allyState.setStartingHand()
 	enemyState.setStartingCharacters()
-	enemyState.setStartingHand()
+	allyState.drawCards(3)
+	enemyState.drawCards(3)
+	
+func playCard(card: Card, layout: CardLayout = null):
+	getActivePlayer().playCard(card, layout)
+	
+func getActivePlayer():
+	if allyTurn:
+		return allyState
+	else:
+		return enemyState
 	
 # Getter and Setters -------------------------------------------------------------------------------
 
@@ -44,3 +59,9 @@ func getEnemyState():
 	
 func setEnemyState(state: PlayerState):
 	enemyState = state
+
+func getAllyTurn():
+	return allyTurn
+	
+func setAllyTurn(x: bool):
+	allyTurn = x

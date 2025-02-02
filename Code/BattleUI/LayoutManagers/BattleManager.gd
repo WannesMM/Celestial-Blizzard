@@ -33,6 +33,8 @@ func initializeBattle():
 	
 	allyDeck = test.burningDeck
 	enemyDeck = test.burningDeck2
+	allyInput = PlayerInput.new(self)
+	enemyInput = PlayerInput.new(self)
 	
 	gameState = GameState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity,
 	enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity,
@@ -42,4 +44,4 @@ func initializeBattle():
 
 #Extended modified
 func draggedIntoLayout(layout, card):
-	layout.addCardToLayout(card)
+	gameState.playCard(card,layout)
