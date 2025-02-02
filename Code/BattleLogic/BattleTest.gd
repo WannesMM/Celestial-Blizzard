@@ -31,6 +31,11 @@ var burningDeck: Deck = Deck.new([TorinnInn.new(), Kin.new(), FragmentumGeneral.
 	DQMall.new(), DQMall.new(), NieuwToren.new(), Ballista.new(), Ballista.new(), GreonsCookingPot.new(), GreonsCookingPot.new(), GreonsCookingPot. new()
 	])
 
+var burningDeck2: Deck = Deck.new([TorinnInn.new(), Kin.new(), FragmentumGeneral.new(), Berlaar.new(), Berlaar.new(), TowersRegion.new(), TowersRegion.new(),
+	Homunculus.new(), Homunculus.new(), PseudoDragon.new(), PseudoDragon.new(), PseudoDragon.new(), MonsterMayhem.new(), MonsterMayhem.new(), Hermit.new(), Hermit.new(),
+	DQMall.new(), DQMall.new(), NieuwToren.new(), Ballista.new(), Ballista.new(), GreonsCookingPot.new(), GreonsCookingPot.new(), GreonsCookingPot. new()
+	])
+
 func _init() -> void:
 	pass
 	

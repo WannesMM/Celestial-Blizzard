@@ -32,7 +32,7 @@ func initializeBattle():
 	var test = BattleTest.new()
 	
 	allyDeck = test.burningDeck
-	enemyDeck = test.deck2
+	enemyDeck = test.burningDeck2
 	
 	gameState = GameState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity,
 	enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity,

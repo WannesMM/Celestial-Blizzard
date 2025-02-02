@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://y2otj6ibuy0b"]
 
 [ext_resource type="PackedScene" uid="uid://bytpcr0d24q6y" path="res://Scenes/card_hand.tscn" id="1_yqmen"]
-[ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/AreaSupportCards/EnemyAreaSupportLayout.gd" id="2_6p0iy"]
+[ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/CardHand/EnemyCardHandLayout.gd" id="2_m3kvg"]
 
 [node name="EnemyCardHandLayout" type="Control"]
 layout_mode = 3
@@ -12,4 +12,4 @@ grow_horizontal = 2
 mouse_filter = 2
 
 [node name="Card Hand" parent="." instance=ExtResource("1_yqmen")]
-script = ExtResource("2_6p0iy")
+script = ExtResource("2_m3kvg")
