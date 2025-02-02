@@ -4,6 +4,7 @@ class_name AreaSupportLayout
 
 func cardLayoutConstructor():
 	areaSupportConstructor()
+	movable = false
 	ARRAY_WIDTH = 700
 	CENTER_X = -500
 	CARD_SCALE = 1

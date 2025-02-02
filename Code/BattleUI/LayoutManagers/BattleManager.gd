@@ -38,3 +38,8 @@ func initializeBattle():
 	enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity,
 	self)
 	
+# Code for inputbehaviour --------------------------------------------------------------------------
+
+#Extended modified
+func draggedIntoLayout(layout, card):
+	layout.addCardToLayout(card)

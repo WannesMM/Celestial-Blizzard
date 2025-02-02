@@ -31,6 +31,7 @@ var screenSize
 var isPressed = false
 var holdTimer = 0.0
 var allied = true
+var movable = true
 
 signal signalAddExistingCard
 
@@ -114,14 +115,16 @@ func removeExistingCard(card):
 	arrange_cards()
 
 #Add an already existing cardScene from a different layout to this layout
-func addCardToLayout(card, layout):
+func addCardToLayout(card):
 	card.getLayout().removeExistingCard(card)
-	layout.addExistingCard(card)
+	addExistingCard(card)
 	arrange_cards()
 	
 #The card moves back to its base position, not sure why this code is here actually
 func moveCardBasePosition(card):
 	card.position = card.getBasePosition()
 	
-
+#Returns wether the cards in this layout are allowed to be dragged around
+func isMovable():
+	return movable
 	

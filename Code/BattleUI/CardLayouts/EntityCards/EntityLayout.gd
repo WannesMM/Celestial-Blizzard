@@ -4,6 +4,7 @@ class_name EntityLayout
 
 func cardLayoutConstructor():
 	entityLayoutConstructor()
+	movable = false
 	ARRAY_WIDTH = 700
 	CENTER_X = 500
 	CARD_SCALE = 1

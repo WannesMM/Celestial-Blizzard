@@ -14,7 +14,8 @@ var currentlySelected = false
 signal cardMouseEntered
 signal cardMouseExited
 
-var currentLayout
+#The CardLayout that this card is part of at the moment.
+var currentLayout: CardLayout
 
 func _ready() -> void:
 	DEFAULTSCALE = self.scale
