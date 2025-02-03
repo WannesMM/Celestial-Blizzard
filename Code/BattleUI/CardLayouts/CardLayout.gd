@@ -31,7 +31,15 @@ var screenSize
 var isPressed = false
 var holdTimer = 0.0
 var allied = true
-var movable = true
+
+#Are the cards in this layout movable
+var movable: bool = true
+#Are the cards in this layout clickable
+var clickable: bool = true
+#When clicked, should the game show this card's information
+var showInformation: bool = true
+#Are the cards in this layout selectable
+var selectable: bool = true
 
 signal signalAddExistingCard
 
@@ -124,7 +132,49 @@ func addCardToLayout(card):
 func moveCardBasePosition(card):
 	card.position = card.getBasePosition()
 	
+#Executes when a card in this layout is clicked
+func onClick(card):
+	pass
+	
 #Returns wether the cards in this layout are allowed to be dragged around
 func isMovable():
 	return movable
+	
+func setMovable(x):
+	movable = x
+	
+func isClickable():
+	return clickable
+
+func setClickable(x):
+	clickable = x
+	
+func getShowInformation():
+	return showInformation
+	
+func setShowInformation(x):
+	showInformation = x
+
+func getSelectable():
+	return selectable
+
+func setSelectable(x):
+	selectable = x
+
+var movableBackup = movable
+var clickableBackup = clickable
+var showInformationBackup = showInformation
+var selectableBackup = selectable
+
+func disableInput():
+	setMovable(false)
+	setClickable(false)
+	setShowInformation(false)
+	setSelectable(false)
+	
+func enableInput():
+	setMovable(movableBackup)
+	setClickable(clickableBackup)
+	setShowInformation(showInformationBackup)
+	setSelectable(selectableBackup)
 	

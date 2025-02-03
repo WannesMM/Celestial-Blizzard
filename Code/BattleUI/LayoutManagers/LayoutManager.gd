@@ -66,7 +66,15 @@ func finishDrag():
 	
 #When clicked
 func click():
-	selectCard()
+	var card = raycastCheckForCard()
+	if card:
+		if card.getLayout().isClickable():
+			clickOnCard(card)
+
+func clickOnCard(card):
+	card.getLayout().onClick(card)
+	if card.getLayout().getSelectable():
+		selectCard(card)
 
 #What happens to a card when it is dragged from one layout to another. This may differ for applications so thats why this is a function.
 func draggedIntoLayout(layout, card):
@@ -105,8 +113,7 @@ func cardFollowMouse():
 		cardBeingDragged.global_position = vect
 
 #This selects a card.
-func selectCard():
-	var card = raycastCheckForCard()
+func selectCard(card):
 	if card:
 		if selectedCard != null:
 			undoSelect()
@@ -144,7 +151,8 @@ func closeCardInformation():
 	$"Right Slider".closeCardInformation()
 
 func displayCardInformation():
-	$"Right Slider".displayCardInformation(selectedCard)
+	if selectedCard.getLayout().getShowInformation():
+		$"Right Slider".displayCardInformation(selectedCard)
 
 # BattleManager ------------------------------------------------------------------------------------
 

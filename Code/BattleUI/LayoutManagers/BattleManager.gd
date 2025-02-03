@@ -42,6 +42,18 @@ func initializeBattle():
 	
 # Code for inputbehaviour --------------------------------------------------------------------------
 
+@export var messageChooseCardScene: PackedScene
+
 #Extended modified
 func draggedIntoLayout(layout, card):
 	gameState.playCard(card,layout)
+
+func selectCardsMessage(cards, amt, message = "Select Card", buttonText = "Confirm"):
+	var messageChooseCard = messageChooseCardScene.instantiate()
+	messageChooseCard.addCards(cards)
+	messageChooseCard.setAmountSelectable(1)
+	messageChooseCard.setMessage(message)
+	messageChooseCard.setButtonText(buttonText)
+	add_child(messageChooseCard)
+	
+	

@@ -26,10 +26,11 @@ func startGame():
 	enemyState.getDeck().createStack()
 	allyState.shuffleDeck()
 	enemyState.shuffleDeck()
-	allyState.setStartingCharacters()
-	enemyState.setStartingCharacters()
+	allyState.setGold(8)
+	enemyState.setGold(8)
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
+	allyState.getInputhandler().selectCards(allyState.getDeck().getCharacterCards(), 1)
 	
 func playCard(card: Card, layout: CardLayout = null):
 	getActivePlayer().playCard(card, layout)

@@ -7,6 +7,5 @@ var layoutManager: LayoutManager = null
 func _init(layoutMan: LayoutManager) -> void:
 	layoutManager = layoutMan
 	
-
-func chooseStartingCharacter():
+func selectCards(cards, amount):
 	pass

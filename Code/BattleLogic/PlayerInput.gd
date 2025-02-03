@@ -2,5 +2,7 @@ extends InputHandler
 
 class_name PlayerInput
 
-func chooseStartingCharacter():
-	pass
+func selectCards(cards, amount):
+	layoutManager.selectCardsMessage(cards, amount)
+	#wait
+	
