@@ -11,10 +11,16 @@ const SELECTMOVEMENT = Vector2(0,-25)
 const HOLDTRESHHOLD = 0.14
 
 var cardBeingDragged: Card
-var selectedCard
 var screenSize
 var isPressed = false
 var holdTimer = 0.0
+
+var selectedCards = []
+
+#LayoutSettings
+var multiselect: int = 1
+var deselectWhenClickEmpty = false
+
 
 func _ready():
 	screenSize = get_viewport_rect().size
@@ -70,11 +76,17 @@ func click():
 	if card:
 		if card.getLayout().isClickable():
 			clickOnCard(card)
+	else:
+		clickEmpty()
 
 func clickOnCard(card):
 	card.getLayout().onClick(card)
 	if card.getLayout().getSelectable():
 		selectCard(card)
+
+func clickEmpty():
+	if deselectWhenClickEmpty:
+		deselectAllCards()
 
 #What happens to a card when it is dragged from one layout to another. This may differ for applications so thats why this is a function.
 func draggedIntoLayout(layout, card):
@@ -114,46 +126,56 @@ func cardFollowMouse():
 
 #This selects a card.
 func selectCard(card):
-	if card:
-		if selectedCard != null:
-			undoSelect()
-		if card == selectedCard:
-			undoSelect()
-			closeCardInformation()
-			selectedCard = null
-		else:
-			selectedCard = card
-			highlightSelect()
-			displayCardInformation()
+	if card in selectedCards:
+		undoSelect(card)
+		closeCardInformation()
+	elif selectedCards.size() >= multiselect:
+		undoSelect(selectedCards[0])
+		highlightSelect(card)
+		displayCardInformation(card)
 	else:
-		if selectedCard:
-			undoSelect()
-			closeCardInformation()
-			selectedCard = null
+		highlightSelect(card)
+		displayCardInformation(card)
+	
+func deselectAllCards():
+	for toDelete in selectedCards:
+		undoSelect(toDelete)
+	closeCardInformation()
 	
 #This unselects a card
-func undoSelect():
-	selectedCard.undoHighlightCard()
-	selectedCard.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-	selectedCard.moveCardDownSelect()
+func undoSelect(card):
+	card.undoHighlightCard()
+	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
+	card.moveCardDownSelect()
+	selectedCards.erase(card)
 	
 #All the animations for selecting
-func highlightSelect():
-	selectedCard.highlightCard()
-	selectedCard.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
-	if(selectedCard.getLayout().allied == true):
-		selectedCard.moveCardUpSelect(SELECTMOVEMENT)
+func highlightSelect(card):
+	card.highlightCard()
+	card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+	if(card.getLayout().allied == true):
+		card.moveCardUpSelect(SELECTMOVEMENT)
 	else:
-		selectedCard.moveCardUpSelect(-SELECTMOVEMENT)
+		card.moveCardUpSelect(-SELECTMOVEMENT)
+	selectedCards.append(card)
 
 #For the information slider when selected
 func closeCardInformation():
 	$"Right Slider".closeCardInformation()
 
-func displayCardInformation():
-	if selectedCard.getLayout().getShowInformation():
-		$"Right Slider".displayCardInformation(selectedCard)
+func displayCardInformation(card):
+	if card.getLayout().getShowInformation():
+		$"Right Slider".displayCardInformation(card)
 
+func setMultiselect(x):
+	multiselect = x
+	
+func getSelected():
+	return selectedCards
+	
+func setDeselectWhenClickEmpty(x):
+	deselectWhenClickEmpty = x
+	
 # BattleManager ------------------------------------------------------------------------------------
 
 #Executes at the start of the battle. This is an abstract function.

@@ -47,7 +47,6 @@ func scaleTo(target_scale: Vector2, duration: float = ANIMATIONDURATION):
 	
 	if scaleTween:
 		scaleTween.kill
-	
 	scaleTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	scaleTween.tween_property(self, "scale", target_scale, duration)
 	

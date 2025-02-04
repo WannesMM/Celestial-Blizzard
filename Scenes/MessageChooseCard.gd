@@ -2,6 +2,8 @@ extends Control
 
 class_name MessageChooseCard
 
+var input: PlayerInput
+
 func setMessage(message):
 	$Label.text = message
 	
@@ -16,3 +18,9 @@ func setAmountSelectable(amt):
 
 func getSelectedCards():
 	return $SelectLayout.selectedCards
+
+func setInput(x):
+	input = x
+
+func _on_button_pressed() -> void:
+	input.setSelectedCards()

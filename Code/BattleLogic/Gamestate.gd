@@ -30,7 +30,7 @@ func startGame():
 	enemyState.setGold(8)
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
-	allyState.getInputhandler().selectCards(allyState.getDeck().getCharacterCards(), 1)
+	allyState.getCharacterCards().addCards(await allyState.getInputhandler().selectCards(allyState.getDeck().getCharacterCards(), 2))
 	
 func playCard(card: Card, layout: CardLayout = null):
 	getActivePlayer().playCard(card, layout)

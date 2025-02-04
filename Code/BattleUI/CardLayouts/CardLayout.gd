@@ -14,7 +14,7 @@ func cardLayoutConstructor():
 #---------------------------------------------------------------------------------------------------
 
 var ARRAY_WIDTH = 700
-var CENTER_Y = 150
+var CENTER_Y = 0
 var CENTER_X = 0
 var CARD_SCALE = 1
 var CARD_LAYOUT_TYPE = "AllyLayout"
@@ -70,6 +70,7 @@ func _process(delta: float) -> void:
 
 # Arrange Node2D cards dynamically
 func arrange_cards():
+	
 	var num_cards = get_child_count()
 	if num_cards == 0:
 		return
