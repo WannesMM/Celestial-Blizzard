@@ -8,12 +8,12 @@ var allyState: PlayerState
 var enemyState: PlayerState
 
 func _init(allyDeck: Deck, allyInput: InputHandler, allyCharacterLayout: CardLayout, allyHandLayout: CardLayout, allyAreaSupport: AreaSupportLayout, allyEntity: EntityLayout,
-enemyDeck: Deck, enemyInput: InputHandler, enemyCharacterLayout: CardLayout, enemyHandLayout: CardLayout, enemyAreaSupport: AreaSupportLayout, enemyEntity: EntityLayout,
+enemyDeck: Deck, enemyInput: InputHandler, enemyCharacterLayout: CardLayout, enemyHandLayout: CardLayout, enemyAreaSupport: AreaSupportLayout, enemyEntity: EntityLayout, battleResources: BattleRightPanel,
 layout: LayoutManager) -> void:
 	setLayoutManager(layout)
 	
-	allyState = PlayerState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity)
-	enemyState = PlayerState.new(enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity)
+	allyState = PlayerState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity, battleResources.allyResources)
+	enemyState = PlayerState.new(enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity, battleResources.enemyResources)
 	
 	startGame()
 	
@@ -26,11 +26,12 @@ func startGame():
 	enemyState.getDeck().createStack()
 	allyState.shuffleDeck()
 	enemyState.shuffleDeck()
-	allyState.setGold(8)
-	enemyState.setGold(8)
+	allyState.gainGold(8)
+	enemyState.gainGold(8)
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
 	allyState.getCharacterCards().addCards(await allyState.getInputhandler().selectCards(allyState.getDeck().getCharacterCards(), 2))
+	enemyState.getCharacterCards().addCards(await allyState.getInputhandler().selectCards(allyState.getDeck().getCharacterCards(), 2))
 	
 func playCard(card: Card, layout: CardLayout = null):
 	getActivePlayer().playCard(card, layout)

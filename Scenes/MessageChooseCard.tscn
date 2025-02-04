@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cb1c77crf2lod"]
 
 [ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/SelectLayout.gd" id="1_10y27"]
-[ext_resource type="Script" path="res://Scenes/MessageChooseCard.gd" id="1_slfhl"]
+[ext_resource type="Script" path="res://Code/BattleUI/Message/MessageChooseCard.gd" id="1_slfhl"]
 
 [node name="MessageChooseCard" type="Control"]
 layout_mode = 3

@@ -11,14 +11,14 @@ var areaSupportCards: AreaSupportLayout = null
 var entityCards: EntityLayout = null
 
 var activeCharacter: CharacterCardLogic = null
-var gold: int = 0
+var battleResources: BattleResources = null
 var deck: Deck = null
 var turnEnded: bool = false
 var roundEnded: bool = false
 
 var drawPile: Array[CardLogic] = []
 
-func _init(newDeck: Deck, inputhandler: InputHandler, characterLayout: CardLayout, handLayout: CardLayout, areaSupportLayout: AreaSupportLayout, entityLayout: EntityLayout) -> void:
+func _init(newDeck: Deck, inputhandler: InputHandler, characterLayout: CardLayout, handLayout: CardLayout, areaSupportLayout: AreaSupportLayout, entityLayout: EntityLayout, battleRes: BattleResources) -> void:
 	deck = newDeck
 	input = inputhandler
 	
@@ -26,6 +26,7 @@ func _init(newDeck: Deck, inputhandler: InputHandler, characterLayout: CardLayou
 	cardHand = handLayout
 	areaSupportCards = areaSupportLayout
 	entityCards = entityLayout
+	battleResources = battleRes
 
 # Actual Functionality -----------------------------------------------------------------------------
 
@@ -60,6 +61,9 @@ func shuffleDeck():
 	
 func chooseStartingCharacter():
 	input.chooseStartingCharacter()
+	
+func gainGold(amt: int):
+	battleResources.gainGold(amt)
 	
 # Getters and Setters ------------------------------------------------------------------------------
 
@@ -99,11 +103,11 @@ func getActiveCharacter():
 func setActiveCharacter(char: CharacterCardLogic):
 	activeCharacter = char
 	
-func getGold():
-	return gold
+func getBattleResources():
+	return battleResources
 	
-func setGold(amt: int):
-	gold = amt
+func setBattleResources(res: BattleResources):
+	battleResources = res
 	
 func getCardHand():
 	return cardHand

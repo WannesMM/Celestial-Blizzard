@@ -19,7 +19,7 @@ var selectedCards = []
 
 #LayoutSettings
 var multiselect: int = 1
-var deselectWhenClickEmpty = false
+var deselectWhenClickEmpty = true
 
 
 func _ready():
@@ -138,16 +138,22 @@ func selectCard(card):
 		displayCardInformation(card)
 	
 func deselectAllCards():
-	for toDelete in selectedCards:
-		undoSelect(toDelete)
+	var i = 0
+	var len = selectedCards.size()
+	while i < len:
+		undoSelect(selectedCards[0])
+		i = i + 1
 	closeCardInformation()
+	assert(selectedCards == [])
 	
 #This unselects a card
 func undoSelect(card):
-	card.undoHighlightCard()
-	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-	card.moveCardDownSelect()
+	if(card.get_tree() != null):
+		card.undoHighlightCard()
+		card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
+		card.moveCardDownSelect()
 	selectedCards.erase(card)
+	
 	
 #All the animations for selecting
 func highlightSelect(card):
@@ -168,6 +174,7 @@ func displayCardInformation(card):
 		$"Right Slider".displayCardInformation(card)
 
 func setMultiselect(x):
+	deselectAllCards()
 	multiselect = x
 	
 func getSelected():

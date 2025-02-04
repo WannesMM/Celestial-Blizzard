@@ -40,12 +40,15 @@ var clickable: bool = true
 var showInformation: bool = true
 #Are the cards in this layout selectable
 var selectable: bool = true
+#Do the cards in this layout respond when hovered over?
+var hoverable:bool = true
 
 signal signalAddExistingCard
 
 func _ready():
 	screenSize = get_viewport_rect().size
 	cardLayoutConstructor()
+	arrangeBackupSettings()
 	
 func connectSignal(card):
 	if card.has_signal("cardMouseEntered"):
@@ -55,7 +58,7 @@ func connectSignal(card):
 
 func cardMouseEntered(card):
 	print("cardMouseEntered")
-	if !cardBeingDragged:
+	if !cardBeingDragged and hoverable:
 		card.highlightCard()
 		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 		#card.moveCardUpSelect(SELECTMOVEMENT)
@@ -162,20 +165,36 @@ func getSelectable():
 func setSelectable(x):
 	selectable = x
 
+func getHoverable():
+	return hoverable
+	
+func setHoverable(x):
+	hoverable = x
+
 var movableBackup = movable
 var clickableBackup = clickable
 var showInformationBackup = showInformation
 var selectableBackup = selectable
+var hoverableBackup = hoverable
 
+func arrangeBackupSettings():
+	movableBackup = movable
+	clickableBackup = clickable
+	showInformationBackup = showInformation
+	selectableBackup = selectable
+	hoverableBackup = hoverable
+	
 func disableInput():
 	setMovable(false)
 	setClickable(false)
 	setShowInformation(false)
 	setSelectable(false)
+	setHoverable(false)
 	
 func enableInput():
 	setMovable(movableBackup)
 	setClickable(clickableBackup)
 	setShowInformation(showInformationBackup)
 	setSelectable(selectableBackup)
+	setHoverable(hoverableBackup)
 	
