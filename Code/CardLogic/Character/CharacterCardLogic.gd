@@ -14,12 +14,24 @@ var CAdmg: int = 6
 var CAcost: int = 3
 var CAenergyCost: int = 3
 
+var active: bool = false
+
 func cardConstructor():
 	cardType = "CharacterCard"
 	characterCardConstructor()
 
 func characterCardConstructor():
 	pass
+
+# Actual Functionality -----------------------------------------------------------------------------
+
+func setActive(x: bool):
+	active = x
+	card.setActive(x)
+	if active:
+		card.activeAnimation()
+	else:
+		card.disableActiveAnimation
 
 #---------------------------------------------------------------------------------------------------
 

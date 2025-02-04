@@ -37,19 +37,19 @@ func setStartingHand():
 	var arr = deck.getAreaCards() + deck.getEnitityCards() + deck.getEquipmentCards() + deck.getSupporterCards() + deck.getEventCards()
 	cardHand.addCards(arr)
 
-func playCard(card, layout):
-	var cardType = card.getCardLogic().getCardType()
+func playCard(cardLogic, layout):
+	var cardType = cardLogic.getCardType()
 	match cardType:
 		"CharacterCard":
-			getCharacterCards().addCardToLayout(card)
+			getCharacterCards().addCardToLayout(cardLogic.getCard())
 		"EventCard":
 			pass
 		"AreaCard":
-			getAreaSupportCards().addCardToLayout(card)
+			getAreaSupportCards().addCardToLayout(cardLogic.getCard())
 		"SupporterCard":
 			pass
 		"EntityCard":
-			getEntityCards().addCardToLayout(card)
+			getEntityCards().addCardToLayout(cardLogic.getCard())
 		"EquipmentCard":
 			pass
 			
@@ -64,6 +64,15 @@ func chooseStartingCharacter():
 	
 func gainGold(amt: int):
 	battleResources.gainGold(amt)
+	
+func getCharacterCardsLogic():
+	return input.convertToCardLogic(characterCards.getAddedCards())
+	
+func setActiveCharacter(card: CardLogic = null):
+	if card == null:
+		if card in getCharacterCardsLogic():
+			activeCharacter = card
+			activeCharacter.setActive(true)
 	
 # Getters and Setters ------------------------------------------------------------------------------
 
@@ -99,9 +108,6 @@ func setEntityCards(cards: CardLayout):
 	
 func getActiveCharacter():
 	return activeCharacter
-	
-func setActiveCharacter(char: CharacterCardLogic):
-	activeCharacter = char
 	
 func getBattleResources():
 	return battleResources

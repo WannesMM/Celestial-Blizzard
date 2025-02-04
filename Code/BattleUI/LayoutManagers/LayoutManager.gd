@@ -151,18 +151,20 @@ func undoSelect(card):
 	if(card.get_tree() != null):
 		card.undoHighlightCard()
 		card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-		card.moveCardDownSelect()
+		if card.getLayout().CARD_LAYOUT_TYPE != "CharacterCardLayout":
+			card.moveCardDownSelect()
 	selectedCards.erase(card)
 	
 	
 #All the animations for selecting
 func highlightSelect(card):
-	card.highlightCard()
-	card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
-	if(card.getLayout().allied == true):
-		card.moveCardUpSelect(SELECTMOVEMENT)
+	if card.getLayout().CARD_LAYOUT_TYPE == "CharacterCardLayout":
+		card.highlightCard()
+		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 	else:
-		card.moveCardUpSelect(-SELECTMOVEMENT)
+		card.highlightCard()
+		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+		card.moveCardUpSelect(SELECTMOVEMENT)
 	selectedCards.append(card)
 
 #For the information slider when selected

@@ -3,6 +3,7 @@ extends Node2D
 class_name Card
 
 var DEFAULTSCALE = null
+const ACTIVECHARMOVEMENT = Vector2(0,-25)
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
 var defaultZIndex = self.z_index
@@ -81,6 +82,10 @@ func getBasePosition():
 	return basePosition
 
 func moveCardUpSelect(vector: Vector2, duration: float = ANIMATIONDURATION):
+	if(getLayout().allied == true):
+		vector = vector
+	else:
+		vector = -vector
 	currentlySelected = true
 	increaseZIndex()
 	var targetPosition = basePosition + vector
@@ -143,3 +148,9 @@ func generateShaderColor():
 	
 	$CardBorder.modulate = sample_color
 	#$CardBorder/CardShader.self_modulate = sample_color
+
+func setActive(x: bool):
+	if x:
+		moveCardUpSelect(ACTIVECHARMOVEMENT)
+	else:
+		moveCardDownSelect()

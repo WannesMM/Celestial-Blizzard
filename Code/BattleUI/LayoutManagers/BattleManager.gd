@@ -49,7 +49,7 @@ var currentMessage
 
 #Extended modified
 func draggedIntoLayout(layout, card):
-	gameState.playCard(card,layout)
+	gameState.playCard(card.getCardLogic(),layout)
 
 func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText = "Confirm"):
 	currentMessage = messageChooseCardScene.instantiate()
