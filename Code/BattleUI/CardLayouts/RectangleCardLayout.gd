@@ -2,7 +2,7 @@ extends CardLayout
 
 class_name RectangleCardLayout
 
-func arrange_cards():
+func arrangeCards():
 	var num_cards = get_child_count()
 	if num_cards == 0:
 		return

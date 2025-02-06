@@ -26,12 +26,13 @@ func characterCardConstructor():
 # Actual Functionality -----------------------------------------------------------------------------
 
 func setActive(x: bool):
-	active = x
-	card.setActive(x)
-	if active:
-		card.activeAnimation()
-	else:
-		card.disableActiveAnimation
+	pass
+	#active = x
+	#card.setActive(x)
+	#if active:
+		#card.activeAnimation()
+	#else:
+		#card.disableActiveAnimation
 
 #---------------------------------------------------------------------------------------------------
 

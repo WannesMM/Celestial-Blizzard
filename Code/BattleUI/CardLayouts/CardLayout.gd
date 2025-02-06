@@ -71,23 +71,36 @@ func cardMouseExited(card):
 func _process(delta: float) -> void:
 	pass
 
-# Arrange Node2D cards dynamically
-func arrange_cards():
-	
-	var num_cards = get_child_count()
-	if num_cards == 0:
-		return
-	
-	var i = 0
+func arrangeCard(card: Card):
+	var numCards = addedCards.size()
+	var index = addedCards.find(card)
 	var arrayStart = 0 - (ARRAY_WIDTH / 2)
-	var cardOffset = ARRAY_WIDTH / (num_cards + 1)
-	# Position each card
+	var cardOffset = ARRAY_WIDTH / (numCards + 1)
+	
+	card.position = Vector2(arrayStart + ((index + 1) * cardOffset) + CENTER_X, CENTER_Y)
+	card.setBasePosition(card.position)
+
+func arrangeCards():
 	for card in addedCards:
-		if card is Node2D:
-			card.position = Vector2(arrayStart + ((i + 1) * cardOffset) + CENTER_X , CENTER_Y)
-			card.setBasePosition(card.position)
-			#print("my position is " + str(card.position))
-			i = i + 1
+		arrangeCard(card)
+
+# Arrange Node2D cards dynamically
+#func arrange_cards():
+	#
+	#var num_cards = get_child_count()
+	#if num_cards == 0:
+		#return
+	#
+	#var i = 0
+	#var arrayStart = 0 - (ARRAY_WIDTH / 2)
+	#var cardOffset = ARRAY_WIDTH / (num_cards + 1)
+	## Position each card
+	#for card in addedCards:
+		#if card is Node2D:
+			#card.position = Vector2(arrayStart + ((i + 1) * cardOffset) + CENTER_X , CENTER_Y)
+			#card.setBasePosition(card.position)
+			##print("my position is " + str(card.position))
+			#i = i + 1
 
 func returnToBasePosition(card):
 	card.position = card.getBasePosition()
@@ -100,37 +113,44 @@ func createCard(cardLogic):
 		newCard.setCard(cardLogic)
 		newCard.assignDefaultScale(Vector2(CARD_SCALE,CARD_SCALE))
 		connectSignal(newCard)
-		addExistingCard(newCard) 
+		addCard(newCard)
 	else:
 		print("Failed to load the card scene!")
 	
 #Create multiple new cards with a given array of cardLogic and add them to this layout
-func addCards(cards):
-	for card in cards:
+func createCards(cardlogic):
+	for card in cardlogic:
 		createCard(card)
-	arrange_cards()
+	
+func removeAllCards():
+	var i = 0
+	var len = addedCards.size()
+	while i < len:
+		removeCard(addedCards[0])
+		i = i + 1
+	assert(addedCards == [])
 	
 #Add an already existing cardScene to this layout
-func addExistingCard(card):
+func addCard(card):
+	var layout = card.getLayout()
+	if layout:
+		layout.removeExistingCard(card)
 	add_child(card)  
 	addedCards.append(card)
 	card.setLayout(self)
-		
-	arrange_cards()
+	arrangeCards()
+
+func addCards(cards: Array[Card]):
+	for card in cards:
+		addCard(card)
 
 #Removes an existing cardScene form this layout
-func removeExistingCard(card):
+func removeCard(card):
 	remove_child(card)
 	addedCards.erase(card)
 	card.setLayout(null)
-	
-	arrange_cards()
+	arrangeCards()
 
-#Add an already existing cardScene from a different layout to this layout
-func addCardToLayout(card):
-	card.getLayout().removeExistingCard(card)
-	addExistingCard(card)
-	arrange_cards()
 	
 #The card moves back to its base position, not sure why this code is here actually
 func moveCardBasePosition(card):
@@ -198,3 +218,8 @@ func enableInput():
 	setSelectable(selectableBackup)
 	setHoverable(hoverableBackup)
 	
+# Testing, Remove later ----------------------------------------------------------------------------
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
+		arrangeCards()

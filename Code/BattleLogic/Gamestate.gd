@@ -33,9 +33,13 @@ func startGame():
 	enemyState.gainGold(8)
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
-	playCard((await allyState.getInputhandler().selectCards(allyState.getDeck().getCharacterCards(), 1))[0])
+	var allyCards =  await allyState.getInputhandler().selectCards(allyState.getDeck().getCharacterCards(), 1)
+	var allyCard = allyCards[0].getCard()
+	allyState.characterCards.addExistingCard(allyCard)
 	allyTurn = false
-	playCard((await enemyState.getInputhandler().selectCards(enemyState.getDeck().getCharacterCards(), 1))[0])
+	var enemyCards = await enemyState.getInputhandler().selectCards(enemyState.getDeck().getCharacterCards(), 1)
+	var enemyCard = enemyCards[0].getCard()
+	enemyState.characterCards.addExistingCard(enemyCard)
 	executeRounds()
 	
 func executeRounds():

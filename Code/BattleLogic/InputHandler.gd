@@ -16,3 +16,8 @@ func convertToCardLogic(cards):
 		cardLogic.append(card.getCardLogic())
 	return cardLogic
 		
+func convertToCard(cards):
+	var cardScene: Array[Card] = []
+	for card in cards:
+		cardScene.append(card.getCard())
+	return cardScene

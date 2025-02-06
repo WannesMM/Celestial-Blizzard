@@ -34,7 +34,7 @@ func initializeBattle():
 	var test = BattleTest.new()
 	
 	allyDeck = test.burningDeck
-	enemyDeck = test.burningDeck2
+	enemyDeck = test.hatsuneMikuDeck
 	allyInput = PlayerInput.new(self)
 	enemyInput = PlayerInput.new(self)
 	
@@ -64,8 +64,10 @@ func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText =
 	
 func removeCurrentMessage():
 	setMultiselect(1)
+	currentMessage.removeAllCards()
 	remove_child(currentMessage)
 	deselectAllCards()
+	
 	enableAllInput()
 	
 func disableAllInput():

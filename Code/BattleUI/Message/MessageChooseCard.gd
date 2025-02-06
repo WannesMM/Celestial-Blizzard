@@ -13,6 +13,12 @@ func setButtonText(text):
 func addCards(cards):
 	$SelectLayout.addCards(cards)
 
+func getAddedCards():
+	return $SelectLayout.getAddedCards()
+
+func removeAllCards():
+	$SelectLayout.removeAllCards()
+
 func setAmountSelectable(amt):
 	$SelectLayout.amountSelectable = amt
 

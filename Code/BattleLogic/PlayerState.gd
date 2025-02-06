@@ -54,7 +54,7 @@ func playCard(cardLogic, layout):
 			pass
 			
 func drawCards(amt: int):
-	cardHand.addCards(deck.drawCards(amt))
+	cardHand.createCards(deck.drawCards(amt))
 	
 func shuffleDeck():
 	deck.shuffleStack()
