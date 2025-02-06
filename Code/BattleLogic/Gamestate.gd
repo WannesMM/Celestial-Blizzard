@@ -34,13 +34,15 @@ func startGame():
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
 	var allyCards =  await allyState.getInputhandler().selectCards(allyState.getDeck().getCharacterCards(), 1)
-	var allyCard = allyCards[0].getCardLogic().getCard()
+	var allyCard = allyCards[0]
+	
+	var enemyCards = await enemyState.getInputhandler().selectCards(enemyState.getDeck().getCharacterCards(), 1)
+	var enemyCard = enemyCards[0]
+	
 	allyState.characterCards.addCard(allyCard)
 	allyTurn = false
-	var enemyCards = await enemyState.getInputhandler().selectCards(enemyState.getDeck().getCharacterCards(), 1)
-	var enemyCard = enemyCards[0].getCardLogic().getCard()
 	enemyState.characterCards.addCard(enemyCard)
-	executeRounds()
+	#executeRounds()
 	
 func executeRounds():
 	allyState.drawCards(2)

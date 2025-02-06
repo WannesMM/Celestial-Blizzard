@@ -53,7 +53,6 @@ func draggedIntoLayout(layout, card):
 
 func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText = "Confirm"):
 	currentMessage = messageChooseCardScene.instantiate()
-	currentMessage.addCards(cards)
 	currentMessage.setMessage(message)
 	currentMessage.setButtonText(buttonText)
 	currentMessage.setInput(input)
@@ -61,6 +60,7 @@ func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText =
 	setMultiselect(amt)
 	setDeselectWhenClickEmpty(false)
 	add_child(currentMessage)
+	currentMessage.addCards(cards)
 	
 func removeCurrentMessage():
 	setMultiselect(1)

@@ -70,10 +70,12 @@ func arrangeCard(card: Card):
 	var index = addedCards.find(card)
 	var arrayStart = 0 - (ARRAY_WIDTH / 2)
 	var cardOffset = ARRAY_WIDTH / (numCards + 1)
+	var arrangedPos = Vector2(arrayStart + ((index + 1) * cardOffset), 0)
 	
-	card.position = Vector2(arrayStart + ((index + 1) * cardOffset), 0)
-	card.setBasePosition(card.position)
-
+	card.setBasePosition(arrangedPos)
+	card.animatePosition(arrangedPos)
+	print("Arranged " + card.getCardLogic().getCardName() + " in layout: " + CARD_LAYOUT_TYPE + " to position x:" + str(card.position.x) + " y" + str(card.position.y))
+	
 func arrangeCards():
 	for card in addedCards:
 		arrangeCard(card)
@@ -209,3 +211,6 @@ func enableInput():
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
 		arrangeCards()
+	if Input.is_action_just_pressed("Keyboard P"):
+		for card in addedCards:
+			moveCardBasePosition(card)

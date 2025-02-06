@@ -14,3 +14,4 @@ grow_vertical = 0
 mouse_filter = 2
 
 [node name="Card Hand" parent="." instance=ExtResource("1_gkp0e")]
+position = Vector2(0, -100)

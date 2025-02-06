@@ -12,6 +12,8 @@ var scaleTween: Tween = null
 var currentlyAnimating = false
 var currentlySelected = false
 
+var movementTween
+
 signal cardMouseEntered
 signal cardMouseExited
 
@@ -90,16 +92,21 @@ func moveCardUpSelect(vector: Vector2, duration: float = ANIMATIONDURATION):
 	increaseZIndex()
 	var targetPosition = basePosition + vector
 	
-	var movementTween: Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", targetPosition, duration)
 	await movementTween.finished
 	
+#DEZE IS HET PROBLEEM
 func moveCardDownSelect(duration: float = ANIMATIONDURATION):
 	currentlySelected = false
 	resetZIndex()
-	var movementTween: Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", basePosition, duration)
 	await movementTween.finished
+	
+func animatePosition(pos: Vector2, duration: float = ANIMATIONDURATION):
+	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	movementTween.tween_property(self, "position", pos, duration)
 	
 func setLayout(layout):
 	currentLayout = layout
