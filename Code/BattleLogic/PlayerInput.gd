@@ -9,10 +9,10 @@ signal cardsSelected
 func selectCards(cards, amount):
 	selectedCards = []
 	while selectedCards == []:
-		layoutManager.selectCardsMessage(self, convertToCard(cards), amount, "Choose your starting Character")
+		layoutManager.selectCardsMessage(self, cards, amount, "Choose your starting Character")
 		await cardsSelected
 	layoutManager.removeCurrentMessage()
-	return convertToCardLogic(selectedCards)
+	return selectedCards
 	
 func setSelectedCards():
 	selectedCards = layoutManager.getSelected().duplicate(false)

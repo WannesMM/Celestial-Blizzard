@@ -41,20 +41,20 @@ func playCard(cardLogic, layout):
 	var cardType = cardLogic.getCardType()
 	match cardType:
 		"CharacterCard":
-			getCharacterCards().addCardToLayout(cardLogic.getCard())
+			getCharacterCards().addCard(cardLogic.getCard())
 		"EventCard":
 			pass
 		"AreaCard":
-			getAreaSupportCards().addCardToLayout(cardLogic.getCard())
+			getAreaSupportCards().addCard(cardLogic.getCard())
 		"SupporterCard":
 			pass
 		"EntityCard":
-			getEntityCards().addCardToLayout(cardLogic.getCard())
+			getEntityCards().addCard(cardLogic.getCard())
 		"EquipmentCard":
 			pass
 			
 func drawCards(amt: int):
-	cardHand.createCards(deck.drawCards(amt))
+	cardHand.addCards(deck.drawCards(amt))
 	
 func shuffleDeck():
 	deck.shuffleStack()
