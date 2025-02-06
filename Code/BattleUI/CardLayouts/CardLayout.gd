@@ -14,16 +14,12 @@ func cardLayoutConstructor():
 #---------------------------------------------------------------------------------------------------
 
 var ARRAY_WIDTH = 700
-var CENTER_Y = 0
-var CENTER_X = 0
 var CARD_SCALE = 1
 var CARD_LAYOUT_TYPE = "AllyLayout"
 
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
 const SELECTMOVEMENT = Vector2(0,-25)
-const HOLDTRESHHOLD = 0.15
-var anchorPosition: Vector2 = Vector2(0,0)
 
 var cardBeingDragged
 var selectedCard
@@ -61,12 +57,10 @@ func cardMouseEntered(card):
 	if !cardBeingDragged and hoverable:
 		card.highlightCard()
 		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
-		#card.moveCardUpSelect(SELECTMOVEMENT)
 	
 func cardMouseExited(card):
 	card.undoHighlightCard()
 	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-	#card.moveCardDownSelect()
 
 func _process(delta: float) -> void:
 	pass
@@ -77,7 +71,7 @@ func arrangeCard(card: Card):
 	var arrayStart = 0 - (ARRAY_WIDTH / 2)
 	var cardOffset = ARRAY_WIDTH / (numCards + 1)
 	
-	card.position = Vector2(arrayStart + ((index + 1) * cardOffset) + CENTER_X, CENTER_Y)
+	card.position = Vector2(arrayStart + ((index + 1) * cardOffset), 0)
 	card.setBasePosition(card.position)
 
 func arrangeCards():

@@ -14,15 +14,15 @@ func arrangeCards():
 	for card in addedCards:
 		if card is Node2D:
 			if i == 1:
-				card.position = Vector2(CENTER_X - 70 , CENTER_Y + 98)
+				card.position = Vector2(self.position.x - 70 , self.position.y + 98)
 				card.setBasePosition(card.position)
 			elif i == 2:
-				card.position = Vector2(CENTER_X + 70 , CENTER_Y + 98)
+				card.position = Vector2(self.position.x , self.position.y + 98)
 				card.setBasePosition(card.position)
 			elif i == 3:
-				card.position = Vector2(CENTER_X - 70 , CENTER_Y - 98)
+				card.position = Vector2(self.position.x , self.position.y - 98)
 				card.setBasePosition(card.position)
 			elif i == 4:
-				card.position = Vector2(CENTER_X + 70 , CENTER_Y - 95)
+				card.position = Vector2(self.position.x , self.position.y - 95)
 				card.setBasePosition(card.position)
 			i = i + 1

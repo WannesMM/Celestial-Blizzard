@@ -26,7 +26,9 @@ position = Vector2(1, 123)
 position = Vector2(-1, -123)
 
 [node name="AllyLayout" type="Node2D" parent="."]
+position = Vector2(0, 125)
 script = ExtResource("1_6l3h5")
 
 [node name="EnemyLayout" type="Node2D" parent="."]
+position = Vector2(0, -125)
 script = ExtResource("3_pn1nx")
