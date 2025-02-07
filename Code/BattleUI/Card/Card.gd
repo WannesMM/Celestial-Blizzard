@@ -21,6 +21,8 @@ signal cardMouseExited
 var currentLayout: CardLayout
 
 func _ready() -> void:
+	var viewport_size = get_viewport().get_visible_rect().size
+	self.global_position = Vector2(viewport_size.x / 2, viewport_size.y / 2)
 	DEFAULTSCALE = self.scale
 	
 func assignDefaultScale(scaled: Vector2):
@@ -62,6 +64,7 @@ func moveRelativeAnimation(vector: Vector2, duration: float = ANIMATIONDURATION)
 	toggleIsAnimating(true)
 	var targetPosition = self.position + vector
 	
+	stopMovementTween()
 	var movementTween: Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", targetPosition, duration)
 	await movementTween.finished
@@ -91,7 +94,7 @@ func moveCardUpSelect(vector: Vector2, duration: float = ANIMATIONDURATION):
 	currentlySelected = true
 	increaseZIndex()
 	var targetPosition = basePosition + vector
-	
+	stopMovementTween()
 	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", targetPosition, duration)
 	await movementTween.finished
@@ -100,13 +103,27 @@ func moveCardUpSelect(vector: Vector2, duration: float = ANIMATIONDURATION):
 func moveCardDownSelect(duration: float = ANIMATIONDURATION):
 	currentlySelected = false
 	resetZIndex()
+	stopMovementTween()
 	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", basePosition, duration)
 	await movementTween.finished
 	
 func animatePosition(pos: Vector2, duration: float = ANIMATIONDURATION):
+	stopMovementTween()
 	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", pos, duration)
+	await movementTween.finished
+	
+func animateGlobalPosition(pos: Vector2, duration: float = ANIMATIONDURATION):
+	stopMovementTween()
+	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	movementTween.tween_property(self, "global_position", pos, duration)
+	await movementTween.finished
+	
+func stopMovementTween():
+	if movementTween and movementTween.is_running():
+		print("stoppedTween")
+		movementTween.kill()
 	
 func setLayout(layout):
 	currentLayout = layout

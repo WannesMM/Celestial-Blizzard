@@ -27,7 +27,7 @@ func _ready():
 	initializeBattle()
 	
 func _process(delta: float) -> void:
-	cardFollowMouse()
+	cardFollowMouse(delta)
 	clickAndHoldLogic(delta)
 	
 #Records mouseinput and distinguishes between click and hold/let go. Exetuting either startDrag(), finishDrag() or click()
@@ -118,11 +118,12 @@ func raycastCheckForCardSlot():
 	return null
 
 #Executes every frame and lets a card be set to the position of the mouse.
-func cardFollowMouse():
+func cardFollowMouse(delta):
 	if cardBeingDragged:
 		var mouse_pos = get_global_mouse_position()
 		var vect = Vector2(clamp(mouse_pos.x, 0, screenSize.x),clamp(mouse_pos.y, 0, screenSize.y))
-		cardBeingDragged.global_position = vect
+		cardBeingDragged.global_position = cardBeingDragged.global_position.lerp(get_global_mouse_position(), 10 * delta)
+		#cardBeingDragged.global_position = vect
 
 #This selects a card.
 func selectCard(card):

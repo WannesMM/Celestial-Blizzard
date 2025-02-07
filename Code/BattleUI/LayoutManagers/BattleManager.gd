@@ -59,7 +59,10 @@ func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText =
 	disableAllInput()
 	setMultiselect(amt)
 	setDeselectWhenClickEmpty(false)
+	
 	add_child(currentMessage)
+	move_child(currentMessage, get_child_count() - 2)
+	
 	currentMessage.addCards(cards)
 	
 func removeCurrentMessage():

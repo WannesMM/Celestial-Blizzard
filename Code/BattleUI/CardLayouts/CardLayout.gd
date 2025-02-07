@@ -73,7 +73,7 @@ func arrangeCard(card: Card):
 	var arrangedPos = Vector2(arrayStart + ((index + 1) * cardOffset), 0)
 	
 	card.setBasePosition(arrangedPos)
-	card.animatePosition(arrangedPos)
+	card.animatePosition(arrangedPos, 0.5)
 	print("Arranged " + card.getCardLogic().getCardName() + " in layout: " + CARD_LAYOUT_TYPE + " to position x:" + str(card.position.x) + " y" + str(card.position.y))
 	
 func arrangeCards():
@@ -137,6 +137,8 @@ func removeCard(card):
 	remove_child(card)
 	addedCards.erase(card)
 	card.setLayout(null)
+	var viewport_size = get_viewport().get_visible_rect().size
+	card.global_position = Vector2(viewport_size.x / 2, viewport_size.y / 2)
 	arrangeCards()
 
 	
