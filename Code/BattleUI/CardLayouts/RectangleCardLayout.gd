@@ -8,21 +8,19 @@ func arrangeCards():
 		return
 	
 	var i = 1
-	var arrayStart = 0 - (ARRAY_WIDTH / 2)
-	var cardOffset = ARRAY_WIDTH / (num_cards + 1)
 	# Position each card
 	for card in addedCards:
 		if card is Node2D:
 			if i == 1:
-				card.position = Vector2(self.position.x - 70 , self.position.y + 98)
+				card.position = Vector2(- 70 , 98)
 				card.setBasePosition(card.position)
 			elif i == 2:
-				card.position = Vector2(self.position.x , self.position.y + 98)
+				card.position = Vector2(70 , 98)
 				card.setBasePosition(card.position)
 			elif i == 3:
-				card.position = Vector2(self.position.x , self.position.y - 98)
+				card.position = Vector2(-70 , - 98)
 				card.setBasePosition(card.position)
 			elif i == 4:
-				card.position = Vector2(self.position.x , self.position.y - 95)
+				card.position = Vector2(70 , - 98)
 				card.setBasePosition(card.position)
 			i = i + 1

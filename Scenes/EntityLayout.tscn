@@ -27,10 +27,10 @@ position = Vector2(400, 170)
 
 [node name="AllyLayout" type="Node2D" parent="."]
 position = Vector2(400, 170)
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("3_fae7e")
 
 [node name="EnemyLayout" type="Node2D" parent="."]
 position = Vector2(400, -170)
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("4_nixpl")

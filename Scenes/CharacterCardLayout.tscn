@@ -20,15 +20,15 @@ mouse_filter = 1
 script = ExtResource("1_7mkg5")
 
 [node name="AllyCollider" parent="." instance=ExtResource("2_lggap")]
-position = Vector2(1, 123)
+position = Vector2(1, 115)
 
 [node name="EnemyCollider" parent="." instance=ExtResource("2_lggap")]
-position = Vector2(-1, -123)
+position = Vector2(-1, -115)
 
 [node name="AllyLayout" type="Node2D" parent="."]
-position = Vector2(0, 125)
+position = Vector2(0, 115)
 script = ExtResource("1_6l3h5")
 
 [node name="EnemyLayout" type="Node2D" parent="."]
-position = Vector2(0, -125)
+position = Vector2(0, -115)
 script = ExtResource("3_pn1nx")
