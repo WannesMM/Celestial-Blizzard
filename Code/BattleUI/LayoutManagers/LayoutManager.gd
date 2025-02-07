@@ -67,7 +67,7 @@ func finishDrag():
 		var layout = cardSlotFound.getRespectiveCardLayout()
 		draggedIntoLayout(layout, cardBeingDragged)
 	else:
-		cardBeingDragged.position = cardBeingDragged.getBasePosition()
+		cardBeingDragged.animatePosition(cardBeingDragged.getBasePosition(), 0.7)
 	cardBeingDragged = null
 	
 #When clicked

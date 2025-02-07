@@ -53,7 +53,6 @@ func connectSignal(card):
 		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
 
 func cardMouseEntered(card):
-	print("cardMouseEntered")
 	if !cardBeingDragged and hoverable:
 		card.highlightCard()
 		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
@@ -74,7 +73,7 @@ func arrangeCard(card: Card):
 	
 	card.setBasePosition(arrangedPos)
 	card.animatePosition(arrangedPos, 0.5)
-	print("Arranged " + card.getCardLogic().getCardName() + " in layout: " + CARD_LAYOUT_TYPE + " to position x:" + str(card.position.x) + " y" + str(card.position.y))
+	#print("Arranged " + card.getCardLogic().getCardName() + " in layout: " + CARD_LAYOUT_TYPE + " to position x:" + str(card.position.x) + " y" + str(card.position.y))
 	
 func arrangeCards():
 	for card in addedCards:
@@ -208,6 +207,14 @@ func enableInput():
 	setSelectable(selectableBackup)
 	setHoverable(hoverableBackup)
 	
+func fadeIn(duration: float = 1.0):
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, duration)  # Fade to full opacity
+
+func fadeOut(duration: float = 1.0):
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0, duration)
+
 # Testing, Remove later ----------------------------------------------------------------------------
 
 func _input(event: InputEvent) -> void:

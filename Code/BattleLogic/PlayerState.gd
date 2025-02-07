@@ -37,19 +37,19 @@ func setStartingHand():
 	var arr = deck.getAreaCards() + deck.getEnitityCards() + deck.getEquipmentCards() + deck.getSupporterCards() + deck.getEventCards()
 	cardHand.addCards(arr)
 
-func playCard(cardLogic, layout):
-	var cardType = cardLogic.getCardType()
+func playCard(card, layout = null):
+	var cardType = card.getCardLogic().getCardType()
 	match cardType:
 		"CharacterCard":
-			getCharacterCards().addCard(cardLogic.getCard())
+			getCharacterCards().addCard(card)
 		"EventCard":
 			pass
 		"AreaCard":
-			getAreaSupportCards().addCard(cardLogic.getCard())
+			getAreaSupportCards().addCard(card)
 		"SupporterCard":
 			pass
 		"EntityCard":
-			getEntityCards().addCard(cardLogic.getCard())
+			getEntityCards().addCard(card)
 		"EquipmentCard":
 			pass
 			

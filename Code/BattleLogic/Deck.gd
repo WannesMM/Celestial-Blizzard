@@ -50,11 +50,22 @@ func shuffleStack():
 func drawCards(count: int) -> Array:
 	var drawn_cards = stack.slice(0, count) 
 	stack = stack.slice(count, stack.size()) 
+	print(drawn_cards)
 	return drawn_cards
 
-func addToBottom(cards: Array[CardLogic]):
+func stackAddToBottom(cards: Array[CardLogic]):
 	stack.append(cards)
 
+func stackRemoveCard(card: CardLogic):
+	stack.erase(card)
+	
+func stackGetCharacters():
+	var toReturn: Array[CharacterCardLogic] = []
+	for card in stack:
+		if card.getCardType() == "CharacterCard":
+			toReturn.append(card)
+	return toReturn
+	
 # Getter and Setters -----------------------------------------------------------
 
 func getCards():

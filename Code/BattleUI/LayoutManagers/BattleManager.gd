@@ -60,12 +60,20 @@ func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText =
 	setMultiselect(amt)
 	setDeselectWhenClickEmpty(false)
 	
+	var layout = currentMessage.get_node("SelectLayout")  # Replace with actual name
+	layout.modulate.a = 0
+	
 	add_child(currentMessage)
 	move_child(currentMessage, get_child_count() - 2)
 	
 	currentMessage.addCards(cards)
 	
+	layout.fadeIn()
+	
 func removeCurrentMessage():
+	var layout = currentMessage.get_node("SelectLayout")
+	layout.fadeOut()
+	
 	setMultiselect(1)
 	currentMessage.removeAllCards()
 	remove_child(currentMessage)

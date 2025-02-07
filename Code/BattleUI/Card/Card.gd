@@ -58,7 +58,6 @@ func scaleTo(target_scale: Vector2, duration: float = ANIMATIONDURATION):
 func moveRelativeAnimation(vector: Vector2, duration: float = ANIMATIONDURATION):
 	
 	while(currentlyAnimating):
-		print("stillanimating")
 		await IsAnimating
 	
 	toggleIsAnimating(true)
@@ -122,7 +121,6 @@ func animateGlobalPosition(pos: Vector2, duration: float = ANIMATIONDURATION):
 	
 func stopMovementTween():
 	if movementTween and movementTween.is_running():
-		print("stoppedTween")
 		movementTween.kill()
 	
 func setLayout(layout):
