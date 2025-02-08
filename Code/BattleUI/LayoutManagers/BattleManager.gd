@@ -104,7 +104,9 @@ func enableAllInput():
 	enemyEntity.enableInput()
 
 func highlightCollider(collider):
-	collider.highlightRect()
+	for coll in collider:
+				coll.highlightRect()
 	
 func undoHighlightCollider(collider):
-	collider.undoHighlightRect()
+	for coll in collider:
+				coll.undoHighlightRect()

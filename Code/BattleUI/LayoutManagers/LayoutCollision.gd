@@ -10,9 +10,9 @@ func _ready() -> void:
 	$Area2D/NinePatchRect.modulate.a = 0
 	if cardLayout:
 		cardLayout.collision = self
+	collisionConstructor()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func collisionConstructor():
 	pass
 
 func _on_area_2d_mouse_entered() -> void:

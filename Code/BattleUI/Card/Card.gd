@@ -14,6 +14,8 @@ var currentlySelected = false
 
 var movementTween
 
+var collision: LayoutCollision
+
 signal cardMouseEntered
 signal cardMouseExited
 

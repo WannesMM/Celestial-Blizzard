@@ -12,7 +12,7 @@ func entityCardConstructor():
 # Actual functionality ---------------------------------------------------------
 
 func playableOn():
-	return cardOwner.entityCards.collision
+	return [cardOwner.entityCards.collision]
 
 #-------------------------------------------------------------------------------
 

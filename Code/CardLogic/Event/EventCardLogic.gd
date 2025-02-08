@@ -12,7 +12,7 @@ func eventCardConstructor():
 # Actual functionality ---------------------------------------------------------
 
 func playableOn():
-	return cardOwner.gameState.layoutManager.eventCardCollision
+	return [cardOwner.gameState.layoutManager.eventCardCollision]
 
 #-------------------------------------------------------------------------------
 

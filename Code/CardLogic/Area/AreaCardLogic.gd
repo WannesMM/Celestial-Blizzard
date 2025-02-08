@@ -12,7 +12,7 @@ func areaCardConstructor():
 # Actual functionality ---------------------------------------------------------
 
 func playableOn():
-	return cardOwner.areaSupportCards.collision
+	return [cardOwner.areaSupportCards.collision]
 
 #-------------------------------------------------------------------------------
 

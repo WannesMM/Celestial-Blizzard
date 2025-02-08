@@ -12,7 +12,10 @@ func supporterCardConstructor():
 # Actual Functionality ---------------------------------------------------------
 
 func playableOn():
-	return cardOwner.areaSupportCards.collision
+	var collisions = []
+	for card in cardOwner.areaSupportCards.addedCards:
+		collisions.append(card.collision)
+	return collisions
 
 #-------------------------------------------------------------------------------
 

@@ -35,7 +35,7 @@ func setActive(x: bool):
 		#card.disableActiveAnimation
 
 func playableOn():
-	return cardOwner.characterCards.collision
+	return [cardOwner.characterCards.collision]
 
 #---------------------------------------------------------------------------------------------------
 
