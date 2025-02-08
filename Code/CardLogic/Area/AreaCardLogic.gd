@@ -9,7 +9,12 @@ func cardConstructor():
 func areaCardConstructor():
 	pass
 
-#---------------------------------------------------------------------------------------------------
+# Actual functionality ---------------------------------------------------------
+
+func playableOn():
+	return cardOwner.areaSupportCards.collision
+
+#-------------------------------------------------------------------------------
 
 func getEffectName() -> String:
 	return "Default effect"

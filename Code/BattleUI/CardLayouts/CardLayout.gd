@@ -28,6 +28,8 @@ var isPressed = false
 var holdTimer = 0.0
 var allied = true
 
+var collision: LayoutCollision
+
 #Are the cards in this layout movable
 var movable: bool = true
 #Are the cards in this layout clickable

@@ -58,11 +58,13 @@ func clickAndHoldLogic(delta):
 func startDrag():
 	var card = raycastCheckForCard()
 	if card and card.getLayout().isMovable():
+		highlightCollider(card.getCardLogic().playableOn())
 		cardBeingDragged = card
 		
 #Finish the drag
 func finishDrag():
 	var cardSlotFound = raycastCheckForCardSlot()
+	undoHighlightCollider(cardBeingDragged.getCardLogic().playableOn())
 	if cardSlotFound:
 		var layout = cardSlotFound.getRespectiveCardLayout()
 		draggedIntoLayout(layout, cardBeingDragged)
@@ -190,4 +192,10 @@ func setDeselectWhenClickEmpty(x):
 
 #Executes at the start of the battle. This is an abstract function.
 func initializeBattle():
+	pass
+
+func highlightCollider(layout):
+	pass
+
+func undoHighlightCollider(layout):
 	pass

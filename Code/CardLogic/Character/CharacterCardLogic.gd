@@ -34,6 +34,9 @@ func setActive(x: bool):
 	#else:
 		#card.disableActiveAnimation
 
+func playableOn():
+	return cardOwner.characterCards.collision
+
 #---------------------------------------------------------------------------------------------------
 
 func getMaxHP():

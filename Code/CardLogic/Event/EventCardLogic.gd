@@ -9,7 +9,12 @@ func cardConstructor():
 func eventCardConstructor():
 	pass
 
-#---------------------------------------------------------------------------------------------------
+# Actual functionality ---------------------------------------------------------
+
+func playableOn():
+	return cardOwner.gameState.layoutManager.eventCardCollision
+
+#-------------------------------------------------------------------------------
 
 func getEffectName() -> String:
 	return "Default effect"

@@ -18,7 +18,7 @@ var roundEnded: bool = false
 
 var drawPile: Array[CardLogic] = []
 
-func _init(newDeck: Deck, inputhandler: InputHandler, characterLayout: CardLayout, handLayout: CardLayout, areaSupportLayout: AreaSupportLayout, entityLayout: EntityLayout, battleRes: BattleResources) -> void:
+func _init(newDeck: Deck, inputhandler: InputHandler, characterLayout: CardLayout, handLayout: CardLayout, areaSupportLayout: AreaSupportLayout, entityLayout: EntityLayout, battleRes: BattleResources, game: GameState) -> void:
 	deck = newDeck
 	input = inputhandler
 	
@@ -27,6 +27,7 @@ func _init(newDeck: Deck, inputhandler: InputHandler, characterLayout: CardLayou
 	areaSupportCards = areaSupportLayout
 	entityCards = entityLayout
 	battleResources = battleRes
+	gameState = game
 
 # Actual Functionality -----------------------------------------------------------------------------
 
@@ -52,7 +53,7 @@ func playCard(card, layout = null):
 			getEntityCards().addCard(card)
 		"EquipmentCard":
 			pass
-			
+	card.getCardLogic().playCard()
 func drawCards(amt: int):
 	cardHand.addCards(deck.drawCards(amt))
 	

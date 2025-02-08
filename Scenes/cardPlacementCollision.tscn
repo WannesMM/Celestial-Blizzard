@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt7en87xfgel0"]
+[gd_scene load_steps=4 format=3 uid="uid://dt7en87xfgel0"]
 
 [ext_resource type="Script" path="res://Code/BattleUI/LayoutManagers/LayoutCollision.gd" id="1_ntdmb"]
+[ext_resource type="Texture2D" uid="uid://mw84mjtsjyn7" path="res://assets/User Interface/SelectRect.png" id="2_cesf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x270y"]
 size = Vector2(533, 190)
@@ -15,14 +16,18 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_x270y")
 
-[node name="ColorRect" type="ColorRect" parent="Area2D"]
-visible = false
-offset_left = -269.0
-offset_top = -96.0
-offset_right = 269.0
-offset_bottom = 94.0
-mouse_filter = 1
-color = Color(0.54099, 0.54099, 0.54099, 1)
+[node name="NinePatchRect" type="NinePatchRect" parent="Area2D"]
+offset_left = -273.0
+offset_top = -102.0
+offset_right = 6552.0
+offset_bottom = 2424.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_cesf2")
+region_rect = Rect2(141, 167, 2198, 3046)
+patch_margin_left = 429
+patch_margin_top = 460
+patch_margin_right = 436
+patch_margin_bottom = 430
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

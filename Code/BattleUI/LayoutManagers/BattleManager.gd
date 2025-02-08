@@ -18,6 +18,7 @@ var allyEntity: CardLayout = null
 var enemyAreaSupport: CardLayout = null
 var enemyEntity: CardLayout = null
 var battleResources: BattleRightPanel = null
+var eventCardCollision: LayoutCollision = null
 
 # In de param voor deze functie komen uiteindelijk de parameters voor een battle (denk ik)
 func initializeBattle():
@@ -30,6 +31,7 @@ func initializeBattle():
 	enemyAreaSupport = $AreaSupportLayout/EnemyLayout
 	enemyEntity = $EntityLayout/EnemyLayout
 	battleResources = $BattleRightPanel
+	eventCardCollision = $Control/EventCardCollision
 	
 	var test = BattleTest.new()
 	
@@ -100,3 +102,9 @@ func enableAllInput():
 	enemyHandLayout.enableInput()
 	enemyAreaSupport.enableInput()
 	enemyEntity.enableInput()
+
+func highlightCollider(collider):
+	collider.highlightRect()
+	
+func undoHighlightCollider(collider):
+	collider.undoHighlightRect()

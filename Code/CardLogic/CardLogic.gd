@@ -10,12 +10,25 @@ var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
 var cardCost: int = 1
 var imageLink: String = "Card Unknown"
+var cardOwner: PlayerState = null
 
 func _init() -> void:
 	cardConstructor()
 	
 func cardConstructor():
 	pass
+
+# Gamefunctionality ------------------------------------------------------------
+
+# Code that triggers when the card is played, to be extended
+func playCard():
+	pass
+
+# This returns the layouts that this card is playable on
+func playableOn():
+	pass
+
+# Getters and Setters ----------------------------------------------------------
 
 func getCardName():
 	return cardName
@@ -37,3 +50,9 @@ func getCardCost():
 	
 func setCardCost(cost):
 	cardCost = cost
+
+func setCardOwner(player: PlayerState):
+	cardOwner = player
+	
+func getCardOwner(player: PlayerState):
+	return cardOwner

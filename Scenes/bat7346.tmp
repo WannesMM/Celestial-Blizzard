@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg4dd53dv5m3"]
+[gd_scene load_steps=11 format=3 uid="uid://dg4dd53dv5m3"]
 
 [ext_resource type="Script" path="res://Code/BattleUI/LayoutManagers/BattleManager.gd" id="1_6n5sf"]
 [ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/CharacterCardLayout.tscn" id="1_n8f8j"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cb7oa87cih75h" path="res://Scenes/BattleBackground.tscn" id="3_gtcky"]
 [ext_resource type="PackedScene" uid="uid://b01lkl2l8uhmq" path="res://Scenes/right_slider.tscn" id="3_i0k80"]
 [ext_resource type="PackedScene" uid="uid://btqnrpqo1cmdj" path="res://Scenes/EntityLayout.tscn" id="3_yi7qp"]
-[ext_resource type="PackedScene" uid="uid://ckhyiinbbhy4e" path="res://Scenes/eventCardCollision.tscn" id="4_34dst"]
 [ext_resource type="PackedScene" uid="uid://y2otj6ibuy0b" path="res://Scenes/EnemyCardHandLayout.tscn" id="5_fpnce"]
 [ext_resource type="PackedScene" uid="uid://tkvf733tsgu0" path="res://Scenes/BattleRightPanel.tscn" id="8_0ewpx"]
 [ext_resource type="PackedScene" uid="uid://cb1c77crf2lod" path="res://Scenes/MessageChooseCard.tscn" id="8_1eiu0"]
@@ -27,20 +26,6 @@ messageChooseCardScene = ExtResource("8_1eiu0")
 
 [node name="BattleBackground" parent="." instance=ExtResource("3_gtcky")]
 layout_mode = 1
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="EventCardCollision" parent="Control" instance=ExtResource("4_34dst")]
-position = Vector2(0, -50)
 
 [node name="AreaSupportLayout" parent="." instance=ExtResource("2_2blwc")]
 layout_mode = 1

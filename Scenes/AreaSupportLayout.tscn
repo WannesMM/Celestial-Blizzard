@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk8j8jr4ty6m7"]
+[gd_scene load_steps=4 format=3 uid="uid://bk8j8jr4ty6m7"]
 
-[ext_resource type="Script" path="res://Code/BattleUI/LayoutManagers/ColliderManager.gd" id="1_qd7x1"]
 [ext_resource type="PackedScene" uid="uid://domyhnv1haxa2" path="res://Scenes/RectanglePlacementCollision.tscn" id="2_xbfli"]
 [ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/AreaSupportCards/AllyAreaSupportLayout.gd" id="3_3kvwn"]
 [ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/AreaSupportCards/EnemyAreaSupportLayout.gd" id="4_vg7w8"]
@@ -17,13 +16,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
-script = ExtResource("1_qd7x1")
 
-[node name="EnemyCollider" parent="." instance=ExtResource("2_xbfli")]
+[node name="EnemyCollider" parent="." node_paths=PackedStringArray("cardLayout") instance=ExtResource("2_xbfli")]
 position = Vector2(-400, -170)
+cardLayout = NodePath("../EnemyLayout")
 
-[node name="AllyCollider" parent="." instance=ExtResource("2_xbfli")]
+[node name="AllyCollider" parent="." node_paths=PackedStringArray("cardLayout") instance=ExtResource("2_xbfli")]
 position = Vector2(-400, 170)
+cardLayout = NodePath("../AllyLayout")
 
 [node name="AllyLayout" type="Node2D" parent="."]
 position = Vector2(-400, 170)

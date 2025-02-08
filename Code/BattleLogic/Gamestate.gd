@@ -15,8 +15,8 @@ enemyDeck: Deck, enemyInput: InputHandler, enemyCharacterLayout: CardLayout, ene
 layout: LayoutManager) -> void:
 	setLayoutManager(layout)
 	
-	allyState = PlayerState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity, battleResources.allyResources)
-	enemyState = PlayerState.new(enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity, battleResources.enemyResources)
+	allyState = PlayerState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity, battleResources.allyResources, self)
+	enemyState = PlayerState.new(enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity, battleResources.enemyResources, self)
 	
 	startGame()
 	
@@ -25,8 +25,8 @@ layout: LayoutManager) -> void:
 var allyTurn: bool = true
 
 func startGame():
-	allyState.getDeck().createStack()
-	enemyState.getDeck().createStack()
+	allyState.getDeck().createStack(allyState)
+	enemyState.getDeck().createStack(enemyState)
 	allyState.shuffleDeck()
 	enemyState.shuffleDeck()
 	allyState.gainGold(8)

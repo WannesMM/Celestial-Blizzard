@@ -9,7 +9,12 @@ func cardConstructor():
 func entityCardConstructor():
 	pass
 
-#---------------------------------------------------------------------------------------------------
+# Actual functionality ---------------------------------------------------------
+
+func playableOn():
+	return cardOwner.entityCards.collision
+
+#-------------------------------------------------------------------------------
 
 func getEffectName() -> String:
 	return "Defaultname"
