@@ -42,3 +42,13 @@ func undoHighlightRect():
 func killOpacityTween():
 	if opacityTween and opacityTween.is_running():
 		opacityTween.kill()
+
+func disableCollision():
+	$Area2D.monitoring = false
+	$Area2D.monitorable = false
+	$Area2D/CollisionShape2D.disabled = true
+	
+func enableCollision():
+	$Area2D.monitoring = true
+	$Area2D.monitorable = true
+	$Area2D/CollisionShape2D.disabled = false

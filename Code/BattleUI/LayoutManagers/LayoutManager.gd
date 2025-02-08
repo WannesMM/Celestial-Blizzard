@@ -104,7 +104,7 @@ func raycastCheckForCard():
 	parameters.collision_mask = 1
 	var result = space_state.intersect_point(parameters)
 	if(result.size() > 0):
-		return result[0].collider.get_parent()
+		return result[0].collider.get_parent().cardScene
 	return null
 	
 #The same but on layer 2 and for cardSlots. These are the spaces where cards can be put inside of (also known as cardLayout)
