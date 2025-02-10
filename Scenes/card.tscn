@@ -52,8 +52,8 @@ texture = ExtResource("5_hr42r")
 script = ExtResource("7_bxov3")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ugx5n")
@@ -63,8 +63,8 @@ script = ExtResource("9_bfwt5")
 cardScene = NodePath("..")
 
 [node name="Area2D" parent="CardPlacementCollision" index="0"]
-collision_layer = 1
-collision_mask = 1
+collision_layer = 3
+collision_mask = 3
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
