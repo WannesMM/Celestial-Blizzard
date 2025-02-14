@@ -67,6 +67,8 @@ func finishDrag():
 	undoHighlightCollider(cardBeingDragged.getCardLogic().playableOn())
 	if cardSlotFound:
 		var layout = cardSlotFound.getRespectiveCardLayout()
+		if cardSlotFound is CardCollision:
+			layout = cardSlotFound.cardScene
 		draggedIntoLayout(layout, cardBeingDragged)
 	else:
 		cardBeingDragged.animatePosition(cardBeingDragged.getBasePosition(), 0.7)

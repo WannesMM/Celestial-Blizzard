@@ -48,12 +48,17 @@ func playCard(card, layout = null):
 		"AreaCard":
 			getAreaSupportCards().addCard(card)
 		"SupporterCard":
-			pass
+			if layout is Card:
+				if layout.getCardLogic().getCardType() == "AreaCard":
+					print("Zou supporter moeten toegevoegd hebben")
+					layout.addRelatedCard(card)
+				
 		"EntityCard":
 			getEntityCards().addCard(card)
 		"EquipmentCard":
 			pass
 	card.getCardLogic().playCard()
+	
 func drawCards(amt: int):
 	cardHand.addCards(deck.drawCards(amt))
 	

@@ -9,6 +9,7 @@ func cardLayoutConstructor():
 	CARD_SCALE = 1
 	CARD_LAYOUT_TYPE = "AreaSupportLayout"
 	
+	
 func areaSupportConstructor():
 	pass
 

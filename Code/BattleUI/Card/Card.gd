@@ -15,6 +15,7 @@ var currentlySelected = false
 var movementTween
 
 var collision: LayoutCollision
+var relatedCards: Array[Card] = []
 
 signal cardMouseEntered
 signal cardMouseExited
@@ -184,3 +185,12 @@ func setActive(x: bool):
 		moveCardUpSelect(ACTIVECHARMOVEMENT)
 	else:
 		moveCardDownSelect()
+
+func addRelatedCard(card: Card):
+	relatedCards.append(card)
+	if currentLayout:
+		currentLayout.addAdditionalCard(card)
+		print("Heeft related card gearrangeerd")
+	
+func removeRelatedCard(card: Card):
+	relatedCards.erase(card)

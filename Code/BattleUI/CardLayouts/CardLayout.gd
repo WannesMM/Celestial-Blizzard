@@ -3,6 +3,8 @@ extends Node2D
 class_name CardLayout
 
 var addedCards = []
+var additionalCards = []
+
 var gamestate: PlayerState = null
 
 func getAddedCards():
@@ -76,11 +78,21 @@ func arrangeCard(card: Card):
 	setCollision(card)
 	card.setBasePosition(arrangedPos)
 	card.animatePosition(arrangedPos, 0.5)
+	arrangeRelatedCard(card, arrangedPos)
 	#print("Arranged " + card.getCardLogic().getCardName() + " in layout: " + CARD_LAYOUT_TYPE + " to position x:" + str(card.position.x) + " y" + str(card.position.y))
 	
 func arrangeCards():
 	for card in addedCards:
 		arrangeCard(card)
+
+func arrangeRelatedCard(card: Card, basePos):
+	if card.relatedCards != []:
+		var i = 1
+		for relatedCard in card.relatedCards:
+			var arrangedPos = basePos + (i * Vector2(0,-50))
+			relatedCard.setBasePosition(arrangedPos)
+			relatedCard.animatePosition(arrangedPos, 0.5)
+			i = i + 1
 
 func returnToBasePosition(card):
 	card.position = card.getBasePosition()
@@ -127,6 +139,24 @@ func addCard(card):
 		layout.removeCard(cardScene)
 	add_child(cardScene)  
 	addedCards.append(cardScene)
+	cardScene.setLayout(self)
+	arrangeCards()
+
+func addAdditionalCard(card):
+	var cardScene: Card
+	if card is CardLogic:
+		if card.getCard() == null:
+			cardScene = createCard(card)
+		else:
+			cardScene = card.getCard()
+	else:
+		cardScene = card
+		
+	var layout = cardScene.getLayout()
+	if layout:
+		layout.removeCard(cardScene)
+	add_child(cardScene)  
+	additionalCards.append(cardScene)
 	cardScene.setLayout(self)
 	arrangeCards()
 

@@ -54,7 +54,7 @@ func executeRounds():
 		allyState.gainGold(rollGold())
 		enemyState.gainGold(rollGold())
 	
-func playCard(cardLogic: CardLogic, layout: CardLayout = null):
+func playCard(cardLogic: CardLogic, layout = null):
 	getActivePlayer().playCard(cardLogic.getCard(), layout)
 	
 func getActivePlayer():
