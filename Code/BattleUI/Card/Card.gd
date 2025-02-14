@@ -137,6 +137,12 @@ func increaseZIndex():
 func resetZIndex():
 	if !currentlySelected:
 		self.z_index = defaultZIndex
+		
+func collision1and2():
+	$CardPlacementCollision/Area2D.collision_layer = (1 << 0) | (1 << 1)
+
+func collision1():
+	$CardPlacementCollision/Area2D.collision_layer = 1 << 0
 
 #---------------------------------------------------------------------------------------------------------------------
 

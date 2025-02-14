@@ -12,3 +12,6 @@ func cardLayoutConstructor():
 	
 func characterCardLayoutConstructor():
 	pass
+
+func setCollision(card: Card):
+	card.collision1and2()

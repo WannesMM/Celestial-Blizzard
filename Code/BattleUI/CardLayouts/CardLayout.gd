@@ -73,6 +73,7 @@ func arrangeCard(card: Card):
 	var cardOffset = ARRAY_WIDTH / (numCards + 1)
 	var arrangedPos = Vector2(arrayStart + ((index + 1) * cardOffset), 0)
 	
+	setCollision(card)
 	card.setBasePosition(arrangedPos)
 	card.animatePosition(arrangedPos, 0.5)
 	#print("Arranged " + card.getCardLogic().getCardName() + " in layout: " + CARD_LAYOUT_TYPE + " to position x:" + str(card.position.x) + " y" + str(card.position.y))
@@ -216,6 +217,9 @@ func fadeIn(duration: float = 1.0):
 func fadeOut(duration: float = 1.0):
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, duration)
+
+func setCollision(card: Card):
+	card.collision1()
 
 # Testing, Remove later ----------------------------------------------------------------------------
 

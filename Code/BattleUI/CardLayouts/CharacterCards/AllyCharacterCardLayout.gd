@@ -5,4 +5,5 @@ func characterCardLayoutConstructor():
 	allied = true
 	CARD_LAYOUT_TYPE = "AllyCharacterCardLayout"
 	
+
 	
