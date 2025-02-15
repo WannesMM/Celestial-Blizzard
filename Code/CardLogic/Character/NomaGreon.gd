@@ -43,3 +43,15 @@ func getCADescription() -> String:
 	
 func getAbilityDescription() -> String:
 	return "If Greon is one of the character cards in your deck, an additional 3 artificer armor cards will be added. In addition to artificer armor's effect, Greon will receive +1dmg for each piece of artificer armor equipped (max 3)"
+
+func getSP1Name() -> String:
+	return "Beyond technical"
+
+func getSP1Description() -> String:
+	return "Greon can now equip 5 artificer armor cards instead of 3"
+
+func getSP2Name() -> String:
+	return "Technical improv"
+	
+func getSP2Description() -> String:
+	return "Greon starts with 1 artificer armor equipped"

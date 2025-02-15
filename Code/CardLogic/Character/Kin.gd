@@ -43,3 +43,15 @@ func getCADescription() -> String:
 	
 func getAbilityDescription() -> String:
 	return "When Kin is switched into, put 2 burning memories in the opponent's deck."
+
+func getSP1Name() -> String:
+	return "Sacrifice"
+
+func getSP1Description() -> String:
+	return "When using love burns brightest, instead of losing 2HP, lose all your HP and heal an ally for all HP lost"
+
+func getSP2Name() -> String:
+	return "Shared hate"
+	
+func getSP2Description() -> String:
+	return "When damaging Kin, the target has 1 burning applied to them"

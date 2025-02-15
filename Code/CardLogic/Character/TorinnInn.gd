@@ -43,4 +43,15 @@ func getCAName() -> String:
 	
 func getAbilityName() -> String:
 	return "Divine Sense"
+
+func getSP1Name() -> String:
+	return "Divine smite"
+
+func getSP1Description() -> String:
+	return "When using lay on hands, the next battleaxe attack will deal an additional 2 damage"
+
+func getSP2Name() -> String:
+	return "Judgement"
 	
+func getSP2Description() -> String:
+	return "When an area card is destroyed, gain 2 stacks of golden breath"

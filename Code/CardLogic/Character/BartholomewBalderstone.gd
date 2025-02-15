@@ -43,3 +43,15 @@ func getCADescription() -> String:
 	
 func getAbilityDescription() -> String:
 	return "When Bartholomew deals damage to an enemy that is not the current active character, he will deal +1 damage."
+
+func getSP1Name() -> String:
+	return "Demonic precision"
+
+func getSP1Description() -> String:
+	return "Bartholomew can now switch the target of demonic eye without ending his turn"
+
+func getSP2Name() -> String:
+	return "Demonic negotiations"
+	
+func getSP2Description() -> String:
+	return "Bartholomew can now use demonic eye without any cost"

@@ -43,3 +43,15 @@ func getCADescription() -> String:
 	
 func getAbilityDescription() -> String:
 	return ""
+
+func getSP1Name() -> String:
+	return ""
+
+func getSP1Description() -> String:
+	return ""
+
+func getSP2Name() -> String:
+	return ""
+	
+func getSP2Description() -> String:
+	return ""

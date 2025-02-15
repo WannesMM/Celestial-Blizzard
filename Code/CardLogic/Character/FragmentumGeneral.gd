@@ -43,3 +43,15 @@ func getCADescription() -> String:
 	
 func getAbilityDescription() -> String:
 	return "When the ally with the seal of approval falls below 4 HP, switch them out instantly to a character of choice."
+
+func getSP1Name() -> String:
+	return "Branding mark"
+
+func getSP1Description() -> String:
+	return "When fragmentum general is defeated, apply 3 burning to the enemy"
+
+func getSP2Name() -> String:
+	return "Deportation"
+	
+func getSP2Description() -> String:
+	return "Enemies hit by tranquiliser bullet will take 1 additional damage each turn during this round."

@@ -95,3 +95,15 @@ func getCADescription() -> String:
 
 func getAbilityDescription() -> String:
 	return "This character does nothing"
+
+func getSP1Name() -> String:
+	return "Spirit power 1"
+
+func getSP1Description() -> String:
+	return "This character has no spirit power1"
+	
+func getSP2Name() -> String:
+	return "Spirit power 2"
+	
+func getSP2Description() -> String:
+	return "This character has no spirit power2"
