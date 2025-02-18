@@ -54,4 +54,4 @@ func getSP2Name() -> String:
 	return "Demonic negotiations"
 	
 func getSP2Description() -> String:
-	return "Bartholomew can now use demonic eye without any cost"
+	return "Bartholomew can now use demonic eye without any cost, once every round"
