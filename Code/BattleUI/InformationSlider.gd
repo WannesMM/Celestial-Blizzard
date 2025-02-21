@@ -1,5 +1,7 @@
 extends Control
 
+var layoutManager: LayoutManager = null
+var currentCard: Card
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,6 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 func displayCardInformation(card):
+	currentCard = card
 	var logic = card.getCardLogic()
 	visible = true
 	
@@ -88,3 +91,12 @@ func displayCardInformation(card):
 
 func closeCardInformation():
 	visible = false
+
+func NAbuttonPressed() -> void:
+	layoutManager.characterCardMove("NA", currentCard)
+
+func SAbuttonPressed() -> void:
+	layoutManager.characterCardMove("SA", currentCard)
+
+func CAbuttonPressed() -> void:
+	layoutManager.characterCardMove("CA", currentCard)

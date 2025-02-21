@@ -19,6 +19,7 @@ var enemyAreaSupport: CardLayout = null
 var enemyEntity: CardLayout = null
 var battleResources: BattleRightPanel = null
 var eventCardCollision: LayoutCollision = null
+var rightSlider = null
 
 # In de param voor deze functie komen uiteindelijk de parameters voor een battle (denk ik)
 func initializeBattle():
@@ -32,6 +33,8 @@ func initializeBattle():
 	enemyEntity = $EntityLayout/EnemyLayout
 	battleResources = $BattleRightPanel
 	eventCardCollision = $Control/EventCardCollision
+	rightSlider = $"Right Slider"
+	rightSlider.layoutManager = self
 	
 	var test = BattleTest.new()
 	
@@ -54,15 +57,36 @@ var currentMessageChooseCard
 
 @export var messageScene: PackedScene
 
+var currentInput
+
+func selectAction(input):
+	if gameState.getAllyTurn():
+		allowAction = 1
+	else:
+		allowAction = 2
+	currentInput = input
+
 #Extended modified
 func draggedIntoLayout(layout, card: Card):
-	if checkActionAllowed(layout, card):
-		gameState.playCard(card.getCardLogic(),layout)
+	if checkActionAllowed(card):
+		currentInput.setSelectedAction(["Play Card", card, layout])
 	else:
 		card.animatePosition(card.getBasePosition())
 		message("It is not your turn")
 
-func checkActionAllowed(layout, card):
+func characterCardMove(type, card):
+	if checkActionAllowed(card):
+		currentInput.setSelectedAction(["Move", card, type])
+	else:
+		message("It is not your turn")
+
+func endRound():
+	if allowAction != 0:
+		currentInput.setSelectedAction(["End Round"])
+	else:
+		message("It is not your turn")
+
+func checkActionAllowed(card):
 	if (allowAction == 1 and card.getLayout().allied == true) || (allowAction == 2 and card.getLayout().allied == false):
 		return true
 	return false

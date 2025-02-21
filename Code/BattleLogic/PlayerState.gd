@@ -39,7 +39,21 @@ func setStartingHand():
 	cardHand.addCards(arr)
 
 func chooseAction():
-	var action = getInputhandler().chooseAction()
+	var action = await getInputhandler().chooseAction()
+	match action[0]:
+		"Play Card":
+			playCard(action[1], action[2])
+		"Move":
+			assert(action[1].cardLogic is CharacterCardLogic)
+			match action[2]:
+				"NA":
+					action[1].cardLogic.NA()
+				"SA":
+					action[1].cardLogic.SA()
+				"CA":
+					action[1].cardLogic.CA()
+		"End Round": 
+			print("this player has ended their round")
 
 func playCard(card, layout = null):
 	var cardType = card.getCardLogic().getCardType()

@@ -19,8 +19,17 @@ func selectCards(cards, amount, message = "Select card(s)"):
 	
 #Allows the player to choose one of the following actions: Play card, Use move, End round, Discard card. This will return the result in the form of an array
 func chooseAction():
-	pass
+	selectedAction = []
+	while selectedAction == []:
+		layoutManager.selectAction(self)
+		await actionSelected
+	assert(selectedAction.size() != 0)
+	return selectedAction
 	
 func setSelectedCards():
 	selectedCards = layoutManager.getSelected().duplicate(false)
 	cardsSelected.emit()
+
+func setSelectedAction(action):
+	selectedAction = action
+	actionSelected.emit()

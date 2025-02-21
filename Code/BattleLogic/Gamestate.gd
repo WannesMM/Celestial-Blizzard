@@ -56,11 +56,11 @@ func executeRounds():
 		allyState.gainGold(rollGold())
 		enemyState.gainGold(rollGold())
 	
-	#while allyState.roundEnded == false and enemyState.roundEnded == false:
-		#executeTurns()
+	while allyState.roundEnded == false and enemyState.roundEnded == false:
+		await executeTurns()
 		
 func executeTurns():
-	getActivePlayer().chooseAction()
+	await getActivePlayer().chooseAction()
 	
 func playCard(cardLogic: CardLogic, layout = null):
 	getActivePlayer().playCard(cardLogic.getCard(), layout)

@@ -32,6 +32,14 @@ func setActive(x: bool):
 func playableOn():
 	return [cardOwner.characterCards.collision]
 
+func NA():
+	print("Default NA has been executed")
+	
+func SA():
+	print("Default SA has been executed")
+	
+func CA():
+	print("Default CA has been executed")
 #---------------------------------------------------------------------------------------------------
 
 func getMaxHP():
