@@ -195,3 +195,6 @@ func addRelatedCard(card: Card):
 	
 func removeRelatedCard(card: Card):
 	relatedCards.erase(card)
+
+func setLabel1(text: String):
+	$Label.text = text

@@ -55,3 +55,16 @@ func getSP2Name() -> String:
 	
 func getSP2Description() -> String:
 	return "When an area card is destroyed, gain 2 stacks of golden breath"
+
+# BattleFunctionality ----------------------------------------------------------
+
+var goldenBreath: int = 0
+
+func SA():
+	if(goldenBreath != 0):
+		Burning.new(self)
+		
+	
+	
+	
+	

@@ -6,6 +6,10 @@ class_name BattleResources
 
 var gold: int = 0
 
+func setGold(amt: int):
+	gold = amt
+	updateDisplay()
+
 func gainGold(amt: int):
 	gold = gold + amt
 	updateDisplay()

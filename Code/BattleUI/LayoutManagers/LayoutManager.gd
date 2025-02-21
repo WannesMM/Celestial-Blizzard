@@ -190,6 +190,9 @@ func getSelected():
 func setDeselectWhenClickEmpty(x):
 	deselectWhenClickEmpty = x
 	
+func wait(time: float):
+	await get_tree().create_timer(time).timeout
+	
 # BattleManager ------------------------------------------------------------------------------------
 
 #Executes at the start of the battle. This is an abstract function.

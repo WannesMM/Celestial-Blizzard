@@ -2,13 +2,15 @@ extends Node
 
 class_name GameState
 
-var layoutManager: LayoutManager = null
+var layoutManager: BattleManager = null
 
 var allyState: PlayerState
 var enemyState: PlayerState
 
 var roundCounter: int = 0
 var turnCounter: int = 0
+
+var winner: PlayerState = null
 
 func _init(allyDeck: Deck, allyInput: InputHandler, allyCharacterLayout: CardLayout, allyHandLayout: CardLayout, allyAreaSupport: AreaSupportLayout, allyEntity: EntityLayout,
 enemyDeck: Deck, enemyInput: InputHandler, enemyCharacterLayout: CardLayout, enemyHandLayout: CardLayout, enemyAreaSupport: AreaSupportLayout, enemyEntity: EntityLayout, battleResources: BattleRightPanel,
@@ -17,12 +19,15 @@ layout: LayoutManager) -> void:
 	
 	allyState = PlayerState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity, battleResources.allyResources, self)
 	enemyState = PlayerState.new(enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity, battleResources.enemyResources, self)
-	
+	allyState.allied = true
+	allyState.opponent = enemyState
+	enemyState.allied = false
+	enemyState.opponent = allyState
 	startGame()
 	
 # GameLogic ----------------------------------------------------------------------------------------
 
-var allyTurn: bool = true
+var activePlayer: PlayerState
 
 func startGame():
 	allyState.getDeck().createStack(allyState)
@@ -50,29 +55,58 @@ func startGame():
 	executeRounds()
 	
 func executeRounds():
-	allyState.drawCards(2)
-	enemyState.drawCards(2)
-	if roundCounter != 0:
-		allyState.gainGold(rollGold())
-		enemyState.gainGold(rollGold())
-	
-	while allyState.roundEnded == false and enemyState.roundEnded == false:
-		await executeTurns()
+	while winner == null:
 		
-func executeTurns():
-	await getActivePlayer().chooseAction()
+		#Initialise Round
+		roundCounter += 1
+		turnCounter = 0
+		layoutManager.message("Round " + str(roundCounter))
+		allyState.roundEnded = false
+		allyState.drawCards(2)
+		enemyState.roundEnded = false
+		enemyState.drawCards(2)
+		if roundCounter != 1:
+			allyState.setGold(rollGold())
+			enemyState.setGold(rollGold())
+		else:
+			var number = generateRandom(1,1,2)
+			if number == 1:
+				activePlayer = allyState
+			elif number == 2:
+				activePlayer = enemyState
+			else:
+				push_error("Random genereert een onmogelijk getal")
+		
+		await layoutManager.wait(2)
+		
+		#Turnloop
+		while (allyState.roundEnded == false) or (enemyState.roundEnded == false):
+			await executeTurn()
+			nextActivePlayer()
+		
+func executeTurn():
+	turnCounter += 1
+	layoutManager.message("Turn " + str(turnCounter))
+	
+	await layoutManager.wait(2)
+	
+	if activePlayer.allied:
+		layoutManager.message("Your turn")
+	else:
+		layoutManager.message("Enemy turn")
+	
+	while getActivePlayer().turnEnded == false:
+		await getActivePlayer().chooseAction()
+	activePlayer.turnEnded = false
 	
 func playCard(cardLogic: CardLogic, layout = null):
 	getActivePlayer().playCard(cardLogic.getCard(), layout)
 	
 func getActivePlayer():
-	if allyTurn:
-		return allyState
-	else:
-		return enemyState
+	return activePlayer
 	
 func rollGold():
-	return generateRandom(2, 1, 8, "Normal")
+	return generateRandom(2, 1, 8, "Advantage")
 	
 func generateRandom(x: int, min_value: int, max_value: int, mode: String = "Normal") -> int:
 	if x <= 0:
@@ -89,6 +123,13 @@ func generateRandom(x: int, min_value: int, max_value: int, mode: String = "Norm
 		"Disadvantage":
 			return rolls.min()  # Return the lowest roll
 	return rolls[0]  # Default case (shouldn't happen)
+	
+func nextActivePlayer():
+	if !activePlayer.opponent.roundEnded:
+		activePlayer = activePlayer.opponent	
+	
+func damage(attacker: CardLogic, dmg: int, defender: Card):
+	defender.cardLogic.receiveDamage(dmg)
 	
 # Getter and Setters -------------------------------------------------------------------------------
 
@@ -109,9 +150,3 @@ func getEnemyState():
 	
 func setEnemyState(state: PlayerState):
 	enemyState = state
-
-func getAllyTurn():
-	return allyTurn
-	
-func setAllyTurn(x: bool):
-	allyTurn = x

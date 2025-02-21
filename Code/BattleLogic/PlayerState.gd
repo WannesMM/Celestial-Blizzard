@@ -18,6 +18,9 @@ var roundEnded: bool = false
 
 var drawPile: Array[CardLogic] = []
 
+var allied: bool
+var opponent: PlayerState
+
 func _init(newDeck: Deck, inputhandler: InputHandler, characterLayout: CardLayout, handLayout: CardLayout, areaSupportLayout: AreaSupportLayout, entityLayout: EntityLayout, battleRes: BattleResources, game: GameState) -> void:
 	deck = newDeck
 	input = inputhandler
@@ -45,15 +48,19 @@ func chooseAction():
 			playCard(action[1], action[2])
 		"Move":
 			assert(action[1].cardLogic is CharacterCardLogic)
-			match action[2]:
-				"NA":
-					action[1].cardLogic.NA()
-				"SA":
-					action[1].cardLogic.SA()
-				"CA":
-					action[1].cardLogic.CA()
+			if action[1].cardLogic.isPossibleMove(action[0]):
+				match action[2]:
+					"NA":
+						action[1].cardLogic.NA()
+					"SA":
+						action[1].cardLogic.SA()
+					"CA":
+						action[1].cardLogic.CA()
+				setTurnEnded(true)
 		"End Round": 
 			print("this player has ended their round")
+			setTurnEnded(true)
+			setRoundEnded(true)
 
 func playCard(card, layout = null):
 	var cardType = card.getCardLogic().getCardType()
@@ -69,7 +76,6 @@ func playCard(card, layout = null):
 				if layout.getCardLogic().getCardType() == "AreaCard":
 					print("Zou supporter moeten toegevoegd hebben")
 					layout.addRelatedCard(card)
-				
 		"EntityCard":
 			getEntityCards().addCard(card)
 		"EquipmentCard":
@@ -85,6 +91,9 @@ func shuffleDeck():
 func chooseStartingCharacter():
 	input.chooseStartingCharacter()
 	
+func setGold(amt: int):
+	battleResources.setGold(amt)
+	
 func gainGold(amt: int):
 	battleResources.gainGold(amt)
 	
@@ -96,6 +105,9 @@ func setActiveCharacter(card: Card = null):
 		if card in getCharacterCards().addedCards:
 			activeCharacter = card
 			activeCharacter.cardLogic.setActive(true)
+	
+func damage(attacker: CardLogic, dmg: int, defender: Card = opponent.getActiveCharacter()):
+	gameState.damage(attacker, dmg, defender)
 	
 # Getters and Setters ------------------------------------------------------------------------------
 

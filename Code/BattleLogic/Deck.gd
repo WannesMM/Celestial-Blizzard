@@ -46,6 +46,7 @@ func createStack(player: PlayerState):
 	var creator = CardLayout.new()
 	for card in stack:
 		card.setCardOwner(player)
+		card.gameState = player.gameState
 		creator.createCard(card)
 		
 	

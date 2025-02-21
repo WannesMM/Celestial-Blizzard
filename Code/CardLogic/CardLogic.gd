@@ -10,7 +10,9 @@ var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
 var cardCost: int = 1
 var imageLink: String = "Card Unknown"
+
 var cardOwner: PlayerState = null
+var gameState: GameState = null
 
 func _init() -> void:
 	cardConstructor()
@@ -56,3 +58,15 @@ func setCardOwner(player: PlayerState):
 	
 func getCardOwner(player: PlayerState):
 	return cardOwner
+
+# Battle functionality ---------------------------------------------------------
+
+func checkCost(req: int):
+	if req > cardOwner.battleResources.gold:
+		cardOwner.gameState.layoutManager.message("Not enough Gold")
+		return false
+	else:
+		return true
+
+func attack(dmg: int):
+	cardOwner.damage(self, dmg)

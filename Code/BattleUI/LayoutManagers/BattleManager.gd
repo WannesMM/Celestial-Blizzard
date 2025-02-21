@@ -60,7 +60,7 @@ var currentMessageChooseCard
 var currentInput
 
 func selectAction(input):
-	if gameState.getAllyTurn():
+	if gameState.getActivePlayer().allied:
 		allowAction = 1
 	else:
 		allowAction = 2

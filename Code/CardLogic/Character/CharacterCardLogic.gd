@@ -15,6 +15,7 @@ var CAcost: int = 3
 var CAenergyCost: int = 3
 
 var active: bool = false
+var defeated: bool = false
 
 func cardConstructor():
 	cardType = "CharacterCard"
@@ -33,17 +34,39 @@ func playableOn():
 	return [cardOwner.characterCards.collision]
 
 func NA():
-	print("Default NA has been executed")
+	if checkCost(NAdmg):
+		attack(NAdmg)
 	
 func SA():
 	print("Default SA has been executed")
 	
 func CA():
 	print("Default CA has been executed")
+	
+func receiveDamage(amt: int):
+	setHP(HP - amt)
+	
+func defeatCard(card = self):
+	card.defeated = true
+	
+func isPossibleMove(move: String):
+	if active:
+		return true
+	gameState.layoutManager.message("This character is not currently active")
+	return false
+	
 #---------------------------------------------------------------------------------------------------
 
 func getMaxHP():
 	return maxHP
+
+func setHP(amt: int):
+	if amt <= 0:
+		HP = 0
+		defeatCard(self)
+	else:
+		HP = amt
+	card.setLabel1(str(HP))
 
 func getHP():
 	return HP
