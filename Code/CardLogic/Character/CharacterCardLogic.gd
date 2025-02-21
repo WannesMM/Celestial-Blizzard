@@ -26,13 +26,8 @@ func characterCardConstructor():
 # Actual Functionality -----------------------------------------------------------------------------
 
 func setActive(x: bool):
-	pass
-	#active = x
-	#card.setActive(x)
-	#if active:
-		#card.activeAnimation()
-	#else:
-		#card.disableActiveAnimation
+	active = x
+	card.setActive(x)
 
 func playableOn():
 	return [cardOwner.characterCards.collision]

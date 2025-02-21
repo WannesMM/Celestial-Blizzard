@@ -10,7 +10,7 @@ var cardHand: CardLayout = null
 var areaSupportCards: AreaSupportLayout = null
 var entityCards: EntityLayout = null
 
-var activeCharacter: CharacterCardLogic = null
+var activeCharacter: Card = null
 var battleResources: BattleResources = null
 var deck: Deck = null
 var turnEnded: bool = false
@@ -74,11 +74,11 @@ func gainGold(amt: int):
 func getCharacterCardsLogic():
 	return input.convertToCardLogic(characterCards.getAddedCards())
 	
-func setActiveCharacter(card: CardLogic = null):
-	if card == null:
-		if card in getCharacterCardsLogic():
+func setActiveCharacter(card: Card = null):
+	if card != null:
+		if card in getCharacterCards().addedCards:
 			activeCharacter = card
-			activeCharacter.setActive(true)
+			activeCharacter.cardLogic.setActive(true)
 	
 # Getters and Setters ------------------------------------------------------------------------------
 

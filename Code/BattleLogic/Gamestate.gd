@@ -42,6 +42,8 @@ func startGame():
 	
 	allyState.playCard(allyCard)
 	enemyState.playCard(enemyCard)
+	allyState.setActiveCharacter(allyCard)
+	enemyState.setActiveCharacter(enemyCard)
 	
 	allyState.drawCards(3)
 	enemyState.drawCards(3)

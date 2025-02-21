@@ -79,6 +79,9 @@ func arrangeCard(card: Card):
 	card.setBasePosition(arrangedPos)
 	card.animatePosition(arrangedPos, 0.5)
 	arrangeRelatedCard(card, arrangedPos)
+	if card.cardLogic is CharacterCardLogic:
+		if card.cardLogic.active:
+			card.moveCardUpSelect(card.ACTIVECHARMOVEMENT)
 	#print("Arranged " + card.getCardLogic().getCardName() + " in layout: " + CARD_LAYOUT_TYPE + " to position x:" + str(card.position.x) + " y" + str(card.position.y))
 	
 func arrangeCards():
