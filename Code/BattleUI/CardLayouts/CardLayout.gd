@@ -75,7 +75,7 @@ func arrangeCard(card: Card):
 	var cardOffset = ARRAY_WIDTH / (numCards + 1)
 	var arrangedPos = Vector2(arrayStart + ((index + 1) * cardOffset), 0)
 	
-	setCollision(card)
+	card.collision1()
 	card.setBasePosition(arrangedPos)
 	card.animatePosition(arrangedPos, 0.5)
 	arrangeRelatedCard(card, arrangedPos)

@@ -6,3 +6,9 @@ class_name CardCollision
 
 func collisionConstructor():
 	cardScene.collision = self
+
+func disableCollision():
+	cardScene.collision1()
+	
+func enableCollision():
+	cardScene.collision1and2()

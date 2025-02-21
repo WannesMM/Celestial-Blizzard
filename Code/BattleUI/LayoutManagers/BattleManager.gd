@@ -107,8 +107,10 @@ func enableAllInput():
 
 func highlightCollider(collider):
 	for coll in collider:
-				coll.highlightRect()
+		coll.highlightRect()
+		coll.enableCollision()
 	
 func undoHighlightCollider(collider):
 	for coll in collider:
-				coll.undoHighlightRect()
+		coll.undoHighlightRect()
+		coll.disableCollision()
