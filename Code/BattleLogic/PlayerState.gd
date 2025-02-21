@@ -38,6 +38,9 @@ func setStartingHand():
 	var arr = deck.getAreaCards() + deck.getEnitityCards() + deck.getEquipmentCards() + deck.getSupporterCards() + deck.getEventCards()
 	cardHand.addCards(arr)
 
+func chooseAction():
+	var action = getInputhandler().chooseAction()
+
 func playCard(card, layout = null):
 	var cardType = card.getCardLogic().getCardType()
 	match cardType:

@@ -32,11 +32,11 @@ func startGame():
 	allyState.gainGold(8)
 	enemyState.gainGold(8)
 	
-	var allyCards =  await allyState.getInputhandler().selectCards(allyState.getDeck().stackGetCharacters(), 1)
+	var allyCards =  await allyState.getInputhandler().selectCards(allyState.getDeck().stackGetCharacters(), 1, "Select ally character")
 	var allyCard = allyCards[0]
 	allyState.getDeck().stackRemoveCard(allyCard.getCardLogic())
 	
-	var enemyCards = await enemyState.getInputhandler().selectCards(enemyState.getDeck().getCharacterCards(), 1)
+	var enemyCards = await enemyState.getInputhandler().selectCards(enemyState.getDeck().getCharacterCards(), 1, "Select enemy character")
 	var enemyCard = enemyCards[0]
 	enemyState.getDeck().stackRemoveCard(enemyCard.getCardLogic())
 	
@@ -55,6 +55,12 @@ func executeRounds():
 	if roundCounter != 0:
 		allyState.gainGold(rollGold())
 		enemyState.gainGold(rollGold())
+	
+	#while allyState.roundEnded == false and enemyState.roundEnded == false:
+		#executeTurns()
+		
+func executeTurns():
+	getActivePlayer().chooseAction()
 	
 func playCard(cardLogic: CardLogic, layout = null):
 	getActivePlayer().playCard(cardLogic.getCard(), layout)

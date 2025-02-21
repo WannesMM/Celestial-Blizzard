@@ -46,42 +46,67 @@ func initializeBattle():
 	
 # Code for inputbehaviour --------------------------------------------------------------------------
 
+#0 --> allow no action, 1 --> allow ally action, 2 --> allow enemy action
+var allowAction = 0
+
 @export var messageChooseCardScene: PackedScene
+var currentMessageChooseCard
+
+@export var messageScene: PackedScene
 var currentMessage
 
 #Extended modified
-func draggedIntoLayout(layout, card):
-	gameState.playCard(card.getCardLogic(),layout)
+func draggedIntoLayout(layout, card: Card):
+	if checkActionAllowed(layout, card):
+		gameState.playCard(card.getCardLogic(),layout)
+	else:
+		card.animatePosition(card.getBasePosition())
+		message("It is not your turn")
+
+func checkActionAllowed(layout, card):
+	if (allowAction == 1 and card.getLayout().allied == true) || (allowAction == 2 and card.getLayout().allied == false):
+		return true
+	return false
 
 func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText = "Confirm"):
-	currentMessage = messageChooseCardScene.instantiate()
-	currentMessage.setMessage(message)
-	currentMessage.setButtonText(buttonText)
-	currentMessage.setInput(input)
+	currentMessageChooseCard = messageChooseCardScene.instantiate()
+	currentMessageChooseCard.setMessage(message)
+	currentMessageChooseCard.setButtonText(buttonText)
+	currentMessageChooseCard.setInput(input)
 	disableAllInput()
 	setMultiselect(amt)
 	setDeselectWhenClickEmpty(false)
 	
-	var layout = currentMessage.get_node("SelectLayout")  # Replace with actual name
+	var layout = currentMessageChooseCard.get_node("SelectLayout")  # Replace with actual name
 	layout.modulate.a = 0
 	
-	add_child(currentMessage)
-	move_child(currentMessage, get_child_count() - 2)
+	add_child(currentMessageChooseCard)
+	move_child(currentMessageChooseCard, get_child_count() - 2)
 	
-	currentMessage.addCards(cards)
+	currentMessageChooseCard.addCards(cards)
 	
 	layout.fadeIn()
 	
 func removeCurrentMessage():
-	var layout = currentMessage.get_node("SelectLayout")
+	var layout = currentMessageChooseCard.get_node("SelectLayout")
 	layout.fadeOut()
 	
 	setMultiselect(1)
-	currentMessage.removeAllCards()
-	remove_child(currentMessage)
+	currentMessageChooseCard.removeAllCards()
+	remove_child(currentMessageChooseCard)
 	deselectAllCards()
 	
 	enableAllInput()
+	
+func message(text = "message"):
+	currentMessage = messageScene.instantiate()
+	currentMessage.setMessage(text)
+	
+	add_child(currentMessage)
+	
+	currentMessage.fadeInOut()
+	
+	#remove_child(currentMessage)
 	
 func disableAllInput():
 	allyCharacterLayout.disableInput()

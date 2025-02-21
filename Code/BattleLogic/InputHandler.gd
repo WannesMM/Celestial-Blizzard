@@ -7,7 +7,10 @@ var layoutManager: LayoutManager = null
 func _init(layoutMan: LayoutManager) -> void:
 	layoutManager = layoutMan
 	
-func selectCards(cards, amount):
+func selectCards(cards, amount, message):
+	pass
+
+func chooseAction():
 	pass
 
 func convertToCardLogic(cards):

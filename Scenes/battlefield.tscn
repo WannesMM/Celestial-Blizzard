@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg4dd53dv5m3"]
+[gd_scene load_steps=14 format=3 uid="uid://dg4dd53dv5m3"]
 
 [ext_resource type="Script" path="res://Code/BattleUI/LayoutManagers/BattleManager.gd" id="1_6n5sf"]
 [ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/CharacterCardLayout.tscn" id="1_n8f8j"]
 [ext_resource type="PackedScene" uid="uid://bk8j8jr4ty6m7" path="res://Scenes/AreaSupportLayout.tscn" id="2_2blwc"]
 [ext_resource type="PackedScene" uid="uid://nguo3bhhp25g" path="res://Scenes/AllyCardHandLayout.tscn" id="2_yoii6"]
+[ext_resource type="PackedScene" uid="uid://f2nq33vsa7ds" path="res://Scenes/Message.tscn" id="3_5daux"]
 [ext_resource type="PackedScene" uid="uid://cb7oa87cih75h" path="res://Scenes/BattleBackground.tscn" id="3_gtcky"]
 [ext_resource type="PackedScene" uid="uid://b01lkl2l8uhmq" path="res://Scenes/right_slider.tscn" id="3_i0k80"]
 [ext_resource type="PackedScene" uid="uid://btqnrpqo1cmdj" path="res://Scenes/EntityLayout.tscn" id="3_yi7qp"]
@@ -25,6 +26,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_6n5sf")
 messageChooseCardScene = ExtResource("8_1eiu0")
+messageScene = ExtResource("3_5daux")
 
 [node name="BattleBackground" parent="." instance=ExtResource("3_gtcky")]
 layout_mode = 1
