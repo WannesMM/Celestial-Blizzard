@@ -23,3 +23,4 @@ func fadeInOut(duration = 1):
 	sizeTween.kill
 	tween.kill
 	self.size = Vector2(1,1)
+	return true

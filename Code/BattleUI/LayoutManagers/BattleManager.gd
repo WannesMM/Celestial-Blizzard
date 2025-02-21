@@ -53,7 +53,6 @@ var allowAction = 0
 var currentMessageChooseCard
 
 @export var messageScene: PackedScene
-var currentMessage
 
 #Extended modified
 func draggedIntoLayout(layout, card: Card):
@@ -99,14 +98,15 @@ func removeCurrentMessage():
 	enableAllInput()
 	
 func message(text = "message"):
+	var currentMessage
 	currentMessage = messageScene.instantiate()
 	currentMessage.setMessage(text)
 	
 	add_child(currentMessage)
 	
-	currentMessage.fadeInOut()
+	await currentMessage.fadeInOut()
 	
-	#remove_child(currentMessage)
+	remove_child(currentMessage)
 	
 func disableAllInput():
 	allyCharacterLayout.disableInput()
