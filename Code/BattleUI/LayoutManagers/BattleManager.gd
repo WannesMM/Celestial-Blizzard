@@ -92,6 +92,7 @@ func disableAllInput():
 	enemyHandLayout.disableInput()
 	enemyAreaSupport.disableInput()
 	enemyEntity.disableInput()
+	deselectWhenClickEmpty = false
 	
 func enableAllInput():
 	allyCharacterLayout.enableInput()
@@ -102,6 +103,7 @@ func enableAllInput():
 	enemyHandLayout.enableInput()
 	enemyAreaSupport.enableInput()
 	enemyEntity.enableInput()
+	deselectWhenClickEmpty = true
 
 func highlightCollider(collider):
 	for coll in collider:

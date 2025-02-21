@@ -190,6 +190,7 @@ func addRelatedCard(card: Card):
 	relatedCards.append(card)
 	if currentLayout:
 		currentLayout.addAdditionalCard(card)
+		assert(currentLayout.additionalCards.size() != 0)
 		print("Heeft related card gearrangeerd")
 	
 func removeRelatedCard(card: Card):

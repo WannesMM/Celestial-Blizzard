@@ -89,7 +89,7 @@ func arrangeRelatedCard(card: Card, basePos):
 	if card.relatedCards != []:
 		var i = 1
 		for relatedCard in card.relatedCards:
-			var arrangedPos = basePos + (i * Vector2(0,-50))
+			var arrangedPos = basePos + (i * Vector2(0,-25))
 			relatedCard.setBasePosition(arrangedPos)
 			relatedCard.animatePosition(arrangedPos, 0.5)
 			i = i + 1
