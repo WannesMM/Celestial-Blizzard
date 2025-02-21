@@ -29,4 +29,10 @@ func setInput(x):
 	input = x
 
 func _on_button_pressed() -> void:
-	input.setSelectedCards()
+	if input.layoutManager.selectedCards.size() != 0:
+		input.setSelectedCards()
+	else:
+		if input.layoutManager.multiselect == 1:
+			input.layoutManager.message("Choose " + str(input.layoutManager.multiselect) + " card")
+		else:
+			input.layoutManager.message("Choose " + str(input.layoutManager.multiselect) + " cards")
