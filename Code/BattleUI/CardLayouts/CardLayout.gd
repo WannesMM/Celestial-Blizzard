@@ -100,9 +100,10 @@ func arrangeRelatedCard(card: Card, basePos):
 func returnToBasePosition(card):
 	card.position = card.getBasePosition()
 
+var cardScene: PackedScene = preload("res://Scenes/card.tscn") # Preload at game start
+
 #Create a new cardScene with given card logic and add it to this layout
 func createCard(cardLogic):
-	var cardScene = load("res://Scenes/card.tscn")
 	if cardScene is PackedScene: 
 		var newCard = cardScene.instantiate() 
 		newCard.setCard(cardLogic)

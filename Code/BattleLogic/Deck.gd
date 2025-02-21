@@ -43,8 +43,11 @@ var stack: Array[CardLogic] = []
 
 func createStack(player: PlayerState):
 	stack = cards.duplicate(true)
+	var creator = CardLayout.new()
 	for card in stack:
 		card.setCardOwner(player)
+		creator.createCard(card)
+		
 	
 func shuffleStack():
 	stack.shuffle()
@@ -67,7 +70,7 @@ func stackGetCharacters():
 		if card.getCardType() == "CharacterCard":
 			toReturn.append(card)
 	return toReturn
-	
+
 #Sets which playerState uses this deck this game
 	
 # Getter and Setters -----------------------------------------------------------
