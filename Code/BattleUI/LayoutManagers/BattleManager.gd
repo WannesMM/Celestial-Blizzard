@@ -36,16 +36,21 @@ func initializeBattle():
 	rightSlider = $"Right Slider"
 	rightSlider.layoutManager = self
 	
-	var test = BattleTest.new()
-	
-	allyDeck = test.burningDeck
-	enemyDeck = test.hatsuneMikuDeck
 	allyInput = PlayerInput.new(self)
 	enemyInput = PlayerInput.new(self)
 	
 	gameState = GameState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity,
 	enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity,
 	battleResources, self)
+	
+func initialiseDeck():
+	var test = BattleTest.new()
+	
+	allyDeck = test.burningDeck
+	enemyDeck = test.hatsuneMikuDeck
+	
+	allyDeck.createStack()
+	enemyDeck.createStack()
 	
 # Code for inputbehaviour --------------------------------------------------------------------------
 

@@ -41,15 +41,29 @@ func updateCardArrays():
 
 var stack: Array[CardLogic] = []
 
-func createStack(player: PlayerState):
+signal stack_created
+
+func createStack() -> void:
 	stack = cards.duplicate(true)
 	var creator = CardLayout.new()
+	process_cards_async(creator)
+
+# Asynchronous card processing
+func process_cards_async(creator: CardLayout) -> void:
+	for card in stack:
+		await _yield_frame()  # Custom frame-yield workaround
+		creator.createCard(card)
+	stack_created.emit()
+
+# Manual frame-yielding without relying on scene tree
+func _yield_frame():
+	return await Engine.get_main_loop().process_frame
+
+func assignOwner(player: PlayerState):
 	for card in stack:
 		card.setCardOwner(player)
 		card.gameState = player.gameState
-		creator.createCard(card)
-		
-	
+
 func shuffleStack():
 	stack.shuffle()
 	

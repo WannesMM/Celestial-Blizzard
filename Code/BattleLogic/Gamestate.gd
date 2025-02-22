@@ -30,8 +30,8 @@ layout: LayoutManager) -> void:
 var activePlayer: PlayerState
 
 func startGame():
-	allyState.getDeck().createStack(allyState)
-	enemyState.getDeck().createStack(enemyState)
+	allyState.getDeck().assignOwner(allyState)
+	enemyState.getDeck().assignOwner(enemyState)
 	allyState.shuffleDeck()
 	enemyState.shuffleDeck()
 	allyState.gainGold(8)
