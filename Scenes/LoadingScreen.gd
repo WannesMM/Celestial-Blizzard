@@ -15,4 +15,6 @@ func _process(delta: float) -> void:
 	if progress[0] == 1:
 		var scene: PackedScene = ResourceLoader.load_threaded_get(nextScene)
 		scene.instantiate()
+		await GlobalSignals.loadComplete
+		get_tree().change_scene_to_packed(scene)
 	

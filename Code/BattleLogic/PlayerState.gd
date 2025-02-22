@@ -104,6 +104,7 @@ func setActiveCharacter(card: Card = null):
 	if card != null:
 		if card in getCharacterCards().addedCards:
 			activeCharacter = card
+			assert(activeCharacter == activeCharacter.cardLogic.card)
 			activeCharacter.cardLogic.setActive(true)
 	
 func damage(attacker: CardLogic, dmg: int, defender: Card = opponent.getActiveCharacter()):

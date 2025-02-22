@@ -103,9 +103,9 @@ func returnToBasePosition(card):
 var cardScene: PackedScene = preload("res://Scenes/card.tscn") # Preload at game start
 
 #Create a new cardScene with given card logic and add it to this layout
-func createCard(cardLogic):
+func createCard(cardLogic: CardLogic):
 	if cardScene is PackedScene: 
-		var newCard = cardScene.instantiate() 
+		var newCard: Card = cardScene.instantiate() 
 		newCard.setCard(cardLogic)
 		newCard.assignDefaultScale(Vector2(CARD_SCALE,CARD_SCALE))
 		connectSignal(newCard)

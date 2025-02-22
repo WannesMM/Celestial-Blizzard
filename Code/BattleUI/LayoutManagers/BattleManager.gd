@@ -39,6 +39,8 @@ func initializeBattle():
 	allyInput = PlayerInput.new(self)
 	enemyInput = PlayerInput.new(self)
 	
+	#print("Ready")
+	#print(allyDeck)
 	gameState = GameState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity,
 	enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity,
 	battleResources, self)
@@ -51,6 +53,8 @@ func initialiseDeck():
 	
 	allyDeck.createStack()
 	enemyDeck.createStack()
+	#print("Init")
+	#print(allyDeck)
 	
 # Code for inputbehaviour --------------------------------------------------------------------------
 

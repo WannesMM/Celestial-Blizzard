@@ -151,9 +151,11 @@ var cardLogic: CardLogic = null
 
 func setCard(card: CardLogic):
 	cardLogic = card
+	cardLogic.setCard(self)
+	assert(self == self.cardLogic.card)
 	loadCardImage()
 	generateShaderColor()
-	cardLogic.setCard(self)
+	
 	
 func getCardLogic():
 	return cardLogic

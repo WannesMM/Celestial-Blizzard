@@ -41,8 +41,6 @@ func updateCardArrays():
 
 var stack: Array[CardLogic] = []
 
-signal stack_created
-
 func createStack() -> void:
 	stack = cards.duplicate(true)
 	var creator = CardLayout.new()
@@ -53,7 +51,10 @@ func process_cards_async(creator: CardLayout) -> void:
 	for card in stack:
 		await _yield_frame()  # Custom frame-yield workaround
 		creator.createCard(card)
-	stack_created.emit()
+		assert(card == card.card.cardLogic)
+		assert(card.card != null)
+	print("Deck fully loaded")
+	GlobalSignals.loadComplete.emit()
 
 # Manual frame-yielding without relying on scene tree
 func _yield_frame():
