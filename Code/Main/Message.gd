@@ -15,12 +15,12 @@ func fadeInOut(duration = 1):
 	sizeTween.tween_property($Node2D, "scale", Vector2(1.15,1.15), duration*2)
 	tween.tween_property(self, "modulate:a", 1.0, duration)  # Fade to full opacity
 	await tween.finished
-	tween.kill
+	tween.kill()
 	
 	tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, duration)
 	await tween.finished
-	sizeTween.kill
-	tween.kill
+	sizeTween.kill()
+	tween.kill()
 	self.size = Vector2(1,1)
 	return true

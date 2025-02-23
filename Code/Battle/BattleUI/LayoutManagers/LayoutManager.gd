@@ -21,7 +21,6 @@ var selectedCards = []
 var multiselect: int = 1
 var deselectWhenClickEmpty = true
 
-
 func _ready():
 	screenSize = get_viewport_rect().size
 	initializeBattle()
@@ -83,10 +82,16 @@ func click():
 	else:
 		clickEmpty()
 
-func clickOnCard(card):
+func clickOnCard(card: Card):
 	card.getLayout().onClick(card)
+	if selectedCards.size() == 1:
+		if card.currentLayout is CharacterCardLayout and card == selectedCards[0]:
+			characterCardSwitch(card)
 	if card.getLayout().getSelectable():
 		selectCard(card)
+
+func characterCardSwitch(card):
+	pass
 
 func clickEmpty():
 	if deselectWhenClickEmpty:
@@ -130,7 +135,7 @@ func cardFollowMouse(delta):
 		#cardBeingDragged.global_position = vect
 
 #This selects a card.
-func selectCard(card):
+func selectCard(card: Card):
 	if card in selectedCards:
 		undoSelect(card)
 		closeCardInformation()
@@ -159,7 +164,8 @@ func undoSelect(card):
 		if card.getLayout().CARD_LAYOUT_TYPE != "CharacterCardLayout":
 			card.moveCardDownSelect()
 	selectedCards.erase(card)
-	
+	if card.currentLayout is CharacterCardLayout:
+		card.stopSwitchAnimation()
 	
 #All the animations for selecting
 func highlightSelect(card):
@@ -176,9 +182,11 @@ func highlightSelect(card):
 func closeCardInformation():
 	$"Right Slider".closeCardInformation()
 
-func displayCardInformation(card):
+func displayCardInformation(card: Card):
 	if card.getLayout().getShowInformation():
 		$"Right Slider".displayCardInformation(card)
+	if card.currentLayout is CharacterCardLayout and !card.cardLogic.active:
+		card.playSwitchAnimation()
 
 func setMultiselect(x):
 	deselectAllCards()

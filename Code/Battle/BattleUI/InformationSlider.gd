@@ -7,10 +7,6 @@ var currentCard: Card
 func _ready() -> void:
 	visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func displayCardInformation(card):
 	currentCard = card
 	var logic = card.getCardLogic()

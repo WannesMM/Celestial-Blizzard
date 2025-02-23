@@ -48,6 +48,7 @@ func playAudio(track: String, channel: int, volume: float = 0.0):
 		channelInstance.stream = load(track)
 		channelInstance.volume_db = volume
 		channelInstance.play()
+		fadeVolume( volume,channel,1.5)
 
 func fadeVolume(volume: float, channel: int, duration: float = 1.0):
 	var volumeTween: Tween = create_tween()

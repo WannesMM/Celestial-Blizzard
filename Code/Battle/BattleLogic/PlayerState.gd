@@ -61,6 +61,12 @@ func chooseAction():
 			print("this player has ended their round")
 			setTurnEnded(true)
 			setRoundEnded(true)
+		"Switch":
+			assert(action[1].cardLogic is CharacterCardLogic)
+			if(!action[1].cardLogic.active):
+				setActiveCharacter(action[1])
+				setTurnEnded(true)
+			
 
 func playCard(card, layout = null):
 	var cardType = card.getCardLogic().getCardType()
@@ -102,7 +108,9 @@ func getCharacterCardsLogic():
 	
 func setActiveCharacter(card: Card = null):
 	if card != null:
-		if card in getCharacterCards().addedCards:
+		if card in getCharacterCards().addedCards and card != activeCharacter:
+			if activeCharacter != null:
+				activeCharacter.cardLogic.setActive(false)
 			activeCharacter = card
 			assert(activeCharacter == activeCharacter.cardLogic.card)
 			activeCharacter.cardLogic.setActive(true)

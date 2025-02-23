@@ -23,7 +23,7 @@ Random="*res://Code/Random.gd"
 
 [display]
 
-window/size/mode=3
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0

@@ -97,6 +97,12 @@ func endRound():
 		currentInput.setSelectedAction(["End Round"])
 	else:
 		message("It is not your turn")
+		
+func characterCardSwitch(card):
+	if checkActionAllowed(card):
+		currentInput.setSelectedAction(["Switch", card])
+	else:
+		message("It is not your turn")
 
 func checkActionAllowed(card):
 	if (allowAction == 1 and card.getLayout().allied == true) || (allowAction == 2 and card.getLayout().allied == false):

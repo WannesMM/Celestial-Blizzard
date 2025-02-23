@@ -145,6 +145,14 @@ func collision1and2():
 func collision1():
 	$CardPlacementCollision/Area2D.collision_layer = 1 << 0
 
+func playSwitchAnimation():
+	$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D.play("CharacterSwitch")
+
+func stopSwitchAnimation():
+	$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D.stop()
+
 #---------------------------------------------------------------------------------------------------------------------
 
 var cardLogic: CardLogic = null
