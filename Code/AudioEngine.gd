@@ -81,7 +81,7 @@ func playTitleScreenMusic(trackNumber, channel: int = 1):
 	playAudio(loadTitleMusicPath(trackNumber), channel)
 
 func loadSFXPath(name: String):
-	return "res://assets/Audio/Sound effects/" + str(name) + ".mp3"
+	return "res://assets/Audio/Sound effects/" + str(name) + ".wav"
 
 func playSFX(name: String, channel: int = 5):
 	playAudio(loadSFXPath(name),channel)

@@ -4,6 +4,8 @@ var battleFieldPath: String = "res://Scenes/battlefield.tscn"
 @export var loadingScene: PackedScene
 
 func _ready() -> void:
+	modulate.v = 0
+	$PointLight2D4.energy = 0
 	AudioEngine.playTitleScreenMusic(Random.generateRandom(1,1,4))
 	AudioEngine.playAmbience("Wind",3,4)
 	Random.wait(1)
