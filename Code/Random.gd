@@ -15,3 +15,6 @@ func generateRandom(x: int, min_value: int, max_value: int, mode: String = "Norm
 		"Disadvantage":
 			return rolls.min()  # Return the lowest roll
 	return rolls[0]  # Default case (shouldn't happen)
+
+func wait(time: float):
+	await get_tree().create_timer(time).timeout

@@ -32,6 +32,7 @@ var activePlayer: PlayerState: set = setActivePlayer
 func startGame():
 	
 	print("Game start")
+	AudioEngine.playAmbience("Wind",3,2)
 	
 	allyState.getDeck().assignOwner(allyState)
 	enemyState.getDeck().assignOwner(enemyState)
@@ -59,7 +60,7 @@ func startGame():
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
 	
-	AudioEngine.playBattleMusic(1,2)
+	AudioEngine.playBattleMusic(1,1)
 	executeRounds()
 	
 func executeRounds():

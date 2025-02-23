@@ -41,14 +41,25 @@ func getChannel(channel: int):
 		6:
 			return sfx2
 
-func playAudio(track: String, channel: int, volume: float = 0.0):
+func playAudio(track: String, channel: int, volume: float = 0.0, fade: float = 0.0):
 	if !disableAudio:
 		var channelInstance = getChannel(channel)
 		await fadeVolume(-80,channel,1.5)
 		channelInstance.stream = load(track)
-		channelInstance.volume_db = volume
 		channelInstance.play()
-		fadeVolume( volume,channel,1.5)
+		print("start fade")
+		await fadeVolume(volume,channel,fade)
+		print("fade complete")
+		
+func stopAudio(channel):
+	var channelInstance = getChannel(channel)
+	await fadeVolume(-80,channel,1.5)
+	channelInstance.stream = null
+	fadeVolume(0,channel,0)
+
+func stopAllAudio():
+	for i in [1,2,3,4,5,6]:
+		stopAudio(i)
 
 func fadeVolume(volume: float, channel: int, duration: float = 1.0):
 	var volumeTween: Tween = create_tween()
@@ -78,5 +89,5 @@ func playSFX(name: String, channel: int = 5):
 func loadAmbiencePath(name: String):
 	return "res://assets/Audio/Ambience/" + str(name) + ".mp3"
 
-func playAmbience(name: String, channel: int = 3):
-	playAudio(loadAmbiencePath(name),channel)
+func playAmbience(name: String, channel: int = 3, fade: float = 0):
+	playAudio(loadAmbiencePath(name),channel,0, fade)

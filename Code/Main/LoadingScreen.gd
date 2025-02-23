@@ -12,6 +12,7 @@ var value = 0
 
 func _ready() -> void:
 	startLoad()
+	$Control.resetProgress()
 	
 func _process(delta: float) -> void:
 	ResourceLoader.load_threaded_get_status(nextScene,progress)
@@ -20,11 +21,15 @@ func _process(delta: float) -> void:
 		GlobalSignals.loadingBlock.emit()
 	
 func startLoad():
-	progressBar = $ProgressBar
+	var fadeTween = create_tween()
+	fadeTween.tween_property(self, "modulate:v", 1, 1)
+	await fadeTween.finished
+	
+	progressBar = $Control
 	progressBar.resetProgress()
 	ResourceLoader.load_threaded_request(nextScene)
 	
-	progressBar.tweenProgress(50)
+	progressBar.tweenProgress(70)
 	
 	await GlobalSignals.loadingBlock
 	
@@ -43,7 +48,13 @@ func startLoad():
 	print("Deck loading complete")
 	
 	var current_scene = get_tree().current_scene  # Get current scene
-
+	
+	AudioEngine.stopAllAudio()
+	
+	fadeTween = create_tween()
+	fadeTween.tween_property(self, "modulate:v", 0, 1)
+	await fadeTween.finished
+	
 	# Add new scene to tree
 	get_tree().root.add_child(battleField)
 	get_tree().current_scene = battleField

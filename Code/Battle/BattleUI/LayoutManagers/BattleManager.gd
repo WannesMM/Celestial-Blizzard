@@ -118,7 +118,7 @@ func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText =
 	setMultiselect(amt)
 	setDeselectWhenClickEmpty(false)
 	
-	var layout = currentMessageChooseCard.get_node("SelectLayout")  # Replace with actual name
+	var layout: CardLayout = currentMessageChooseCard.get_node("SelectLayout")  # Replace with actual name
 	layout.modulate.a = 0
 	
 	add_child(currentMessageChooseCard)

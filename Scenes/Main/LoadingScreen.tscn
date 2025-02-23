@@ -1,49 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://3antdxruwjk1"]
+[gd_scene load_steps=5 format=3 uid="uid://3antdxruwjk1"]
 
 [ext_resource type="Script" path="res://Code/Main/LoadingScreen.gd" id="1_0lv6y"]
 [ext_resource type="Script" path="res://Code/Main/ProgressBar.gd" id="2_l1hb6"]
+[ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="3_l06gx"]
+[ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="4_edd1k"]
 
 [node name="LoadingScreen" type="Control"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0lv6y")
 
-[node name="Label" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -119.0
-offset_top = -15.0
-offset_right = 119.0
-offset_bottom = 15.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Currently Loading"
+color = Color(0.0383972, 0.0383972, 0.0383972, 1)
 
-[node name="ProgressBar" type="Label" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("2_l1hb6")
+
+[node name="CelestialBlizzardLogo" type="Sprite2D" parent="Control"]
+position = Vector2(-130, -61)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_l06gx")
+
+[node name="ProgressBar" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 25.93
-offset_right = 20.0
-offset_bottom = 40.93
+offset_left = -96.0
+offset_top = -163.0
+offset_right = -14.0
+offset_bottom = -103.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 21
 text = "0"
 horizontal_alignment = 1
-script = ExtResource("2_l1hb6")
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+clip_children = 1
+layout_mode = 0
+offset_left = -1128.0
+offset_top = -62.0
+offset_right = -28.0
+offset_bottom = -59.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/ColorRect2"]
+position = Vector2(1001, -7)
+rotation = 1.5708
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("4_edd1k")

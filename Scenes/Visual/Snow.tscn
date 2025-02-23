@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj623mojtldyj"]
+
+[ext_resource type="Texture2D" uid="uid://bpdwu7n4a5ixx" path="res://assets/Setpieces/snow.png" id="1_vewhf"]
+[ext_resource type="Script" path="res://Scenes/Main/ScrollingTexture.gd" id="2_k1d1i"]
+[ext_resource type="Texture2D" uid="uid://bhpw6t0wxexes" path="res://assets/Setpieces/snow_2.png" id="3_ebr5g"]
+
+[node name="Snow" type="Node2D"]
+
+[node name="Snow" type="Sprite2D" parent="."]
+z_index = 1
+texture_repeat = 2
+position = Vector2(576, 324)
+rotation = 0.16057
+scale = Vector2(2.343, 2.117)
+texture = ExtResource("1_vewhf")
+region_enabled = true
+region_rect = Rect2(0, 0, 732, 416)
+script = ExtResource("2_k1d1i")
+snowMovement = Vector2(0.05, -0.3)
+
+[node name="Snow2" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(576, 324)
+rotation = 0.570723
+scale = Vector2(1.998, 1.805)
+texture = ExtResource("3_ebr5g")
+region_enabled = true
+region_rect = Rect2(0, 0, 732, 416)
+script = ExtResource("2_k1d1i")
+snowMovement = Vector2(0.01, -0.2)
