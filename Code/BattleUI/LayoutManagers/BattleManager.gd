@@ -4,9 +4,9 @@ class_name BattleManager
 
 var gameState: GameState = null
 
-var allyDeck: Deck = null
+var allyDeck: Deck
 var allyInput: InputHandler = null
-var enemyDeck: Deck = null
+var enemyDeck: Deck
 var enemyInput: InputHandler = null
 
 var allyCharacterLayout: CardLayout = null
@@ -52,9 +52,12 @@ func initialiseDeck():
 	enemyDeck = test.hatsuneMikuDeck
 	
 	allyDeck.createStack()
+	await GlobalSignals.deckLoaded
+	print("Deck1 loaded")
 	enemyDeck.createStack()
-	#print("Init")
-	#print(allyDeck)
+	await GlobalSignals.deckLoaded
+	print("Deck2 loaded")
+	GlobalSignals.loadComplete.emit()
 	
 # Code for inputbehaviour --------------------------------------------------------------------------
 

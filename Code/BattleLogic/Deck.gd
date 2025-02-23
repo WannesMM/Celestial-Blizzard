@@ -53,8 +53,7 @@ func process_cards_async(creator: CardLayout) -> void:
 		creator.createCard(card)
 		assert(card == card.card.cardLogic)
 		assert(card.card != null)
-	print("Deck fully loaded")
-	GlobalSignals.loadComplete.emit()
+	GlobalSignals.deckLoaded.emit()
 
 # Manual frame-yielding without relying on scene tree
 func _yield_frame():

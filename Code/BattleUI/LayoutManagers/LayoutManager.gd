@@ -26,9 +26,6 @@ func _ready():
 	screenSize = get_viewport_rect().size
 	initializeBattle()
 	
-func _init() -> void:
-	initialiseDeck()
-	
 func _process(delta: float) -> void:
 	cardFollowMouse(delta)
 	clickAndHoldLogic(delta)
@@ -200,9 +197,6 @@ func wait(time: float):
 
 #Executes at the start of the battle. This is an abstract function.
 func initializeBattle():
-	pass
-
-func initialiseDeck():
 	pass
 
 func highlightCollider(layout):

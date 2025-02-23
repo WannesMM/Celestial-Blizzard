@@ -5,22 +5,52 @@
 
 [node name="Main" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dld6o")
 loadingScene = ExtResource("3_wxhat")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = -277.0
-offset_top = -10.0
-offset_right = -147.0
-offset_bottom = 16.0
-text = "Load battlefield"
+[node name="Battle" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -97.5
+offset_right = 98.5
+offset_bottom = 97.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Battle"
 
-[connection signal="pressed" from="Button" to="." method="loadBattlefield"]
+[node name="Deckbuilder" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_right = 94.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "Deckbuilder"
+
+[node name="Shop" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -50.0
+offset_right = 94.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Shop"
+
+[connection signal="pressed" from="Battle" to="." method="loadBattlefield"]
