@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://domyhnv1haxa2"]
+[gd_scene load_steps=4 format=3 uid="uid://dt7en87xfgel0"]
 
-[ext_resource type="Script" path="res://Code/BattleUI/LayoutManagers/LayoutCollision.gd" id="1_mdl63"]
-[ext_resource type="Texture2D" uid="uid://mw84mjtsjyn7" path="res://assets/User Interface/SelectRect.png" id="2_ml2dm"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/LayoutManagers/LayoutCollision.gd" id="1_ntdmb"]
+[ext_resource type="Texture2D" uid="uid://mw84mjtsjyn7" path="res://assets/User Interface/SelectRect.png" id="2_cesf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x270y"]
-size = Vector2(252, 320.5)
+size = Vector2(533, 190)
 
 [node name="CardPlacementCollision" type="Node2D"]
-script = ExtResource("1_mdl63")
+script = ExtResource("1_ntdmb")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -17,12 +17,12 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_x270y")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Area2D"]
-offset_left = -134.0
-offset_top = -152.0
-offset_right = 3217.0
-offset_bottom = 3611.0
+offset_left = -273.0
+offset_top = -102.0
+offset_right = 6552.0
+offset_bottom = 2424.0
 scale = Vector2(0.08, 0.08)
-texture = ExtResource("2_ml2dm")
+texture = ExtResource("2_cesf2")
 region_rect = Rect2(141, 167, 2198, 3046)
 patch_margin_left = 429
 patch_margin_top = 460

@@ -2,7 +2,7 @@ extends Control
 
 class_name LoadingScreen
 
-var nextScene = "res://Scenes/battlefield.tscn"
+var nextScene = "res://Scenes/Battle/battlefield.tscn"
 
 var progressBar: LoadingBar
 

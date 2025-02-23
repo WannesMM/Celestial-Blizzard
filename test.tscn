@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4o2y4c662gke"]
 
-[ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/CharacterCardLayout.tscn" id="1_1kifm"]
-[ext_resource type="PackedScene" uid="uid://nguo3bhhp25g" path="res://Scenes/AllyCardHandLayout.tscn" id="2_ktuoj"]
+[ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/Battle/CharacterCardLayout.tscn" id="1_1kifm"]
+[ext_resource type="PackedScene" uid="uid://nguo3bhhp25g" path="res://Scenes/Battle/AllyCardHandLayout.tscn" id="2_ktuoj"]
 
 [node name="Node2D" type="Control"]
 layout_mode = 3

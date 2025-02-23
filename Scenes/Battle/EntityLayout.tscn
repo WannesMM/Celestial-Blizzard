@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://btqnrpqo1cmdj"]
 
-[ext_resource type="PackedScene" uid="uid://domyhnv1haxa2" path="res://Scenes/RectanglePlacementCollision.tscn" id="2_kr3sc"]
-[ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/EntityCards/AllyEntityLayout.gd" id="3_fae7e"]
-[ext_resource type="Script" path="res://Code/BattleUI/CardLayouts/EntityCards/EnemyEntityLayout.gd" id="4_nixpl"]
+[ext_resource type="PackedScene" uid="uid://domyhnv1haxa2" path="res://Scenes/Main/RectanglePlacementCollision.tscn" id="2_kr3sc"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/CardLayouts/EntityCards/AllyEntityLayout.gd" id="3_fae7e"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/CardLayouts/EntityCards/EnemyEntityLayout.gd" id="4_nixpl"]
 
 [node name="CardLayout" type="Control"]
 layout_mode = 3

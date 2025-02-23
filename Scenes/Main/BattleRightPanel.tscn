@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://tkvf733tsgu0"]
 
-[ext_resource type="Script" path="res://Code/BattleLogic/BattleResources.gd" id="1_8o418"]
-[ext_resource type="Script" path="res://Code/BattleUI/BattleRightPanel.gd" id="1_esaau"]
+[ext_resource type="Script" path="res://Code/Battle/BattleLogic/BattleResources.gd" id="1_8o418"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/BattleRightPanel.gd" id="1_esaau"]
 
 [node name="BattleRightPanel" type="Control" node_paths=PackedStringArray("allyResources", "enemyResources")]
 layout_mode = 3

@@ -15,4 +15,4 @@ func _ready() -> void:
 
 
 func loadBattlefield() -> void:
-	get_tree().change_scene_to_packed(load("res://Scenes/LoadingScreen.tscn"))
+	get_tree().change_scene_to_packed(load("res://Scenes/Main/LoadingScreen.tscn"))

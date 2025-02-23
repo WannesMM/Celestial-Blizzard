@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b01lkl2l8uhmq"]
 
 [ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="1_asl1y"]
-[ext_resource type="Script" path="res://Code/BattleUI/InformationSlider.gd" id="1_u12db"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/InformationSlider.gd" id="1_u12db"]
 
 [node name="Right Slider" type="Control"]
 layout_mode = 3

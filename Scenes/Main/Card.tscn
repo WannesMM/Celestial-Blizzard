@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://bux5s4cf5dm4m"]
+
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/Card.gd" id="1_3o3o6"]
+[ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/cardNotFound.png" id="2_jyits"]
+[ext_resource type="Texture2D" uid="uid://nn3ccgf1of5e" path="res://assets/Cards/CardAssets/character card template.png" id="3_jfgm8"]
+[ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="4_k5ml6"]
+[ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_6oau7"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/CardHighlight.gd" id="6_f3m15"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/Darken.gd" id="7_aylnp"]
+[ext_resource type="PackedScene" uid="uid://6av56go0gqa2" path="res://Scenes/Main/cardCollision.tscn" id="8_l8wq4"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/Collision/CardCollision.gd" id="9_ho1ab"]
+
+[node name="Card" type="Node2D"]
+position = Vector2(608, 331)
+script = ExtResource("1_3o3o6")
+
+[node name="cardImage" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_jyits")
+
+[node name="CardBorder" type="Sprite2D" parent="."]
+clip_children = 2
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_jfgm8")
+
+[node name="CardShader" type="Sprite2D" parent="CardBorder"]
+scale = Vector2(3.555, 3.555)
+texture = ExtResource("4_k5ml6")
+
+[node name="Highlight" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_6oau7")
+script = ExtResource("6_f3m15")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 35.0
+offset_top = -86.0
+offset_right = 55.0
+offset_bottom = -66.0
+text = "10
+"
+
+[node name="Darken" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_6oau7")
+script = ExtResource("7_aylnp")
+
+[node name="CardPlacementCollision" parent="." node_paths=PackedStringArray("cardScene") instance=ExtResource("8_l8wq4")]
+script = ExtResource("9_ho1ab")
+cardScene = NodePath("..")
+
+[node name="Area2D" parent="CardPlacementCollision" index="0"]
+collision_layer = 1
+collision_mask = 1
+
+[connection signal="mouse_entered" from="CardPlacementCollision/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CardPlacementCollision/Area2D" to="." method="_on_area_2d_mouse_exited"]
+
+[editable path="CardPlacementCollision"]

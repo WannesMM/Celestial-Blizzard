@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://f2nq33vsa7ds"]
 
-[ext_resource type="Script" path="res://Scenes/Message.gd" id="1_u5n4x"]
+[ext_resource type="Script" path="res://Code/Main/Message.gd" id="1_u5n4x"]
 
 [node name="Message" type="Control"]
 z_index = 5
