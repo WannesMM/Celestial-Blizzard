@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalSignals="*res://Code/GlobalSignals.gd"
 AudioEngine="*res://Code/AudioEngine.gd"
+Random="*res://Code/Random.gd"
 
 [display]
 

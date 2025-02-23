@@ -1,5 +1,9 @@
 extends Node
-	
+
+#Settings
+var disableAudio: bool = false
+
+#Channels
 var music1: AudioStreamPlayer
 var music2: AudioStreamPlayer
 var ambience1: AudioStreamPlayer
@@ -20,7 +24,7 @@ func _init() -> void:
 	add_child(ambience1)
 	add_child(ambience2)
 	add_child(sfx1)
-	add_child(sfx1)
+	add_child(sfx2)
 	
 func getChannel(channel: int):
 	match channel:
@@ -37,12 +41,13 @@ func getChannel(channel: int):
 		6:
 			return sfx2
 
-func playAudio(track: String, channel: int):
-	var channelInstance = getChannel(channel)
-	await fadeVolume(-80,channel,0.5)
-	channelInstance.stream = load(track)
-	channelInstance.volume_db = 0
-	channelInstance.play()
+func playAudio(track: String, channel: int, volume: float = 0.0):
+	if !disableAudio:
+		var channelInstance = getChannel(channel)
+		await fadeVolume(-80,channel,1.5)
+		channelInstance.stream = load(track)
+		channelInstance.volume_db = volume
+		channelInstance.play()
 
 func fadeVolume(volume: float, channel: int, duration: float = 1.0):
 	var volumeTween: Tween = create_tween()
@@ -50,9 +55,27 @@ func fadeVolume(volume: float, channel: int, duration: float = 1.0):
 	await volumeTween.finished
 	volumeTween.kill()
 
-func playBattleMusic(setNumber: int, fase: int):
-	playAudio(loadMusicPath(setNumber, ((fase - 1) *2) + 1), 1)
-	playAudio(loadMusicPath(setNumber, ((fase - 1) *2) + 2), 2)
-	
-func loadMusicPath(setNumber: int, trackNumber: int):
+func loadBattleMusicPath(setNumber: int, trackNumber: int):
 	return "res://assets/Audio/Music/Battle/Set" + str(setNumber) + "/" + str(trackNumber) + ".mp3"
+
+func playBattleMusic(setNumber: int, fase: int):
+	playAudio(loadBattleMusicPath(setNumber, ((fase - 1) *2) + 1), 1)
+	playAudio(loadBattleMusicPath(setNumber, ((fase - 1) *2) + 2), 2)
+	
+func loadTitleMusicPath(trackNumber):
+	return "res://assets/Audio/Music/TitleScreen/Mainscreen" + str(trackNumber) + ".wav"
+	
+func playTitleScreenMusic(trackNumber, channel: int = 1):
+	playAudio(loadTitleMusicPath(trackNumber), channel)
+
+func loadSFXPath(name: String):
+	return "res://assets/Audio/Sound effects/" + str(name) + ".mp3"
+
+func playSFX(name: String, channel: int = 5):
+	playAudio(loadSFXPath(name),channel)
+
+func loadAmbiencePath(name: String):
+	return "res://assets/Audio/Ambience/" + str(name) + ".mp3"
+
+func playAmbience(name: String, channel: int = 3):
+	playAudio(loadAmbiencePath(name),channel)
