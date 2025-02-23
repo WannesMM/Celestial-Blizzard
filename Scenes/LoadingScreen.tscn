@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://3antdxruwjk1"]
+[gd_scene load_steps=3 format=3 uid="uid://3antdxruwjk1"]
 
 [ext_resource type="Script" path="res://Scenes/LoadingScreen.gd" id="1_qbgmd"]
+[ext_resource type="Script" path="res://Scenes/ProgressBar.gd" id="2_l1hb6"]
 
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
@@ -45,3 +46,4 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 21
 text = "0"
 horizontal_alignment = 1
+script = ExtResource("2_l1hb6")

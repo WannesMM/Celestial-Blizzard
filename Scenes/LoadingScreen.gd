@@ -4,41 +4,49 @@ class_name LoadingScreen
 
 var nextScene = "res://Scenes/battlefield.tscn"
 
+var progressBar: LoadingBar
+
 var progress = []
 var progressTween: Tween
 var value = 0
 
 func _ready() -> void:
-	ResourceLoader.load_threaded_request(nextScene)
-	progressTween = get_tree().create_tween()
+	startLoad()
 	
 func _process(delta: float) -> void:
 	ResourceLoader.load_threaded_get_status(nextScene,progress)
-	$ProgressBar.text = str(value) + "%"
 	
 	if progress[0] == 1:
-		progressTween.tween_property(self, "value", 50, 1)
-		
-		var scene: PackedScene = ResourceLoader.load_threaded_get(nextScene)
-		var battleField: BattleManager = scene.instantiate()
-		
-		print("Waiting for deck loading")
-		battleField.initialiseDeck()
-		progressTween.tween_property(self, "value", 90, 1)
-		await GlobalSignals.loadComplete
-		print("Deck loading complete")
-		
-		progressTween.tween_property(self, "value", 100, 1)
-		#await progressTween.finished
-		
-		#get_tree().change_scene_to_packed(scene)
-		
-		var current_scene = get_tree().current_scene  # Get current scene
+		GlobalSignals.loadingBlock.emit()
 	
-		# Add new scene to tree
-		get_tree().root.add_child(battleField)
-		get_tree().current_scene = battleField
+func startLoad():
+	progressBar = $ProgressBar
+	progressBar.resetProgress()
+	ResourceLoader.load_threaded_request(nextScene)
 	
-		# Remove old scene
-		current_scene.queue_free()
+	progressBar.tweenProgress(50)
 	
+	await GlobalSignals.loadingBlock
+	
+	progressBar.tweenProgress(90)
+	
+	var scene: PackedScene = ResourceLoader.load_threaded_get(nextScene)
+	var battleField: BattleManager = scene.instantiate()
+	
+	print("Waiting for deck loading")
+	battleField.initialiseDeck()
+	
+	progressBar.tweenProgress(100)
+	
+	await GlobalSignals.loadComplete
+	
+	print("Deck loading complete")
+	
+	var current_scene = get_tree().current_scene  # Get current scene
+
+	# Add new scene to tree
+	get_tree().root.add_child(battleField)
+	get_tree().current_scene = battleField
+	
+	# Remove old scene
+	current_scene.queue_free()
