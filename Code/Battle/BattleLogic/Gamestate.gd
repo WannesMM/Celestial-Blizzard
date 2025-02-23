@@ -27,7 +27,7 @@ layout: LayoutManager) -> void:
 	
 # GameLogic ----------------------------------------------------------------------------------------
 
-var activePlayer: PlayerState
+var activePlayer: PlayerState: set = setActivePlayer
 
 func startGame():
 	
@@ -58,6 +58,8 @@ func startGame():
 	
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
+	
+	AudioEngine.playBattleMusic(1,1)
 	executeRounds()
 	
 func executeRounds():
@@ -156,3 +158,12 @@ func getEnemyState():
 	
 func setEnemyState(state: PlayerState):
 	enemyState = state
+
+func setActivePlayer(newPlayer: PlayerState):
+	activePlayer = newPlayer
+	if(activePlayer.allied):
+		await AudioEngine.fadeVolume(0,2,1)
+		AudioEngine.fadeVolume(-80,1,1)
+	else:
+		await AudioEngine.fadeVolume(0,1,1)
+		AudioEngine.fadeVolume(-80,2,1)
