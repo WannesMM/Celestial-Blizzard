@@ -18,3 +18,16 @@ func generateRandom(x: int, min_value: int, max_value: int, mode: String = "Norm
 
 func wait(time: float):
 	await get_tree().create_timer(time).timeout
+
+var loadingScene = "res://Scenes/Main/LoadingScreen.tscn"
+
+func callLoadingScreen(toLoad: String):
+	var scene: PackedScene = load(loadingScene)
+	var instance = scene.instantiate()
+	
+	var current_scene = get_tree().current_scene  # Get current scene
+	get_tree().root.add_child(instance)
+	get_tree().current_scene = instance
+	instance.startLoad(toLoad)
+	# Remove old scene
+	current_scene.queue_free()

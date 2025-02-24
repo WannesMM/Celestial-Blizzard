@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=9 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
-[ext_resource type="PackedScene" uid="uid://3antdxruwjk1" path="res://Scenes/Main/LoadingScreen.tscn" id="2_0tc7o"]
 [ext_resource type="Texture2D" uid="uid://c8godjr2ljcr4" path="res://assets/Setpieces/MainScreenLandscape.jpg" id="3_1omaa"]
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="4_vdxj1"]
 [ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="5_t2bfb"]
@@ -28,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0rkip")
-loadingScene = ExtResource("2_0tc7o")
+loadingScene = "res://Scenes/Main/LoadingScreen.tscn"
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 1

@@ -1,7 +1,7 @@
 extends Control
 
 var battleFieldPath: String = "res://Scenes/battlefield.tscn"
-@export var loadingScene: PackedScene
+@export var loadingScene: String
 
 func _ready() -> void:
 	modulate.v = 0
@@ -26,7 +26,16 @@ func loadBattlefield() -> void:
 	var fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 0, 1)
 	await fadeTween.finished
-	get_tree().change_scene_to_packed(load("res://Scenes/Main/LoadingScreen.tscn"))
+	
+	var scene: PackedScene = load(loadingScene)
+	var instance = scene.instantiate()
+	
+	var current_scene = get_tree().current_scene  # Get current scene
+	get_tree().root.add_child(instance)
+	get_tree().current_scene = instance
+	instance.startLoad("BattleField")
+	# Remove old scene
+	current_scene.queue_free()
 
 var battleScaleTween: Tween
 
