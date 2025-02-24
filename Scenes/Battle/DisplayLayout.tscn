@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://8exl10cxc0ot"]
+
+[ext_resource type="Script" path="res://Scenes/Battle/DisplayManager.gd" id="1_nc4qt"]
+[ext_resource type="PackedScene" uid="uid://bytpcr0d24q6y" path="res://Scenes/Battle/card_hand.tscn" id="1_nswog"]
+[ext_resource type="Script" path="res://Scenes/Battle/DisplayLayout.gd" id="2_1wqhi"]
+
+[node name="DisplayLayout" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_nc4qt")
+
+[node name="Layout" parent="." instance=ExtResource("1_nswog")]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("2_1wqhi")

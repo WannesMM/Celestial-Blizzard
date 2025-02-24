@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dg4dd53dv5m3"]
+[gd_scene load_steps=16 format=3 uid="uid://dg4dd53dv5m3"]
 
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/LayoutManagers/BattleManager.gd" id="1_6n5sf"]
 [ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/Battle/CharacterCardLayout.tscn" id="1_n8f8j"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://tkvf733tsgu0" path="res://Scenes/Main/BattleRightPanel.tscn" id="8_0ewpx"]
 [ext_resource type="PackedScene" uid="uid://cb1c77crf2lod" path="res://Scenes/Main/MessageChooseCard.tscn" id="8_1eiu0"]
 [ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="12_afkar"]
+[ext_resource type="PackedScene" uid="uid://8exl10cxc0ot" path="res://Scenes/Battle/DisplayLayout.tscn" id="12_fpewq"]
 
 [node name="Battlefield" type="Control"]
 layout_mode = 3
@@ -76,15 +77,15 @@ offset_bottom = 15.0
 grow_vertical = 2
 text = "End Round"
 
+[node name="CardDisplay" parent="." instance=ExtResource("12_fpewq")]
+z_index = 2
+layout_mode = 1
+
 [node name="BattleRightPanel" parent="." instance=ExtResource("8_0ewpx")]
 layout_mode = 1
 
 [node name="Right Slider" parent="." instance=ExtResource("3_i0k80")]
 layout_mode = 1
 mouse_filter = 2
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.1
-blend_mode = 1
 
 [connection signal="pressed" from="End Round" to="." method="endRound"]

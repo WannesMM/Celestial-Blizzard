@@ -60,6 +60,7 @@ func chooseAction():
 		"End Round": 
 			setTurnEnded(true)
 			setRoundEnded(true)
+			gameState.lastTurnEnder = self
 		"Switch":
 			assert(action[1].cardLogic is CharacterCardLogic)
 			if(!action[1].cardLogic.active):
@@ -67,13 +68,15 @@ func chooseAction():
 				setTurnEnded(true)
 			
 
-func playCard(card, layout = null):
+func playCard(card: Card, layout = null):
 	var cardType = card.getCardLogic().getCardType()
+	await gameState.layoutManager.displayCard(card)
+	card.getCardLogic().playCard()
 	match cardType:
 		"CharacterCard":
 			getCharacterCards().addCard(card)
 		"EventCard":
-			pass
+			deck.stackAddToBottom(card.getCardLogic())
 		"AreaCard":
 			getAreaSupportCards().addCard(card)
 		"SupporterCard":
@@ -84,7 +87,6 @@ func playCard(card, layout = null):
 			getEntityCards().addCard(card)
 		"EquipmentCard":
 			pass
-	card.getCardLogic().playCard()
 	
 func drawCards(amt: int):
 	cardHand.addCards(deck.drawCards(amt))

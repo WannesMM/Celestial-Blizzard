@@ -72,8 +72,8 @@ func drawCards(count: int) -> Array:
 	stack = stack.slice(count, stack.size()) 
 	return drawn_cards
 
-func stackAddToBottom(cards: Array[CardLogic]):
-	stack.append(cards)
+func stackAddToBottom(card: CardLogic):
+	stack.append(card)
 
 func stackRemoveCard(card: CardLogic):
 	stack.erase(card)

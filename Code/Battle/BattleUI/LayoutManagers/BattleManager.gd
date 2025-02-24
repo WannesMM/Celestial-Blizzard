@@ -157,6 +157,9 @@ func message(text = "message"):
 	
 	remove_child(currentMessage)
 	
+func displayCard(card: Card, duration: float = 1):
+	await $CardDisplay.displayCard(card,duration)
+	
 func disableAllInput():
 	allyCharacterLayout.disableInput()
 	allyHandLayout.disableInput()

@@ -28,6 +28,7 @@ layout: LayoutManager) -> void:
 # GameLogic ----------------------------------------------------------------------------------------
 
 var activePlayer: PlayerState: set = setActivePlayer
+var lastTurnEnder: PlayerState
 
 func startGame():
 	
@@ -52,15 +53,15 @@ func startGame():
 	
 	assert(allyCard == allyCard.cardLogic.card)
 	
-	allyState.playCard(allyCard)
-	enemyState.playCard(enemyCard)
+	await allyState.playCard(allyCard)
+	await enemyState.playCard(enemyCard)
 	allyState.setActiveCharacter(allyCard)
 	enemyState.setActiveCharacter(enemyCard)
 	
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
 	
-	AudioEngine.playBattleMusic(1,3)
+	AudioEngine.playBattleMusic(1,2)
 	executeRounds()
 	
 func executeRounds():
@@ -77,6 +78,7 @@ func executeRounds():
 		if roundCounter != 1:
 			allyState.setGold(rollGold())
 			enemyState.setGold(rollGold())
+			activePlayer = lastTurnEnder.opponent
 		else:
 			var number = Random.generateRandom(1,1,2)
 			if number == 1:
