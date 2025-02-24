@@ -48,7 +48,7 @@ func receiveDamage(amt: int):
 	
 func defeatCard(card = self):
 	card.defeated = true
-	gameState.checkGameWin(cardOwner)
+	gameState.characterDefeated(card, card.cardOwner)
 	
 func isPossibleMove(move: String):
 	if active:

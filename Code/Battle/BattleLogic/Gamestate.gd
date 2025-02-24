@@ -127,6 +127,11 @@ func nextActivePlayer():
 func damage(attacker: CardLogic, dmg: int, defender: Card):
 	defender.cardLogic.receiveDamage(dmg)
 	
+func characterDefeated(card: CharacterCardLogic, player: PlayerState):
+	checkGameWin(player)
+	if playerWin == null:
+		player.input.chooseActiveCharacter()
+	
 func checkGameWin(player: PlayerState):
 	var allDefeated = true
 	for card: Card in player.characterCards.addedCards:

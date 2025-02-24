@@ -8,6 +8,9 @@ signal cardsSelected
 var selectedAction
 signal actionSelected
 
+var selectedActive: Card
+signal activeSelected
+
 #Prompts the game UI to select cards out of an array of cards and then returns the selected cards.
 func selectCards(cards, amount, message = "Select card(s)"):
 	selectedCards = []
@@ -25,6 +28,14 @@ func chooseAction():
 		await actionSelected
 	assert(selectedAction.size() != 0)
 	return selectedAction
+	
+func chooseActiveCharacter():
+	selectedActive = null
+	while selectedActive == null:
+		layoutManager.allowCrossTurnSwitch(true)
+		await activeSelected
+	assert(selectedActive != null)
+	return selectedActive
 	
 func setSelectedCards():
 	selectedCards = layoutManager.getSelected().duplicate(false)

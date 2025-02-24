@@ -126,6 +126,8 @@ var tips = [
 	"Did you know that Red snow is the name of the second chapter in Celestial Spirit?",
 	"Torrin's oil is useful",
 	"Did you know that artificer armor used to be playable without Noma Greon in your deck?",
+	"Torinn Inn was the first character to ever win a battle in Celestial Blizzard.",
+	"Did you know that Celestial Blizzard was created in order to not have to deal with printers?",
 ]
 
 func generateTip():

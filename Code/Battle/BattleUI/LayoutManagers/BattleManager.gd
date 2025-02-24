@@ -76,7 +76,7 @@ var currentMessageChooseCard
 
 @export var messageScene: PackedScene
 
-var currentInput
+var currentInput: PlayerInput
 
 func selectAction(input):
 	if gameState.getActivePlayer().allied:
@@ -84,6 +84,9 @@ func selectAction(input):
 	else:
 		allowAction = 2
 	currentInput = input
+
+func allowCrossTurnSwitch(player: PlayerState):
+	switchCrossTurn = player
 
 #Extended modified
 func draggedIntoLayout(layout, card: Card):
@@ -104,8 +107,23 @@ func endRound():
 		currentInput.setSelectedAction(["End Round"])
 	else:
 		message("It is not your turn")
-		
+
+var switchCrossTurn: PlayerState = null
+
+func characterCardPressed(card):
+	if switchCrossTurn:
+		chooseActiveCharacter(card)
+		allowCrossTurnSwitch(null)
+	else:
+		characterCardSwitch(card)
+
 func characterCardSwitch(card):
+	if checkActionAllowed(card):
+		currentInput.setSelectedAction(["Switch", card])
+	else:
+		message("It is not your turn")
+
+func chooseActiveCharacter(card):
 	if checkActionAllowed(card):
 		currentInput.setSelectedAction(["Switch", card])
 	else:
