@@ -152,6 +152,17 @@ func stopSwitchAnimation():
 	$AnimatedSprite2D.visible = true
 	$AnimatedSprite2D.stop()
 
+#Manages the card shatter effect stage 0 = invisible, stage 1 = fase 1 shatter ... until stage 4, which is defeated
+func cardShatterStage(stage: int):
+	if stage >= 1:
+		$CardShatter.visible = true
+		$CardShatter.frame = stage - 1
+	if stage == 4:
+		$Darken.modulate.a = 0
+		$Darken.visible = true
+		var fadeTween = create_tween()
+		fadeTween.tween_property($Darken,"modulate:a",0.4,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
+
 #---------------------------------------------------------------------------------------------------------------------
 
 var cardLogic: CardLogic = null

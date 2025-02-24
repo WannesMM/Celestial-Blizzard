@@ -3,7 +3,7 @@ extends CardLogic
 class_name CharacterCardLogic
 
 var maxHP: int = 10
-var HP: int = 10
+var HP: int = 10: set = setHP
 var maxEnergy: int = 3
 var energy: int = 0
 var NAdmg: int = 2
@@ -48,6 +48,7 @@ func receiveDamage(amt: int):
 	
 func defeatCard(card = self):
 	card.defeated = true
+	gameState.checkGameWin(cardOwner)
 	
 func isPossibleMove(move: String):
 	if active:
@@ -66,7 +67,16 @@ func setHP(amt: int):
 		defeatCard(self)
 	else:
 		HP = amt
-	card.setLabel1(str(HP))
+	if card:
+		card.setLabel1(str(HP))
+	if HP == 0:
+		card.cardShatterStage(4)
+	elif HP <= floor((maxHP/6)):
+		card.cardShatterStage(3)
+	elif HP <= floor((maxHP/3)):
+		card.cardShatterStage(2)
+	elif HP <= floor((maxHP/2)):
+		card.cardShatterStage(1)
 
 func getHP():
 	return HP

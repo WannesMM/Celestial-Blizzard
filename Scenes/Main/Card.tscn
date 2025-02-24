@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bux5s4cf5dm4m"]
+[gd_scene load_steps=39 format=3 uid="uid://bux5s4cf5dm4m"]
 
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/Card.gd" id="1_3o3o6"]
 [ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/cardNotFound.png" id="2_jyits"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="4_k5ml6"]
 [ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_6oau7"]
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/CardHighlight.gd" id="6_f3m15"]
-[ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/Darken.gd" id="7_aylnp"]
 [ext_resource type="PackedScene" uid="uid://6av56go0gqa2" path="res://Scenes/Main/cardCollision.tscn" id="8_l8wq4"]
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/Collision/CardCollision.gd" id="9_ho1ab"]
 [ext_resource type="Texture2D" uid="uid://cm4jvcn84m3ok" path="res://assets/Animated/CharacterSwitch/frame_01.png" id="10_vilbv"]
@@ -34,6 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://b2k6ywisucm2x" path="res://assets/Animated/CharacterSwitch/frame_23.png" id="32_7lq73"]
 [ext_resource type="Texture2D" uid="uid://r0pliyka6xyi" path="res://assets/Animated/CharacterSwitch/frame_24.png" id="33_7kxr0"]
 [ext_resource type="Texture2D" uid="uid://c7s00vcuyxlen" path="res://assets/Animated/CharacterSwitch/frame_25.png" id="34_chg33"]
+[ext_resource type="Texture2D" uid="uid://bdnsdyock5c20" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-1.png" id="35_xs3bj"]
+[ext_resource type="Texture2D" uid="uid://b0eafygnnr2cf" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-2.png" id="36_nurd4"]
+[ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="37_fgqw6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8slk"]
 animations = [{
@@ -118,6 +120,23 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ls5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_xs3bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_nurd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_fgqw6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Card" type="Node2D"]
 position = Vector2(608, 331)
 script = ExtResource("1_3o3o6")
@@ -154,7 +173,6 @@ visible = false
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_6oau7")
-script = ExtResource("7_aylnp")
 
 [node name="CardPlacementCollision" parent="." node_paths=PackedStringArray("cardScene") instance=ExtResource("8_l8wq4")]
 script = ExtResource("9_ho1ab")
@@ -171,6 +189,13 @@ scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_i8slk")
 animation = &"CharacterSwitch"
 frame_progress = 0.936593
+
+[node name="CardShatter" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_8ls5m")
+frame = 2
+frame_progress = 0.0693526
 
 [connection signal="mouse_entered" from="CardPlacementCollision/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="CardPlacementCollision/Area2D" to="." method="_on_area_2d_mouse_exited"]
