@@ -2,7 +2,7 @@ extends Control
 
 class_name LoadingScreen
 
-var nextScene = "res://Scenes/Battle/battlefield.tscn"
+var nextScene = ""
 
 var progressBar: LoadingBar
 
@@ -10,19 +10,69 @@ var progress = []
 var progressTween: Tween
 var value = 0
 
+@export var battleFieldScene: String = "res://Scenes/Battle/battlefield.tscn"
+@export var deckBuilderScene: String
+@export var shopScene: String
+@export var TitleScene: String
+
 func _ready() -> void:
 	modulate.v = 0
 	generateTip()
-	startLoad()
 	$Control.resetProgress()
 	
 func _process(delta: float) -> void:
-	ResourceLoader.load_threaded_get_status(nextScene,progress)
+	if nextScene != "":
+		ResourceLoader.load_threaded_get_status(nextScene,progress)
+		if progress[0] == 1:
+			GlobalSignals.loadingBlock.emit()
 	
-	if progress[0] == 1:
-		GlobalSignals.loadingBlock.emit()
+func getScenePath(newScene: String):
+	match newScene:
+		"BattleField":
+			return battleFieldScene
+		"DeckBuilder":
+			return deckBuilderScene
+		"Title":
+			return TitleScene
+		"Shop":
+			return shopScene
+
+func specificLoad(newScene, instance):
+	match newScene:
+		"BattleField":
+			return battleSpecificLoad(instance)
+		"DeckBuilder":
+			return deckBuilderSpecificLoad(instance)
+		"Title":
+			return titleSpecificLoad(instance)
+		"Shop":
+			return shopSpecificLoad(instance)
+
+func battleSpecificLoad(battleField):
+	var allyInput = PlayerInput.new(battleField)
+	var enemyInput = PlayerInput.new(battleField)
+	var test = BattleTest.new()
 	
-func startLoad():
+	var deck1 = test.burningDeck
+	var deck2 = test.burningDeck2
+	assert(deck1 != deck2)
+	
+	battleField.initialiseGame(deck1,allyInput,deck2,enemyInput)
+	return true
+	
+func deckBuilderSpecificLoad(deckBuilderInstance):
+	return true
+	
+func shopSpecificLoad(shopInstance):
+	return true
+	
+func titleSpecificLoad(mainInstance):
+	mainInstance.loadDuringLoadingScreen()
+	return false
+	
+func startLoad(newScene: String = "BattleField"):
+	nextScene = getScenePath(newScene)
+	
 	var fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
 	await fadeTween.finished
@@ -38,16 +88,13 @@ func startLoad():
 	progressBar.tweenProgress(90)
 	
 	var scene: PackedScene = ResourceLoader.load_threaded_get(nextScene)
-	var battleField: BattleManager = scene.instantiate()
+	var instance = scene.instantiate()
 	
-	print("Waiting for deck loading")
-	battleField.initialiseDeck()
-	
+	print("Scene specific load")
 	progressBar.tweenProgress(100)
-	
-	await GlobalSignals.loadComplete
-	
-	print("Deck loading complete")
+	if specificLoad(newScene, instance):
+		await GlobalSignals.loadComplete
+	print("Loading complete")
 	
 	var current_scene = get_tree().current_scene  # Get current scene
 	
@@ -58,8 +105,8 @@ func startLoad():
 	await fadeTween.finished
 	
 	# Add new scene to tree
-	get_tree().root.add_child(battleField)
-	get_tree().current_scene = battleField
+	get_tree().root.add_child(instance)
+	get_tree().current_scene = instance
 	
 	# Remove old scene
 	current_scene.queue_free()

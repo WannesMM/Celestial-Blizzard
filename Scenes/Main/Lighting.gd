@@ -14,12 +14,10 @@ func startShimmer():
 		energyTween = create_tween()
 		energyTween.tween_property(self,"energy",9,1)
 		await energyTween.finished
-		print("Finished energy")
 		energyTween.stop()
 		energyTween = create_tween()
 		energyTween.tween_property(self,"energy",5,2)
 		await energyTween.finished
-		print("Finished energy")
 		energyTween.stop()
 		
 		

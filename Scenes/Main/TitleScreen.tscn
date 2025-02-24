@@ -1,0 +1,144 @@
+[gd_scene load_steps=10 format=3 uid="uid://cb2gpixlyhhxu"]
+
+[ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
+[ext_resource type="PackedScene" uid="uid://3antdxruwjk1" path="res://Scenes/Main/LoadingScreen.tscn" id="2_0tc7o"]
+[ext_resource type="Texture2D" uid="uid://c8godjr2ljcr4" path="res://assets/Setpieces/MainScreenLandscape.jpg" id="3_1omaa"]
+[ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="4_vdxj1"]
+[ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="5_t2bfb"]
+[ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="6_iwfnr"]
+
+[sub_resource type="Gradient" id="Gradient_wli8i"]
+offsets = PackedFloat32Array(0, 0.01, 0.64)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kycxr"]
+gradient = SubResource("Gradient_wli8i")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yd6ln"]
+blend_mode = 1
+light_mode = 1
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0rkip")
+loadingScene = ExtResource("2_0tc7o")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainScreenLandscape" type="Sprite2D" parent="Control2"]
+modulate = Color(0.0562916, 0.0562916, 0.0562916, 1)
+scale = Vector2(0.235, 0.235)
+texture = ExtResource("3_1omaa")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(573, 37)
+scale = Vector2(5.6438, 2.10938)
+color = Color(0.253312, 0.645276, 1, 1)
+energy = 4.05
+texture = SubResource("GradientTexture2D_kycxr")
+script = ExtResource("4_vdxj1")
+
+[node name="Battle" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -54.5
+offset_right = 142.5
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Battle"
+
+[node name="Deckbuilder" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_right = 94.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "Deckbuilder"
+
+[node name="Shop" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -50.0
+offset_right = 94.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Shop"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+material = SubResource("CanvasItemMaterial_yd6ln")
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_t2bfb")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(576, 325)
+scale = Vector2(5.6438, 2.10938)
+color = Color(0.253312, 0.645276, 1, 1)
+energy = 16.0
+texture = SubResource("GradientTexture2D_kycxr")
+script = ExtResource("4_vdxj1")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(576, 325)
+scale = Vector2(5.6438, 2.10938)
+color = Color(2.31028e-06, 0.721556, 0.671845, 1)
+energy = 16.0
+texture = SubResource("GradientTexture2D_kycxr")
+texture_scale = 1.6
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(582, 623)
+scale = Vector2(5.6438, 2.10938)
+color = Color(0.253312, 0.645276, 1, 1)
+energy = 4.05
+texture = SubResource("GradientTexture2D_kycxr")
+script = ExtResource("4_vdxj1")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.99
+blend_mode = 1
+
+[node name="Snow" parent="." instance=ExtResource("6_iwfnr")]
+
+[connection signal="mouse_entered" from="Battle" to="." method="BattleMouseEntered"]
+[connection signal="mouse_exited" from="Battle" to="." method="BattleMouseExited"]
+[connection signal="pressed" from="Battle" to="." method="loadBattlefield"]

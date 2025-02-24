@@ -70,7 +70,6 @@ func shuffleStack():
 func drawCards(count: int) -> Array:
 	var drawn_cards = stack.slice(0, count) 
 	stack = stack.slice(count, stack.size()) 
-	print(drawn_cards)
 	return drawn_cards
 
 func stackAddToBottom(cards: Array[CardLogic]):

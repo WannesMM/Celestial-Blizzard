@@ -58,7 +58,6 @@ func chooseAction():
 						action[1].cardLogic.CA()
 				setTurnEnded(true)
 		"End Round": 
-			print("this player has ended their round")
 			setTurnEnded(true)
 			setRoundEnded(true)
 		"Switch":
@@ -80,7 +79,6 @@ func playCard(card, layout = null):
 		"SupporterCard":
 			if layout is Card:
 				if layout.getCardLogic().getCardType() == "AreaCard":
-					print("Zou supporter moeten toegevoegd hebben")
 					layout.addRelatedCard(card)
 		"EntityCard":
 			getEntityCards().addCard(card)

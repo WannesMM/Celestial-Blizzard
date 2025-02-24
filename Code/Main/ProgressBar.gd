@@ -27,4 +27,4 @@ func tweenProgress(amt: int):
 		sizeTween.kill()
 	var calc = (amt/100) * maxScale
 	sizeTween = create_tween()
-	sizeTween.tween_property($ColorRect2/Sprite2D,"scale",Vector2(calc,calc),2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	sizeTween.tween_property($ColorRect2/Sprite2D,"scale",Vector2(calc,calc),1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)

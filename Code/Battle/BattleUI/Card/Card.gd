@@ -77,7 +77,6 @@ signal IsAnimating
 
 func toggleIsAnimating(animating: bool):
 	currentlyAnimating = animating
-	print(currentlyAnimating)
 	emit_signal("IsAnimating")
 
 var basePosition = Vector2(0,0)
@@ -201,7 +200,6 @@ func addRelatedCard(card: Card):
 	if currentLayout:
 		currentLayout.addAdditionalCard(card)
 		assert(currentLayout.additionalCards.size() != 0)
-		print("Heeft related card gearrangeerd")
 	
 func removeRelatedCard(card: Card):
 	relatedCards.erase(card)

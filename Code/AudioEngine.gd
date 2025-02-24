@@ -47,9 +47,7 @@ func playAudio(track: String, channel: int, volume: float = 0.0, fade: float = 0
 		await fadeVolume(-80,channel,1.5)
 		channelInstance.stream = load(track)
 		channelInstance.play()
-		print("start fade")
 		await fadeVolume(volume,channel,fade)
-		print("fade complete")
 		
 func stopAudio(channel):
 	var channelInstance = getChannel(channel)

@@ -36,8 +36,7 @@ func initializeBattle():
 	rightSlider = $"Right Slider"
 	rightSlider.layoutManager = self
 	
-	allyInput = PlayerInput.new(self)
-	enemyInput = PlayerInput.new(self)
+	
 	
 	#print("Ready")
 	#print(allyDeck)
@@ -45,11 +44,19 @@ func initializeBattle():
 	enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity,
 	battleResources, self)
 	
-func initialiseDeck():
-	var test = BattleTest.new()
+#These functions are called in the loading screen to initialise the game
+func initialiseGame(allyNewDeck: Deck, allyNewInput: InputHandler, enemyNewDeck: Deck, enemyNewInput: InputHandler):
+	allyInput = allyNewInput
+	enemyInput = enemyNewInput
+	allyDeck = allyNewDeck
+	enemyDeck = enemyNewDeck
+	await initialiseDeck(allyDeck, enemyDeck)
 	
-	allyDeck = test.burningDeck
-	enemyDeck = test.hatsuneMikuDeck
+	
+func initialiseDeck(allyNewDeck: Deck, enemyNewDeck: Deck):
+	
+	allyDeck = allyNewDeck
+	enemyDeck = enemyNewDeck
 	
 	allyDeck.createStack()
 	await GlobalSignals.deckLoaded

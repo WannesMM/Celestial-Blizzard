@@ -37,3 +37,7 @@ func BattleMouseEntered() -> void:
 func BattleMouseExited() -> void:
 	battleScaleTween = create_tween()
 	battleScaleTween.tween_property($PointLight2D4,"energy",0,1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
+
+func loadDuringLoadingScreen():
+	Random.wait(1)
+	GlobalSignals.loadComplete.emit()

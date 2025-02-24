@@ -60,7 +60,7 @@ func startGame():
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
 	
-	AudioEngine.playBattleMusic(1,1)
+	AudioEngine.playBattleMusic(1,3)
 	executeRounds()
 	
 func executeRounds():
