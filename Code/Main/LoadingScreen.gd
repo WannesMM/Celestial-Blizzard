@@ -79,14 +79,15 @@ func titleSpecificLoad(mainInstance):
 	return false
 	
 func startUpSpecificLoad(instance):
-	var status = await Client.connectToServer()
+	var status = await Server.connectToServer()
 	var load = titleSpecificLoad(instance)
-	if status == 1 or status == 0:
+	if status == 1 or status == 0 or await Server.getServerVersion() != Server.gameVersion:
 		reloadConnection()
 		return true
 	return load
 	
 func startLoad(newScene: String = "BattleField"):
+	AudioEngine.playSFX("SoundEffect01")
 	nextScene = getScenePath(newScene)
 	
 	var fadeTween = create_tween()
@@ -114,7 +115,8 @@ func startLoad(newScene: String = "BattleField"):
 	
 	var current_scene = get_tree().current_scene  # Get current scene
 	
-	AudioEngine.stopAllAudio()
+	AudioEngine.stopAudio(1)
+	AudioEngine.stopAudio(2)
 	
 	fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 0, 1)

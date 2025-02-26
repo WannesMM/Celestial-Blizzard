@@ -1,6 +1,9 @@
 extends Node
 
-var peer = ENetMultiplayerPeer.new()
+var serverVersion
+var gameVersion = "AlphaTest"
+
+var server = ENetMultiplayerPeer.new()
 
 #Kot IP = "192.168.0.154"
 
@@ -8,16 +11,18 @@ var ip = "192.168.0.154"
 var port = 12345
 
 var status = 0
-	
+
+signal versionGiven
+
 func connectToServer():
 	if status != 2:
-		peer.create_client(ip, port)
-		multiplayer.multiplayer_peer = peer
+		server.create_client(ip, port)
+		multiplayer.multiplayer_peer = server
 		await Random.wait(1)
 	return await connectionStatus()
 
 func connectionStatus():
-	match peer.get_connection_status():
+	match server.get_connection_status():
 		MultiplayerPeer.CONNECTION_CONNECTING:
 			print("Connecting")
 			status = 1
@@ -33,9 +38,27 @@ func connectionStatus():
 			await Random.message("Could not connect to server",1, Vector2(0,100))
 			return 0
 
+func getServerVersion():
+	rpc_id(server.get_unique_id(),"requestServerVersion")
+	await versionGiven
+	if serverVersion != gameVersion:
+		Random.message("A newer version is available")
+	return serverVersion
+
 # Interconnection --------------------------------------------------------------
 
-@rpc("any_peer")
+@rpc("authority")
 func message(text: String):
-	print("Received from server: ", message)
+	print("Received from server: ", text)
 	Random.message(text)
+
+@rpc("authority")
+func receiveServerVersion(version: String):
+	serverVersion = version
+	versionGiven.emit()
+
+# Dit is belachelijk -----------------------------------------------------------
+
+@rpc("any_peer")
+func requestServerVersion():
+	pass
