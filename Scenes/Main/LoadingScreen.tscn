@@ -26,21 +26,31 @@ color = Color(0.0383972, 0.0383972, 0.0383972, 1)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+offset_top = -104.0
+grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_l1hb6")
 
-[node name="CelestialBlizzardLogo" type="Sprite2D" parent="Control"]
-position = Vector2(-130, -61)
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="CelestialBlizzardLogo" type="Sprite2D" parent="Control/Control"]
+position = Vector2(-125, 0)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_l06gx")
 
-[node name="ProgressBar" type="Label" parent="Control"]
+[node name="ProgressBar" type="Label" parent="Control/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -48,10 +58,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -163.0
-offset_right = -14.0
-offset_bottom = -103.0
+offset_left = -53.0
+offset_top = -62.0
+offset_right = -29.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 21
@@ -60,17 +70,30 @@ horizontal_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="Control"]
 clip_children = 1
-layout_mode = 0
-offset_left = -1128.0
-offset_top = -61.0
-offset_right = -28.0
-offset_bottom = -59.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 0.299999
+offset_bottom = 2.05
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/ColorRect2"]
-position = Vector2(1001, -7)
+visible = false
+position = Vector2(1024.74, 8.10438)
 rotation = 1.5708
-scale = Vector2(0.57, 0.57)
+scale = Vector2(0.0151995, 0.05767)
 texture = ExtResource("4_edd1k")
+
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Tip" type="Label" parent="."]
 layout_mode = 1

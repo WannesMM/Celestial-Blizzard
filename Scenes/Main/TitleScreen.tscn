@@ -41,16 +41,16 @@ grow_vertical = 2
 
 [node name="MainScreenLandscape" type="Sprite2D" parent="Control2"]
 modulate = Color(0.0562916, 0.0562916, 0.0562916, 1)
-scale = Vector2(0.235, 0.235)
+scale = Vector2(0.325, 0.325)
 texture = ExtResource("3_1omaa")
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(573, 37)
-scale = Vector2(5.6438, 2.10938)
-color = Color(0.253312, 0.645276, 1, 1)
-energy = 4.05
-texture = SubResource("GradientTexture2D_kycxr")
-script = ExtResource("4_vdxj1")
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control2"]
+position = Vector2(-576, -324)
+energy = 0.99
+blend_mode = 1
+
+[node name="Snow" parent="Control2" instance=ExtResource("6_iwfnr")]
+position = Vector2(-576, -324)
 
 [node name="Battle" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -79,6 +79,14 @@ offset_bottom = 50.0
 grow_horizontal = 2
 text = "Deckbuilder"
 
+[node name="PointLight2D2" type="PointLight2D" parent="Deckbuilder"]
+position = Vector2(91, 37)
+scale = Vector2(5.6438, 2.10938)
+color = Color(0.253312, 0.645276, 1, 1)
+energy = 4.05
+texture = SubResource("GradientTexture2D_kycxr")
+script = ExtResource("4_vdxj1")
+
 [node name="Shop" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -93,6 +101,14 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Shop"
 
+[node name="PointLight2D3" type="PointLight2D" parent="Shop"]
+position = Vector2(100, 25)
+scale = Vector2(5.6438, 2.10938)
+color = Color(0.253312, 0.645276, 1, 1)
+energy = 4.05
+texture = SubResource("GradientTexture2D_kycxr")
+script = ExtResource("4_vdxj1")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -103,40 +119,26 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Control"]
-material = SubResource("CanvasItemMaterial_yd6ln")
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_t2bfb")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(576, 325)
-scale = Vector2(5.6438, 2.10938)
-color = Color(0.253312, 0.645276, 1, 1)
-energy = 16.0
-texture = SubResource("GradientTexture2D_kycxr")
-script = ExtResource("4_vdxj1")
-
-[node name="PointLight2D4" type="PointLight2D" parent="."]
-position = Vector2(576, 325)
+[node name="TitleLight" type="PointLight2D" parent="Control"]
+position = Vector2(0, 1)
 scale = Vector2(5.6438, 2.10938)
 color = Color(2.31028e-06, 0.721556, 0.671845, 1)
 energy = 16.0
 texture = SubResource("GradientTexture2D_kycxr")
 texture_scale = 1.6
 
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-position = Vector2(582, 623)
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+material = SubResource("CanvasItemMaterial_yd6ln")
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_t2bfb")
+
+[node name="PointLight2D" type="PointLight2D" parent="Control"]
+position = Vector2(0, 1)
 scale = Vector2(5.6438, 2.10938)
 color = Color(0.253312, 0.645276, 1, 1)
-energy = 4.05
+energy = 16.0
 texture = SubResource("GradientTexture2D_kycxr")
 script = ExtResource("4_vdxj1")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.99
-blend_mode = 1
-
-[node name="Snow" parent="." instance=ExtResource("6_iwfnr")]
 
 [connection signal="mouse_entered" from="Battle" to="." method="BattleMouseEntered"]
 [connection signal="mouse_exited" from="Battle" to="." method="BattleMouseExited"]
