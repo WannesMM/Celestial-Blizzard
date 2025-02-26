@@ -14,28 +14,15 @@ func _ready() -> void:
 	await fadeTween.finished
 	
 	$Control/TitleLight.energy = 0
-	#var loadingScreen: LoadingScreen = loadingScene.instantiate() 
-	#add_child(loadingScreen)
-	#
-	#await get_tree().process_frame  # Ensure the loading screen renders
-	#
-	#print("Calling startLoading...")  # Debugging
-	#loadingScreen.startLoading(battleFieldPath)  # Now start loading properly
 	
-func loadBattlefield() -> void:
+func fadeScreen():
 	var fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 0, 1)
 	await fadeTween.finished
 	
-	var scene: PackedScene = load(loadingScene)
-	var instance = scene.instantiate()
-	
-	var current_scene = get_tree().current_scene  # Get current scene
-	get_tree().root.add_child(instance)
-	get_tree().current_scene = instance
-	instance.startLoad("BattleField")
-	# Remove old scene
-	current_scene.queue_free()
+func loadBattlefield() -> void:
+	await fadeScreen()
+	Random.callLoadingScreen("BattleField")
 
 var battleScaleTween: Tween
 
@@ -50,3 +37,11 @@ func BattleMouseExited() -> void:
 func loadDuringLoadingScreen():
 	Random.wait(1)
 	GlobalSignals.loadComplete.emit()
+
+func loadDeckbuilder() -> void:
+	await fadeScreen()
+	Random.callLoadingScreen("DeckBuilder")
+
+func loadShop() -> void:
+	await fadeScreen()
+	Random.callLoadingScreen("Shop")

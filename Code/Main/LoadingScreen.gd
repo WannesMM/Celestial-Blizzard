@@ -36,17 +36,21 @@ func getScenePath(newScene: String):
 			return TitleScene
 		"Shop":
 			return shopScene
+		"StartUp":
+			return TitleScene
 
 func specificLoad(newScene, instance):
 	match newScene:
 		"BattleField":
 			return battleSpecificLoad(instance)
 		"DeckBuilder":
-			return deckBuilderSpecificLoad(instance)
+			return await deckBuilderSpecificLoad(instance)
 		"Title":
 			return titleSpecificLoad(instance)
 		"Shop":
-			return shopSpecificLoad(instance)
+			return await shopSpecificLoad(instance)
+		"StartUp":
+			return await startUpSpecificLoad(instance)
 
 func battleSpecificLoad(battleField):
 	var allyInput = PlayerInput.new(battleField)
@@ -61,14 +65,26 @@ func battleSpecificLoad(battleField):
 	return true
 	
 func deckBuilderSpecificLoad(deckBuilderInstance):
+	await Random.message("Add deckBuilderSpecificLoad in LoadingScreen",4)
+	stopLoading()
 	return true
 	
 func shopSpecificLoad(shopInstance):
+	await Random.message("Add ShopSpecificLoad in LoadingScreen",4)
+	stopLoading()
 	return true
 	
 func titleSpecificLoad(mainInstance):
 	mainInstance.loadDuringLoadingScreen()
 	return false
+	
+func startUpSpecificLoad(instance):
+	var status = await Client.connectToServer()
+	var load = titleSpecificLoad(instance)
+	if status == 1 or status == 0:
+		reloadConnection()
+		return true
+	return load
 	
 func startLoad(newScene: String = "BattleField"):
 	nextScene = getScenePath(newScene)
@@ -92,7 +108,7 @@ func startLoad(newScene: String = "BattleField"):
 	
 	print("Scene specific load")
 	progressBar.tweenProgress(100)
-	if specificLoad(newScene, instance):
+	if await specificLoad(newScene, instance):
 		await GlobalSignals.loadComplete
 	print("Loading complete")
 	
@@ -111,24 +127,55 @@ func startLoad(newScene: String = "BattleField"):
 	# Remove old scene
 	current_scene.queue_free()
 
+func stopLoading():
+	var fadeTween = create_tween()
+	fadeTween.tween_property(self, "modulate:v", 0, 1)
+	await fadeTween.finished
+	
+	Random.callLoadingScreen("Title")
+
+func reloadConnection():
+	var fadeTween = create_tween()
+	fadeTween.tween_property(self, "modulate:v", 0, 1)
+	await fadeTween.finished
+	
+	Random.callLoadingScreen("StartUp")
+
 var tips = [
-	"Did you know that Torinn Inn was the first card made for Celestial TCG, and Celestial Blizzard?",
-	"Did you know that Celestial Sleeping was the most broken card ever made at it's release? It allowed the user to achieve infinite deck cycles.",
-	"Did you know that there is an official wiki of Celestial TCG? Use it to uncover past changes and card specific attributes",
-	"Did you know that Noma Greon is the most balanced character card ever, only receiving an HP nerf throughout it's lifetime",
-	"Did you know that the area card Don Quixote's effect was changed numerous times, only to be reverted back to the original effect?",
-	"Did you know that the ballista always gave you more gold than it required at launch?",
-	"Did you know that there used to be a Demon of Nieuwtoren card that made one of your character cards a raid boss. It was removed due to being too unfun",
+	"Torinn Inn was the first card made for Celestial TCG, and Celestial Blizzard",
+	"Celestial Sleeping was the most broken card ever made at it's release? It allowed the user to achieve infinite deck cycles.",
+	"There exists an official wiki of Celestial TCG? Use it to uncover past changes and card specific attributes",
+	"Noma Greon is the most balanced character card ever, only receiving an HP nerf throughout it's lifetime",
+	"The area card Don Quixote's effect was changed numerous times, only to be reverted back to the original effect?",
+	"The ballista always gave you more gold than it required at launch?",
+	"There used to be a Demon of Nieuwtoren card that made one of your character cards a raid boss. It was removed due to being too unfun",
 	"You can always rely on Greon's cooking pot.",
-	"Did you know that the Generational Deception card was based on Victor Veratus' generational terror in the Towers Region?",
+	"The Generational Deception card was based on Victor Veratus' generational terror in the Towers Region",
 	"Bartholomew brings with him his NO1 supporter and an array of tennis cards, be careful because he will definitely get you (even off field).",
-	"Did you know that the gallowing is the name of the first chapter in Celestial Spirit?",
-	"Did you know that Red snow is the name of the second chapter in Celestial Spirit?",
+	"The gallowing is the name of the first chapter in Celestial Spirit",
+	"Red snow is the name of the second chapter in Celestial Spirit",
 	"Torrin's oil is useful",
-	"Did you know that artificer armor used to be playable without Noma Greon in your deck?",
+	"Artificer armor used to be playable without Noma Greon in your deck",
 	"Torinn Inn was the first character to ever win a battle in Celestial Blizzard.",
-	"Did you know that Celestial Blizzard was created in order to not have to deal with printers?",
-]
+	"Celestial Blizzard was created in order to not have to deal with printers",
+	"Not every opponent plays fair. Watch for signs of trickery during combat",
+	"Sometimes, the best way to win a fight isn’t with strength, but with strategy.",
+	"Justicia's hammer carries a history heavier than it's weight.",
+	"Never trust a cheap drink in Balder.",
+	"The Diversion Cultists love fire, or are they it's victim",
+	"The Black Forest is dangerous, but not just because of the dark. He is always watching.",
+	"Kin always offers a way out, but at what cost",
+	"Magic tennis is more than just a sport—it’s a battlefield.",
+	"The Festival of the Towers celebrates an escape from the Black Forest. However, the past is never truly left behind.",
+	"Ashrakt doesn’t just hunt. It chooses.",
+	"The Wolf's mask hides more than just a face.",
+	"Balder is like a phoenix, rising from the ashes.",
+	"Not all debts are paid in gold, god of Justice.",
+	"The gods contradict themselves.",
+	"Senna Nesleichim and distrust come as one",
+	"Greon's homonculus did not last very long",
+	"Your ambition was a waste, however you deserve a second chance."
+	]
 
 func generateTip():
 	$Tip.text = tips[Random.generateRandom(1,0,tips.size() - 1)]

@@ -36,8 +36,6 @@ func initializeBattle():
 	rightSlider = $"Right Slider"
 	rightSlider.layoutManager = self
 	
-	
-	
 	#print("Ready")
 	#print(allyDeck)
 	gameState = GameState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity,

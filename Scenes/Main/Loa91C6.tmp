@@ -1,16 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://3antdxruwjk1"]
+[gd_scene load_steps=9 format=3 uid="uid://3antdxruwjk1"]
 
 [ext_resource type="Script" path="res://Code/Main/LoadingScreen.gd" id="1_0lv6y"]
 [ext_resource type="Script" path="res://Code/Main/ProgressBar.gd" id="2_l1hb6"]
 [ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="3_l06gx"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_qayho"]
 [ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="4_edd1k"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vyr3u"]
-light_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_deyln"]
-light_mode = 1
 
 [sub_resource type="Curve" id="Curve_yn5em"]
 min_value = -360.0
@@ -26,15 +20,6 @@ point_count = 2
 offsets = PackedFloat32Array(0.0466667, 0.2, 0.68, 0.993333)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Gradient" id="Gradient_n8ys6"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq278"]
-gradient = SubResource("Gradient_n8ys6")
-fill = 1
-fill_from = Vector2(0.490826, 0.518349)
-fill_to = Vector2(0.188073, 0.197248)
-
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -48,7 +33,6 @@ shopScene = "res://Scenes/Shop/Shop.tscn"
 TitleScene = "res://Scenes/Main/TitleScreen.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("CanvasItemMaterial_vyr3u")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,7 +63,6 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="SnowParticles" type="CPUParticles2D" parent="Control/Control"]
-material = SubResource("CanvasItemMaterial_deyln")
 position = Vector2(-125, 0)
 rotation = -1.5708
 amount = 7
@@ -101,15 +84,8 @@ scale_amount_max = 0.05
 scale_amount_curve = SubResource("Curve_upvlr")
 color_ramp = SubResource("Gradient_vful8")
 
-[node name="TitleLight" type="PointLight2D" parent="Control/Control"]
-position = Vector2(-125, 0)
-scale = Vector2(3.2625, 3.2625)
-color = Color(0.274266, 0.472186, 0.773144, 1)
-energy = 4.0
-texture = SubResource("GradientTexture2D_vq278")
-texture_scale = 1.6
-
 [node name="CelestialBlizzardLogo" type="Sprite2D" parent="Control/Control"]
+clip_children = 2
 position = Vector2(-125, 0)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_l06gx")
