@@ -84,6 +84,7 @@ func startUpSpecificLoad(instance):
 	if status == 1 or status == 0 or await Server.getServerVersion() != Server.gameVersion:
 		reloadConnection()
 		return true
+	instance.titleAnimation = true
 	return load
 	
 func startLoad(newScene: String = "BattleField"):

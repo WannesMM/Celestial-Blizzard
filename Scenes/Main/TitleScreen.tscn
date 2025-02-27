@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=26 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="Texture2D" uid="uid://c8godjr2ljcr4" path="res://assets/Setpieces/MainScreenLandscape.jpg" id="3_1omaa"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="5_t2bfb"]
 [ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="6_iwfnr"]
 [ext_resource type="Texture2D" uid="uid://c7gd077mkycww" path="res://assets/Setpieces/profileCircle.png" id="7_bvpvn"]
+[ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="7_ioo6v"]
 [ext_resource type="Texture2D" uid="uid://cj2ng8c5q1r0o" path="res://assets/Cards/CharacterCard/Hatsune Miku.png" id="8_nmak3"]
+[ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="10_v3w12"]
 
 [sub_resource type="Gradient" id="Gradient_rea1i"]
 offsets = PackedFloat32Array(0, 0.01, 0.64)
@@ -34,6 +36,9 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0.162066, 0.162066, 0.162066, 
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yd6ln"]
 blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gr33s"]
 light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rb2vw"]
@@ -213,6 +218,13 @@ energy = 16.0
 texture = SubResource("GradientTexture2D_kycxr")
 script = ExtResource("4_vdxj1")
 
+[node name="CardShatter-3" type="Sprite2D" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_gr33s")
+rotation = 1.5708
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("7_ioo6v")
+
 [node name="Account" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
@@ -275,6 +287,9 @@ color = Color(0.274266, 0.472186, 0.773144, 1)
 energy = 7.52
 texture = SubResource("GradientTexture2D_k41m1")
 texture_scale = 1.6
+
+[node name="Camera" parent="." instance=ExtResource("10_v3w12")]
+layout_mode = 1
 
 [connection signal="mouse_entered" from="Battle" to="." method="BattleMouseEntered"]
 [connection signal="mouse_exited" from="Battle" to="." method="BattleMouseExited"]
