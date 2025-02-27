@@ -1,9 +1,9 @@
 extends Node
 
 var serverVersion
-var gameVersion = "AlphaTest"
+var gameVersion = "PreAlpha"
 
-var server = ENetMultiplayerPeer.new()
+var client = ENetMultiplayerPeer.new()
 
 #Kot IP = "192.168.0.154"
 
@@ -16,13 +16,13 @@ signal versionGiven
 
 func connectToServer():
 	if status != 2:
-		server.create_client(ip, port)
-		multiplayer.multiplayer_peer = server
+		client.create_client(ip, port)
+		multiplayer.multiplayer_peer = client
 		await Random.wait(1)
 	return await connectionStatus()
 
 func connectionStatus():
-	match server.get_connection_status():
+	match client.get_connection_status():
 		MultiplayerPeer.CONNECTION_CONNECTING:
 			print("Connecting")
 			status = 1
@@ -30,6 +30,7 @@ func connectionStatus():
 			return 1
 		MultiplayerPeer.CONNECTION_CONNECTED:
 			print("Connected to server at ", ip, ":", port)
+			print("Client's unique ID:", multiplayer.get_unique_id())
 			status = 2
 			return 2
 		MultiplayerPeer.CONNECTION_DISCONNECTED:
@@ -39,11 +40,14 @@ func connectionStatus():
 			return 0
 
 func getServerVersion():
-	rpc_id(server.get_unique_id(),"requestServerVersion")
+	rpc_id(1,"requestServerVersion")
 	await versionGiven
 	if serverVersion != gameVersion:
-		Random.message("A newer version is available")
+		await Random.message("A newer version is available",4,Vector2(0,100))
 	return serverVersion
+
+func createAccount(name: String, password: String):
+	rpc_id(1,"createNewAccount",name,password)
 
 # Interconnection --------------------------------------------------------------
 
@@ -57,8 +61,10 @@ func receiveServerVersion(version: String):
 	serverVersion = version
 	versionGiven.emit()
 
-# Dit is belachelijk -----------------------------------------------------------
-
 @rpc("any_peer")
 func requestServerVersion():
+	pass
+
+@rpc("any_peer")
+func createNewAccount():
 	pass

@@ -26,11 +26,11 @@ point_count = 2
 offsets = PackedFloat32Array(0.0466667, 0.2, 0.68, 0.993333)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Gradient" id="Gradient_n8ys6"]
+[sub_resource type="Gradient" id="Gradient_fuvfn"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vq278"]
-gradient = SubResource("Gradient_n8ys6")
+gradient = SubResource("Gradient_fuvfn")
 fill = 1
 fill_from = Vector2(0.490826, 0.518349)
 fill_to = Vector2(0.188073, 0.197248)

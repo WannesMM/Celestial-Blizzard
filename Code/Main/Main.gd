@@ -45,3 +45,24 @@ func loadDeckbuilder() -> void:
 func loadShop() -> void:
 	await fadeScreen()
 	Random.callLoadingScreen("Shop")
+
+func accountMouseEntered() -> void:
+	var shadeTween = create_tween()
+	var fadeTween = create_tween()
+	shadeTween.tween_property($Account/AccountLight,"energy",7.5,1)
+	fadeTween.tween_property($Account/SnowCrystal,"modulate:a",1,1)
+	await shadeTween.finished
+	shadeTween.kill()
+	fadeTween.kill()
+
+func accountMouseExited() -> void:
+	var shadeTween = create_tween()
+	var fadeTween = create_tween()
+	shadeTween.tween_property($Account/AccountLight,"energy",0,1)
+	fadeTween.tween_property($Account/SnowCrystal,"modulate:a",0,1)
+	await shadeTween.finished
+	shadeTween.kill()
+	fadeTween.kill()
+
+func accountButton() -> void:
+	pass
