@@ -79,13 +79,19 @@ func titleSpecificLoad(mainInstance):
 	return false
 	
 func startUpSpecificLoad(instance):
-	var status = await Server.connectToServer()
-	var load = titleSpecificLoad(instance)
-	if status == 1 or status == 0 or await Server.getServerVersion() != Server.gameVersion:
-		reloadConnection()
-		return true
-	instance.titleAnimation = true
-	return load
+	if await checkConnection():
+		var load = titleSpecificLoad(instance)
+		instance.titleAnimation = true
+		return load
+	return true
+	
+func checkConnection():
+	if Server.requireConnection:
+		var status = await Server.connectToServer()
+		if status == 1 or status == 0 or await Server.getServerVersion() != Server.gameVersion:
+			reloadConnection()
+			return false
+	return true
 	
 func startLoad(newScene: String = "BattleField"):
 	AudioEngine.playSFX("SoundEffect01")

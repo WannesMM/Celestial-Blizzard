@@ -1,8 +1,11 @@
 extends Node
 
-var serverVersion
+#Settings
+var requireConnection = false
 var gameVersion = "PreAlpha"
 
+#Server
+var serverVersion
 var client = ENetMultiplayerPeer.new()
 
 #Kot IP = "192.168.0.154"
