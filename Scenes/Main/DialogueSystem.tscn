@@ -91,6 +91,20 @@ scale_amount_max = 0.4
 scale_amount_curve = SubResource("Curve_tisd8")
 color_ramp = SubResource("Gradient_5ubv0")
 
+[node name="BoxEdge" type="NinePatchRect" parent="."]
+modulate = Color(0.199219, 0.199219, 0.199219, 0.741176)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.585
+offset_bottom = -170.915
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5odlv")
+region_rect = Rect2(242.4, 158.293, 1170.32, 631.766)
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0.564706)
 layout_mode = 0
@@ -189,6 +203,7 @@ theme_override_fonts/normal_font = ExtResource("3_82fl8")
 theme_override_font_sizes/normal_font_size = 28
 text = "Hatsune Miku"
 scroll_active = false
+script = ExtResource("8_ye3q2")
 
 [node name="CardHighlight" type="Sprite2D" parent="TextContainer"]
 clip_children = 1
