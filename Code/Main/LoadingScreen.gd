@@ -14,6 +14,7 @@ var value = 0
 @export var deckBuilderScene: String
 @export var shopScene: String
 @export var TitleScene: String
+@export var storyScene: String
 
 func _ready() -> void:
 	modulate.v = 0
@@ -38,6 +39,8 @@ func getScenePath(newScene: String):
 			return shopScene
 		"StartUp":
 			return TitleScene
+		"Story":
+			return storyScene
 
 func specificLoad(newScene, instance):
 	match newScene:
@@ -51,6 +54,8 @@ func specificLoad(newScene, instance):
 			return await shopSpecificLoad(instance)
 		"StartUp":
 			return await startUpSpecificLoad(instance)
+		"Story":
+			return storySpecificLoad(instance)
 
 func battleSpecificLoad(battleField):
 	var allyInput = PlayerInput.new(battleField)
@@ -84,7 +89,10 @@ func startUpSpecificLoad(instance):
 		instance.titleAnimation = true
 		return load
 	return true
-	
+
+func storySpecificLoad(instance):
+	return false
+
 func checkConnection():
 	if Server.requireConnection:
 		var status = await Server.connectToServer()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://coeo7k7wf8v1w"]
+[gd_scene load_steps=21 format=3 uid="uid://coeo7k7wf8v1w"]
 
 [ext_resource type="Texture2D" uid="uid://dgo25iibpn31b" path="res://assets/Setpieces/Portrait Rect.png" id="1_5odlv"]
 [ext_resource type="Script" path="res://Scenes/Main/DialogueSystem.gd" id="1_plbh7"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="7_6ik0f"]
 [ext_resource type="Script" path="res://Scenes/Main/Text.gd" id="8_ye3q2"]
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="10_20idr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gcdlh"]
+light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5oo01"]
 light_mode = 1
@@ -31,6 +34,12 @@ colors = PackedColorArray(0, 0, 0, 0, 0.270222, 0.270222, 0.270222, 1, 0.41598, 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fafy7"]
 light_mode = 1
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brpv7"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dy17v"]
+light_mode = 1
+
 [sub_resource type="Gradient" id="Gradient_pxl3s"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
@@ -40,6 +49,7 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 
 [node name="DialogueSystem" type="Control"]
+material = SubResource("CanvasItemMaterial_gcdlh")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,6 +198,7 @@ grow_vertical = 2
 scale = Vector2(0.974582, 1)
 
 [node name="TextBox" type="RichTextLabel" parent="DialogueContainer/TextContainer"]
+material = SubResource("CanvasItemMaterial_brpv7")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.829
@@ -202,6 +213,7 @@ theme_override_font_sizes/normal_font_size = 15
 script = ExtResource("8_ye3q2")
 
 [node name="CharacterName" type="RichTextLabel" parent="DialogueContainer/TextContainer"]
+material = SubResource("CanvasItemMaterial_dy17v")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

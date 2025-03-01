@@ -1,5 +1,7 @@
 extends Control
 
+class_name DialogueSystem
+
 var currentID: int = 1
 var currentLine: Dictionary
 
@@ -97,7 +99,6 @@ var dialogueData = {}
 
 func _ready() -> void:
 	modulate.a = 0
-	startDialogue("Chapter0")
 
 func loadDialogue(part: String):
 	if FileAccess.file_exists(filePath):

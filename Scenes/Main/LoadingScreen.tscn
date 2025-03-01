@@ -46,6 +46,7 @@ script = ExtResource("1_0lv6y")
 deckBuilderScene = "res://Scenes/Deckbuilder/deckBuilder.tscn"
 shopScene = "res://Scenes/Shop/Shop.tscn"
 TitleScene = "res://Scenes/Main/TitleScreen.tscn"
+storyScene = "res://Scenes/Main/Story.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("CanvasItemMaterial_vyr3u")

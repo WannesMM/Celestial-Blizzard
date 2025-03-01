@@ -89,5 +89,11 @@ func playSFX(name: String, channel: int = 5):
 func loadAmbiencePath(name: String):
 	return "res://assets/Audio/Ambience/" + str(name) + ".mp3"
 
-func playAmbience(name: String, channel: int = 3, fade: float = 0):
+func playAmbience(name: String, channel: int = 3, fade: float = 3):
 	playAudio(loadAmbiencePath(name),channel,0, fade)
+
+func loadStoryPath(name: String):
+	return "res://assets/Audio/Music/Story/" + name + ".mp3"
+	
+func playStory(name: String, channel: int = 1, fade: float = 1):
+	playAudio(loadStoryPath(name),channel,0, fade)
