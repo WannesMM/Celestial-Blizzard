@@ -157,6 +157,12 @@ func increaseGamePhase():
 		gamePhase = 3
 	AudioEngine.playBattleMusic(1, floor(gamePhase / 2) + 1)
 	
+var scheduledEffects: Array[Effect] = []
+	
+func scheduleEffect(effect: Effect):
+	scheduledEffects.append(effect)
+	
+	
 # Getter and Setters -------------------------------------------------------------------------------
 
 func getLayoutManager():
