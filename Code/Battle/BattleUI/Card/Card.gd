@@ -131,6 +131,9 @@ func setLayout(layout):
 func getLayout():
 	return currentLayout
 	
+func getSize():
+	return Vector2($CardBorder.texture.get_width(), $CardBorder.texture.get_height()) * $CardBorder.scale
+	
 func increaseZIndex():
 	self.z_index = 1
 	

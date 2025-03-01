@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bam2b6wlf6xdh"]
+
+[ext_resource type="Texture2D" uid="uid://fe7l8go10wn" path="res://assets/User Interface/Temp Background.jpeg" id="1_q88t0"]
+[ext_resource type="Texture2D" uid="uid://mw84mjtsjyn7" path="res://assets/User Interface/SelectRect.png" id="2_gxdr0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x270y"]
+size = Vector2(533, 415)
+
+[node name="CardPlacementCollision" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(-2, -1)
+scale = Vector2(0.721769, 1.00485)
+texture = ExtResource("1_q88t0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x270y")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Area2D"]
+offset_left = -276.0
+offset_top = -203.0
+offset_right = 6549.0
+offset_bottom = 4998.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_gxdr0")
+region_rect = Rect2(141, 167, 2198, 3046)
+patch_margin_left = 429
+patch_margin_top = 460
+patch_margin_right = 436
+patch_margin_bottom = 430
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
