@@ -44,10 +44,12 @@ func getChannel(channel: int):
 func playAudio(track: String, channel: int, volume: float = 0.0, fade: float = 0.0):
 	if !disableAudio:
 		var channelInstance = getChannel(channel)
-		await fadeVolume(-80,channel,1.5)
+		if channel != 5 and channel != 6:
+			await fadeVolume(-80,channel,1.5)
 		channelInstance.stream = load(track)
 		channelInstance.play()
-		await fadeVolume(volume,channel,fade)
+		if channel != 5 and channel != 6:
+			await fadeVolume(volume,channel,fade)
 		
 func stopAudio(channel):
 	var channelInstance = getChannel(channel)

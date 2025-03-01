@@ -1,17 +1,214 @@
-[
-	{
-		"id": "intro1",
-		"speaker": "Shadowy Figure",
-		"text": "It is exactly what you think. You died.",
-		"choices": [
-			{"text": "I feel pretty alive though...", "next_id": "intro_2"},
-			{"text": "That is impossible.", "next_id": "intro_3"},
-			{"text": "How did I die?", "next_id": "intro_4"}
-		]
-	},
-	{
-		"id": "intro2",
-		"speaker": "Shadowy Figure",
-		"text": "That is because you are… to a certain extent."
-	}
-]
+{
+	"Chapter0": [
+		{
+			"lineID": 1,
+			"type": "Normal",
+			"name": "You",
+			"text": "...",
+			"nextID": 2
+		},
+		{
+			"lineID": 2,
+			"type": "Normal",
+			"name": "You",
+			"text": "Where... Am I???",
+			"nextID": 3
+		},
+		{
+			"lineID": 3,
+			"type": "Normal",
+			"name": "You",
+			"text": "I should've... No, it can't be.",
+			"nextID": 4
+		},
+		{
+			"lineID": 4,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "It is exactly what you think, you died...",
+			"nextID": 5
+		},
+		{
+			"lineID": 5,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "Not yesterday, not the day before, not even the year before that...",
+			"nextID": 6
+		},
+		{
+			"lineID": 6,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "It really has been a long time...",
+			"nextID": 7
+		},
+		{
+			"lineID": 7,
+			"type": "Choice",
+			"name": "You",
+			"text": ["I feel pretty alive though...", "That is impossible.", "How did I die?"],
+			"nextID": [8,9,10]
+		},
+		{
+			"lineID": 8,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "That is, because you are... At least, to a certain extent.",
+			"nextID": 11
+		},
+		{
+			"lineID": 9,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "It is normal to feel disbelief...",
+			"nextID": 11
+		},
+		{
+			"lineID": 10,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "You made the wrong choice in a moment of desperation. *Sigh*, it's a shame",
+			"nextID": 11
+		},
+		{
+			"lineID": 11,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "Say, how much do you remember exactly?",
+			"nextID": 12
+		},
+		{
+			"lineID": 12,
+			"type": "Choice",
+			"name": "You",
+			"text": ["I remember nothing...", "I remember some things.", "Everything."],
+			"nextID": [13,14,15]
+		},
+		{
+			"lineID": 13,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "Can't you even remember your very own name?",
+			"nextID": 16
+		},
+		{
+			"lineID": 14,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "Can you recall your name?",
+			"nextID": 16
+		},
+		{
+			"lineID": 15,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "What was your name then?",
+			"nextID": 16
+		},
+		{
+			"lineID": 16,
+			"type": "TextInput",
+			"name": "You",
+			"text": ["My name was ", "Name"],
+			"nextID": 17
+		},
+		{
+			"lineID": 17,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "So you do remember your name after all.",
+			"nextID": 18
+		},
+		{
+			"lineID": 18,
+			"type": "Var",
+			"name": "Shadowy figure",
+			"text": ["Name","."],
+			"nextID": 19
+		},
+		{
+			"lineID": 19,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "I will grant you a second chance. A chance to avenge your past, your mistakes. Your regrets.",
+			"nextID": 20
+		},
+		{
+			"lineID": 20,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "However, it will not come for granted. You must do something for me...",
+			"nextID": 21
+		},
+		{
+			"lineID": 21,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "Defeat me.",
+			"nextID": 22
+		},
+		{
+			"lineID": 22,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "In order to do that, you must first come to understand who you are.",
+			"nextID": 23
+		},
+		{
+			"lineID": 23,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "After that, learn my identity. Only then you can defeat me.",
+			"nextID": 24
+		},
+		{
+			"lineID": 24,
+			"type": "Normal",
+			"name": "You",
+			"text": "How can I learn these things?",
+			"nextID": 25
+		},
+		{
+			"lineID": 25,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "You are not the only person trapped in this blizzard... People, long forgotten. Heroes of the past, they still roam here. Searching for validation, just like you.",
+			"nextID": 26
+		},
+		{
+			"lineID": 26,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "Meet them, they will help you recall you identity.",
+			"nextID": 27
+		},
+		{
+			"lineID": 27,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "Find them, find yourself.",
+			"nextID": 28
+		},
+		{
+			"lineID": 28,
+			"type": "Normal",
+			"name": "Shadowy figure",
+			"text": "I will be waiting...",
+			"nextID": -1
+		},
+		
+	]
+	,
+	"Chapter1": [
+		{
+			"lineID": 1,
+			"name": "You",
+			"text": "Hello, world!"
+		},
+		{
+			"lineID": 2,
+			"name": "NPC",
+			"text": "Welcome to the game!"
+		}
+	]
+}

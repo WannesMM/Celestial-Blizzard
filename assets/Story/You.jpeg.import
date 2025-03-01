@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xfl86vf0gqpu"
-path="res://.godot/imported/Shadowy Figure.jpeg-e38b5e54e658533296c6a37435964ee8.ctex"
+uid="uid://dsd2bc3di58g"
+path="res://.godot/imported/You.jpeg-0638c96e129af5b9add13eb4d5752bed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Story/Shadowy Figure.jpeg"
-dest_files=["res://.godot/imported/Shadowy Figure.jpeg-e38b5e54e658533296c6a37435964ee8.ctex"]
+source_file="res://assets/Story/You.jpeg"
+dest_files=["res://.godot/imported/You.jpeg-0638c96e129af5b9add13eb4d5752bed.ctex"]
 
 [params]
 

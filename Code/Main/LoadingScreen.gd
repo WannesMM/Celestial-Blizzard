@@ -94,7 +94,6 @@ func checkConnection():
 	return true
 	
 func startLoad(newScene: String = "BattleField"):
-	AudioEngine.playSFX("SoundEffect01")
 	nextScene = getScenePath(newScene)
 	
 	var fadeTween = create_tween()

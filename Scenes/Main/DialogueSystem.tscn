@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dgo25iibpn31b" path="res://assets/Setpieces/Portrait Rect.png" id="1_5odlv"]
 [ext_resource type="Script" path="res://Scenes/Main/DialogueSystem.gd" id="1_plbh7"]
-[ext_resource type="Texture2D" uid="uid://cj2ng8c5q1r0o" path="res://assets/Cards/CharacterCard/Hatsune Miku.png" id="2_20qil"]
 [ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="2_fx5h4"]
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="2_ifhti"]
 [ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="3_82fl8"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_n2lwl"]
 [ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_i7xf0"]
+[ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="7_6ik0f"]
 [ext_resource type="Script" path="res://Scenes/Main/Text.gd" id="8_ye3q2"]
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="10_20idr"]
 
@@ -41,17 +41,25 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="DialogueSystem" type="Control"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_plbh7")
+
+[node name="DialogueContainer" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -171.0
+offset_top = -136.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("1_plbh7")
 
-[node name="DialogueBoxBackground" type="NinePatchRect" parent="."]
-modulate = Color(0.25, 0.25, 0.25, 0.666667)
+[node name="DialogueBoxBackground" type="NinePatchRect" parent="DialogueContainer"]
+modulate = Color(0.125, 0.125, 0.125, 0.729412)
 clip_children = 2
 layout_mode = 1
 anchors_preset = 15
@@ -62,13 +70,13 @@ grow_vertical = 2
 texture = ExtResource("1_5odlv")
 region_rect = Rect2(242.4, 158.293, 1170.32, 631.766)
 
-[node name="CardShader" type="Sprite2D" parent="DialogueBoxBackground"]
-modulate = Color(1, 1, 1, 0.333333)
+[node name="CardShader" type="Sprite2D" parent="DialogueContainer/DialogueBoxBackground"]
+modulate = Color(1, 1, 1, 0.698039)
 position = Vector2(389, 99)
 scale = Vector2(1.165, 1.165)
 texture = ExtResource("2_fx5h4")
 
-[node name="SnowParticles" type="CPUParticles2D" parent="DialogueBoxBackground"]
+[node name="SnowParticles" type="CPUParticles2D" parent="DialogueContainer/DialogueBoxBackground"]
 material = SubResource("CanvasItemMaterial_5oo01")
 position = Vector2(582, 92)
 scale = Vector2(1.165, 1.165)
@@ -91,37 +99,37 @@ scale_amount_max = 0.4
 scale_amount_curve = SubResource("Curve_tisd8")
 color_ramp = SubResource("Gradient_5ubv0")
 
-[node name="BoxEdge" type="NinePatchRect" parent="."]
+[node name="BoxEdge" type="NinePatchRect" parent="DialogueContainer"]
 modulate = Color(0.199219, 0.199219, 0.199219, 0.741176)
 clip_children = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -12.585
-offset_bottom = -170.915
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.00128, -0.104911)
 texture = ExtResource("1_5odlv")
 region_rect = Rect2(242.4, 158.293, 1170.32, 631.766)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogueContainer"]
 modulate = Color(1, 1, 1, 0.564706)
 layout_mode = 0
-offset_left = -2.0
-offset_right = 241.0
-offset_bottom = 167.0
+offset_left = -4.0
+offset_top = -23.0
+offset_right = 239.0
+offset_bottom = 144.0
 scale = Vector2(0.956447, 1.00559)
 texture = ExtResource("2_ifhti")
 
-[node name="PortraitBox" type="Control" parent="."]
+[node name="PortraitBox" type="Control" parent="DialogueContainer"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 172.0
 grow_vertical = 2
 
-[node name="PortraitAnchor" type="Control" parent="PortraitBox"]
+[node name="PortraitAnchor" type="Control" parent="DialogueContainer/PortraitBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -131,11 +139,11 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PortraitScaler" type="Node2D" parent="PortraitBox/PortraitAnchor"]
+[node name="PortraitScaler" type="Node2D" parent="DialogueContainer/PortraitBox/PortraitAnchor"]
 position = Vector2(27.165, -17.56)
 scale = Vector2(0.94, 0.94)
 
-[node name="PortraitOutline" type="NinePatchRect" parent="PortraitBox/PortraitAnchor/PortraitScaler"]
+[node name="PortraitOutline" type="NinePatchRect" parent="DialogueContainer/PortraitBox/PortraitAnchor/PortraitScaler"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -150,7 +158,7 @@ grow_vertical = 2
 rotation = 0.785398
 texture = ExtResource("1_5odlv")
 
-[node name="PortraitMask" type="NinePatchRect" parent="PortraitBox/PortraitAnchor/PortraitScaler"]
+[node name="PortraitMask" type="NinePatchRect" parent="DialogueContainer/PortraitBox/PortraitAnchor/PortraitScaler"]
 clip_children = 1
 offset_left = -0.507584
 offset_top = -139.0
@@ -159,41 +167,41 @@ offset_bottom = 61.0
 rotation = 0.785398
 texture = ExtResource("1_5odlv")
 
-[node name="PortraitSprite" type="Sprite2D" parent="PortraitBox/PortraitAnchor/PortraitScaler/PortraitMask"]
+[node name="PortraitSprite" type="Sprite2D" parent="DialogueContainer/PortraitBox/PortraitAnchor/PortraitScaler/PortraitMask"]
 material = SubResource("CanvasItemMaterial_fafy7")
-position = Vector2(151.674, 147.432)
+position = Vector2(94.8066, 116.904)
 rotation = -0.785398
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_20qil")
+scale = Vector2(0.415, 0.415)
+script = ExtResource("7_6ik0f")
 
-[node name="TextContainer" type="Control" parent="."]
+[node name="TextContainer" type="Control" parent="DialogueContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 252.0
 offset_top = 10.0
-offset_right = -12.0
+offset_right = 212.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.974582, 1)
 
-[node name="TextBox" type="RichTextLabel" parent="TextContainer"]
+[node name="TextBox" type="RichTextLabel" parent="DialogueContainer/TextContainer"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.829
 anchor_bottom = 1.0
 offset_top = 39.0
+offset_right = -0.848083
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = 5
 theme_override_fonts/normal_font = ExtResource("3_82fl8")
 theme_override_font_sizes/normal_font_size = 15
-text = "This is a more realistic showing of how it will look."
 script = ExtResource("8_ye3q2")
 
-[node name="CharacterName" type="RichTextLabel" parent="TextContainer"]
+[node name="CharacterName" type="RichTextLabel" parent="DialogueContainer/TextContainer"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -201,35 +209,39 @@ offset_bottom = 38.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("3_82fl8")
 theme_override_font_sizes/normal_font_size = 28
-text = "Hatsune Miku"
 scroll_active = false
 script = ExtResource("8_ye3q2")
 
-[node name="CardHighlight" type="Sprite2D" parent="TextContainer"]
+[node name="CardHighlight" type="Sprite2D" parent="DialogueContainer/TextContainer"]
 clip_children = 1
 position = Vector2(342, -189)
 scale = Vector2(0.167742, 0.107611)
 texture = ExtResource("5_i7xf0")
 
-[node name="Middle" type="Control" parent="."]
+[node name="Middle" type="Control" parent="DialogueContainer"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 556.0
+offset_top = 46.5
+offset_right = 556.0
+offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PointLight2D2" type="PointLight2D" parent="Middle"]
-position = Vector2(6, 87.5)
+[node name="PointLight2D2" type="PointLight2D" parent="DialogueContainer/Middle"]
+visible = false
+position = Vector2(-189, 18.5)
 scale = Vector2(38.4844, 2.6875)
 color = Color(0.0224172, 0.401369, 0.846222, 1)
 energy = 5.9
 texture = SubResource("GradientTexture2D_ufs4k")
 script = ExtResource("10_20idr")
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="Button" parent="DialogueContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -238,4 +250,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="pressed" from="Continue" to="." method="proceed"]
+[connection signal="pressed" from="DialogueContainer/Continue" to="." method="proceed"]
