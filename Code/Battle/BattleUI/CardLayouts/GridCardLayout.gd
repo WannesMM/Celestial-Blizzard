@@ -33,7 +33,6 @@ func arrangeCards():
 	
 	# Apply margins
 	colliderSize -= Vector2(outerMargin * 2, outerMargin * 2)
-	print()
 	
 	# Return error when the cards do not fit
 	if (gridSizeX * gridSizeY < addedCards.size()) && scroll == "none":
@@ -44,7 +43,6 @@ func arrangeCards():
 		return
 	
 	var cardSize = addedCards[0].getSize() * scaleCards
-	print(cardSize)
 	
 	# calculate correct widths and starting positions
 	var cellWidth = colliderSize.x / gridSizeX
@@ -54,7 +52,6 @@ func arrangeCards():
 	var Xitterations = gridSizeX
 	var Yitterations = gridSizeY
 	
-	print(scroll)
 	match scroll:
 		"horizontal":
 			startX  = -colliderSize.x / 2 + cardSize.x / 2 
