@@ -3,7 +3,7 @@ extends Node
 class_name PlayerState
 
 var gameState: GameState
-var input: InputHandler
+var input: InputHandler: set = setInputHandler
 
 var characterCards: CardLayout = null
 var cardHand: CardLayout = null
@@ -51,11 +51,11 @@ func chooseAction():
 			if action[1].cardLogic.isPossibleMove(action[0]):
 				match action[2]:
 					"NA":
-						action[1].cardLogic.NA()
+						await action[1].cardLogic.NA()
 					"SA":
-						action[1].cardLogic.SA()
+						await action[1].cardLogic.SA()
 					"CA":
-						action[1].cardLogic.CA()
+						await action[1].cardLogic.CA()
 				setTurnEnded(true)
 		"End Round": 
 			setTurnEnded(true)
@@ -116,7 +116,7 @@ func setActiveCharacter(card: Card = null):
 			activeCharacter.cardLogic.setActive(true)
 	
 func damage(attacker: CardLogic, dmg: int, defender: Card = opponent.getActiveCharacter()):
-	gameState.damage(attacker, dmg, defender)
+	await gameState.damage(attacker, dmg, defender)
 	
 # Getters and Setters ------------------------------------------------------------------------------
 
@@ -131,6 +131,7 @@ func getInputhandler():
 	
 func setInputHandler(handler: InputHandler):
 	input = handler
+	handler.playerState = self
 	
 func getCharacterCards():
 	return characterCards

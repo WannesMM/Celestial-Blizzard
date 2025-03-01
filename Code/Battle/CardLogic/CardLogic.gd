@@ -69,4 +69,4 @@ func checkCost(req: int):
 		return true
 
 func attack(dmg: int):
-	cardOwner.damage(self, dmg)
+	await cardOwner.damage(self, dmg)

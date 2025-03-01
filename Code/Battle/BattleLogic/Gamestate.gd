@@ -60,7 +60,7 @@ func startGame():
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
 	
-	AudioEngine.playBattleMusic(1,2)
+	increaseGamePhase()
 	executeRounds()
 	
 func executeRounds():
@@ -125,12 +125,14 @@ func nextActivePlayer():
 		activePlayer = activePlayer.opponent	
 	
 func damage(attacker: CardLogic, dmg: int, defender: Card):
-	defender.cardLogic.receiveDamage(dmg)
+	await defender.cardLogic.receiveDamage(dmg)
 	
 func characterDefeated(card: CharacterCardLogic, player: PlayerState):
 	checkGameWin(player)
 	if playerWin == null:
-		player.input.chooseActiveCharacter()
+		var switch = await player.input.chooseActiveCharacter()
+		player.setActiveCharacter(switch[1])
+		increaseGamePhase()
 	
 func checkGameWin(player: PlayerState):
 	var allDefeated = true
@@ -146,6 +148,14 @@ func endGame(winner: PlayerState):
 		layoutManager.message("You Lost")
 	await Random.wait(2)
 	Random.callLoadingScreen("Title")
+	
+var gamePhase: int = 0
+
+func increaseGamePhase():
+	gamePhase = gamePhase + 1
+	if gamePhase > 3:
+		gamePhase = 3
+	AudioEngine.playBattleMusic(1, floor(gamePhase / 2) + 1)
 	
 # Getter and Setters -------------------------------------------------------------------------------
 

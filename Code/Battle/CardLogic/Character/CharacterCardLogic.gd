@@ -35,7 +35,7 @@ func playableOn():
 
 func NA():
 	if checkCost(NAdmg):
-		attack(NAdmg)
+		await attack(NAdmg)
 	
 func SA():
 	print("Default SA has been executed")
@@ -44,11 +44,11 @@ func CA():
 	print("Default CA has been executed")
 	
 func receiveDamage(amt: int):
-	setHP(HP - amt)
+	await setHP(HP - amt)
 	
 func defeatCard(card = self):
 	card.defeated = true
-	gameState.characterDefeated(card, card.cardOwner)
+	await gameState.characterDefeated(card, card.cardOwner)
 	
 func isPossibleMove(move: String):
 	if active:
@@ -64,7 +64,8 @@ func getMaxHP():
 func setHP(amt: int):
 	if amt <= 0:
 		HP = 0
-		defeatCard(self)
+		card.setLabel1(str(HP))
+		await defeatCard(self)
 	else:
 		HP = amt
 	if card:
