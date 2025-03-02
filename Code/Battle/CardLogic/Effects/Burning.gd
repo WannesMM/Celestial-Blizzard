@@ -4,5 +4,10 @@ class_name Burning
 
 func effectConstructor():
 	effectName = "Burning"
-	timeFrame = "Start of Turn"
+	timeFrame = "AllyTurn"
 	
+func executeEffect():
+	gameState.damage(applicator,1,target)
+	stacks -= 1
+	if stacks <= 0:
+		removeEffect()

@@ -34,17 +34,26 @@ func playableOn():
 	return [cardOwner.characterCards.collision]
 
 func NA():
-	if checkCost(NAdmg):
-		await attack(NAdmg)
+	cardOwner.reduceGold(NAcost)
+	gainEnergy()
+	await attack(NAdmg)
 	
 func SA():
-	print("Default SA has been executed")
+	cardOwner.reduceGold(SAcost)
+	gainEnergy()
+	await attack(SAdmg)
 	
 func CA():
-	print("Default CA has been executed")
-	
+	cardOwner.reduceGold(CAcost)
+	reduceEnergy()
+	await attack(CAdmg)
+
 func receiveDamage(amt: int):
 	await setHP(HP - amt)
+	onHit()
+	
+func onHit():
+	pass
 	
 func defeatCard(card = self):
 	card.defeated = true
@@ -56,12 +65,41 @@ func isPossibleMove(move: String):
 	gameState.layoutManager.message("This character is not currently active")
 	return false
 	
+func gainEnergy(amt: int = 1):
+	if energy + amt > maxEnergy:
+		energy = maxEnergy
+	else:
+		energy += amt
+	
+func getMoveCost(move: String):
+	match move:
+		"NA":
+			return NAcost
+		"SA":
+			return SAcost
+		"CA":
+			return CAcost
+
+func checkEnergy():
+	if energy >= CAenergyCost:
+		return true
+	else:
+		return false
+		
+func reduceEnergy():
+	energy = energy - CAenergyCost
+	
+func heal(amt: int):
+	setHP(HP + amt)
+	
 #---------------------------------------------------------------------------------------------------
 
 func getMaxHP():
 	return maxHP
 
 func setHP(amt: int):
+	if amt > maxHP:
+		HP = maxHP
 	if amt <= 0:
 		HP = 0
 		card.setLabel1(str(HP))

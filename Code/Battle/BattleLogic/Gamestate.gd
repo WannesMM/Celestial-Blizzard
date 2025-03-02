@@ -98,6 +98,9 @@ func executeRounds():
 		
 func executeTurn():
 	turnCounter += 1
+	executeEffects("Start of Turn")
+	executeEffects("AllyTurn")
+	executeEffects("EnemyTurn")
 	layoutManager.message("Turn " + str(turnCounter))
 	
 	await layoutManager.wait(2)
@@ -124,15 +127,16 @@ func nextActivePlayer():
 	if !activePlayer.opponent.roundEnded:
 		activePlayer = activePlayer.opponent	
 	
-func damage(attacker: CardLogic, dmg: int, defender: Card):
-	await defender.cardLogic.receiveDamage(dmg)
+func damage(attacker: CardLogic, dmg: int, defender: CardLogic):
+	await defender.receiveDamage(dmg)
 	
 func characterDefeated(card: CharacterCardLogic, player: PlayerState):
 	checkGameWin(player)
 	if playerWin == null:
 		var switch = await player.input.chooseActiveCharacter()
 		player.setActiveCharacter(switch[1])
-		increaseGamePhase()
+		if player.allied == false:
+			increaseGamePhase()
 	
 func checkGameWin(player: PlayerState):
 	var allDefeated = true
@@ -155,12 +159,36 @@ func increaseGamePhase():
 	gamePhase = gamePhase + 1
 	if gamePhase > 3:
 		gamePhase = 3
-	AudioEngine.playBattleMusic(1, floor(gamePhase / 2) + 1)
+	AudioEngine.playBattleMusic(1, gamePhase)
 	
 var scheduledEffects: Array[Effect] = []
 	
-func scheduleEffect(effect: Effect):
-	scheduledEffects.append(effect)
+func scheduleEffect(newEffect: Effect):
+	var mergeEffect: Effect = null
+	for effect in scheduledEffects:
+		if effect.get_class() == newEffect.get_class() and effect.target == newEffect.target:
+			mergeEffect = effect
+	if mergeEffect == null:
+		scheduledEffects.append(newEffect)
+	else:
+		mergeEffect.mergeEffect(newEffect)
+	
+	
+#Timeframes: Start of Turn, AllyTurn, EnemyTurn
+func executeEffects(timeFrame: String):
+	match timeFrame:
+		"Start of Turn":
+			for effect in scheduledEffects:
+				if timeFrame == effect.timeFrame:
+					effect.executeEffect()
+		"AllyTurn":
+			for effect in scheduledEffects:
+				if timeFrame == effect.timeFrame and effect.target.cardOwner == activePlayer:
+					effect.executeEffect()
+		"EnemyTurn":
+			for effect in scheduledEffects:
+				if timeFrame == effect.timeFrame and effect.target.cardOwner == activePlayer.opponent:
+					effect.executeEffect()
 	
 	
 # Getter and Setters -------------------------------------------------------------------------------

@@ -7,12 +7,13 @@ var gameState: GameState
 var effectName: String
 var timeFrame: String
 var applicator: CardLogic
-var targets: Array[CardLogic] = []
+var target: CardLogic
 
 var stacks: int = 0
 
-func _init(initializer: CardLogic) -> void:
+func _init(initializer: CardLogic, targetCard: CardLogic = initializer.cardOwner.opponent.activeCharacter.cardLogic) -> void:
 	applicator = initializer
+	target = targetCard
 	gameState = applicator.gameState
 	effectConstructor()
 	
@@ -21,3 +22,10 @@ func effectConstructor():
 
 func executeEffect():
 	pass
+
+func mergeEffect(effect: Effect):
+	stacks += effect.stacks
+
+func removeEffect():
+	gameState.scheduledEffects.erase(self)
+	queue_free()
