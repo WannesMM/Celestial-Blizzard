@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://3svo4gf7a0h8"]
+
+[ext_resource type="Texture2D" uid="uid://mw84mjtsjyn7" path="res://assets/User Interface/SelectRect.png" id="1_225cf"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/LayoutManagers/LayoutCollision.gd" id="1_tvpgq"]
+[ext_resource type="Script" path="res://Code/DeckBuilder/deck.gd" id="2_g67gq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6sqe"]
+size = Vector2(746, 166)
+
+[node name="Deck" type="Node2D"]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -373.5
+offset_top = -84.5
+offset_right = 373.5
+offset_bottom = 84.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Deck" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("collider")]
+script = ExtResource("2_g67gq")
+scroll = "horizontal"
+scaleCards = 0.8
+innerMarginX = -20.0
+collider = NodePath("../DeckCollider")
+
+[node name="DeckCollider" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("cardLayout")]
+script = ExtResource("1_tvpgq")
+cardLayout = NodePath("../Deck")
+
+[node name="Area2D" type="Area2D" parent="ScrollContainer/VBoxContainer/DeckCollider"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScrollContainer/VBoxContainer/DeckCollider/Area2D"]
+position = Vector2(376.5, 85.5)
+shape = SubResource("RectangleShape2D_a6sqe")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/VBoxContainer/DeckCollider/Area2D"]
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 9245.0
+offset_bottom = 2036.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_225cf")
+region_rect = Rect2(141, 167, 2198, 3046)
+patch_margin_left = 429
+patch_margin_top = 460
+patch_margin_right = 436
+patch_margin_bottom = 430

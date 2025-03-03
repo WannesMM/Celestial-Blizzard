@@ -20,7 +20,9 @@ class_name GridCardLayout
 @export var collider: LayoutCollision
 
 func arrangeCards():
-	 
+	if collider == null:
+		printerr("Please select the collider for this layout!")
+		return
 	
 	var colliderSize: Vector2
 	var collisionShape: CollisionShape2D = collider.find_child("CollisionShape2D")
@@ -43,7 +45,7 @@ func arrangeCards():
 		return
 	
 	var cardSize = addedCards[0].getSize() * scaleCards
-	
+	print("cs=", cardSize)
 	# calculate correct widths and starting positions
 	var cellWidth = colliderSize.x / gridSizeX
 	var cellHeight = colliderSize.y / gridSizeY
@@ -52,34 +54,47 @@ func arrangeCards():
 	var Xitterations = gridSizeX
 	var Yitterations = gridSizeY
 	
+	print(scroll)
 	match scroll:
 		"horizontal":
 			startX  = -colliderSize.x / 2 + cardSize.x / 2 
 			cellWidth = cardSize.x + innerMarginX
-			Xitterations = ceil(len(addedCards)/gridSizeY)
+			Xitterations = ceil(float(len(addedCards))/gridSizeY)
 		"vertical":
 			startY  = -colliderSize.y / 2 + cardSize.y / 2 
-			cellWidth = cardSize.y + innerMarginY
-			Yitterations = ceil(len(addedCards)/gridSizeX)
-	
+			cellHeight = cardSize.y + innerMarginY
+			Yitterations = ceil(float(len(addedCards))/gridSizeX)
+	print("loop")
+	print(Xitterations,"  ", Yitterations)
+	print(len(addedCards))
 	# Set the remaining cards
 	for y in range(Yitterations):
-		for x in range(Xitterations):			
+		for x in range(Xitterations):
 			var index = y * gridSizeX + x
 			if index >= addedCards.size():
-				return
+				break
 			
-			var cardPosition = Vector2(startX + x * cellWidth, startY - y * cellHeight)
+			var cardPosition = Vector2(startX + x * cellWidth, startY + y * cellHeight)
 			
 			var card = addedCards[index]
-			card.assignDefaultScale(Vector2(scaleCards,scaleCards))	
+			card.assignDefaultScale(Vector2(scaleCards,scaleCards))
 			card.setBasePosition(cardPosition)
 			card.animatePosition(cardPosition, 0.5)
 	
 	
 	# HBox-containergrootte aanpassen
-	var hbox = get_parent()  # Zorg dat de HBoxContainer de directe parent is
-	if hbox is HBoxContainer:
+	var box = get_parent()  # Zorg dat de HBoxContainer de directe parent is
+	if box is HBoxContainer || box is VBoxContainer:
 		var totalWidth =  Xitterations * cellWidth + outerMargin * 2
 		var totalHeight = Yitterations * cellHeight + outerMargin * 2
-		hbox.custom_minimum_size = Vector2(totalWidth, totalHeight)
+		box.custom_minimum_size = Vector2(totalWidth, totalHeight)
+	
+	var container: ScrollContainer = box.get_parent()
+	if container is ScrollContainer:
+		match scroll:
+			"horizontal":
+				container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+				container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+			"vertical":
+				container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+				container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
