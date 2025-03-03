@@ -36,8 +36,6 @@ func initializeBattle():
 	rightSlider = $"Right Slider"
 	rightSlider.layoutManager = self
 	
-	
-	
 	#print("Ready")
 	#print(allyDeck)
 	gameState = GameState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity,
@@ -68,52 +66,50 @@ func initialiseDeck(allyNewDeck: Deck, enemyNewDeck: Deck):
 	
 # Code for inputbehaviour --------------------------------------------------------------------------
 
-#0 --> allow no action, 1 --> allow ally action, 2 --> allow enemy action
-var allowAction = 0
+var currentInput: PlayerInput
+var allowAction: Array[int] = []
 
 @export var messageChooseCardScene: PackedScene
 var currentMessageChooseCard
 
 @export var messageScene: PackedScene
 
-var currentInput
-
-func selectAction(input):
-	if gameState.getActivePlayer().allied:
-		allowAction = 1
-	else:
-		allowAction = 2
-	currentInput = input
-
-#Extended modified
+#Permission 1: Play card
 func draggedIntoLayout(layout, card: Card):
-	if checkActionAllowed(card):
+	if checkActionAllowed(card) and 1 in allowAction:
 		currentInput.setSelectedAction(["Play Card", card, layout])
 	else:
 		card.animatePosition(card.getBasePosition())
 		message("It is not your turn")
 
+#Permission 2: Use move
 func characterCardMove(type, card):
-	if checkActionAllowed(card):
+	if checkActionAllowed(card) and 2 in allowAction:
 		currentInput.setSelectedAction(["Move", card, type])
 	else:
 		message("It is not your turn")
 
+#Permission 3: End round
 func endRound():
-	if allowAction != 0:
+	if 3 in allowAction:
 		currentInput.setSelectedAction(["End Round"])
 	else:
 		message("It is not your turn")
-		
-func characterCardSwitch(card):
-	if checkActionAllowed(card):
-		currentInput.setSelectedAction(["Switch", card])
+
+#Permission 4: Switch active character
+func characterCardSwitch(card: Card):
+	if checkActionAllowed(card) and 4 in allowAction:
+		if(card.cardLogic.defeated == false):
+			currentInput.setSelectedAction(["Switch", card])
+		else:
+			message("You cannot switch to a defeated character")
 	else:
 		message("It is not your turn")
 
 func checkActionAllowed(card):
-	if (allowAction == 1 and card.getLayout().allied == true) || (allowAction == 2 and card.getLayout().allied == false):
-		return true
+	if currentInput != null:
+		if (card.getLayout().allied == currentInput.playerState.allied):
+			return true
 	return false
 
 func selectCardsMessage(input, cards, amt, message = "Select Card", buttonText = "Confirm"):

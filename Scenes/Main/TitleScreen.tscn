@@ -1,23 +1,77 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=26 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="Texture2D" uid="uid://c8godjr2ljcr4" path="res://assets/Setpieces/MainScreenLandscape.jpg" id="3_1omaa"]
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="4_vdxj1"]
+[ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="5_bc87f"]
 [ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="5_t2bfb"]
 [ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="6_iwfnr"]
+[ext_resource type="Texture2D" uid="uid://c7gd077mkycww" path="res://assets/Setpieces/profileCircle.png" id="7_bvpvn"]
+[ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="7_ioo6v"]
+[ext_resource type="Texture2D" uid="uid://cj2ng8c5q1r0o" path="res://assets/Cards/CharacterCard/Hatsune Miku.png" id="8_nmak3"]
+[ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="10_v3w12"]
 
-[sub_resource type="Gradient" id="Gradient_wli8i"]
+[sub_resource type="Gradient" id="Gradient_sdrql"]
 offsets = PackedFloat32Array(0, 0.01, 0.64)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kycxr"]
-gradient = SubResource("Gradient_wli8i")
+gradient = SubResource("Gradient_sdrql")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_fqxb6"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 98.9011), 0.0, 0.0, 0, 0, Vector2(1, 170.11), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_1o3le"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.736264), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_tcgy4"]
+offsets = PackedFloat32Array(0.0466667, 0.2, 0.906667, 0.993333)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0.162066, 0.162066, 0.162066, 1, 1, 1, 1, 0)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yd6ln"]
 blend_mode = 1
 light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gr33s"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rb2vw"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_83gfd"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 98.9011), 0.0, 0.0, 0, 0, Vector2(1, 170.11), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_n5fkb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483516), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0hook"]
+offsets = PackedFloat32Array(0.0466667, 0.2, 0.68, 0.993333)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k0cf2"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qysep"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_x8aho"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k41m1"]
+gradient = SubResource("Gradient_x8aho")
+fill = 1
+fill_from = Vector2(0.490826, 0.518349)
+fill_to = Vector2(0.188073, 0.197248)
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -41,16 +95,17 @@ grow_vertical = 2
 
 [node name="MainScreenLandscape" type="Sprite2D" parent="Control2"]
 modulate = Color(0.0562916, 0.0562916, 0.0562916, 1)
-scale = Vector2(0.235, 0.235)
+scale = Vector2(0.325, 0.325)
 texture = ExtResource("3_1omaa")
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(573, 37)
-scale = Vector2(5.6438, 2.10938)
-color = Color(0.253312, 0.645276, 1, 1)
-energy = 4.05
-texture = SubResource("GradientTexture2D_kycxr")
-script = ExtResource("4_vdxj1")
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control2"]
+position = Vector2(-576, -324)
+energy = 0.8
+blend_mode = 1
+
+[node name="Snow" parent="Control2" instance=ExtResource("6_iwfnr")]
+z_index = -1
+position = Vector2(-576, -324)
 
 [node name="Battle" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -79,6 +134,14 @@ offset_bottom = 50.0
 grow_horizontal = 2
 text = "Deckbuilder"
 
+[node name="PointLight2D2" type="PointLight2D" parent="Deckbuilder"]
+position = Vector2(91, 37)
+scale = Vector2(5.6438, 2.10938)
+color = Color(0.253312, 0.645276, 1, 1)
+energy = 4.05
+texture = SubResource("GradientTexture2D_kycxr")
+script = ExtResource("4_vdxj1")
+
 [node name="Shop" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -93,6 +156,14 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Shop"
 
+[node name="PointLight2D3" type="PointLight2D" parent="Shop"]
+position = Vector2(100, 25)
+scale = Vector2(5.6438, 2.10938)
+color = Color(0.253312, 0.645276, 1, 1)
+energy = 4.05
+texture = SubResource("GradientTexture2D_kycxr")
+script = ExtResource("4_vdxj1")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -103,41 +174,128 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Control"]
-material = SubResource("CanvasItemMaterial_yd6ln")
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_t2bfb")
+[node name="SnowParticles" type="CPUParticles2D" parent="Control"]
+modulate = Color(1, 1, 1, 0.254902)
+position = Vector2(2, -322)
+rotation = -1.5708
+amount = 45
+lifetime = 45.0
+explosiveness = 0.05
+lifetime_randomness = 0.25
+texture = ExtResource("5_bc87f")
+emission_shape = 3
+emission_rect_extents = Vector2(75, 40)
+spread = 89.09
+gravity = Vector2(0, 2.5)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -0.25
+angular_velocity_max = 0.25
+angular_velocity_curve = SubResource("Curve_fqxb6")
+scale_amount_min = 0.02
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_1o3le")
+color_ramp = SubResource("Gradient_tcgy4")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(576, 325)
-scale = Vector2(5.6438, 2.10938)
-color = Color(0.253312, 0.645276, 1, 1)
-energy = 16.0
-texture = SubResource("GradientTexture2D_kycxr")
-script = ExtResource("4_vdxj1")
-
-[node name="PointLight2D4" type="PointLight2D" parent="."]
-position = Vector2(576, 325)
+[node name="TitleLight" type="PointLight2D" parent="Control"]
+position = Vector2(0, 1)
 scale = Vector2(5.6438, 2.10938)
 color = Color(2.31028e-06, 0.721556, 0.671845, 1)
 energy = 16.0
 texture = SubResource("GradientTexture2D_kycxr")
 texture_scale = 1.6
 
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-position = Vector2(582, 623)
+[node name="Celestial Blizzard Logo" type="Sprite2D" parent="Control"]
+material = SubResource("CanvasItemMaterial_yd6ln")
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_t2bfb")
+
+[node name="PointLight2D" type="PointLight2D" parent="Control"]
+position = Vector2(0, 1)
 scale = Vector2(5.6438, 2.10938)
 color = Color(0.253312, 0.645276, 1, 1)
-energy = 4.05
+energy = 16.0
 texture = SubResource("GradientTexture2D_kycxr")
 script = ExtResource("4_vdxj1")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.99
-blend_mode = 1
+[node name="CardShatter-3" type="Sprite2D" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_gr33s")
+rotation = 1.5708
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("7_ioo6v")
 
-[node name="Snow" parent="." instance=ExtResource("6_iwfnr")]
+[node name="Account" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="AccountButton" type="Button" parent="Account"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 20.0
+offset_bottom = 19.0
+scale = Vector2(7.215, 7.215)
+
+[node name="SnowCrystal" type="Sprite2D" parent="Account"]
+modulate = Color(100, 100, 100, 1)
+clip_children = 2
+position = Vector2(40, 40)
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("5_bc87f")
+
+[node name="SnowParticles" type="CPUParticles2D" parent="Account/SnowCrystal"]
+material = SubResource("CanvasItemMaterial_rb2vw")
+rotation = -1.5708
+amount = 7
+lifetime = 10.0
+explosiveness = 1.0
+lifetime_randomness = 0.25
+texture = ExtResource("5_bc87f")
+emission_shape = 3
+emission_rect_extents = Vector2(75, 40)
+spread = 89.09
+gravity = Vector2(0, 2.5)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -0.25
+angular_velocity_max = 0.25
+angular_velocity_curve = SubResource("Curve_83gfd")
+scale_amount_min = 0.02
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_n5fkb")
+color_ramp = SubResource("Gradient_0hook")
+
+[node name="ProfileCircle" type="Sprite2D" parent="Account"]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_k0cf2")
+position = Vector2(40, 40)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("7_bvpvn")
+
+[node name="HatsuneMiku" type="Sprite2D" parent="Account/ProfileCircle"]
+material = SubResource("CanvasItemMaterial_qysep")
+position = Vector2(28.5714, 428.571)
+scale = Vector2(0.551, 0.551)
+texture = ExtResource("8_nmak3")
+
+[node name="AccountLight" type="PointLight2D" parent="Account"]
+position = Vector2(40, 41)
+scale = Vector2(1.958, 1.958)
+color = Color(0.274266, 0.472186, 0.773144, 1)
+energy = 7.52
+texture = SubResource("GradientTexture2D_k41m1")
+texture_scale = 1.6
+
+[node name="Camera" parent="." instance=ExtResource("10_v3w12")]
+layout_mode = 1
 
 [connection signal="mouse_entered" from="Battle" to="." method="BattleMouseEntered"]
 [connection signal="mouse_exited" from="Battle" to="." method="BattleMouseExited"]
 [connection signal="pressed" from="Battle" to="." method="loadBattlefield"]
+[connection signal="pressed" from="Deckbuilder" to="." method="loadDeckbuilder"]
+[connection signal="pressed" from="Shop" to="." method="loadShop"]
+[connection signal="mouse_entered" from="Account/AccountButton" to="." method="accountMouseEntered"]
+[connection signal="mouse_exited" from="Account/AccountButton" to="." method="accountMouseExited"]
+[connection signal="pressed" from="Account/AccountButton" to="." method="accountButton"]

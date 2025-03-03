@@ -10,8 +10,6 @@ var enemyState: PlayerState
 var roundCounter: int = 0
 var turnCounter: int = 0
 
-var winner: PlayerState = null
-
 func _init(allyDeck: Deck, allyInput: InputHandler, allyCharacterLayout: CardLayout, allyHandLayout: CardLayout, allyAreaSupport: AreaSupportLayout, allyEntity: EntityLayout,
 enemyDeck: Deck, enemyInput: InputHandler, enemyCharacterLayout: CardLayout, enemyHandLayout: CardLayout, enemyAreaSupport: AreaSupportLayout, enemyEntity: EntityLayout, battleResources: BattleRightPanel,
 layout: LayoutManager) -> void:
@@ -29,6 +27,7 @@ layout: LayoutManager) -> void:
 
 var activePlayer: PlayerState: set = setActivePlayer
 var lastTurnEnder: PlayerState
+var playerWin: PlayerState = null
 
 func startGame():
 	
@@ -61,11 +60,11 @@ func startGame():
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
 	
-	AudioEngine.playBattleMusic(1,2)
+	increaseGamePhase()
 	executeRounds()
 	
 func executeRounds():
-	while winner == null:
+	while playerWin == null:
 		
 		#Initialise Round
 		roundCounter += 1
@@ -91,9 +90,11 @@ func executeRounds():
 		await layoutManager.wait(2)
 		
 		#Turnloop
-		while (allyState.roundEnded == false) or (enemyState.roundEnded == false):
+		while ((allyState.roundEnded == false) or (enemyState.roundEnded == false)) and playerWin == null:
 			await executeTurn()
 			nextActivePlayer()
+		
+	endGame(playerWin)
 		
 func executeTurn():
 	turnCounter += 1
@@ -124,7 +125,43 @@ func nextActivePlayer():
 		activePlayer = activePlayer.opponent	
 	
 func damage(attacker: CardLogic, dmg: int, defender: Card):
-	defender.cardLogic.receiveDamage(dmg)
+	await defender.cardLogic.receiveDamage(dmg)
+	
+func characterDefeated(card: CharacterCardLogic, player: PlayerState):
+	checkGameWin(player)
+	if playerWin == null:
+		var switch = await player.input.chooseActiveCharacter()
+		player.setActiveCharacter(switch[1])
+		increaseGamePhase()
+	
+func checkGameWin(player: PlayerState):
+	var allDefeated = true
+	for card: Card in player.characterCards.addedCards:
+		allDefeated = allDefeated and card.cardLogic.defeated
+	if(allDefeated):
+		playerWin = player.opponent
+	
+func endGame(winner: PlayerState):
+	if(winner.allied):
+		layoutManager.message("You Win")
+	else:
+		layoutManager.message("You Lost")
+	await Random.wait(2)
+	Random.callLoadingScreen("Title")
+	
+var gamePhase: int = 0
+
+func increaseGamePhase():
+	gamePhase = gamePhase + 1
+	if gamePhase > 3:
+		gamePhase = 3
+	AudioEngine.playBattleMusic(1, floor(gamePhase / 2) + 1)
+	
+var scheduledEffects: Array[Effect] = []
+	
+func scheduleEffect(effect: Effect):
+	scheduledEffects.append(effect)
+	
 	
 # Getter and Setters -------------------------------------------------------------------------------
 

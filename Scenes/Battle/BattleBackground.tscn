@@ -14,5 +14,5 @@ grow_vertical = 2
 
 [node name="MainScreenLandscape" type="Sprite2D" parent="."]
 modulate = Color(0.125911, 0.125911, 0.125911, 1)
-scale = Vector2(0.235, 0.235)
+scale = Vector2(0.395, 0.395)
 texture = ExtResource("1_uxr0k")

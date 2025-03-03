@@ -29,6 +29,7 @@ offset_right = 538.0
 offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/shadow_outline_size = 7
 theme_override_font_sizes/font_size = 25
 text = "Message"
 horizontal_alignment = 1

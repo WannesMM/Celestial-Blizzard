@@ -44,10 +44,12 @@ func getChannel(channel: int):
 func playAudio(track: String, channel: int, volume: float = 0.0, fade: float = 0.0):
 	if !disableAudio:
 		var channelInstance = getChannel(channel)
-		await fadeVolume(-80,channel,1.5)
+		if channel != 5 and channel != 6:
+			await fadeVolume(-80,channel,1.5)
 		channelInstance.stream = load(track)
 		channelInstance.play()
-		await fadeVolume(volume,channel,fade)
+		if channel != 5 and channel != 6:
+			await fadeVolume(volume,channel,fade)
 		
 func stopAudio(channel):
 	var channelInstance = getChannel(channel)
@@ -87,5 +89,11 @@ func playSFX(name: String, channel: int = 5):
 func loadAmbiencePath(name: String):
 	return "res://assets/Audio/Ambience/" + str(name) + ".mp3"
 
-func playAmbience(name: String, channel: int = 3, fade: float = 0):
+func playAmbience(name: String, channel: int = 3, fade: float = 3):
 	playAudio(loadAmbiencePath(name),channel,0, fade)
+
+func loadStoryPath(name: String):
+	return "res://assets/Audio/Music/Story/" + name + ".mp3"
+	
+func playStory(name: String, channel: int = 1, fade: float = 1):
+	playAudio(loadStoryPath(name),channel,0, fade)

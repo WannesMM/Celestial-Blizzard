@@ -2,7 +2,8 @@ extends Node
 
 class_name InputHandler
 
-var layoutManager: LayoutManager = null
+var layoutManager: BattleManager = null
+var playerState: PlayerState = null
 
 func _init(layoutMan: LayoutManager) -> void:
 	layoutManager = layoutMan
@@ -11,6 +12,9 @@ func selectCards(cards, amount, message):
 	pass
 
 func chooseAction():
+	pass
+
+func chooseActiveCharacter():
 	pass
 
 func convertToCardLogic(cards):

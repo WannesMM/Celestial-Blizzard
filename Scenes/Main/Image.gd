@@ -1,0 +1,38 @@
+extends Sprite2D
+
+var currentImage: String = ""
+
+func setPortraitImage(image:String, pos: Vector2, scalar: Vector2):
+	if currentImage != image:
+		var fadeTween = create_tween()
+		fadeTween.tween_property(self,"modulate:a",0,0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		await fadeTween.finished
+		fadeTween.kill()
+		
+		currentImage = image
+		texture = load(image)
+		position = pos
+		scale = scalar
+		
+		fadeTween = create_tween()
+		fadeTween.tween_property(self,"modulate:a",1,0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		await fadeTween.finished
+		fadeTween.kill()
+
+var scroll = true
+func startScroll():
+	scroll = true
+	var originalPos = position
+	var energyTween
+	while scroll == true:
+		energyTween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+		energyTween.tween_property(self,"position",position + Vector2(100,0),20)
+		await energyTween.finished
+		energyTween.stop()
+		energyTween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+		energyTween.tween_property(self,"position",originalPos,20)
+		await energyTween.finished
+		energyTween.stop()
+
+func stopScroll():
+	scroll = false

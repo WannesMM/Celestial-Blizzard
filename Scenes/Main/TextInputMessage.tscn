@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://uxnk16gddifn"]
+
+[ext_resource type="Script" path="res://Scenes/Main/TextInputMessage.gd" id="1_1hhm8"]
+
+[node name="Message" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_1hhm8")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -538.0
+offset_top = -100.0
+offset_right = 538.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 25
+text = "Message"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LineEdit" type="LineEdit" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.5
+offset_top = -15.5
+offset_right = 249.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Celestial Spirit"
+alignment = 1
+max_length = 19
+
+[connection signal="text_submitted" from="Node2D/LineEdit" to="." method="textSubmitted"]

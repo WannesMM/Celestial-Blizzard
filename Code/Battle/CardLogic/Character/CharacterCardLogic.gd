@@ -3,7 +3,7 @@ extends CardLogic
 class_name CharacterCardLogic
 
 var maxHP: int = 10
-var HP: int = 10
+var HP: int = 10: set = setHP
 var maxEnergy: int = 3
 var energy: int = 0
 var NAdmg: int = 2
@@ -35,7 +35,7 @@ func playableOn():
 
 func NA():
 	if checkCost(NAdmg):
-		attack(NAdmg)
+		await attack(NAdmg)
 	
 func SA():
 	print("Default SA has been executed")
@@ -44,10 +44,11 @@ func CA():
 	print("Default CA has been executed")
 	
 func receiveDamage(amt: int):
-	setHP(HP - amt)
+	await setHP(HP - amt)
 	
 func defeatCard(card = self):
 	card.defeated = true
+	await gameState.characterDefeated(card, card.cardOwner)
 	
 func isPossibleMove(move: String):
 	if active:
@@ -63,10 +64,20 @@ func getMaxHP():
 func setHP(amt: int):
 	if amt <= 0:
 		HP = 0
-		defeatCard(self)
+		card.setLabel1(str(HP))
+		await defeatCard(self)
 	else:
 		HP = amt
-	card.setLabel1(str(HP))
+	if card:
+		card.setLabel1(str(HP))
+	if HP == 0:
+		card.cardShatterStage(4)
+	elif HP <= floor((maxHP/6)):
+		card.cardShatterStage(3)
+	elif HP <= floor((maxHP/3)):
+		card.cardShatterStage(2)
+	elif HP <= floor((maxHP/2)):
+		card.cardShatterStage(1)
 
 func getHP():
 	return HP

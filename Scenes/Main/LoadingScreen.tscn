@@ -1,9 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://3antdxruwjk1"]
+[gd_scene load_steps=13 format=3 uid="uid://3antdxruwjk1"]
 
 [ext_resource type="Script" path="res://Code/Main/LoadingScreen.gd" id="1_0lv6y"]
 [ext_resource type="Script" path="res://Code/Main/ProgressBar.gd" id="2_l1hb6"]
 [ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="3_l06gx"]
+[ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_qayho"]
 [ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="4_edd1k"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vyr3u"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_deyln"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_yn5em"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 98.9011), 0.0, 0.0, 0, 0, Vector2(1, 170.11), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_upvlr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483516), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_vful8"]
+offsets = PackedFloat32Array(0.0466667, 0.2, 0.68, 0.993333)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_fuvfn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq278"]
+gradient = SubResource("Gradient_fuvfn")
+fill = 1
+fill_from = Vector2(0.490826, 0.518349)
+fill_to = Vector2(0.188073, 0.197248)
 
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
@@ -13,9 +43,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0lv6y")
+deckBuilderScene = "res://Scenes/Deckbuilder/deckBuilder.tscn"
+shopScene = "res://Scenes/Shop/Shop.tscn"
 TitleScene = "res://Scenes/Main/TitleScreen.tscn"
+storyScene = "res://Scenes/Main/Story.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_vyr3u")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,21 +60,62 @@ color = Color(0.0383972, 0.0383972, 0.0383972, 1)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+offset_top = -104.0
+grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_l1hb6")
 
-[node name="CelestialBlizzardLogo" type="Sprite2D" parent="Control"]
-position = Vector2(-130, -61)
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SnowParticles" type="CPUParticles2D" parent="Control/Control"]
+material = SubResource("CanvasItemMaterial_deyln")
+position = Vector2(-125, 0)
+rotation = -1.5708
+amount = 7
+lifetime = 10.0
+explosiveness = 1.0
+lifetime_randomness = 0.25
+texture = ExtResource("3_qayho")
+emission_shape = 3
+emission_rect_extents = Vector2(75, 40)
+spread = 89.09
+gravity = Vector2(0, 2.5)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -0.25
+angular_velocity_max = 0.25
+angular_velocity_curve = SubResource("Curve_yn5em")
+scale_amount_min = 0.02
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_upvlr")
+color_ramp = SubResource("Gradient_vful8")
+
+[node name="TitleLight" type="PointLight2D" parent="Control/Control"]
+position = Vector2(-125, 0)
+scale = Vector2(3.2625, 3.2625)
+color = Color(0.274266, 0.472186, 0.773144, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_vq278")
+texture_scale = 1.6
+
+[node name="CelestialBlizzardLogo" type="Sprite2D" parent="Control/Control"]
+position = Vector2(-125, 0)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_l06gx")
 
-[node name="ProgressBar" type="Label" parent="Control"]
+[node name="ProgressBar" type="Label" parent="Control/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -48,10 +123,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -163.0
-offset_right = -14.0
-offset_bottom = -103.0
+offset_left = -53.0
+offset_top = -62.0
+offset_right = -29.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 21
@@ -60,17 +135,30 @@ horizontal_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="Control"]
 clip_children = 1
-layout_mode = 0
-offset_left = -1128.0
-offset_top = -61.0
-offset_right = -28.0
-offset_bottom = -59.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 0.299999
+offset_bottom = 2.05
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/ColorRect2"]
-position = Vector2(1001, -7)
+visible = false
+position = Vector2(1024.74, 8.10438)
 rotation = 1.5708
-scale = Vector2(0.57, 0.57)
+scale = Vector2(0.0151995, 0.05767)
 texture = ExtResource("4_edd1k")
+
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Tip" type="Label" parent="."]
 layout_mode = 1

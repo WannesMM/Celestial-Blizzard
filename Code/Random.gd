@@ -31,3 +31,46 @@ func callLoadingScreen(toLoad: String):
 	instance.startLoad(toLoad)
 	# Remove old scene
 	current_scene.queue_free()
+
+var messageScene: String = "res://Scenes/Main/Message.tscn" 
+
+func message(text = "message", duration: float = 1, position: Vector2 = Vector2(0,0)):
+	var currentMessage = load(messageScene)
+	var message = currentMessage.instantiate()
+	message.setMessage(text, position)
+	
+	get_tree().current_scene.add_child(message)
+	
+	await message.fadeInOut(duration)
+	
+	get_tree().current_scene.remove_child(message)
+
+var choiceMessageScene: String = "res://Scenes/Main/ChoiceMessage.tscn"
+
+func choiceMessage(text, options ,duration: float = 1, position: Vector2 = Vector2(0,0)):
+	var currentMessage = load(choiceMessageScene)
+	var message = currentMessage.instantiate()
+	message.setChoiceMessage(text, options,position)
+	
+	get_tree().current_scene.add_child(message)
+	message.modulate.a = 1
+	
+	var result = await GlobalSignals.choiceMessage
+	
+	get_tree().current_scene.remove_child(message)
+	return result
+
+var textInputMessageScene: String = "res://Scenes/Main/TextInputMessage.tscn"
+
+func textInputMessage(text,duration: float = 1, position: Vector2 = Vector2(0,0)):
+	var currentMessage = load(textInputMessageScene)
+	var message = currentMessage.instantiate()
+	message.setTextInputMessage(text,position)
+	
+	get_tree().current_scene.add_child(message)
+	message.modulate.a = 1
+	
+	var result = await GlobalSignals.textInputMessage
+	
+	get_tree().current_scene.remove_child(message)
+	return result

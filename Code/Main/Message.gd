@@ -6,8 +6,9 @@ func _ready() -> void:
 	pass
 	self.modulate.a = 0
 
-func setMessage(message):
+func setMessage(message, pos: Vector2 = Vector2(0,0)):
 	$Node2D/Label.text = message
+	$Node2D.position = pos
 
 func fadeInOut(duration = 1):
 	var tween = create_tween()

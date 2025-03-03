@@ -14,6 +14,8 @@ var imageLink: String = "Card Unknown"
 var cardOwner: PlayerState = null
 var gameState: GameState = null
 
+var appliedEffects: Array[Effect] = []
+
 func _init() -> void:
 	cardConstructor()
 	
@@ -69,4 +71,8 @@ func checkCost(req: int):
 		return true
 
 func attack(dmg: int):
-	cardOwner.damage(self, dmg)
+	await cardOwner.damage(self, dmg)
+
+func applyEffect(effect: Effect):
+	appliedEffects.append(effect)
+	effect.targets.append(self)

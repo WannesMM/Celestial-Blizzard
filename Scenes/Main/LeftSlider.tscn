@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://e8aa32x1tnx7"]
+
+[ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="1_hhuki"]
+[ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="2_q0wog"]
+[ext_resource type="Texture2D" uid="uid://c7gd077mkycww" path="res://assets/Setpieces/profileCircle.png" id="3_h05b3"]
+[ext_resource type="Texture2D" uid="uid://cj2ng8c5q1r0o" path="res://assets/Cards/CharacterCard/Hatsune Miku.png" id="4_7n003"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rfelm"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_glqri"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 98.9011), 0.0, 0.0, 0, 0, Vector2(1, 170.11), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_spyk2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483516), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_b5216"]
+offsets = PackedFloat32Array(0.0466667, 0.2, 0.68, 0.993333)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_muhkx"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kjjuv"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_n8ys6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ca45x"]
+gradient = SubResource("Gradient_n8ys6")
+fill = 1
+fill_from = Vector2(0.490826, 0.518349)
+fill_to = Vector2(0.188073, 0.197248)
+
+[node name="Right Slider" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hhuki")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 173.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Account" type="Control" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AccountButton" type="Button" parent="Control/VBoxContainer/HBoxContainer/Account"]
+modulate = Color(1, 1, 1, 0)
+layout_direction = 2
+layout_mode = 0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 20.0
+offset_bottom = 19.0
+scale = Vector2(7.215, 7.215)
+
+[node name="SnowCrystal" type="Sprite2D" parent="Control/VBoxContainer/HBoxContainer/Account"]
+modulate = Color(100, 100, 100, 1)
+clip_children = 2
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("2_q0wog")
+
+[node name="SnowParticles" type="CPUParticles2D" parent="Control/VBoxContainer/HBoxContainer/Account/SnowCrystal"]
+material = SubResource("CanvasItemMaterial_rfelm")
+rotation = -1.5708
+amount = 7
+lifetime = 10.0
+explosiveness = 1.0
+lifetime_randomness = 0.25
+texture = ExtResource("2_q0wog")
+emission_shape = 3
+emission_rect_extents = Vector2(75, 40)
+spread = 89.09
+gravity = Vector2(0, 2.5)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -0.25
+angular_velocity_max = 0.25
+angular_velocity_curve = SubResource("Curve_glqri")
+scale_amount_min = 0.02
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_spyk2")
+color_ramp = SubResource("Gradient_b5216")
+
+[node name="ProfileCircle" type="Sprite2D" parent="Control/VBoxContainer/HBoxContainer/Account"]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_muhkx")
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("3_h05b3")
+
+[node name="HatsuneMiku" type="Sprite2D" parent="Control/VBoxContainer/HBoxContainer/Account/ProfileCircle"]
+material = SubResource("CanvasItemMaterial_kjjuv")
+position = Vector2(28.5714, 428.571)
+scale = Vector2(0.551, 0.551)
+texture = ExtResource("4_7n003")
+
+[node name="AccountLight" type="PointLight2D" parent="Control/VBoxContainer/HBoxContainer/Account"]
+scale = Vector2(1.958, 1.958)
+color = Color(0.274266, 0.472186, 0.773144, 1)
+energy = 7.52
+texture = SubResource("GradientTexture2D_ca45x")
+texture_scale = 1.6
+
+[node name="AccountName" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "AccountName"
+horizontal_alignment = 1
+vertical_alignment = 1
