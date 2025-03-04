@@ -57,6 +57,8 @@ func onHit():
 	
 func defeatCard(card = self):
 	card.defeated = true
+	card.targetable = false
+	card.removeAllEffects()
 	await gameState.characterDefeated(card, card.cardOwner)
 	
 func isPossibleMove(move: String):

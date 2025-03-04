@@ -173,7 +173,6 @@ func scheduleEffect(newEffect: Effect):
 	else:
 		mergeEffect.mergeEffect(newEffect)
 	
-	
 #Timeframes: Start of Turn, AllyTurn, EnemyTurn
 func executeEffects(timeFrame: String):
 	match timeFrame:

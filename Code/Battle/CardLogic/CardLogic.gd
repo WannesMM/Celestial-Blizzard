@@ -24,6 +24,8 @@ func cardConstructor():
 
 # Gamefunctionality ------------------------------------------------------------
 
+var targetable: bool = true
+
 # Code that triggers when the card is played, to be extended
 func playCard():
 	pass
@@ -31,6 +33,28 @@ func playCard():
 # This returns the layouts that this card is playable on
 func playableOn():
 	pass
+
+func checkCost(req: int):
+	if req > cardOwner.battleResources.gold:
+		cardOwner.gameState.layoutManager.message("Not enough Gold")
+		return false
+	else:
+		return true
+
+func attack(dmg: int):
+	await cardOwner.damage(self, dmg)
+
+func addEffect(effect: Effect):
+	appliedEffects.append(effect)
+	card.addEffect(effect)
+
+func removeEffect(effect: Effect):
+	appliedEffects.erase(effect)
+	effect.removeEffect()
+	
+func removeAllEffects():
+	for effect in appliedEffects:
+		removeEffect(effect)
 
 # Getters and Setters ----------------------------------------------------------
 
@@ -60,19 +84,3 @@ func setCardOwner(player: PlayerState):
 	
 func getCardOwner(player: PlayerState):
 	return cardOwner
-
-# Battle functionality ---------------------------------------------------------
-
-func checkCost(req: int):
-	if req > cardOwner.battleResources.gold:
-		cardOwner.gameState.layoutManager.message("Not enough Gold")
-		return false
-	else:
-		return true
-
-func attack(dmg: int):
-	await cardOwner.damage(self, dmg)
-
-func applyEffect(effect: Effect):
-	appliedEffects.append(effect)
-	effect.targets.append(self)

@@ -217,3 +217,11 @@ func removeRelatedCard(card: Card):
 
 func setLabel1(text: String):
 	$Label.text = text
+
+const iconPath = "res://Scenes/Visual/Icon.tscn"
+
+func addEffect(effect: Effect):
+	var iconScene = load(iconPath)
+	var icon: Icon = iconScene.instantiate()
+	icon.setIcon(effect.icon)
+	$IconDisplay.addIcon(icon)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr0lltj7npuu2"]
+
+[ext_resource type="Script" path="res://Scenes/Visual/iconDisplay.gd" id="1_qsltt"]
+
+[node name="IconDisplay" type="Node2D"]
+position = Vector2(573, 316)
+script = ExtResource("1_qsltt")

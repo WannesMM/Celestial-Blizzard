@@ -2,7 +2,7 @@ extends Sprite2D
 
 var currentImage: String = ""
 
-func setPortraitImage(image:String, pos: Vector2, scalar: Vector2):
+func setPortraitImage(image:String, pos: Vector2 = Vector2(0,0), scalar: Vector2 = Vector2(1,1)):
 	if currentImage != image:
 		var fadeTween = create_tween()
 		fadeTween.tween_property(self,"modulate:a",0,0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)

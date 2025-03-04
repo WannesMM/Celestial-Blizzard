@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xfl86vf0gqpu"
-path="res://.godot/imported/Shadowy figure.jpeg-e2058cc6b4deb17827a320272a4e450c.ctex"
+uid="uid://blnjbiqspib3h"
+path="res://.godot/imported/BurningIcon.jpeg-c6516d090f6122705cbbac0410b0bbeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Story/Shadowy figure.jpeg"
-dest_files=["res://.godot/imported/Shadowy figure.jpeg-e2058cc6b4deb17827a320272a4e450c.ctex"]
+source_file="res://assets/Icons/Effect/BurningIcon.jpeg"
+dest_files=["res://.godot/imported/BurningIcon.jpeg-c6516d090f6122705cbbac0410b0bbeb.ctex"]
 
 [params]
 
