@@ -77,6 +77,7 @@ func playCard(card: Card, layout = null):
 	var cardType = card.getCardLogic().getCardType()
 	await gameState.layoutManager.displayCard(card)
 	if checkCost(card.cardLogic.cardCost):
+		reduceGold(card.cardLogic.cardCost)
 		card.getCardLogic().playCard()
 		match cardType:
 			"CharacterCard":
@@ -86,13 +87,16 @@ func playCard(card: Card, layout = null):
 			"AreaCard":
 				getAreaSupportCards().addCard(card)
 			"SupporterCard":
-				if layout is Card:
-					if layout.getCardLogic().getCardType() == "AreaCard":
-						layout.addRelatedCard(card)
+				playSupporter(card, layout)
 			"EntityCard":
 				getEntityCards().addCard(card)
 			"EquipmentCard":
 				pass
+
+func playSupporter(card: Card, layout):
+	if layout is Card:
+					if layout.getCardLogic().getCardType() == "AreaCard":
+						layout.addRelatedCard(card)
 	
 func drawCards(amt: int):
 	cardHand.addCards(deck.drawCards(amt))

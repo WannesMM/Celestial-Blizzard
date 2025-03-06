@@ -14,3 +14,7 @@ func getEffectName() -> String:
 
 func getCardDescription() -> String:
 	return "When you deal burning damage to the opponent, draw a card"
+
+func playCardLogic():
+	gameState.scheduleEffect(BerlaarEffect.new(self, self))
+	

@@ -17,7 +17,8 @@ func characterCardConstructor():
 	CAdmg = 5
 	CAcost = 3
 	CAenergyCost = 3
-
+	
+	cardCost = 1
 #-------------------------------------------------------------------------------
 
 func getNAName() -> String:

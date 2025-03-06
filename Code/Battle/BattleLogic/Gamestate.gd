@@ -87,6 +87,8 @@ func executeRounds():
 			else:
 				push_error("Random genereert een onmogelijk getal")
 		
+		executeEffects("Start of Round")
+				
 		await layoutManager.wait(2)
 		
 		#Turnloop
@@ -187,6 +189,10 @@ func executeEffects(timeFrame: String):
 		"EnemyTurn":
 			for effect in scheduledEffects:
 				if timeFrame == effect.timeFrame and effect.target.cardOwner == activePlayer.opponent:
+					effect.executeEffect()
+		_:
+			for effect in scheduledEffects:
+				if timeFrame == effect.timeFrame:
 					effect.executeEffect()
 	
 	

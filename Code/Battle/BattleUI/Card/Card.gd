@@ -223,5 +223,13 @@ const iconPath = "res://Scenes/Visual/Icon.tscn"
 func addEffect(effect: Effect):
 	var iconScene = load(iconPath)
 	var icon: Icon = iconScene.instantiate()
-	icon.setIcon(effect.icon)
+	icon.setIcon(effect.image)
+	icon.representative = effect
 	$IconDisplay.addIcon(icon)
+
+func removeEffect(effect: Effect):
+	for icon: Icon in $IconDisplay.icons:
+		if icon.representative == effect:
+			$IconDisplay.removeIcon(icon)
+	
+	

@@ -17,3 +17,6 @@ func getCardDescription() -> String:
 		<6 --> Gain 2 gold
 		<8 --> Gain 1 card
 		<10 --> Gain 1 energy on the active character"
+
+func playCardLogic():
+	gameState.scheduleEffect(Effect_Segmentation.new(self,self))

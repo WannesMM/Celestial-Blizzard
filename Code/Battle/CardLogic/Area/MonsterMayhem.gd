@@ -14,3 +14,9 @@ func getEffectName() -> String:
 
 func getCardDescription() -> String:
 	return "Upon placing this area, one of the following supporters will be summoned: Pseudodragon, Phoenix Hatchling or Blinking Dog"
+
+func playCardLogic():
+	match Random.generateRandom(1,1,3):
+		1:
+			pass
+		

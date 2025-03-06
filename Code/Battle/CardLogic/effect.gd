@@ -11,14 +11,16 @@ var target: CardLogic
 
 var stacks: int = 0
 
-var icon: String = "res://assets/Cards/CharacterCard/Hatsune Miku.png"
+var image: String
 
 func _init(initializer: CardLogic, targetCard: CardLogic = initializer.cardOwner.opponent.activeCharacter.cardLogic) -> void:
 	applicator = initializer
 	target = targetCard
-	target.addEffect(self)
 	gameState = applicator.gameState
+	
 	effectConstructor()
+	
+	target.addEffect(self)
 	
 func effectConstructor():
 	pass
@@ -32,4 +34,5 @@ func mergeEffect(effect: Effect):
 func removeEffect():
 	gameState.scheduledEffects.erase(self)
 	target.appliedEffects.erase(self)
+	target.card.removeEffect(self)
 	queue_free()

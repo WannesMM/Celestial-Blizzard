@@ -17,6 +17,8 @@ func characterCardConstructor():
 	CAdmg = 0
 	CAcost = 3
 	CAenergyCost = 3
+	
+	cardCost = 4
 
 #-------------------------------------------------------------------------------
 

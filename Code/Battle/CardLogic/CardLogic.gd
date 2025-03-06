@@ -28,6 +28,9 @@ var targetable: bool = true
 
 # Code that triggers when the card is played, to be extended
 func playCard():
+	playCardLogic()
+	
+func playCardLogic():
 	pass
 
 # This returns the layouts that this card is playable on
