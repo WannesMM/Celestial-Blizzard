@@ -164,30 +164,19 @@ func cardShatterStage(stage: int):
 		fadeTween.tween_property($Darken,"modulate:a",0.4,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
 
 #---------------------------------------------------------------------------------------------------------------------
-
-var cardLogic: CardLogic = null
-
-func setCard(card: CardLogic):
-	cardLogic = card
-	cardLogic.setCard(self)
-	assert(self == self.cardLogic.card)
-	loadCardImage()
-	generateShaderColor()
 	
+func setCardImage(image: String):
+	imageLink = image
 	
-func getCardLogic():
-	return cardLogic
-	
-func loadCardImage():
-	var imagePath = "res://assets/Cards/" + cardLogic.getCardType() + "/" + cardLogic.getImageLink() + ".png"
+	var imagePath = "res://assets/Cards/" + cardType + "/" + imageLink + ".png"
 	
 	var texture = ResourceLoader.load(imagePath)
 	if texture and texture is Texture2D:
 		$cardImage.texture = texture
 	else:
 		print("card Image does not exist:")
-		print(cardLogic.getCardType())
-		print(cardLogic.getImageLink())
+		print(cardType)
+		print(imageLink)
 		$cardImage.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")
 
 func generateShaderColor():
@@ -221,6 +210,9 @@ func setLabel1(text: String):
 const iconPath = "res://Scenes/Visual/Icon.tscn"
 
 func addEffect(effect: Effect):
+	appliedEffects.append(effect)
+	card.addEffect(effect)
+	
 	var iconScene = load(iconPath)
 	var icon: Icon = iconScene.instantiate()
 	icon.setIcon(effect.image)
@@ -228,8 +220,84 @@ func addEffect(effect: Effect):
 	$IconDisplay.addIcon(icon)
 
 func removeEffect(effect: Effect):
+	appliedEffects.erase(effect)
+	effect.removeEffect()
+	
 	for icon: Icon in $IconDisplay.icons:
 		if icon.representative == effect:
 			$IconDisplay.removeIcon(icon)
 	
+# CardLogic --------------------------------------------------------------------
+
+var card: Card = self
+
+var cardName: String = "Name Unknown"
+var cardType: String = "Type Unknown"
+var cardCost: int = 1
+var imageLink: String = "Card Unknown": set = setCardImage
+
+var cardOwner: PlayerState = null
+var gameState: GameState = null
+
+var appliedEffects: Array[Effect] = []
+
+func _init() -> void:
+	cardConstructor()
 	
+func cardConstructor():
+	pass
+
+# Gamefunctionality ------------------------------------------------------------
+
+var targetable: bool = true
+
+# Code that triggers when the card is played, to be extended
+func playCard():
+	playCardLogic()
+	
+func playCardLogic():
+	pass
+
+# This returns the layouts that this card is playable on
+func playableOn():
+	pass
+
+func checkCost(req: int):
+	if req > cardOwner.battleResources.gold:
+		cardOwner.gameState.layoutManager.message("Not enough Gold")
+		return false
+	else:
+		return true
+
+func attack(dmg: int):
+	await cardOwner.damage(self, dmg)
+	
+func removeAllEffects():
+	for effect in appliedEffects:
+		removeEffect(effect)
+
+# Getters and Setters ----------------------------------------------------------
+
+func getCardName():
+	return cardName
+	
+func getCardType():
+	return cardType
+
+func getImageLink():
+	return imageLink
+
+func getCard():
+	return card
+
+func getCardCost():
+	return cardCost
+	
+func setCardCost(cost):
+	cardCost = cost
+
+func setCardOwner(player: PlayerState):
+	cardOwner = player
+	
+func getCardOwner(player: PlayerState):
+	return cardOwner

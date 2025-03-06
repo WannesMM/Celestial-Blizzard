@@ -1,10 +1,10 @@
-extends Node
+extends Card
 
 class_name CardLogic
 
 #-----------------------------------------------------------------------------------
 
-var card: Card = null
+var card: Card = self
 
 var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
