@@ -1,4 +1,4 @@
-extends EventCardLogic
+extends EventCard
 
 class_name Ballista
 

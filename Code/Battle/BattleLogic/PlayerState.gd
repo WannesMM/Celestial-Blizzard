@@ -16,7 +16,7 @@ var deck: Deck = null
 var turnEnded: bool = false
 var roundEnded: bool = false
 
-var drawPile: Array[CardLogic] = []
+var drawPile: Array[Card] = []
 
 var allied: bool
 var opponent: PlayerState
@@ -47,18 +47,17 @@ func chooseAction():
 		"Play Card":
 			playCard(action[1], action[2])
 		"Move":
-			assert(action[1].cardLogic is CharacterCardLogic)
-			if action[1].cardLogic.isPossibleMove(action[0]) and checkCost(action[1].cardLogic.getMoveCost(action[2])):
+			if action[1].isPossibleMove(action[0]) and checkCost(action[1].getMoveCost(action[2])):
 				match action[2]:
 					"NA":
-						await action[1].cardLogic.NA()
+						await action[1].NA()
 						setTurnEnded(true)
 					"SA":
-						await action[1].cardLogic.SA()
+						await action[1].SA()
 						setTurnEnded(true)
 					"CA":
 						if action[1].cardLogic.checkEnergy():
-							await action[1].cardLogic.CA()
+							await action[1].CA()
 							setTurnEnded(true)
 						else:
 							Random.message("You don't have enough spirit")
@@ -67,23 +66,22 @@ func chooseAction():
 			setRoundEnded(true)
 			gameState.lastTurnEnder = self
 		"Switch":
-			assert(action[1].cardLogic is CharacterCardLogic)
-			if(!action[1].cardLogic.active):
+			if(!action[1].active):
 				setActiveCharacter(action[1])
 				setTurnEnded(true)
 			
 
 func playCard(card: Card, layout = null):
-	var cardType = card.getCardLogic().getCardType()
+	var cardType = card.getCardType()
 	await gameState.layoutManager.displayCard(card)
-	if checkCost(card.cardLogic.cardCost):
-		reduceGold(card.cardLogic.cardCost)
-		card.getCardLogic().playCard()
+	if checkCost(card.cardCost):
+		reduceGold(card.cardCost)
+		card.playCard()
 		match cardType:
 			"CharacterCard":
 				getCharacterCards().addCard(card)
 			"EventCard":
-				deck.stackAddToBottom(card.getCardLogic())
+				deck.stackAddToBottom(card)
 			"AreaCard":
 				getAreaSupportCards().addCard(card)
 			"SupporterCard":
@@ -95,7 +93,7 @@ func playCard(card: Card, layout = null):
 
 func playSupporter(card: Card, layout):
 	if layout is Card:
-					if layout.getCardLogic().getCardType() == "AreaCard":
+					if layout.getCardType() == "AreaCard":
 						layout.addRelatedCard(card)
 	
 func drawCards(amt: int):
@@ -116,9 +114,6 @@ func gainGold(amt: int):
 func reduceGold(amt: int):
 	battleResources.reduceGold(amt)
 	
-func getCharacterCardsLogic():
-	return input.convertToCardLogic(characterCards.getAddedCards())
-	
 func setActiveCharacter(card: Card = null):
 	if card != null:
 		if card in getCharacterCards().addedCards and card != activeCharacter:
@@ -126,9 +121,9 @@ func setActiveCharacter(card: Card = null):
 				activeCharacter.cardLogic.setActive(false)
 			activeCharacter = card
 			assert(activeCharacter == activeCharacter.cardLogic.card)
-			activeCharacter.cardLogic.setActive(true)
+			activeCharacter.setActive(true)
 	
-func damage(attacker: CardLogic, dmg: int, defender: CardLogic = opponent.getActiveCharacter().cardLogic):
+func damage(attacker: Card, dmg: int, defender: Card = opponent.getActiveCharacter()):
 	await gameState.damage(attacker, dmg, defender)
 	
 func checkCost(cost: int):

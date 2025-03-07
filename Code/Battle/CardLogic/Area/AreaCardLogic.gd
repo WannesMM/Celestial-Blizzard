@@ -1,6 +1,6 @@
-extends CardLogic
+extends Card
 
-class_name AreaCardLogic
+class_name AreaCard
 
 func cardConstructor():
 	cardType = "AreaCard"

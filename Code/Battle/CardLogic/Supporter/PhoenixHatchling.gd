@@ -1,4 +1,4 @@
-extends SupporterCardLogic
+extends SupporterCard
 
 class_name PhoenixHatchling
 

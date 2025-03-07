@@ -24,13 +24,7 @@ signal cardMouseExited
 var currentLayout: CardLayout
 
 func _ready() -> void:
-	var viewport_size = get_viewport().get_visible_rect().size
-	self.global_position = Vector2(viewport_size.x / 2, viewport_size.y / 2)
-	DEFAULTSCALE = self.scale
-	
-func assignDefaultScale(scaled: Vector2):
-	DEFAULTSCALE = scaled
-	self.scale = scaled
+	cardConstructor()
 	
 func _on_area_2d_mouse_entered() -> void:
 	emit_signal("cardMouseEntered", self)
@@ -47,7 +41,6 @@ func undoHighlightCard():
 	$Highlight.mouseExited()
 
 func scaleRelative(target_ratio, duration = ANIMATIONDURATION):
-	
 	var scaler = DEFAULTSCALE.x * target_ratio.x
 	scaleTo(Vector2(scaler, scaler), duration)
 
@@ -100,7 +93,6 @@ func moveCardUpSelect(vector: Vector2, duration: float = ANIMATIONDURATION):
 	movementTween.tween_property(self, "position", targetPosition, duration)
 	await movementTween.finished
 	
-#DEZE IS HET PROBLEEM
 func moveCardDownSelect(duration: float = ANIMATIONDURATION):
 	currentlySelected = false
 	resetZIndex()
@@ -178,6 +170,8 @@ func setCardImage(image: String):
 		print(cardType)
 		print(imageLink)
 		$cardImage.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")
+		
+	generateShaderColor()
 
 func generateShaderColor():
 	var texture = $cardImage.texture
@@ -234,18 +228,15 @@ var card: Card = self
 var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
 var cardCost: int = 1
-var imageLink: String = "Card Unknown": set = setCardImage
+var imageLink: String = "Card Unknown"
 
 var cardOwner: PlayerState = null
 var gameState: GameState = null
 
 var appliedEffects: Array[Effect] = []
-
-func _init() -> void:
-	cardConstructor()
 	
 func cardConstructor():
-	pass
+	setCardImage(imageLink)
 
 # Gamefunctionality ------------------------------------------------------------
 

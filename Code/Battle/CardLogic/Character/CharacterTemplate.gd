@@ -1,4 +1,4 @@
-extends CharacterCardLogic
+extends CharacterCard
 
 class_name CharacterTemplate
 

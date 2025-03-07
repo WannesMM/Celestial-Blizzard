@@ -57,12 +57,9 @@ func initialiseDeck(allyNewDeck: Deck, enemyNewDeck: Deck):
 	enemyDeck = enemyNewDeck
 	
 	allyDeck.createStack()
-	await GlobalSignals.deckLoaded
 	print("Deck1 loaded")
 	enemyDeck.createStack()
-	await GlobalSignals.deckLoaded
 	print("Deck2 loaded")
-	GlobalSignals.loadComplete.emit()
 	
 # Code for inputbehaviour --------------------------------------------------------------------------
 

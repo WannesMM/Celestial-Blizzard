@@ -23,6 +23,7 @@ GlobalSignals="*res://Code/GlobalSignals.gd"
 AudioEngine="*res://Code/AudioEngine.gd"
 Random="*res://Code/Random.gd"
 Server="*res://Code/Server/Server.gd"
+Load="*res://Code/Load.gd"
 
 [display]
 

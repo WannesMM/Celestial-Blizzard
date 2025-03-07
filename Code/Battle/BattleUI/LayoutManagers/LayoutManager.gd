@@ -63,7 +63,7 @@ func startDrag():
 #Finish the drag
 func finishDrag():
 	var cardSlotFound = raycastCheckForCardSlot()
-	undoHighlightCollider(cardBeingDragged.getCardLogic().playableOn())
+	undoHighlightCollider(cardBeingDragged.playableOn())
 	if cardSlotFound:
 		var layout = cardSlotFound.getRespectiveCardLayout()
 		if cardSlotFound is CardCollision:

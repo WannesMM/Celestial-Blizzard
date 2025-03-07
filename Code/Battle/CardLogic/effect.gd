@@ -6,14 +6,14 @@ var gameState: GameState
 
 var effectName: String
 var timeFrame: String
-var applicator: CardLogic
-var target: CardLogic
+var applicator: Card
+var target: Card
 
 var stacks: int = 0
 
 var image: String
 
-func _init(initializer: CardLogic, targetCard: CardLogic = initializer.cardOwner.opponent.activeCharacter.cardLogic) -> void:
+func _init(initializer: Card, targetCard: Card = initializer.cardOwner.opponent.activeCharacter.cardLogic) -> void:
 	applicator = initializer
 	target = targetCard
 	gameState = applicator.gameState

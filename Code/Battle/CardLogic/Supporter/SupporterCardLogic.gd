@@ -1,6 +1,6 @@
-extends CardLogic
+extends Card
 
-class_name SupporterCardLogic
+class_name SupporterCard
 
 func cardConstructor():
 	cardType = "SupporterCard"

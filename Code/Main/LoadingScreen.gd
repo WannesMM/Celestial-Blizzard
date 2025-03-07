@@ -57,17 +57,16 @@ func specificLoad(newScene, instance):
 		"Story":
 			return storySpecificLoad(instance)
 
-func battleSpecificLoad(battleField):
+func battleSpecificLoad(battleField: BattleManager):
 	var allyInput = PlayerInput.new(battleField)
 	var enemyInput = PlayerInput.new(battleField)
 	var test = BattleTest.new()
 	
-	var deck1 = test.burningDeck
-	var deck2 = test.burningDeck2
-	assert(deck1 != deck2)
+	var deck1 = test.TestDeck1
+	var deck2 = test.TestDeck1
 	
 	battleField.initialiseGame(deck1,allyInput,deck2,enemyInput)
-	return true
+	return false
 	
 func deckBuilderSpecificLoad(deckBuilderInstance):
 	await Random.message("Add deckBuilderSpecificLoad in LoadingScreen",4)

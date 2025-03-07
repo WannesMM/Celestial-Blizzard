@@ -1,0 +1,12 @@
+{
+	"Torinn Inn": 
+	{
+		"Type": "CharacterCard",
+		"Script": "res://Code/Battle/CardLogic/Character/TorinnInn.gd"
+	},
+	"Bartholomew Balderstone":
+	{
+		"Type": "CharacterCard",
+		"Script": "res://Code/Battle/CardLogic/Character/BartholomewBalderstone.gd"
+	}
+}

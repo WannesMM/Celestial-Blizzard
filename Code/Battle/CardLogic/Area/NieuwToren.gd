@@ -1,4 +1,4 @@
-extends AreaCardLogic
+extends AreaCard
 
 class_name NieuwToren
 

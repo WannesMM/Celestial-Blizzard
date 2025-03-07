@@ -116,7 +116,7 @@ func executeTurn():
 		await getActivePlayer().chooseAction()
 	activePlayer.turnEnded = false
 	
-func playCard(cardLogic: CardLogic, layout = null):
+func playCard(cardLogic: Card, layout = null):
 	getActivePlayer().playCard(cardLogic.getCard(), layout)
 	
 func getActivePlayer():
@@ -129,10 +129,10 @@ func nextActivePlayer():
 	if !activePlayer.opponent.roundEnded:
 		activePlayer = activePlayer.opponent	
 	
-func damage(attacker: CardLogic, dmg: int, defender: CardLogic):
+func damage(attacker: Card, dmg: int, defender: Card):
 	await defender.receiveDamage(dmg)
 	
-func characterDefeated(card: CharacterCardLogic, player: PlayerState):
+func characterDefeated(card: CharacterCard, player: PlayerState):
 	checkGameWin(player)
 	if playerWin == null:
 		var switch = await player.input.chooseActiveCharacter()

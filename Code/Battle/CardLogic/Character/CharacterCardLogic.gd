@@ -1,6 +1,6 @@
-extends CardLogic
+extends Card
 
-class_name CharacterCardLogic
+class_name CharacterCard
 
 var maxHP: int = 10
 var HP: int = 10: set = setHP
