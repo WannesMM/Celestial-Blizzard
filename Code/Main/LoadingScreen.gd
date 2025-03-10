@@ -63,7 +63,7 @@ func battleSpecificLoad(battleField: BattleManager):
 	var test = BattleTest.new()
 	
 	var deck1 = test.TestDeck1
-	var deck2 = test.TestDeck1
+	var deck2 = test.TestDeck2
 	
 	battleField.initialiseGame(deck1,allyInput,deck2,enemyInput)
 	return false

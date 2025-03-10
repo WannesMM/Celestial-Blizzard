@@ -2,7 +2,6 @@ extends Node2D
 
 class_name Card
 
-var DEFAULTSCALE = null
 const ACTIVECHARMOVEMENT = Vector2(0,-25)
 const ANIMATIONSCALE = Vector2(1.19,1.19)
 const ANIMATIONDURATION: float = 0.19
@@ -41,7 +40,7 @@ func undoHighlightCard():
 	$Highlight.mouseExited()
 
 func scaleRelative(target_ratio, duration = ANIMATIONDURATION):
-	var scaler = DEFAULTSCALE.x * target_ratio.x
+	var scaler = target_ratio.x
 	scaleTo(Vector2(scaler, scaler), duration)
 
 func scaleTo(target_scale: Vector2, duration: float = ANIMATIONDURATION):
@@ -183,12 +182,6 @@ func generateShaderColor():
 	$CardBorder.modulate = sample_color
 	#$CardBorder/CardShader.self_modulate = sample_color
 
-func setActive(x: bool):
-	if x:
-		moveCardUpSelect(ACTIVECHARMOVEMENT)
-	else:
-		moveCardDownSelect()
-
 func addRelatedCard(card: Card):
 	relatedCards.append(card)
 	if currentLayout:
@@ -205,7 +198,6 @@ const iconPath = "res://Scenes/Visual/Icon.tscn"
 
 func addEffect(effect: Effect):
 	appliedEffects.append(effect)
-	card.addEffect(effect)
 	
 	var iconScene = load(iconPath)
 	var icon: Icon = iconScene.instantiate()
@@ -228,7 +220,7 @@ var card: Card = self
 var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
 var cardCost: int = 1
-var imageLink: String = "Card Unknown"
+var imageLink: String = "Card Unknown": set = setCardImage
 
 var cardOwner: PlayerState = null
 var gameState: GameState = null

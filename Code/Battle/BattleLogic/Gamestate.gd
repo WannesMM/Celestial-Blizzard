@@ -44,13 +44,11 @@ func startGame():
 	
 	var allyCards =  await allyState.getInputhandler().selectCards(allyState.getDeck().stackGetCharacters(), 1, "Select ally character")
 	var allyCard: Card = allyCards[0]
-	allyState.getDeck().stackRemoveCard(allyCard.getCardLogic())
+	allyState.getDeck().stackRemoveCard(allyCard)
 	
-	var enemyCards = await enemyState.getInputhandler().selectCards(enemyState.getDeck().getCharacterCards(), 1, "Select enemy character")
+	var enemyCards = await enemyState.getInputhandler().selectCards(enemyState.getDeck().stackGetCharacters(), 1, "Select enemy character")
 	var enemyCard = enemyCards[0]
-	enemyState.getDeck().stackRemoveCard(enemyCard.getCardLogic())
-	
-	assert(allyCard == allyCard.cardLogic.card)
+	enemyState.getDeck().stackRemoveCard(enemyCard)
 	
 	await allyState.playCard(allyCard)
 	await enemyState.playCard(enemyCard)

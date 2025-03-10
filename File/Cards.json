@@ -8,5 +8,25 @@
 	{
 		"Type": "CharacterCard",
 		"Script": "res://Code/Battle/CardLogic/Character/BartholomewBalderstone.gd"
-	}
+	},
+	"Berlaar":
+	{
+		"Type": "AreaCard",
+		"Script": "res://Code/Battle/CardLogic/Area/Berlaar.gd"
+	},
+	"DQ Mall":
+	{
+		"Type": "AreaCard",
+		"Script": "res://Code/Battle/CardLogic/Area/DQMall.gd"
+	},
+	"Monster Mayhem":
+	{
+		"Type": "AreaCard",
+		"Script": "res://Code/Battle/CardLogic/Area/MonsterMayhem.gd"
+	},
+	"Nieuwtoren":
+	{
+		"Type": "AreaCard",
+		"Script": "res://Code/Battle/CardLogic/Area/NieuwToren.gd"
+	},
 }

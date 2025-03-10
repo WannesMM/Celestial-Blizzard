@@ -57,7 +57,7 @@ func clickAndHoldLogic(delta):
 func startDrag():
 	var card = raycastCheckForCard()
 	if card and card.getLayout().isMovable():
-		highlightCollider(card.getCardLogic().playableOn())
+		highlightCollider(card.playableOn())
 		cardBeingDragged = card
 		
 #Finish the drag
@@ -185,7 +185,7 @@ func closeCardInformation():
 func displayCardInformation(card: Card):
 	if card.getLayout().getShowInformation():
 		$"Right Slider".displayCardInformation(card)
-	if card.currentLayout is CharacterCardLayout and !card.cardLogic.active:
+	if card.currentLayout is CharacterCardLayout and !card.active:
 		card.playSwitchAnimation()
 
 func setMultiselect(x):

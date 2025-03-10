@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func displayCardInformation(card):
 	currentCard = card
-	var logic = card.getCardLogic()
+	var logic = card
 	visible = true
 	
 	if(logic.getCardType() == "CharacterCard"):

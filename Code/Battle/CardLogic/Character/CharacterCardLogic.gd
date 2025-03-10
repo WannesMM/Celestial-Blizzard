@@ -28,7 +28,10 @@ func characterCardConstructor():
 
 func setActive(x: bool):
 	active = x
-	card.setActive(x)
+	if active:
+		moveCardUpSelect(ACTIVECHARMOVEMENT)
+	else:
+		moveCardDownSelect()
 
 func playableOn():
 	return [cardOwner.characterCards.collision]
