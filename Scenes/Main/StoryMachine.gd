@@ -1,4 +1,4 @@
-extends Node3D
+extends Control
 
 @export var dialogueSystem = "res://Scenes/Main/DialogueSystem.tscn"
 

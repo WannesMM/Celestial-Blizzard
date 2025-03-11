@@ -100,7 +100,6 @@ texture = ExtResource("3_1omaa")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control2"]
 position = Vector2(-576, -324)
-energy = 0.8
 blend_mode = 1
 
 [node name="Snow" parent="Control2" instance=ExtResource("6_iwfnr")]
