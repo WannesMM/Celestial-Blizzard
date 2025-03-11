@@ -1,5 +1,20 @@
 extends Node
 
+var data = {}
+
+func loadData(subject: String, filePath: String):
+	if FileAccess.file_exists(filePath):
+		var dataFile = FileAccess.open(filePath,FileAccess.READ)
+		var parsedResult: Dictionary = JSON.parse_string(dataFile.get_as_text())
+		if parsedResult is Dictionary:
+			data = parsedResult.get(subject)
+		else:
+			Random.message("Could not find requested data")
+	else:
+		Random.message("Failed to load specified data file")
+
+#Load Card ---------------------------------------------------------------------
+
 @export var cardScene = "res://Scenes/Main/Card.tscn"
 
 func loadCard(cardScript: Script):
@@ -17,24 +32,20 @@ func loadCards(cardNames: Array[String]):
 	return cards
 		
 func loadScript(cardName: String):
-	loadCardData(cardName)
-	var mewScript: String = cardData.get("Script")
+	loadData(cardName, cardsPath)
+	var mewScript: String = data.get("Script")
 	var script: Script = load(mewScript) as Script
 	return script
 
 #Read card Data
 
-@export var filePath: String = "res://File/Cards.json"
+@export var cardsPath: String = "res://File/Cards.json"
 
-var cardData = {}
+# Load Animation ---------------------------------------------------------------
 
-func loadCardData(card: String):
-	if FileAccess.file_exists(filePath):
-		var dataFile = FileAccess.open(filePath,FileAccess.READ)
-		var parsedResult: Dictionary = JSON.parse_string(dataFile.get_as_text())
-		if parsedResult is Dictionary:
-			cardData = parsedResult.get(card)
-		else:
-			Random.message("Could not find cardData")
-	else:
-		Random.message("Failed to load cardData file")
+@export var animationPath: String = "res://File/Animations.json"
+
+func loadAnimation(animation: String):
+	loadData(animation, animationPath)
+	var scene: PackedScene = load(data.get("Scene"))
+	return scene.instantiate()
