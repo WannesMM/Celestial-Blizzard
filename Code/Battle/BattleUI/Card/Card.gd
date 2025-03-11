@@ -21,9 +21,9 @@ signal cardMouseExited
 
 #The CardLayout that this card is part of at the moment.
 var currentLayout: CardLayout
-
-func _ready() -> void:
-	cardConstructor()
+	
+func cardConstructor():
+	pass
 	
 func _on_area_2d_mouse_entered() -> void:
 	emit_signal("cardMouseEntered", self)
@@ -96,19 +96,19 @@ func moveCardDownSelect(duration: float = ANIMATIONDURATION):
 	currentlySelected = false
 	resetZIndex()
 	stopMovementTween()
-	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	movementTween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", basePosition, duration)
 	await movementTween.finished
 	
 func animatePosition(pos: Vector2, duration: float = ANIMATIONDURATION):
 	stopMovementTween()
-	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	movementTween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "position", pos, duration)
 	await movementTween.finished
 	
 func animateGlobalPosition(pos: Vector2, duration: float = ANIMATIONDURATION):
 	stopMovementTween()
-	movementTween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	movementTween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	movementTween.tween_property(self, "global_position", pos, duration)
 	await movementTween.finished
 	
@@ -226,9 +226,6 @@ var cardOwner: PlayerState = null
 var gameState: GameState = null
 
 var appliedEffects: Array[Effect] = []
-	
-func cardConstructor():
-	setCardImage(imageLink)
 
 # Gamefunctionality ------------------------------------------------------------
 

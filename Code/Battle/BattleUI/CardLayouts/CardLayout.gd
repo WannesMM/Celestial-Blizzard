@@ -144,8 +144,6 @@ func removeCard(card):
 	remove_child(card)
 	addedCards.erase(card)
 	card.setLayout(null)
-	#var viewport_size = get_viewport().get_visible_rect().size
-	#card.global_position = Vector2(viewport_size.x / 2, viewport_size.y / 2)
 	arrangeCards()
 
 	

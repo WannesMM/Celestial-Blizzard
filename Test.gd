@@ -6,7 +6,5 @@ extends Control
 var card: Card
 
 func _init() -> void:
-	card = load(cardScene).instantiate()
-	card.set_script(load(cardScript) as Script)
-	add_child(card)
+	add_child(Load.loadCards(["Hatsune Miku"])[0])
 	

@@ -1,32 +1,86 @@
 {
 	"Torinn Inn": 
 	{
-		"Type": "CharacterCard",
 		"Script": "res://Code/Battle/CardLogic/Character/TorinnInn.gd"
 	},
 	"Bartholomew Balderstone":
 	{
-		"Type": "CharacterCard",
 		"Script": "res://Code/Battle/CardLogic/Character/BartholomewBalderstone.gd"
 	},
 	"Berlaar":
 	{
-		"Type": "AreaCard",
 		"Script": "res://Code/Battle/CardLogic/Area/Berlaar.gd"
 	},
 	"DQ Mall":
 	{
-		"Type": "AreaCard",
 		"Script": "res://Code/Battle/CardLogic/Area/DQMall.gd"
 	},
 	"Monster Mayhem":
 	{
-		"Type": "AreaCard",
 		"Script": "res://Code/Battle/CardLogic/Area/MonsterMayhem.gd"
 	},
 	"Nieuwtoren":
 	{
-		"Type": "AreaCard",
 		"Script": "res://Code/Battle/CardLogic/Area/NieuwToren.gd"
+	},
+	"Noma Mountains":
+	{
+		"Script": "res://Code/Battle/CardLogic/Area/NomaMountains.gd"
+	},
+	"Towers Region":
+	{
+		"Script": "res://Code/Battle/CardLogic/Area/Towers Region.gd"
+	},
+	"Fragmentum General":
+	{
+		"Script": "res://Code/Battle/CardLogic/Character/FragmentumGeneral.gd"
+	},
+	"Hatsune Miku":
+	{
+		"Script": "res://Code/Battle/CardLogic/Character/HatsuneMiku.gd"
+	},
+	"Kin":
+	{
+		"Script": "res://Code/Battle/CardLogic/Character/Kin.gd"
+	},
+	"Noma Greon":
+	{
+		"Script": "res://Code/Battle/CardLogic/Character/NomaGreon.gd"
+	},
+	"Ballista":
+	{
+		"Script": "res://Code/Battle/CardLogic/Event/Ballista.gd"
+	},
+	"Burning Memories":
+	{
+		"Script": "res://Code/Battle/CardLogic/Event/BurningMemories.gd"
+	},
+	"Greon's Cooking Pot":
+	{
+		"Script": "res://Code/Battle/CardLogic/Event/GreonsCookingPot.gd"
+	},
+	"Silver Arrow":
+	{
+		"Script": "res://Code/Battle/CardLogic/Event/SilverArrow.gd"
+	},
+	"Blinking Dog":
+	{
+		"Script": "res://Code/Battle/CardLogic/Supporter/BlinkingDog.gd"
+	},
+	"Hermit":
+	{
+		"Script": "res://Code/Battle/CardLogic/Supporter/Hermit.gd"
+	},
+	"Homunculus":
+	{
+		"Script": "res://Code/Battle/CardLogic/Supporter/Homunculus.gd"
+	},
+	"Phoenix Hatchling":
+	{
+		"Script": "res://Code/Battle/CardLogic/Supporter/PhoenixHatchling.gd"
+	},
+	"Psuedo Dragon":
+	{
+		"Script": "res://Code/Battle/CardLogic/Supporter/PseudoDragon.gd"
 	},
 }

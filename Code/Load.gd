@@ -5,6 +5,7 @@ extends Node
 func loadCard(cardScript: Script):
 	var card = load(cardScene).instantiate()
 	card.set_script(cardScript)
+	card.cardConstructor()
 	return card
 
 func loadCards(cardNames: Array[String]):
