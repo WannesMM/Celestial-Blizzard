@@ -32,6 +32,68 @@ func layoutManagerConstructor():
 func finishCardDrag(card: Card):
 	undoHighlightCollider(card.playableOn())
 
+func clickOnCard(card: Card):
+	card.getLayout().onClick(card)
+	if selectedCards.size() == 1:
+		if card.currentLayout is CharacterCardLayout and card == selectedCards[0]:
+			characterCardSwitch(card)
+	if card.getLayout().getSelectable():
+		selectCard(card)
+
+#This selects a card.
+func selectCard(card: Card):
+	if card in selectedCards:
+		undoSelect(card)
+		closeCardInformation()
+	elif selectedCards.size() >= multiselect:
+		undoSelect(selectedCards[0])
+		highlightSelect(card)
+		displayCardInformation(card)
+	else:
+		highlightSelect(card)
+		displayCardInformation(card)
+	
+func deselectAllCards():
+	var i = 0
+	var len = selectedCards.size()
+	while i < len:
+		undoSelect(selectedCards[0])
+		i = i + 1
+	closeCardInformation()
+	assert(selectedCards == [])
+	
+#This unselects a card
+func undoSelect(card):
+	if(card.get_tree() != null):
+		card.undoHighlightCard()
+		card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
+		if card.getLayout().CARD_LAYOUT_TYPE != "CharacterCardLayout":
+			card.moveCardDownSelect()
+	selectedCards.erase(card)
+	if card.currentLayout is CharacterCardLayout:
+		card.stopSwitchAnimation()
+	
+#All the animations for selecting
+func highlightSelect(card):
+	if card.getLayout().CARD_LAYOUT_TYPE == "CharacterCardLayout":
+		card.highlightCard()
+		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+	else:
+		card.highlightCard()
+		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+		card.moveCardUpSelect(SELECTMOVEMENT)
+	selectedCards.append(card)
+
+#For the information slider when selected
+func closeCardInformation():
+	$"Right Slider".closeCardInformation()
+
+func displayCardInformation(card: Card):
+	if card.getLayout().getShowInformation():
+		$"Right Slider".displayCardInformation(card)
+	if card.currentLayout is CharacterCardLayout and !card.active:
+		card.playSwitchAnimation()
+
 # In de param voor deze functie komen uiteindelijk de parameters voor een battle (denk ik)
 func initializeBattle():
 	allyCharacterLayout = $CharacterCardLayout/AllyLayout

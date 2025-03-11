@@ -96,14 +96,8 @@ func click():
 
 func clickOnCard(card: Card):
 	card.getLayout().onClick(card)
-	if selectedCards.size() == 1:
-		if card.currentLayout is CharacterCardLayout and card == selectedCards[0]:
-			characterCardSwitch(card)
 	if card.getLayout().getSelectable():
 		selectCard(card)
-
-func characterCardSwitch(card):
-	pass
 
 func clickEmpty():
 	if deselectWhenClickEmpty:
@@ -150,14 +144,11 @@ func cardFollowMouse(delta):
 func selectCard(card: Card):
 	if card in selectedCards:
 		undoSelect(card)
-		closeCardInformation()
 	elif selectedCards.size() >= multiselect:
 		undoSelect(selectedCards[0])
 		highlightSelect(card)
-		displayCardInformation(card)
 	else:
 		highlightSelect(card)
-		displayCardInformation(card)
 	
 func deselectAllCards():
 	var i = 0
@@ -165,7 +156,6 @@ func deselectAllCards():
 	while i < len:
 		undoSelect(selectedCards[0])
 		i = i + 1
-	closeCardInformation()
 	assert(selectedCards == [])
 	
 #This unselects a card
@@ -173,11 +163,8 @@ func undoSelect(card):
 	if(card.get_tree() != null):
 		card.undoHighlightCard()
 		card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-		if card.getLayout().CARD_LAYOUT_TYPE != "CharacterCardLayout":
-			card.moveCardDownSelect()
+		card.moveCardDownSelect()
 	selectedCards.erase(card)
-	if card.currentLayout is CharacterCardLayout:
-		card.stopSwitchAnimation()
 	
 #All the animations for selecting
 func highlightSelect(card):
@@ -189,16 +176,6 @@ func highlightSelect(card):
 		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 		card.moveCardUpSelect(SELECTMOVEMENT)
 	selectedCards.append(card)
-
-#For the information slider when selected
-func closeCardInformation():
-	$"Right Slider".closeCardInformation()
-
-func displayCardInformation(card: Card):
-	if card.getLayout().getShowInformation():
-		$"Right Slider".displayCardInformation(card)
-	if card.currentLayout is CharacterCardLayout and !card.active:
-		card.playSwitchAnimation()
 
 func setMultiselect(x):
 	deselectAllCards()
@@ -212,15 +189,3 @@ func setDeselectWhenClickEmpty(x):
 	
 func wait(time: float):
 	await get_tree().create_timer(time).timeout
-	
-# BattleManager ------------------------------------------------------------------------------------
-
-#Executes at the start of the battle. This is an abstract function.
-func initializeBattle():
-	pass
-
-func highlightCollider(layout):
-	pass
-
-func undoHighlightCollider(layout):
-	pass
