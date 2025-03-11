@@ -23,7 +23,11 @@ var deselectWhenClickEmpty = true
 
 func _ready():
 	screenSize = get_viewport_rect().size
-	initializeBattle()
+	layoutManagerConstructor()
+	
+# Called at ready, to be extended
+func layoutManagerConstructor():
+	pass
 	
 func _process(delta: float) -> void:
 	cardFollowMouse(delta)
@@ -57,13 +61,17 @@ func clickAndHoldLogic(delta):
 func startDrag():
 	var card = raycastCheckForCard()
 	if card and card.getLayout().isMovable():
-		highlightCollider(card.playableOn())
 		cardBeingDragged = card
-		
+		startCardDrag(cardBeingDragged)
+
+#Function called when a card starts being dragged
+func startCardDrag(card: Card):
+	pass
+
 #Finish the drag
 func finishDrag():
 	var cardSlotFound = raycastCheckForCardSlot()
-	undoHighlightCollider(cardBeingDragged.playableOn())
+	finishCardDrag(cardBeingDragged)
 	if cardSlotFound:
 		var layout = cardSlotFound.getRespectiveCardLayout()
 		if cardSlotFound is CardCollision:
@@ -72,7 +80,11 @@ func finishDrag():
 	else:
 		cardBeingDragged.animatePosition(cardBeingDragged.getBasePosition(), 0.7)
 	cardBeingDragged = null
-	
+
+#Function called when the card is stopped dragging
+func finishCardDrag(card: Card):
+	pass
+
 #When clicked
 func click():
 	var card = raycastCheckForCard()

@@ -21,6 +21,17 @@ var battleResources: BattleRightPanel = null
 var eventCardCollision: LayoutCollision = null
 var rightSlider = null
 
+# LayoutManager inherited
+
+func startCardDrag(card: Card):
+	highlightCollider(card.playableOn())
+
+func layoutManagerConstructor():
+	initializeBattle()
+
+func finishCardDrag(card: Card):
+	undoHighlightCollider(card.playableOn())
+
 # In de param voor deze functie komen uiteindelijk de parameters voor een battle (denk ik)
 func initializeBattle():
 	allyCharacterLayout = $CharacterCardLayout/AllyLayout
