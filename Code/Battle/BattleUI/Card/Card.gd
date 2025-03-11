@@ -161,9 +161,16 @@ func setCardImage(image: String):
 	
 	var imagePath = "res://assets/Cards/" + cardType + "/" + imageLink + ".png"
 	
-	var texture = ResourceLoader.load(imagePath)
+	ResourceLoader.load_threaded_request(imagePath)
+	
+	while ResourceLoader.load_threaded_get_status(imagePath) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		await Random.wait(0.01)
+	
+	var texture = ResourceLoader.load_threaded_get(imagePath)
+	
 	if texture and texture is Texture2D:
 		$cardImage.texture = texture
+		print("Successfully loaded " + imageLink)
 	else:
 		print("card Image does not exist:")
 		print(cardType)
