@@ -1,7 +1,5 @@
 extends AreaCard
 
-class_name Berlaar
-
 func areaCardConstructor():
 	cardName = "Berlaar"
 	imageLink = "Berlaar"
@@ -16,5 +14,5 @@ func getCardDescription() -> String:
 	return "When you deal burning damage to the opponent, draw a card"
 
 func playCardLogic():
-	gameState.scheduleEffect(BerlaarEffect.new(self, self))
+	gameState.scheduleEffect(Load.loadEffect("BurningDraw",self,self))
 	

@@ -1,7 +1,5 @@
 extends AreaCard
 
-class_name DQMall
-
 func areaCardConstructor():
 	cardName = "DQ Mall"
 	imageLink = "DQ Mall"
@@ -19,4 +17,4 @@ func getCardDescription() -> String:
 		<10 --> Gain 1 energy on the active character"
 
 func playCardLogic():
-	gameState.scheduleEffect(Effect_Segmentation.new(self,self))
+	gameState.scheduleEffect(Load.loadEffect("Segmentation",self,self))

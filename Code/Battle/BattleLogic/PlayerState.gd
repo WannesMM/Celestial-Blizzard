@@ -45,7 +45,11 @@ func chooseAction():
 	var action = await getInputhandler().chooseAction()
 	match action[0]:
 		"Play Card":
-			playCard(action[1], action[2])
+			if checkCost(action[1].cardCost):
+				reduceGold(action[1].cardCost)
+				playCard(action[1], action[2])
+			else:
+				action[1].animatePosition(action[1].basePosition)
 		"Move":
 			if action[1].isPossibleMove(action[0]) and checkCost(action[1].getMoveCost(action[2])):
 				match action[2]:
@@ -56,7 +60,7 @@ func chooseAction():
 						await action[1].SA()
 						setTurnEnded(true)
 					"CA":
-						if action[1].cardLogic.checkEnergy():
+						if action[1].checkEnergy():
 							await action[1].CA()
 							setTurnEnded(true)
 						else:
@@ -74,22 +78,21 @@ func chooseAction():
 func playCard(card: Card, layout = null):
 	var cardType = card.getCardType()
 	await gameState.layoutManager.displayCard(card)
-	if checkCost(card.cardCost):
-		reduceGold(card.cardCost)
-		card.playCard()
-		match cardType:
-			"CharacterCard":
-				getCharacterCards().addCard(card)
-			"EventCard":
-				deck.stackAddToBottom(card)
-			"AreaCard":
-				getAreaSupportCards().addCard(card)
-			"SupporterCard":
-				playSupporter(card, layout)
-			"EntityCard":
-				getEntityCards().addCard(card)
-			"EquipmentCard":
-				pass
+	
+	card.playCard()
+	match cardType:
+		"CharacterCard":
+			getCharacterCards().addCard(card)
+		"EventCard":
+			deck.stackAddToBottom(card)
+		"AreaCard":
+			getAreaSupportCards().addCard(card)
+		"SupporterCard":
+			playSupporter(card, layout)
+		"EntityCard":
+			getEntityCards().addCard(card)
+		"EquipmentCard":
+			pass
 
 func playSupporter(card: Card, layout):
 	if layout is Card:
@@ -118,7 +121,7 @@ func setActiveCharacter(card: Card = null):
 	if card != null:
 		if card in getCharacterCards().addedCards and card != activeCharacter:
 			if activeCharacter != null:
-				activeCharacter.cardLogic.setActive(false)
+				activeCharacter.setActive(false)
 			activeCharacter = card
 			activeCharacter.setActive(true)
 	

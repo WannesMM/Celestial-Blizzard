@@ -169,7 +169,7 @@ func endRound():
 #Permission 4: Switch active character
 func characterCardSwitch(card: Card):
 	if checkActionAllowed(card) and 4 in allowAction:
-		if(card.cardLogic.defeated == false):
+		if(card.defeated == false):
 			currentInput.setSelectedAction(["Switch", card])
 		else:
 			message("You cannot switch to a defeated character")

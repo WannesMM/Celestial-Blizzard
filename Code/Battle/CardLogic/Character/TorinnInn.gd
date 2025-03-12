@@ -1,7 +1,5 @@
 extends CharacterCard
 
-class_name TorinnInn
-
 func characterCardConstructor():
 	cardName = "Torinn Inn"
 	imageLink = "Torinn Inn test"
@@ -65,7 +63,7 @@ var goldenBreath: int = 0
 func SA():
 	cardOwner.reduceGold(SAcost)
 	if(goldenBreath != 0):
-		var newBurning = Burning.new(self)
+		var newBurning = Load.loadEffect("Burning", self)
 		newBurning.stacks = goldenBreath
 		gameState.scheduleEffect(newBurning)
 		goldenBreath = 0

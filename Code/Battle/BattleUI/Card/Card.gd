@@ -39,6 +39,11 @@ func undoHighlightCard():
 	resetZIndex()
 	$Highlight.mouseExited()
 
+func flashCard():
+	highlightCard()
+	await Random.wait(1)
+	undoHighlightCard()
+
 func scaleRelative(target_ratio, duration = ANIMATIONDURATION):
 	var scaler = target_ratio.x
 	scaleTo(Vector2(scaler, scaler), duration)
@@ -214,7 +219,6 @@ func addEffect(effect: Effect):
 
 func removeEffect(effect: Effect):
 	appliedEffects.erase(effect)
-	effect.removeEffect()
 	
 	for icon: Icon in $IconDisplay.icons:
 		if icon.representative == effect:

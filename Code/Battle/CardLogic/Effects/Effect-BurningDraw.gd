@@ -1,11 +1,10 @@
 extends Effect
 
-class_name BerlaarEffect
-
 func effectConstructor():
-	effectName = "Berlaar"
+	effectName = "BurningDraw"
 	timeFrame = "OnBurning"
 	image = "Burning"
 	
 func executeEffect():
+	applicator.flashCard()
 	applicator.cardOwner.drawCards(1)

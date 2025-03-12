@@ -13,7 +13,7 @@ var stacks: int = 0
 
 var image: String
 
-func _init(initializer: Card, targetCard: Card = initializer.cardOwner.opponent.activeCharacter.cardLogic) -> void:
+func _init(initializer: Card, targetCard: Card = initializer.cardOwner.opponent.activeCharacter) -> void:
 	applicator = initializer
 	target = targetCard
 	gameState = applicator.gameState

@@ -49,3 +49,12 @@ func loadAnimation(animation: String):
 	loadData(animation, animationPath)
 	var scene: PackedScene = load(data.get("Scene"))
 	return scene.instantiate()
+
+# Load Effect ------------------------------------------------------------------
+
+@export var effectsPath: String = "res://File/Effects.json"
+
+func loadEffect(effect: String, initialiser: Card, target: Card = initialiser.cardOwner.opponent.activeCharacter) -> Effect:
+	loadData(effect, effectsPath)
+	var script: Script = load(data.get("Code"))
+	return script.new(initialiser, target)
