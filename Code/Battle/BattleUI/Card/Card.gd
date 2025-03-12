@@ -124,7 +124,7 @@ func stopMovementTween():
 func setLayout(layout):
 	currentLayout = layout
 	
-func getLayout():
+func getLayout() -> CardLayout:
 	return currentLayout
 	
 func increaseZIndex():
@@ -174,18 +174,18 @@ func setCardImage(image: String):
 	var texture = ResourceLoader.load_threaded_get(imagePath)
 	
 	if texture and texture is Texture2D:
-		$cardImage.texture = texture
+		$CardMask/cardImage.texture = texture
 		print("Successfully loaded " + imageLink)
 	else:
 		print("card Image does not exist:")
 		print(cardType)
 		print(imageLink)
-		$cardImage.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")
+		$CardMask/cardImage.texture = ResourceLoader.load("res://assets/Cards/CharacterCard/cardNotFound.png")
 		
 	generateShaderColor()
 
 func generateShaderColor():
-	var texture = $cardImage.texture
+	var texture = $CardMask/cardImage.texture
 	
 	var image_width = texture.get_width()
 	var image_height = texture.get_height()
@@ -219,6 +219,7 @@ func addEffect(effect: Effect):
 
 func removeEffect(effect: Effect):
 	appliedEffects.erase(effect)
+	gameState.scheduledEffects.erase(effect)
 	
 	for icon: Icon in $IconDisplay.icons:
 		if icon.representative == effect:
@@ -247,7 +248,7 @@ func playCard():
 	playCardLogic()
 	
 func playCardLogic():
-	pass
+	Random.message("This card has not been implemented")
 
 # This returns the layouts that this card is playable on
 func playableOn():

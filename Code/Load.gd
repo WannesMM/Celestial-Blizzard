@@ -17,18 +17,18 @@ func loadData(subject: String, filePath: String):
 
 @export var cardScene = "res://Scenes/Main/Card.tscn"
 
-func loadCard(cardScript: Script):
+func loadCard(cardName: String) -> Card:
+	var cardScript: Script = loadScript(cardName)
 	var card = load(cardScene).instantiate()
 	card.set_script(cardScript)
 	card.cardConstructor()
 	return card
 
-func loadCards(cardNames: Array[String]):
+func loadCards(cardNames: Array[String]) -> Array[Card]:
 	var cards: Array[Card] = []
 	
 	for cardName in cardNames:
-		cards.append(loadCard(loadScript(cardName)))
-		
+		cards.append(loadCard(cardName))
 	return cards
 		
 func loadScript(cardName: String):

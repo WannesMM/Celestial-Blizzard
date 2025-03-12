@@ -13,4 +13,4 @@ func executeEffect():
 	if gold < 8:
 		applicator.cardOwner.drawCards(1)
 	if gold < 10:
-		applicator.cardOwner.activeCharacter.cardLogic.gainEnergy()
+		applicator.cardOwner.activeCharacter.gainEnergy()

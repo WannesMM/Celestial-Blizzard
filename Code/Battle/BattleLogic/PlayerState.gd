@@ -79,7 +79,6 @@ func playCard(card: Card, layout = null):
 	var cardType = card.getCardType()
 	await gameState.layoutManager.displayCard(card)
 	
-	card.playCard()
 	match cardType:
 		"CharacterCard":
 			getCharacterCards().addCard(card)
@@ -93,6 +92,7 @@ func playCard(card: Card, layout = null):
 			getEntityCards().addCard(card)
 		"EquipmentCard":
 			pass
+	card.playCard()
 
 func playSupporter(card: Card, layout):
 	if layout is Card:
@@ -135,7 +135,11 @@ func checkCost(cost: int):
 	else:
 		return true
 		
-
+func deleteCard(card: Card):
+	card.getLayout().removeCard(card)
+	card.removeAllEffects()
+	for relatedCard in card.relatedCards:
+		deleteCard(relatedCard)
 	
 # Getters and Setters ------------------------------------------------------------------------------
 
@@ -155,7 +159,7 @@ func setInputHandler(handler: InputHandler):
 func getCharacterCards():
 	return characterCards
 	
-func getAreaSupportCards():
+func getAreaSupportCards() -> CardLayout:
 	return areaSupportCards
 	
 func getEntityCards():

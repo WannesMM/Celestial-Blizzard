@@ -1,17 +1,14 @@
 extends AreaCard
 
 func areaCardConstructor():
-	cardName = "CardName"
-	imageLink = "Imagelink"
-	cardCost = 3
+	cardName = "Ashen Remains"
+	imageLink = "Ashen Remains"
+	cardCost = 0
 	
 #---------------------------------------------------------------------------------------------------
 
 func getEffectName() -> String:
-	return "Effectname"
+	return "Lost in the flames"
 
 func getCardDescription() -> String:
-	return "EffectDescription"
-
-func playCardLogic():
-	Random.message("This card is yet to be implemented")
+	return "This space cannot be occupied by supporters"

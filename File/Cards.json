@@ -83,4 +83,8 @@
 	{
 		"Script": "res://Code/Battle/CardLogic/Supporter/PseudoDragon.gd"
 	},
+	"Ashen Remains":
+	{
+		"Script": "res://Code/Battle/CardLogic/Area/AshenRemains.gd"
+	},
 }
