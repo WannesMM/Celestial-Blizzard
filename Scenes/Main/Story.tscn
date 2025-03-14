@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" path="res://Scenes/Main/StoryMachine.gd" id="1_dnwa1"]
 [ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="2_6dh7j"]
-[ext_resource type="Texture2D" uid="uid://c8godjr2ljcr4" path="res://assets/Setpieces/MainScreenLandscape.jpg" id="2_a6c8w"]
-[ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="4_u1amq"]
 [ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="8_ulq0w"]
 [ext_resource type="Texture2D" uid="uid://kh8cgsqr4bc5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-2.png" id="9_rf3dj"]
 [ext_resource type="Texture2D" uid="uid://bjkq1iikogg7h" path="res://assets/Animated/Harsh fog/Untitled_Artwork-3.png" id="10_wbhko"]
@@ -29,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://bmgkff7xld85f" path="res://assets/Animated/Spirit trail/Untitled_Artwork-6.png" id="26_e8gw6"]
 [ext_resource type="Texture2D" uid="uid://bldr8365iswwa" path="res://assets/Animated/Spirit trail/Untitled_Artwork-7.png" id="27_81k18"]
 [ext_resource type="Texture2D" uid="uid://cb0umvcrah0o" path="res://assets/Animated/Spirit trail/Untitled_Artwork-8.png" id="28_5gbe5"]
+[ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="29_flram"]
+[ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="29_te7ja"]
 [ext_resource type="Texture2D" uid="uid://cxks1q2minbaw" path="res://assets/Animated/Spirit trail/Untitled_Artwork-9.png" id="29_ue8dt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gompf"]
@@ -136,17 +136,11 @@ height = 1000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Story" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Story" type="Node3D"]
 script = ExtResource("1_dnwa1")
 
 [node name="Middle" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -154,12 +148,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Background" type="Sprite2D" parent="Middle"]
-position = Vector2(-104, -52)
-scale = Vector2(0.32, 0.32)
-texture = ExtResource("2_a6c8w")
-script = ExtResource("4_u1amq")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Middle"]
 modulate = Color(0, 0, 0, 0.622)
@@ -174,15 +162,11 @@ sprite_frames = SubResource("SpriteFrames_t68ov")
 autoplay = "default"
 frame_progress = 0.976642
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+[node name="Snow" parent="Middle" instance=ExtResource("2_6dh7j")]
 position = Vector2(-576, -324)
-energy = 0.97
-blend_mode = 1
 
-[node name="Snow" parent="." instance=ExtResource("2_6dh7j")]
-
-[node name="Snow2" parent="." instance=ExtResource("2_6dh7j")]
-position = Vector2(-123, 91)
+[node name="Snow2" parent="Middle" instance=ExtResource("2_6dh7j")]
+position = Vector2(-699, -233)
 rotation = -0.0453786
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
@@ -193,3 +177,11 @@ energy = 0.62
 blend_mode = 2
 texture = SubResource("GradientTexture2D_vamau")
 texture_scale = 0.07
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.76681)
+script = ExtResource("29_te7ja")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.65592)
+texture = ExtResource("29_flram")
