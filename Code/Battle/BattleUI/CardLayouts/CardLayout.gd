@@ -57,22 +57,13 @@ func connectSignal(card):
 		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
 
 func cardMouseEntered(card):
-	cardMouseEnteredExtended(card)
 	if !cardBeingDragged and hoverable:
 		card.highlightCard()
 		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 		
 func cardMouseExited(card):
-	cardMouseExitedExtended(card)
 	card.undoHighlightCard()
 	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-	
-#Functions for the extended versions of cardLayout such as characterCardLayout
-func cardMouseEnteredExtended(card):
-	pass
-	
-func cardMouseExitedExtended(card):
-	pass
 
 func _process(delta: float) -> void:
 	pass
@@ -124,6 +115,7 @@ func addCard(card):
 	add_child(card)  
 	addedCards.append(card)
 	card.setLayout(self)
+	connectSignal(card)
 	arrangeCards()
 
 func addAdditionalCard(card):

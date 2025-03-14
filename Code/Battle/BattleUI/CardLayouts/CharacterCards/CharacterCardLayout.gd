@@ -15,9 +15,3 @@ func characterCardLayoutConstructor():
 
 func setCollision(card: Card):
 	card.collision1and2()
-
-func cardMouseEnteredExtended(card: Card):
-	card.playSwitchAnimation()
-	
-func cardMouseExitedExtended(card: Card):
-	card.stopSwitchAnimation()

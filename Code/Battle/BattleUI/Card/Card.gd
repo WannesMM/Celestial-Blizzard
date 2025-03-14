@@ -174,8 +174,7 @@ func setCardImage(image: String):
 	var texture = ResourceLoader.load_threaded_get(imagePath)
 	
 	if texture and texture is Texture2D:
-		$CardMask/cardImage.texture = texture
-		print("Successfully loaded " + imageLink)
+		$CardMask/cardImage.setImage(texture, imagePosition, imageScale)
 	else:
 		print("card Image does not exist:")
 		print(cardType)
@@ -232,7 +231,11 @@ var card: Card = self
 var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
 var cardCost: int = 1
+
+# Card image settings
 var imageLink: String = "Card Unknown": set = setCardImage
+var imagePosition: Vector2 = Vector2(0,0)
+var imageScale: Vector2 = Vector2(1,1)
 
 var cardOwner: PlayerState = null
 var gameState: GameState = null

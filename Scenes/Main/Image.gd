@@ -19,6 +19,11 @@ func setPortraitImage(image:String, pos: Vector2 = Vector2(0,0), scalar: Vector2
 		await fadeTween.finished
 		fadeTween.kill()
 
+func setImage(newTexture: Texture, pos: Vector2 = Vector2(0,0), scalar: Vector2 = Vector2(1,1)):
+	texture = newTexture
+	position = pos
+	scale = scalar
+
 var scroll = true
 func startScroll():
 	scroll = true

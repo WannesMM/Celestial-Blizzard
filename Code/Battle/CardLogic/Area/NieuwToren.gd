@@ -14,13 +14,13 @@ func getCardDescription() -> String:
 	return "Destroy every supporter and region card on the arena, both yours and your opponent's and replace them with an Ashen Remains card"
 
 func playCardLogic():
-	for card in cardOwner.getAreaSupportCards().addedCards:
+	for card: Card in cardOwner.getAreaSupportCards().addedCards.duplicate(false):
 		cardOwner.deleteCard(card)
-		var ashenRemains = Load.loadCard("Ashen Remains")
+		var ashenRemains: Card = Load.loadCard("Ashen Remains")
 		ashenRemains.setCardOwner(cardOwner)
 		cardOwner.getAreaSupportCards().addCard(ashenRemains)
 	
-	for card in cardOwner.getAreaSupportCards().addedCards:
+	for card in cardOwner.opponent.getAreaSupportCards().addedCards.duplicate(false):
 		cardOwner.opponent.deleteCard(card)
 		var ashenRemains = Load.loadCard("Ashen Remains")
 		ashenRemains.setCardOwner(cardOwner.opponent)

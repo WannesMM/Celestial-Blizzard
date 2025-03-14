@@ -15,11 +15,11 @@ func loadData(subject: String, filePath: String):
 
 #Load Card ---------------------------------------------------------------------
 
-@export var cardScene = "res://Scenes/Main/Card.tscn"
+var cardScene: PackedScene = preload("res://Scenes/Main/Card.tscn")
 
 func loadCard(cardName: String) -> Card:
 	var cardScript: Script = loadScript(cardName)
-	var card = load(cardScene).instantiate()
+	var card = cardScene.instantiate()
 	card.set_script(cardScript)
 	card.cardConstructor()
 	return card
