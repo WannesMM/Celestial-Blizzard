@@ -5,6 +5,7 @@ class_name CardCollision
 @export var cardScene: Card
 
 func collisionConstructor():
+	visible = true
 	cardScene.collision = self
 
 func disableCollision():

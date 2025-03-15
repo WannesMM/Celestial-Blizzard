@@ -41,3 +41,21 @@ func startScroll():
 
 func stopScroll():
 	scroll = false
+
+func modulateV(vValue: float, duration: float = 1):
+	var mTween = create_tween()
+	mTween.tween_property(self, "modulate:v", vValue, duration)
+	await mTween.finished
+	mTween.kill
+
+func selfModulateV(vValue: float, duration: float = 1):
+	var mTween = create_tween()
+	mTween.tween_property(self, "self_modulate:v", vValue, duration)
+	await mTween.finished
+	mTween.kill
+
+func fade(aValue: float, duration: float = 1):
+	var mTween = create_tween()
+	mTween.tween_property(self, "modulate:a", aValue, duration)
+	await mTween.finished
+	mTween.kill

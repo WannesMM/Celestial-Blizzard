@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b01lkl2l8uhmq"]
+[gd_scene load_steps=3 format=3 uid="uid://kiy6jj6oeflt"]
 
-[ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="1_asl1y"]
-[ext_resource type="Script" path="res://Code/Battle/BattleUI/InformationSlider.gd" id="1_u12db"]
+[ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="1_8rvck"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/InformationSlider.gd" id="2_o40yb"]
 
 [node name="Right Slider" type="Control"]
 layout_mode = 3
@@ -10,8 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_asl1y")
-script = ExtResource("1_u12db")
+theme = ExtResource("1_8rvck")
+script = ExtResource("2_o40yb")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -98,39 +98,8 @@ autowrap_mode = 3
 [node name="AbilityDescription" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-text = "Ability description
-"
+text = "Ability Description"
 autowrap_mode = 3
-
-[node name="Effects" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-text = "Effects
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="VScrollBar" type="HScrollBar" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Effect1" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VScrollBar"]
-layout_mode = 0
-offset_right = 124.0
-offset_bottom = 15.0
-text = "EffectDescription1"
-
-[node name="Effect2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VScrollBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 18.0
-offset_bottom = -82.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "EffectDescription1"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/NAname" to="." method="NAbuttonPressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SAname" to="." method="SAbuttonPressed"]

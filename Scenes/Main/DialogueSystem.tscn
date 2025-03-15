@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="2_ifhti"]
 [ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="3_82fl8"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_n2lwl"]
-[ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_i7xf0"]
+[ext_resource type="Texture2D" path="res://assets/Cards/CardAssets/card highlight.png" id="5_i7xf0"]
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="7_6ik0f"]
 [ext_resource type="Script" path="res://Scenes/Main/Text.gd" id="8_ye3q2"]
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="10_20idr"]

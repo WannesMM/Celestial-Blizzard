@@ -44,6 +44,18 @@ func flashCard():
 	await Random.wait(1)
 	undoHighlightCard()
 
+func highlightBorder():
+	$CardBorderHighlight.fade(1, 0.5)
+	
+func undoHighlightBorder():
+	$CardBorderHighlight.fade(0, 0.5)
+
+func highlightOuterGlow():
+	$CardOutsideShade.fade(1, 0.5)
+	
+func undoHighlightOuterGlow():
+	$CardOutsideShade.fade(0, 0.5)
+
 func scaleRelative(target_ratio, duration = ANIMATIONDURATION):
 	var scaler = target_ratio.x
 	scaleTo(Vector2(scaler, scaler), duration)
@@ -190,8 +202,17 @@ func generateShaderColor():
 	var image_height = texture.get_height()
 	var sample_color = texture.get_image().get_pixel(image_width / 2, image_height / 2)
 	
+		# Boost color vibrancy by modifying RGB values directly
+	sample_color = sample_color * Color(1.5, 1.5, 1.5, 1.0) # Adjust RGB values
+	sample_color = sample_color.clamp() # Ensure values stay in range (0-1)
+	sampleColor = sample_color
+	
 	$CardBorder.modulate = sample_color
-	#$CardBorder/CardShader.self_modulate = sample_color
+	$CardBorder/CardShader.modulate = sample_color
+	$CardInsideShade.modulate = sample_color
+	$CardOutsideShade.modulate = sample_color
+	
+	$CardOutsideShade.fade(0)
 
 func addRelatedCard(card: Card):
 	relatedCards.append(card)
@@ -236,6 +257,7 @@ var cardCost: int = 1
 var imageLink: String = "Card Unknown": set = setCardImage
 var imagePosition: Vector2 = Vector2(0,0)
 var imageScale: Vector2 = Vector2(1,1)
+var sampleColor: Color
 
 var cardOwner: PlayerState = null
 var gameState: GameState = null
