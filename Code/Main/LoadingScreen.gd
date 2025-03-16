@@ -193,6 +193,6 @@ var tips = [
 	]
 
 func generateTip():
-	$Tip.setText(tips[Random.generateRandom(1,0,tips.size() - 1)]) 
+	$Tip.text = tips[Random.generateRandom(1,0,tips.size() - 1)]
 	
 	
