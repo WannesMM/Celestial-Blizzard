@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bxomdgywf7vue"]
+[gd_scene load_steps=51 format=3 uid="uid://bxomdgywf7vue"]
 
 [ext_resource type="Script" path="res://Scenes/Main/StoryMachine.gd" id="1_dnwa1"]
 [ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="2_6dh7j"]
@@ -30,6 +30,13 @@
 [ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="29_flram"]
 [ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="29_te7ja"]
 [ext_resource type="Texture2D" uid="uid://cxks1q2minbaw" path="res://assets/Animated/Spirit trail/Untitled_Artwork-9.png" id="29_ue8dt"]
+[ext_resource type="Texture2D" uid="uid://cu0wwu5oes8wl" path="res://assets/Material/snow_01_1k/snow_01_ambient_occlusion_1k.png" id="31_7i3nj"]
+[ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="31_yuy6t"]
+[ext_resource type="Texture2D" uid="uid://cg81ykdty8wpf" path="res://assets/Material/snow_01_1k/snow_01_height_1k.png" id="33_0vw48"]
+[ext_resource type="Texture2D" uid="uid://y657xuirsy0u" path="res://assets/Material/snow_01_1k/snow_01_normal_gl_1k.png" id="34_ax7lp"]
+[ext_resource type="Texture2D" uid="uid://bw6cpklcb6b6e" path="res://assets/Material/snow_01_1k/snow_01_roughness_1k.png" id="35_tqb86"]
+[ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="36_dk0pb"]
+[ext_resource type="Texture2D" uid="uid://b8jslkb141knd" path="res://assets/Setpieces/Fog.png" id="37_556qb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gompf"]
 animations = [{
@@ -136,6 +143,67 @@ height = 1000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e80u"]
+albedo_color = Color(0.953125, 0.953125, 0.953125, 1)
+albedo_texture = ExtResource("31_yuy6t")
+roughness = 0.16
+roughness_texture = ExtResource("35_tqb86")
+normal_enabled = true
+normal_scale = 2.3
+normal_texture = ExtResource("34_ax7lp")
+ao_enabled = true
+ao_light_affect = 0.55
+ao_texture = ExtResource("31_7i3nj")
+heightmap_enabled = true
+heightmap_scale = 2.0
+heightmap_texture = ExtResource("33_0vw48")
+uv1_scale = Vector3(3.595, 3.595, 3.595)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_au85o"]
+material = SubResource("StandardMaterial3D_6e80u")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qsdx0"]
+panorama = ExtResource("36_dk0pb")
+energy_multiplier = 4.27
+
+[sub_resource type="Sky" id="Sky_f6lxl"]
+sky_material = SubResource("PanoramaSkyMaterial_qsdx0")
+
+[sub_resource type="Environment" id="Environment_qnrv8"]
+background_mode = 2
+background_energy_multiplier = 0.76
+sky = SubResource("Sky_f6lxl")
+ambient_light_color = Color(0.870588, 0.103347, 0.738548, 1)
+ambient_light_sky_contribution = 0.38
+ambient_light_energy = 0.22
+glow_enabled = true
+glow_intensity = 0.16
+glow_strength = 2.0
+glow_blend_mode = 0
+fog_enabled = true
+fog_light_color = Color(0.0495, 0.074625, 0.15, 1)
+fog_light_energy = 0.52
+fog_sun_scatter = 0.31
+fog_density = 0.3042
+fog_aerial_perspective = 0.015
+fog_depth_end = 2421.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ej13"]
+transparency = 1
+depth_draw_mode = 2
+albedo_texture = ExtResource("37_556qb")
+emission_enabled = true
+uv1_scale = Vector3(4.86, -5.745, 0.86)
+uv1_offset = Vector3(0.465, 0, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f8is8"]
+material = SubResource("StandardMaterial3D_1ej13")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4d65p"]
+lifetime_randomness = 0.88
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pbgtd"]
+
 [node name="Story" type="Node3D"]
 script = ExtResource("1_dnwa1")
 
@@ -148,28 +216,29 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Middle"]
-modulate = Color(0, 0, 0, 0.622)
+self_modulate = Color(1, 1, 1, 0.054902)
 scale = Vector2(0.565, 0.565)
 sprite_frames = SubResource("SpriteFrames_gompf")
 autoplay = "default"
 frame_progress = 0.546246
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Middle"]
+self_modulate = Color(1, 1, 1, 0.160784)
 scale = Vector2(0.52, 0.52)
 sprite_frames = SubResource("SpriteFrames_t68ov")
 autoplay = "default"
 frame_progress = 0.976642
 
 [node name="Snow" parent="Middle" instance=ExtResource("2_6dh7j")]
+modulate = Color(1, 1, 1, 0.317647)
+self_modulate = Color(1, 1, 1, 0.176471)
 position = Vector2(-576, -324)
 
-[node name="Snow2" parent="Middle" instance=ExtResource("2_6dh7j")]
-position = Vector2(-699, -233)
-rotation = -0.0453786
-
 [node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(560.699, 333.25)
 scale = Vector2(20.3219, 11.3672)
 color = Color(0.253312, 0.645276, 1, 1)
@@ -183,5 +252,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.76681)
 script = ExtResource("29_te7ja")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.65592)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756695, -3.65592)
 texture = ExtResource("29_flram")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50.09, 0, 0, 0, 50.09, 0, 0, 0, 50.09, 0, -2.64228, -16.0271)
+mesh = SubResource("PlaneMesh_au85o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.631163, 0.77565, 0, -0.77565, -0.631163, 0, 12.5176, -39.3384)
+light_color = Color(0, 0.240419, 1, 1)
+light_energy = 1.7
+shadow_bias = 0.985
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qnrv8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 100, 0, 0, 0, 1000, -25.8646, 60.1399, -15.8756)
+visible = false
+mesh = SubResource("CylinderMesh_f8is8")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43794, 13.6821, -1.83391)
+amount = 5000
+process_material = SubResource("ParticleProcessMaterial_4d65p")
+draw_pass_1 = SubResource("ArrayMesh_pbgtd")

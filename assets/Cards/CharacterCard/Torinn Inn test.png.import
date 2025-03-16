@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Torinn Inn test.png-611399024c0a93557d8ab583d
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -5,7 +5,7 @@ extends Node3D
 func startChapter(chapter: String):
 	startDialogueSystem(chapter)
 	AudioEngine.playAmbience("Wind")
-	AudioEngine.playStory("Resident Evil 4 Remake OST  Main menu")
+	AudioEngine.playStory("Story1")
 	
 func startDialogueSystem(chapter):
 	var dialogueScene = load(dialogueSystem)
