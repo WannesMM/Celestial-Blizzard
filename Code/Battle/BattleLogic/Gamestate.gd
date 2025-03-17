@@ -141,7 +141,7 @@ func characterDefeated(card: CharacterCard, player: PlayerState):
 func checkGameWin(player: PlayerState):
 	var allDefeated = true
 	for card: Card in player.characterCards.addedCards:
-		allDefeated = allDefeated and card.cardLogic.defeated
+		allDefeated = allDefeated and card.defeated
 	if(allDefeated):
 		playerWin = player.opponent
 	
