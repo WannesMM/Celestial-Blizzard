@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bxomdgywf7vue"]
+[gd_scene load_steps=52 format=3 uid="uid://bxomdgywf7vue"]
 
 [ext_resource type="Script" path="res://Scenes/Main/StoryMachine.gd" id="1_dnwa1"]
 [ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="2_6dh7j"]
@@ -37,6 +37,9 @@
 [ext_resource type="Texture2D" uid="uid://bw6cpklcb6b6e" path="res://assets/Material/snow_01_1k/snow_01_roughness_1k.png" id="35_tqb86"]
 [ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="36_dk0pb"]
 [ext_resource type="Texture2D" uid="uid://b8jslkb141knd" path="res://assets/Setpieces/Fog.png" id="37_556qb"]
+[ext_resource type="Texture2D" uid="uid://bvrqbcg7er3x6" path="res://assets/Setpieces/full moon.png" id="38_b5iqg"]
+[ext_resource type="ArrayMesh" uid="uid://yadkldin7vw7" path="res://assets/3d/Winter_tree_3.obj" id="39_ct1nr"]
+[ext_resource type="Texture2D" uid="uid://btvbhgtutqkl3" path="res://assets/Setpieces/Mountain backdrop.png" id="40_gknah"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gompf"]
 animations = [{
@@ -144,7 +147,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e80u"]
-albedo_color = Color(0.953125, 0.953125, 0.953125, 1)
+albedo_color = Color(0.570313, 0.570313, 0.570313, 1)
 albedo_texture = ExtResource("31_yuy6t")
 roughness = 0.16
 roughness_texture = ExtResource("35_tqb86")
@@ -173,31 +176,21 @@ sky_material = SubResource("PanoramaSkyMaterial_qsdx0")
 background_mode = 2
 background_energy_multiplier = 0.76
 sky = SubResource("Sky_f6lxl")
-ambient_light_color = Color(0.870588, 0.103347, 0.738548, 1)
-ambient_light_sky_contribution = 0.38
-ambient_light_energy = 0.22
+ambient_light_source = 3
+ambient_light_color = Color(0, 0.0995307, 0.570313, 1)
+ambient_light_sky_contribution = 0.03
+ambient_light_energy = 0.52
 glow_enabled = true
-glow_intensity = 0.16
-glow_strength = 2.0
+glow_intensity = 3.26
+glow_strength = 1.22
 glow_blend_mode = 0
 fog_enabled = true
-fog_light_color = Color(0.0495, 0.074625, 0.15, 1)
-fog_light_energy = 0.52
+fog_light_color = Color(0.114727, 0.172959, 0.347656, 1)
+fog_light_energy = 0.2
 fog_sun_scatter = 0.31
-fog_density = 0.3042
-fog_aerial_perspective = 0.015
+fog_density = 0.0214
+fog_aerial_perspective = 0.035
 fog_depth_end = 2421.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ej13"]
-transparency = 1
-depth_draw_mode = 2
-albedo_texture = ExtResource("37_556qb")
-emission_enabled = true
-uv1_scale = Vector3(4.86, -5.745, 0.86)
-uv1_offset = Vector3(0.465, 0, 0)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_f8is8"]
-material = SubResource("StandardMaterial3D_1ej13")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4d65p"]
 lifetime_randomness = 0.88
@@ -253,28 +246,95 @@ script = ExtResource("29_te7ja")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756695, -3.65592)
+visible = false
 texture = ExtResource("29_flram")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(50.09, 0, 0, 0, 50.09, 0, 0, 0, 50.09, 0, -2.64228, -16.0271)
+transform = Transform3D(99.755, 0, 0, 0, 99.755, 0, 0, 0, 99.755, 0, -2.64228, -16.0271)
 mesh = SubResource("PlaneMesh_au85o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.631163, 0.77565, 0, -0.77565, -0.631163, 0, 12.5176, -39.3384)
-light_color = Color(0, 0.240419, 1, 1)
-light_energy = 1.7
-shadow_bias = 0.985
+light_color = Color(0.2279, 0.264952, 0.43, 1)
+light_energy = 1.079
+light_indirect_energy = 0.534
+shadow_enabled = true
+shadow_bias = 4.577
+shadow_normal_bias = 5.204
+shadow_transmittance_bias = -1.814
+shadow_blur = 2.456
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qnrv8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 100, 0, 0, 0, 1000, -25.8646, 60.1399, -15.8756)
-visible = false
-mesh = SubResource("CylinderMesh_f8is8")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43794, 13.6821, -1.83391)
 amount = 5000
 process_material = SubResource("ParticleProcessMaterial_4d65p")
 draw_pass_1 = SubResource("ArrayMesh_pbgtd")
+
+[node name="Fog" type="Node3D" parent="."]
+
+[node name="Sprite3D2" type="Sprite3D" parent="Fog"]
+transform = Transform3D(37.635, 0, 0, 0, 37.635, 0, 0, 0, 37.635, -3.60004, 152.771, -106.389)
+modulate = Color(0.230469, 0.230469, 0.230469, 1)
+billboard = 1
+texture = ExtResource("37_556qb")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Fog"]
+transform = Transform3D(37.635, 0, 0, 0, 37.635, 0, 0, 0, 37.635, 362.6, 152.771, 81.534)
+modulate = Color(0.230469, 0.230469, 0.230469, 1)
+billboard = 1
+texture = ExtResource("37_556qb")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Fog"]
+transform = Transform3D(37.635, 0, 0, 0, 37.635, 0, 0, 0, 37.635, -409.283, 152.771, 81.534)
+modulate = Color(0.230469, 0.230469, 0.230469, 1)
+billboard = 1
+texture = ExtResource("37_556qb")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Fog"]
+transform = Transform3D(37.635, 0, 0, 0, 37.635, 0, 0, 0, 37.635, -3.60004, 152.771, -462.211)
+modulate = Color(0.230469, 0.230469, 0.230469, 1)
+billboard = 1
+texture = ExtResource("37_556qb")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Fog"]
+transform = Transform3D(37.635, 0, 0, 0, 37.635, 0, 0, 0, 37.635, 362.6, 152.771, -274.288)
+modulate = Color(0.230469, 0.230469, 0.230469, 1)
+billboard = 1
+texture = ExtResource("37_556qb")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Fog"]
+transform = Transform3D(37.635, 0, 0, 0, 37.635, 0, 0, 0, 37.635, -409.283, 152.771, -274.288)
+modulate = Color(0.230469, 0.230469, 0.230469, 1)
+billboard = 1
+texture = ExtResource("37_556qb")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(7.845, 0, 0, 0, 7.845, 0, 0, 0, 7.845, 0, 46.6117, -73.1149)
+billboard = 1
+texture = ExtResource("38_b5iqg")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="WinterTree3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, -51.8379, -4.85464, -26.0235)
+mesh = ExtResource("39_ct1nr")
+skeleton = NodePath("../..")
+
+[node name="WinterTree4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 35.9521, -4.85464, -65.1932)
+mesh = ExtResource("39_ct1nr")
+skeleton = NodePath("../..")
+
+[node name="WinterTree5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 38.6512, -6.26602, -7.40689)
+mesh = ExtResource("39_ct1nr")
+skeleton = NodePath("../..")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(16.595, 0, 0, 0, 16.595, 0, 0, 0, 16.595, 20.9639, 20.4679, -68.4315)
+visible = false
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("40_gknah")
