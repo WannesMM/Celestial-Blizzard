@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://br4t3duorucdx"]
 
 [ext_resource type="Script" path="res://3dInputTest.gd" id="1_68sth"]
-[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Main/Story.tscn" id="1_hljdy"]
+[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Main/Environment3dTest.tscn" id="1_hljdy"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wk3r2"]
 viewport_path = NodePath("SubViewport")

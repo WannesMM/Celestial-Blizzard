@@ -1,8 +1,8 @@
 extends Node3D  # Attach this to a Node3D (should be the camera holder or player root)
 
 @export var rotation_speed: float = 0.0025  # Mouse sensitivity
-@export var max_yaw: float = deg_to_rad(45)  # Horizontal limit (left/right)
-@export var max_pitch: float = deg_to_rad(30)  # Vertical limit (up/down)
+@export var max_yaw: float = deg_to_rad(55)  # Horizontal limit (left/right)
+@export var max_pitch: float = deg_to_rad(60)  # Vertical limit (up/down)
 @export var min_pitch: float = deg_to_rad(15)  # Vertical limit (up/down)
 @export var smoothing: float = 1.5  # Higher = slower but smoother
 

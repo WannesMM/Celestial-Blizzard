@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://phmkbxss411d"]
+[gd_scene load_steps=7 format=3 uid="uid://phmkbxss411d"]
 
 [ext_resource type="Script" path="res://Code/Engine/ParameterDisplay.gd" id="1_rnawj"]
+[ext_resource type="Texture2D" uid="uid://ckx2d6ueet882" path="res://assets/Cards/CardAssets/card fill small.png" id="2_l7vkr"]
+[ext_resource type="Texture2D" uid="uid://cdyllrqsip28k" path="res://assets/User Interface/Liquid.jpeg" id="2_pctjd"]
 [ext_resource type="Texture2D" uid="uid://bu67uspkp3d47" path="res://assets/Cards/CardAssets/Card border small.png" id="2_r2xrs"]
+[ext_resource type="Shader" path="res://assets/Shader/Liquid.gdshader" id="3_hoklv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbjag"]
+shader = ExtResource("3_hoklv")
 
 [node name="ParameterDisplay" type="Control"]
 layout_mode = 3
@@ -11,6 +17,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rnawj")
+
+[node name="TitleBorder2" type="NinePatchRect" parent="."]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l7vkr")
+patch_margin_left = 20
+patch_margin_top = 22
+patch_margin_right = 17
+patch_margin_bottom = 19
+
+[node name="Liquid" type="Sprite2D" parent="TitleBorder2"]
+modulate = Color(1, 0.592071, 0.654261, 1)
+material = SubResource("ShaderMaterial_gbjag")
+position = Vector2(470, 336)
+scale = Vector2(1.848, 1.838)
+texture = ExtResource("2_pctjd")
 
 [node name="TitleBorder" type="NinePatchRect" parent="."]
 layout_mode = 1
