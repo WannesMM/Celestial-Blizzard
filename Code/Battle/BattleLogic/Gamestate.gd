@@ -67,7 +67,7 @@ func executeRounds():
 		#Initialise Round
 		roundCounter += 1
 		turnCounter = 0
-		layoutManager.message("Round " + str(roundCounter))
+		await Load.introduce(("Round " + str(roundCounter)))
 		allyState.roundEnded = false
 		allyState.drawCards(2)
 		enemyState.roundEnded = false
@@ -159,7 +159,7 @@ func increaseGamePhase():
 	gamePhase = gamePhase + 1
 	if gamePhase > 3:
 		gamePhase = 3
-	AudioEngine.playBattleMusic(1, gamePhase)
+	AudioEngine.playBattleMusic(2, gamePhase)
 	
 var scheduledEffects: Array[Effect] = []
 	
@@ -192,7 +192,6 @@ func executeEffects(timeFrame: String):
 			for effect in scheduledEffects:
 				if timeFrame == effect.timeFrame:
 					effect.executeEffect()
-	
 	
 # Getter and Setters -------------------------------------------------------------------------------
 

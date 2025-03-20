@@ -52,8 +52,11 @@ func chooseAction():
 				action[1].animatePosition(action[1].basePosition)
 		"Move":
 			if action[1].isPossibleMove(action[0]) and checkCost(action[1].getMoveCost(action[2])):
+				gameState.layoutManager.camera.zoomGlobal(action[1].global_position, 1.7, 2)
+				
 				match action[2]:
 					"NA":
+						await Load.announce(action[1].cardName + " uses " + action[1].getNAName())
 						await action[1].NA()
 						setTurnEnded(true)
 					"SA":
@@ -65,6 +68,7 @@ func chooseAction():
 							setTurnEnded(true)
 						else:
 							Random.message("You don't have enough spirit")
+				gameState.layoutManager.camera.zoom(Vector2(0,0), 1, 2)
 		"End Round": 
 			setTurnEnded(true)
 			setRoundEnded(true)
@@ -73,7 +77,7 @@ func chooseAction():
 			if(!action[1].active):
 				setActiveCharacter(action[1])
 				setTurnEnded(true)
-			
+	
 
 func playCard(card: Card, layout = null):
 	var cardType = card.getCardType()

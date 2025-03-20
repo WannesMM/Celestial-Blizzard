@@ -58,3 +58,29 @@ func loadEffect(effect: String, initialiser: Card, target: Card = initialiser.ca
 	loadData(effect, effectsPath)
 	var script: Script = load(data.get("Code"))
 	return script.new(initialiser, target)
+
+# Messages ---------------------------------------------------------------------
+
+var announcementScene = preload("res://Scenes/Main/Announcement.tscn")
+
+func announce(text = "message"):
+	var announcement = announcementScene.instantiate()
+	announcement.setText(text)
+	
+	get_tree().current_scene.add_child(announcement)
+	
+	await announcement.play()
+	
+	get_tree().current_scene.remove_child(announcement)
+	
+var introduceScene = "res://Scenes/Main/Introduce.tscn"
+
+func introduce(text = "message"):
+	var announcement = load(introduceScene).instantiate()
+	announcement.setText(text)
+	
+	get_tree().current_scene.add_child(announcement)
+	
+	await announcement.play()
+	
+	get_tree().current_scene.remove_child(announcement)

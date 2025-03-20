@@ -170,13 +170,13 @@ material = SubResource("StandardMaterial3D_6e80u")
 panorama = ExtResource("36_fj5y6")
 energy_multiplier = 4.27
 
-[sub_resource type="Sky" id="Sky_f6lxl"]
+[sub_resource type="Sky" id="Sky_uwh3x"]
 sky_material = SubResource("PanoramaSkyMaterial_qsdx0")
 
 [sub_resource type="Environment" id="Environment_qnrv8"]
 background_mode = 2
 background_energy_multiplier = 0.76
-sky = SubResource("Sky_f6lxl")
+sky = SubResource("Sky_uwh3x")
 ambient_light_source = 3
 ambient_light_color = Color(0, 0.0995307, 0.570313, 1)
 ambient_light_sky_contribution = 0.03

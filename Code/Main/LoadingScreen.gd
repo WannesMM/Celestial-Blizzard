@@ -10,7 +10,7 @@ var progress = []
 var progressTween: Tween
 var value = 0
 
-@export var battleFieldScene: String = "res://Scenes/Battle/battlefield.tscn"
+@export var battleFieldScene: String
 @export var deckBuilderScene: String
 @export var shopScene: String
 @export var TitleScene: String
@@ -57,13 +57,14 @@ func specificLoad(newScene, instance):
 		"Story":
 			return storySpecificLoad(instance)
 
-func battleSpecificLoad(battleField: BattleManager):
+func battleSpecificLoad(battle):
+	var battleField = battle.battleField
 	var allyInput = PlayerInput.new(battleField)
 	var enemyInput = PlayerInput.new(battleField)
 	var test = BattleTest.new()
 	
-	var deck1 = test.TestDeck1
-	var deck2 = test.TestDeck2
+	var deck1 = test.burningDeck1
+	var deck2 = test.TestDeck1
 	
 	battleField.initialiseGame(deck1,allyInput,deck2,enemyInput)
 	return false

@@ -21,6 +21,8 @@ var battleResources: BattleRightPanel = null
 var eventCardCollision: LayoutCollision = null
 var rightSlider = null
 
+@onready var camera = $"../Camera"
+
 # LayoutManager inherited
 
 func startCardDrag(card: Card):

@@ -1,5 +1,8 @@
 extends Label
 
+func _ready() -> void:
+	text = ""
+
 func setText(newText: String):
 	if newText != text:
 		var fadeTween = create_tween()

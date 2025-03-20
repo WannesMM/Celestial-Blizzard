@@ -43,6 +43,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0lv6y")
+battleFieldScene = "res://Scenes/Battle/Battle.tscn"
 deckBuilderScene = "res://Scenes/Deckbuilder/deckBuilder.tscn"
 shopScene = "res://Scenes/Shop/Shop.tscn"
 TitleScene = "res://Scenes/Main/TitleScreen.tscn"

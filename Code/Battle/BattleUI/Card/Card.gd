@@ -210,7 +210,6 @@ func generateShaderColor():
 	$CardBorder.modulate = sample_color
 	$CardBorder/CardShader.modulate = sample_color
 	$CardInsideShade.modulate = sample_color
-	$CardOutsideShade.modulate = sample_color
 	
 	$CardOutsideShade.fade(0)
 

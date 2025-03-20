@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://coeo7k7wf8v1w"]
+[gd_scene load_steps=20 format=3 uid="uid://coeo7k7wf8v1w"]
 
 [ext_resource type="Texture2D" uid="uid://dgo25iibpn31b" path="res://assets/Setpieces/Portrait Rect.png" id="1_5odlv"]
 [ext_resource type="Script" path="res://Scenes/Main/DialogueSystem.gd" id="1_plbh7"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="2_ifhti"]
 [ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="3_82fl8"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_n2lwl"]
-[ext_resource type="Texture2D" path="res://assets/Cards/CardAssets/card highlight.png" id="5_i7xf0"]
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="7_6ik0f"]
 [ext_resource type="Script" path="res://Scenes/Main/Text.gd" id="8_ye3q2"]
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="10_20idr"]
@@ -228,7 +227,6 @@ script = ExtResource("8_ye3q2")
 clip_children = 1
 position = Vector2(342, -189)
 scale = Vector2(0.167742, 0.107611)
-texture = ExtResource("5_i7xf0")
 
 [node name="Middle" type="Control" parent="DialogueContainer"]
 layout_mode = 1
