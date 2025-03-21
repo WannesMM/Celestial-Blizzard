@@ -3,4 +3,12 @@
 	{
 		"Scene": "res://Code/Animation/Scene/Animation-Celestial Blizzard Logo.tscn"
 	},
+	"Cinematic Bars": 
+	{
+		"Scene": "res://Code/Animation/Scene/cinematicBars.tscn"
+	},
+	"Take Damage": 
+	{
+		"Scene": "res://Code/Animation/Scene/TakeDamage.tscn"
+	},
 }

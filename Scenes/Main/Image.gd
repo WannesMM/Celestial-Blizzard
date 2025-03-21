@@ -59,3 +59,7 @@ func fade(aValue: float, duration: float = 1):
 	mTween.tween_property(self, "modulate:a", aValue, duration)
 	await mTween.finished
 	mTween.kill
+
+func flash():
+	modulate.v = 1
+	await modulateV(0)

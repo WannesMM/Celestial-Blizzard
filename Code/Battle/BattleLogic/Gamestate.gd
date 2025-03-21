@@ -50,6 +50,9 @@ func startGame():
 	var enemyCard = enemyCards[0]
 	enemyState.getDeck().stackRemoveCard(enemyCard)
 	
+	var bars = Load.loadAnimation("Cinematic Bars")
+	Load.playAnimation(bars) 
+	
 	await allyState.playCard(allyCard)
 	await enemyState.playCard(enemyCard)
 	allyState.setActiveCharacter(allyCard)
@@ -57,6 +60,8 @@ func startGame():
 	
 	allyState.drawCards(3)
 	enemyState.drawCards(3)
+	
+	bars.exitAnimation()
 	
 	increaseGamePhase()
 	executeRounds()

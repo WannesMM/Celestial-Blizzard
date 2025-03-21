@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xfl86vf0gqpu"
-path="res://.godot/imported/Shadowy Figure.jpeg-e38b5e54e658533296c6a37435964ee8.ctex"
+uid="uid://dybj0swdibv4f"
+path="res://.godot/imported/HitShatter.png-cc608a200ad921e687ad4f430a9f1a33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Story/Shadowy Figure.jpeg"
-dest_files=["res://.godot/imported/Shadowy Figure.jpeg-e38b5e54e658533296c6a37435964ee8.ctex"]
+source_file="res://assets/Animated/CharacterHit/HitShatter.png"
+dest_files=["res://.godot/imported/HitShatter.png-cc608a200ad921e687ad4f430a9f1a33.ctex"]
 
 [params]
 

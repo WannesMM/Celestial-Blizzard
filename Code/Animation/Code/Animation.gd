@@ -5,8 +5,20 @@ class_name Animate
 func play():
 	pass
 
+func play2():
+	pass
+
+func exitAnimation():
+	pass
+
+func removeSelf():
+	queue_free()
+
 func setText(newText: String):
 	pass
+	
+func setPosition(pos: Vector2):
+	position = pos
 	
 func fadeIn():
 	var fade = create_tween()

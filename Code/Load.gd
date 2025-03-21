@@ -45,10 +45,18 @@ func loadScript(cardName: String):
 
 @export var animationPath: String = "res://File/Animations.json"
 
-func loadAnimation(animation: String):
+func loadAnimation(animation: String) -> Animate:
 	loadData(animation, animationPath)
 	var scene: PackedScene = load(data.get("Scene"))
 	return scene.instantiate()
+
+func playAnimation(animation: Animate):
+	get_tree().current_scene.add_child(animation)
+	await animation.play()
+
+func removeAnimation(animation: Animate):
+	get_tree().current_scene.remove_child(animation)
+	animation.queue_free()
 
 # Load Effect ------------------------------------------------------------------
 

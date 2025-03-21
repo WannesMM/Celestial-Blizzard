@@ -127,7 +127,7 @@ func startLoad(newScene: String = "BattleField"):
 		await GlobalSignals.loadComplete
 	print("Loading complete")
 	
-	var current_scene = get_tree().current_scene  # Get current scene
+	var loadingScene: LoadingScreen = get_tree().current_scene  # Get current scene
 	
 	AudioEngine.stopAudio(1)
 	AudioEngine.stopAudio(2)
@@ -141,7 +141,10 @@ func startLoad(newScene: String = "BattleField"):
 	get_tree().current_scene = instance
 	
 	# Remove old scene
-	current_scene.queue_free()
+	get_tree().root.remove_child(loadingScene)
+	loadingScene.queue_free()
+	
+	pass
 
 func stopLoading():
 	var fadeTween = create_tween()

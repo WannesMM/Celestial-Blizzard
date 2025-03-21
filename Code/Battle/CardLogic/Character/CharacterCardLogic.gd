@@ -51,7 +51,19 @@ func CA():
 	reduceEnergy()
 	await attack(CAdmg)
 
+func onMove(attackType: String):
+	gameState.layoutManager.camera.zoomGlobal(global_position, 1.7, 1)
+	
+	await Load.announce(cardName + " uses " + getMoveName(attackType))
+	
+	gameState.layoutManager.camera.zoom(Vector2(0,0), 1, 1.5)
+
 func receiveDamage(amt: int):
+	var anim = Load.loadAnimation("Take Damage")
+	anim.setText("- " + str(amt))
+	anim.setPosition(global_position)
+	await Load.playAnimation(anim)
+	
 	await setHP(HP - amt)
 	onHit()
 	
@@ -84,6 +96,15 @@ func getMoveCost(move: String):
 			return SAcost
 		"CA":
 			return CAcost
+
+func getMoveName(move: String):
+	match move:
+		"NA":
+			return getNAName()
+		"SA":
+			return getSAName()
+		"CA":
+			return getCAName()
 
 func checkEnergy():
 	if energy >= CAenergyCost:
