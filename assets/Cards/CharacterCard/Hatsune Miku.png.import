@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Hatsune Miku.png-c7e1825295dce3e2aaf157e1813b
 
 [params]
 
-compress/mode=3
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

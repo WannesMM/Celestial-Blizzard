@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bxomdgywf7vue"]
+[gd_scene load_steps=52 format=3 uid="uid://bxomdgywf7vue"]
 
 [ext_resource type="Script" path="res://Scenes/Main/StoryMachine.gd" id="1_g1kbu"]
 [ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="2_m4kqi"]
@@ -35,12 +35,11 @@
 [ext_resource type="Texture2D" uid="uid://cg81ykdty8wpf" path="res://assets/Material/snow_01_1k/snow_01_height_1k.png" id="33_a8p6m"]
 [ext_resource type="Texture2D" uid="uid://y657xuirsy0u" path="res://assets/Material/snow_01_1k/snow_01_normal_gl_1k.png" id="34_0fuod"]
 [ext_resource type="Texture2D" uid="uid://bw6cpklcb6b6e" path="res://assets/Material/snow_01_1k/snow_01_roughness_1k.png" id="35_en7tu"]
-[ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="36_fj5y6"]
 [ext_resource type="Texture2D" uid="uid://b8jslkb141knd" path="res://assets/Setpieces/Fog.png" id="37_jceeg"]
 [ext_resource type="Texture2D" uid="uid://bvrqbcg7er3x6" path="res://assets/Setpieces/full moon.png" id="38_6t4ri"]
 [ext_resource type="Texture2D" uid="uid://btvbhgtutqkl3" path="res://assets/Setpieces/Mountain backdrop.png" id="39_m6ft8"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="40_ohyf6"]
-[ext_resource type="ArrayMesh" uid="uid://dgwb7brw7pwoe" path="res://assets/3d/Snowfield1.obj" id="41_3sr6v"]
+[ext_resource type="ArrayMesh" uid="uid://cmypyfpetxan6" path="res://assets/3d/Snowfield2.obj" id="41_d7rnl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gompf"]
 animations = [{
@@ -166,31 +165,27 @@ uv1_scale = Vector3(10.6, 10.6, 10.6)
 [sub_resource type="PlaneMesh" id="PlaneMesh_au85o"]
 material = SubResource("StandardMaterial3D_6e80u")
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qsdx0"]
-panorama = ExtResource("36_fj5y6")
-energy_multiplier = 4.27
-
-[sub_resource type="Sky" id="Sky_uwh3x"]
-sky_material = SubResource("PanoramaSkyMaterial_qsdx0")
+[sub_resource type="Sky" id="Sky_uhh7n"]
 
 [sub_resource type="Environment" id="Environment_qnrv8"]
-background_mode = 2
-background_energy_multiplier = 0.76
-sky = SubResource("Sky_uwh3x")
+background_mode = 1
+background_energy_multiplier = 2.7
+sky = SubResource("Sky_uhh7n")
 ambient_light_source = 3
 ambient_light_color = Color(0, 0.0995307, 0.570313, 1)
 ambient_light_sky_contribution = 0.03
 ambient_light_energy = 0.52
 glow_enabled = true
-glow_intensity = 3.26
-glow_strength = 1.22
+glow_intensity = 0.76
+glow_strength = 1.72
+glow_bloom = 0.01
 glow_blend_mode = 0
 fog_enabled = true
-fog_light_color = Color(0.114727, 0.172959, 0.347656, 1)
-fog_light_energy = 0.2
-fog_sun_scatter = 0.31
-fog_density = 0.0214
-fog_aerial_perspective = 0.035
+fog_light_color = Color(0.0270704, 0.0408106, 0.0820313, 1)
+fog_light_energy = 0.0
+fog_sun_scatter = 0.5
+fog_density = 0.0365
+fog_height = -5.3
 fog_depth_end = 2421.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8g8u"]
@@ -249,7 +244,7 @@ texture = SubResource("GradientTexture2D_vamau")
 texture_scale = 0.07
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60632, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.53826, 0)
 script = ExtResource("29_m56af")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -264,7 +259,7 @@ mesh = SubResource("PlaneMesh_au85o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.631163, 0.77565, 0, -0.77565, -0.631163, 0, 12.5176, -39.3384)
-light_color = Color(0.2279, 0.264952, 0.43, 1)
+light_color = Color(0.3009, 0.346205, 0.51, 1)
 light_energy = 1.079
 light_indirect_energy = 0.534
 shadow_enabled = true
@@ -316,13 +311,12 @@ billboard = 1
 texture = ExtResource("37_jceeg")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(7.845, 0, 0, 0, 7.845, 0, 0, 0, 7.845, 0, 46.6117, -73.1149)
+transform = Transform3D(7.845, 0, 0, 0, 7.845, 0, 0, 0, 7.845, 0, 46.6117, -136.192)
 billboard = 1
 texture = ExtResource("38_6t4ri")
 
 [node name="Sprite3D3" type="Sprite3D" parent="."]
-transform = Transform3D(16.595, 0, 0, 0, 16.595, 0, 0, 0, 16.595, 20.9639, 20.4679, -68.4315)
-visible = false
+transform = Transform3D(16.595, 0, 0, 0, 16.595, 0, 0, 0, 16.595, 20.9639, 7.55715, -114.503)
 modulate = Color(0, 0, 0, 1)
 texture = ExtResource("39_m6ft8")
 
@@ -351,5 +345,5 @@ mesh_library = SubResource("MeshLibrary_17o4a")
 cell_size = Vector3(2.14, 2, 2)
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
-[node name="Snowfield1" type="MeshInstance3D" parent="."]
-mesh = ExtResource("41_3sr6v")
+[node name="Snowfield2" type="MeshInstance3D" parent="."]
+mesh = ExtResource("41_d7rnl")

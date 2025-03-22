@@ -7,9 +7,6 @@
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="3_7ak66"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_kdouy"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mkwja"]
-light_mode = 1
-
 [sub_resource type="Gradient" id="Gradient_r2wf7"]
 offsets = PackedFloat32Array(0, 0.427481, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.292969, 0.292969, 0.292969, 0)
@@ -42,6 +39,9 @@ gravity = Vector3(0, 0, 0)
 scale_max = 11.26
 color_ramp = SubResource("GradientTexture1D_3j0eh")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mkwja"]
+light_mode = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_owa1q"]
 shader = ExtResource("2_q5m87")
 shader_parameter/shock_color = Color(1, 0, 0, 1)
@@ -66,24 +66,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_raiba")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Node2D" type="Node2D" parent="Control"]
+[node name="Node2D" type="Node2D" parent="."]
+z_index = 7
+position = Vector2(576, 324)
 scale = Vector2(0.735, 0.735)
 
-[node name="PortraitScaler" type="Node2D" parent="Control/Node2D"]
-position = Vector2(5.79498, -5.345)
-scale = Vector2(0.815, 0.815)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_8kj5r")
+speed_scale = 1.5
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.01
+trail_sections = 2
+trail_section_subdivisions = 1
 
-[node name="PortraitOutline" type="NinePatchRect" parent="Control/Node2D/PortraitScaler"]
+[node name="PortraitScaler" type="Node2D" parent="Node2D"]
+position = Vector2(5.79498, -5.345)
+scale = Vector2(0.455, 0.455)
+
+[node name="PortraitOutline" type="NinePatchRect" parent="Node2D/PortraitScaler"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -98,7 +100,7 @@ grow_vertical = 2
 rotation = 0.785398
 texture = ExtResource("2_hbst5")
 
-[node name="PortraitMask" type="NinePatchRect" parent="Control/Node2D/PortraitScaler"]
+[node name="PortraitMask" type="NinePatchRect" parent="Node2D/PortraitScaler"]
 clip_children = 1
 offset_left = -0.507584
 offset_top = -139.0
@@ -107,7 +109,7 @@ offset_bottom = 61.0
 rotation = 0.785398
 texture = ExtResource("2_hbst5")
 
-[node name="PortraitSprite" type="Sprite2D" parent="Control/Node2D/PortraitScaler/PortraitMask"]
+[node name="PortraitSprite" type="Sprite2D" parent="Node2D/PortraitScaler/PortraitMask"]
 modulate = Color(0.0820313, 0.0820313, 0.0820313, 1)
 material = SubResource("CanvasItemMaterial_mkwja")
 position = Vector2(101.727, 98.918)
@@ -116,23 +118,13 @@ scale = Vector2(0.415, 0.415)
 texture = ExtResource("3_kdouy")
 script = ExtResource("3_7ak66")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Node2D"]
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_8kj5r")
-speed_scale = 1.5
-explosiveness = 1.0
-trail_enabled = true
-trail_lifetime = 0.01
-trail_sections = 2
-trail_section_subdivisions = 1
-
-[node name="HitShatter" type="Sprite2D" parent="Control/Node2D"]
+[node name="HitShatter" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.96, 0.96, 0.96, 0.517647)
 position = Vector2(7, -3)
-scale = Vector2(0.555, 0.555)
+scale = Vector2(0.605, 0.605)
 texture = ExtResource("2_10e4n")
 
-[node name="Label" type="Label" parent="Control/Node2D"]
+[node name="Label" type="Label" parent="Node2D"]
 modulate = Color(0.699219, 0, 0.244114, 1)
 material = SubResource("ShaderMaterial_owa1q")
 anchors_preset = 15
@@ -148,7 +140,8 @@ theme_override_font_sizes/font_size = 55
 text = "-5"
 horizontal_alignment = 1
 
-[node name="PointLight2D" type="PointLight2D" parent="Control"]
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(576, 324)
 color = Color(0, 0, 0, 1)
 energy = 2.46
 texture = SubResource("GradientTexture2D_mor6u")

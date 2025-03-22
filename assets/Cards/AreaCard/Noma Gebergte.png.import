@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Noma Gebergte.png-0ced0635720c54577e8370f1086
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

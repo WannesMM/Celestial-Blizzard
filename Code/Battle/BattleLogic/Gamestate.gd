@@ -152,9 +152,9 @@ func checkGameWin(player: PlayerState):
 	
 func endGame(winner: PlayerState):
 	if(winner.allied):
-		layoutManager.message("You Win")
+		await Load.introduce("You Win")
 	else:
-		layoutManager.message("You Lost")
+		await Load.introduce("You Lost")
 	await Random.wait(2)
 	Random.callLoadingScreen("Title")
 	

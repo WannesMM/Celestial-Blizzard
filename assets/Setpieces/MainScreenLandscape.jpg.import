@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8godjr2ljcr4"
-path.s3tc="res://.godot/imported/MainScreenLandscape.jpg-391351d4a851efb05d6b3d8a37436cd0.s3tc.ctex"
-path.etc2="res://.godot/imported/MainScreenLandscape.jpg-391351d4a851efb05d6b3d8a37436cd0.etc2.ctex"
+path="res://.godot/imported/MainScreenLandscape.jpg-391351d4a851efb05d6b3d8a37436cd0.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/Setpieces/MainScreenLandscape.jpg"
-dest_files=["res://.godot/imported/MainScreenLandscape.jpg-391351d4a851efb05d6b3d8a37436cd0.s3tc.ctex", "res://.godot/imported/MainScreenLandscape.jpg-391351d4a851efb05d6b3d8a37436cd0.etc2.ctex"]
+dest_files=["res://.godot/imported/MainScreenLandscape.jpg-391351d4a851efb05d6b3d8a37436cd0.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

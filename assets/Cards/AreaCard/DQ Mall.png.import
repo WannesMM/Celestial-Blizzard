@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DQ Mall.png-51f56271294d4613c19da8e0f231c465.
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

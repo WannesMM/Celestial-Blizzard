@@ -7,12 +7,17 @@ func _ready() -> void:
 	modulate.v = 0
 	#await doTitleAnimation()
 	$Control/TitleLight.energy = 0
+	$Account/SnowCrystal.modulate.a = 0
 	audio()
 	Random.wait(1)
 	var fadeTween = create_tween()
+	$Node3D/Camera3D.animateRotation(Vector3(0,0,0),7)
+	$ColorRect.animateScale(Vector2(1,1))
+	$ColorRect2.animateScale(Vector2(1,1))
+	
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
 	await fadeTween.finished
-	
+	$Node3D/WorldEnvironment.rotateSky()
 	$Control/TitleLight.energy = 0
 	
 func audio():

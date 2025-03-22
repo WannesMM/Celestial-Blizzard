@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Card_Shatter-1.png-503dab102cf89a02c7161be15c
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

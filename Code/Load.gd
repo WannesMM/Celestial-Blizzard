@@ -81,10 +81,10 @@ func announce(text = "message"):
 	
 	get_tree().current_scene.remove_child(announcement)
 	
-var introduceScene = "res://Scenes/Main/Introduce.tscn"
+var introduceScene = preload("res://Scenes/Main/Introduce.tscn")
 
 func introduce(text = "message"):
-	var announcement = load(introduceScene).instantiate()
+	var announcement = introduceScene.instantiate()
 	announcement.setText(text)
 	
 	get_tree().current_scene.add_child(announcement)
