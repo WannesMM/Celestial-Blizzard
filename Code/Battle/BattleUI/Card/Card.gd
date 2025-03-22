@@ -172,7 +172,9 @@ func cardShatterStage(stage: int):
 		fadeTween.tween_property($Darken,"modulate:a",0.4,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
 
 #---------------------------------------------------------------------------------------------------------------------
-	
+
+var cardImage: Texture
+
 func setCardImage(image: String):
 	imageLink = image
 	
@@ -187,6 +189,7 @@ func setCardImage(image: String):
 	
 	if texture and texture is Texture2D:
 		$CardMask/cardImage.setImage(texture, imagePosition, imageScale)
+		cardImage = texture
 	else:
 		print("card Image does not exist:")
 		print(cardType)
@@ -281,10 +284,8 @@ func removeAllEffects():
 	for effect in appliedEffects:
 		removeEffect(effect)
 
-var displayInfo: Array = [["Title", "DefaultDisplay"],["Title", "Extend this"]]
-
-func getDisplayInfo():
-	return displayInfo
+func getDisplayInfo() -> Array[Array]:
+	return [["Title", "DefaultDisplay"],["Title", "Extend this"]]
 
 # Getters and Setters ----------------------------------------------------------
 

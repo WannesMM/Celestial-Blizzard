@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://kiy6jj6oeflt"]
+[gd_scene load_steps=14 format=3 uid="uid://kiy6jj6oeflt"]
 
 [ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="1_8rvck"]
 [ext_resource type="Script" path="res://Code/Main/MainUI/InformationPanel.gd" id="2_5tm1x"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dpl4mgjq1dpl6" path="res://assets/Cards/CharacterCard/Nessa of Loch.png" id="4_kgrry"]
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="5_imjut"]
 [ext_resource type="PackedScene" uid="uid://phmkbxss411d" path="res://Scenes/Visual/ParameterDisplay.tscn" id="6_l3vxr"]
+[ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="7_6wy1j"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oihj3"]
 light_mode = 1
@@ -39,7 +40,6 @@ theme = ExtResource("1_8rvck")
 script = ExtResource("2_5tm1x")
 
 [node name="Background" type="NinePatchRect" parent="."]
-modulate = Color(0.75, 0.4425, 0.478375, 1)
 clip_children = 2
 layout_mode = 1
 anchors_preset = 15
@@ -91,6 +91,7 @@ patch_margin_bottom = 19
 
 [node name="Scroll" type="ScrollContainer" parent="Border"]
 custom_minimum_size = Vector2(226.855, 648.555)
+layout_mode = 0
 offset_right = 226.855
 offset_bottom = 648.555
 
@@ -145,10 +146,11 @@ grow_vertical = 2
 texture = ExtResource("3_xofbf")
 patch_margin_left = 24
 
-[node name="NessaOfLoch" type="Sprite2D" parent="Border/Scroll/VBoxContainer/Portrait/PortraitMask"]
+[node name="PortraitImage" type="Sprite2D" parent="Border/Scroll/VBoxContainer/Portrait/PortraitMask"]
 position = Vector2(85, 183)
 scale = Vector2(0.33, 0.33)
 texture = ExtResource("4_kgrry")
+script = ExtResource("7_6wy1j")
 
 [node name="Shatter" type="Sprite2D" parent="Border/Scroll/VBoxContainer/Portrait/PortraitMask"]
 visible = false

@@ -19,6 +19,7 @@ var defeated: bool = false
 
 func cardConstructor():
 	cardType = "CharacterCard"
+	
 	characterCardConstructor()
 
 func characterCardConstructor():
@@ -117,6 +118,22 @@ func reduceEnergy():
 	
 func heal(amt: int):
 	setHP(HP + amt)
+	
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter"],
+["Parameter"],
+["Button", getNAName()],
+["Text", getNADescription()],
+["Button", getSAName()],
+["Text", getSADescription()],
+["Button", getCAName()],
+["Text", getCADescription()],
+["Title", getAbilityName()],
+["Text", getAbilityDescription()]
+]
 	
 #---------------------------------------------------------------------------------------------------
 
