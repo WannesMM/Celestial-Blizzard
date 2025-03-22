@@ -281,6 +281,11 @@ func removeAllEffects():
 	for effect in appliedEffects:
 		removeEffect(effect)
 
+var displayInfo: Array = [["Title", "DefaultDisplay"],["Title", "Extend this"]]
+
+func getDisplayInfo():
+	return displayInfo
+
 # Getters and Setters ----------------------------------------------------------
 
 func getCardName():
