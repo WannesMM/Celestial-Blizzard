@@ -6,6 +6,7 @@ func supporterCardConstructor():
 	cardName = "Hermit"
 	imageLink = "Hermit"
 	cardCost = 5
+	sampleColor = Color.TEAL
 	
 #---------------------------------------------------------------------------------------------------
 

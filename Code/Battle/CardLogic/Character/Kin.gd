@@ -5,6 +5,7 @@ class_name Kin
 func characterCardConstructor():
 	cardName = "Kin"
 	imageLink = "Kin"
+	sampleColor = Color.DARK_ORANGE
 	
 	maxHP = 7
 	HP = 7

@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://572pwlw7ps2v"
-path="res://.godot/imported/frame_10.png-215ecfbb4a5d513df061dc42bfa3e9c4.ctex"
+path.s3tc="res://.godot/imported/frame_10.png-215ecfbb4a5d513df061dc42bfa3e9c4.s3tc.ctex"
+path.etc2="res://.godot/imported/frame_10.png-215ecfbb4a5d513df061dc42bfa3e9c4.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Animated/CharacterSwitch/frame_10.png"
-dest_files=["res://.godot/imported/frame_10.png-215ecfbb4a5d513df061dc42bfa3e9c4.ctex"]
+dest_files=["res://.godot/imported/frame_10.png-215ecfbb4a5d513df061dc42bfa3e9c4.s3tc.ctex", "res://.godot/imported/frame_10.png-215ecfbb4a5d513df061dc42bfa3e9c4.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

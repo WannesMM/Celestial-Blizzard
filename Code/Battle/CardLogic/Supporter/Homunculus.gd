@@ -6,6 +6,7 @@ func supporterCardConstructor():
 	cardName = "Homunculus"
 	imageLink = "Homunculus"
 	cardCost = 3
+	sampleColor = Color.DARK_GOLDENROD
 	
 #---------------------------------------------------------------------------------------------------
 

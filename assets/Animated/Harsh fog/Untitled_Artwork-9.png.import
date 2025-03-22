@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bchhogib46tyr"
-path="res://.godot/imported/Untitled_Artwork-9.png-7a2691010bd90be86f5e5f14e17d1787.ctex"
+path.s3tc="res://.godot/imported/Untitled_Artwork-9.png-7a2691010bd90be86f5e5f14e17d1787.s3tc.ctex"
+path.etc2="res://.godot/imported/Untitled_Artwork-9.png-7a2691010bd90be86f5e5f14e17d1787.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Animated/Harsh fog/Untitled_Artwork-9.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-9.png-7a2691010bd90be86f5e5f14e17d1787.ctex"]
+dest_files=["res://.godot/imported/Untitled_Artwork-9.png-7a2691010bd90be86f5e5f14e17d1787.s3tc.ctex", "res://.godot/imported/Untitled_Artwork-9.png-7a2691010bd90be86f5e5f14e17d1787.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

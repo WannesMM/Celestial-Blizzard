@@ -6,6 +6,7 @@ func supporterCardConstructor():
 	cardName = "Blinking Dog Puppy"
 	imageLink = "Blinking Dog"
 	cardCost = 1
+	sampleColor = Color.LIGHT_CORAL
 	
 #---------------------------------------------------------------------------------------------------
 

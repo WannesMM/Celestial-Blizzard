@@ -5,6 +5,7 @@ class_name FragmentumGeneral
 func characterCardConstructor():
 	cardName = "Fragmentum General"
 	imageLink = "Fragmentum General"
+	sampleColor = Color.CADET_BLUE
 	
 	maxHP = 10
 	HP = 10

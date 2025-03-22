@@ -6,6 +6,7 @@ func eventCardConstructor():
 	cardName = "Burning Memories"
 	imageLink = "Burning Memories"
 	cardCost = 0
+	sampleColor = Color.FIREBRICK
 	
 #---------------------------------------------------------------------------------------------------
 

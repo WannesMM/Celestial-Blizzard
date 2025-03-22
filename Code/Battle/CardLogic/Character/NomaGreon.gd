@@ -5,6 +5,7 @@ class_name NomaGreon
 func characterCardConstructor():
 	cardName = "Noma Greon"
 	imageLink = "Noma Greon - skin1"
+	sampleColor = Color.DARK_GRAY
 	
 	maxHP = 10
 	HP = 10

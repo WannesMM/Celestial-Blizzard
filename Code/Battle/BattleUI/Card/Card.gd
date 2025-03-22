@@ -196,20 +196,9 @@ func setCardImage(image: String):
 	generateShaderColor()
 
 func generateShaderColor():
-	var texture = $CardMask/cardImage.texture
-	
-	var image_width = texture.get_width()
-	var image_height = texture.get_height()
-	var sample_color = texture.get_image().get_pixel(image_width / 2, image_height / 2)
-	
-		# Boost color vibrancy by modifying RGB values directly
-	sample_color = sample_color * Color(1.5, 1.5, 1.5, 1.0) # Adjust RGB values
-	sample_color = sample_color.clamp() # Ensure values stay in range (0-1)
-	sampleColor = sample_color
-	
-	$CardBorder.modulate = sample_color
-	$CardBorder/CardShader.modulate = sample_color
-	$CardInsideShade.modulate = sample_color
+	$CardBorder.modulate = sampleColor
+	$CardBorder/CardShader.modulate = sampleColor
+	$CardInsideShade.modulate = sampleColor
 	
 	$CardOutsideShade.fade(0)
 

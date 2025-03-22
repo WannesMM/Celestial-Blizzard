@@ -4,6 +4,7 @@ func areaCardConstructor():
 	cardName = "Monster Mayhem"
 	imageLink = "Monster Mayhem"
 	cardCost = 3
+	sampleColor = Color.DARK_SALMON
 	
 #---------------------------------------------------------------------------------------------------
 

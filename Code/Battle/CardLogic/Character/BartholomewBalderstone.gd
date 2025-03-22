@@ -1,10 +1,9 @@
 extends CharacterCard
 
-class_name BartholomewBalderstone
-
 func characterCardConstructor():
 	cardName = "Bartholomew Balderstone"
 	imageLink = "Bartholomew Balderstone"
+	sampleColor = Color.BROWN
 
 	maxHP = 10
 	HP = 10

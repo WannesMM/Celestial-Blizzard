@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=36 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="FontFile" uid="uid://rhn3wt06rvrw" path="res://assets/Font/Baskerville Bold.otf" id="2_82mvx"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="8_jir33"]
 [ext_resource type="Texture2D" uid="uid://cj2ng8c5q1r0o" path="res://assets/Cards/CharacterCard/Hatsune Miku.png" id="8_nmak3"]
 [ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="9_w145k"]
-[ext_resource type="Texture2D" uid="uid://bvrqbcg7er3x6" path="res://assets/Setpieces/full moon.png" id="10_d1ce8"]
 [ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="10_v3w12"]
 [ext_resource type="Script" path="res://Code/Engine/World.gd" id="12_xxk26"]
 [ext_resource type="Script" path="res://Code/Engine/Rect.gd" id="15_ebcku"]
@@ -384,11 +383,6 @@ lifetime = 7.0
 trail_lifetime = 4.96
 process_material = SubResource("ParticleProcessMaterial_2015o")
 draw_pass_1 = SubResource("PlaneMesh_o8srt")
-
-[node name="Sprite3D2" type="Sprite3D" parent="Node3D"]
-transform = Transform3D(7.845, 0, 0, 0, 7.845, 0, 0, 0, 7.845, 0, -0.627141, -52.0307)
-billboard = 1
-texture = ExtResource("10_d1ce8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.97901, 0.203812, 0, -0.203812, 0.97901, 0, 1.24618, 0.27871)

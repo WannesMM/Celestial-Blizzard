@@ -4,6 +4,8 @@ func areaCardConstructor():
 	cardName = "Ashen Remains"
 	imageScale = Vector2(4,4)
 	imageLink = "Ashen Remains"
+	sampleColor = Color.DIM_GRAY
+	
 	cardCost = 0
 	
 #---------------------------------------------------------------------------------------------------

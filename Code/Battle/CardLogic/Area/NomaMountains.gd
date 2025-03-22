@@ -6,6 +6,7 @@ func areaCardConstructor():
 	cardName = "Noma Mountains"
 	imageLink = "Noma Gebergte"
 	cardCost = 2
+	sampleColor = Color.CORNFLOWER_BLUE
 	
 #---------------------------------------------------------------------------------------------------
 

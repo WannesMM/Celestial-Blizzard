@@ -6,6 +6,7 @@ func eventCardConstructor():
 	cardName = "Ballista"
 	imageLink = "Ballista"
 	cardCost = 3
+	sampleColor = Color.SEA_GREEN
 	
 #---------------------------------------------------------------------------------------------------
 

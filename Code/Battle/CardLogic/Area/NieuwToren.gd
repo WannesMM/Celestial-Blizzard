@@ -4,6 +4,7 @@ func areaCardConstructor():
 	cardName = "Nieuwtoren"
 	imageLink = "Nieuwtoren"
 	cardCost = 3
+	sampleColor = Color.LIGHT_SEA_GREEN
 	
 #---------------------------------------------------------------------------------------------------
 

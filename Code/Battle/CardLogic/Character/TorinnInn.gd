@@ -3,6 +3,7 @@ extends CharacterCard
 func characterCardConstructor():
 	cardName = "Torinn Inn"
 	imageLink = "Torinn Inn test"
+	sampleColor = Color.GOLDENROD
 	
 	maxHP = 10
 	HP = 10

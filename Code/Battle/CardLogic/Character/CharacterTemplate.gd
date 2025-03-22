@@ -5,6 +5,7 @@ class_name CharacterTemplate
 func characterCardConstructor():
 	cardName = "Name"
 	imageLink = "Link"
+	sampleColor = Color.ALICE_BLUE
 	
 	maxHP = 10
 	HP = 10

@@ -6,6 +6,7 @@ func supporterCardConstructor():
 	cardName = "Phoenix Hatchling"
 	imageLink = "Phoenix"
 	cardCost = 3
+	sampleColor = Color.FIREBRICK
 	
 #---------------------------------------------------------------------------------------------------
 

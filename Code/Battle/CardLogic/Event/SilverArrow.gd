@@ -6,6 +6,7 @@ func eventCardConstructor():
 	cardName = "Silver Arrow"
 	imageLink = "Silver Arrow"
 	cardCost = 0
+	sampleColor = Color.DIM_GRAY
 	
 #---------------------------------------------------------------------------------------------------
 

@@ -6,6 +6,7 @@ func eventCardConstructor():
 	cardName = "Greon's Cooking Pot"
 	imageLink = "Greon's Cooking Pot"
 	cardCost = 1
+	sampleColor = Color.SLATE_GRAY
 	
 #---------------------------------------------------------------------------------------------------
 
