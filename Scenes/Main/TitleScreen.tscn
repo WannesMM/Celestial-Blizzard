@@ -144,10 +144,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control2"]
-position = Vector2(-576, -324)
-blend_mode = 1
-
 [node name="Battle" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -300,6 +296,7 @@ scale = Vector2(0.345, 0.345)
 texture = ExtResource("7_ioo6v")
 
 [node name="Account" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 
@@ -425,6 +422,17 @@ grow_horizontal = 2
 pivot_offset = Vector2(500, 0)
 script = ExtResource("15_ebcku")
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 67.0
+grow_vertical = 0
+theme = ExtResource("2_n22yq")
+text = "Info"
+
 [connection signal="mouse_entered" from="Battle" to="." method="BattleMouseEntered"]
 [connection signal="mouse_exited" from="Battle" to="." method="BattleMouseExited"]
 [connection signal="pressed" from="Battle" to="." method="loadBattlefield"]
@@ -433,3 +441,4 @@ script = ExtResource("15_ebcku")
 [connection signal="mouse_entered" from="Account/AccountButton" to="." method="accountMouseEntered"]
 [connection signal="mouse_exited" from="Account/AccountButton" to="." method="accountMouseExited"]
 [connection signal="pressed" from="Account/AccountButton" to="." method="accountButton"]
+[connection signal="pressed" from="Button" to="." method="infoButton"]

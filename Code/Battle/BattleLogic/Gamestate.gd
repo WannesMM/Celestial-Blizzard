@@ -164,7 +164,7 @@ func increaseGamePhase():
 	gamePhase = gamePhase + 1
 	if gamePhase > 3:
 		gamePhase = 3
-	AudioEngine.playBattleMusic(2, gamePhase)
+	AudioEngine.playBattleMusic(1, gamePhase)
 	
 var scheduledEffects: Array[Effect] = []
 	

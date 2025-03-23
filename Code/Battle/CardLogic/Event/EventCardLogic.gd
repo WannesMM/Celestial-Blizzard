@@ -16,6 +16,15 @@ func playableOn():
 
 #-------------------------------------------------------------------------------
 
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter"],
+["Title", getEffectName()],
+["Text", getCardDescription()]
+]
+
 func getEffectName() -> String:
 	return "Default effect"
 

@@ -25,4 +25,3 @@ void fragment() {
 	vec3 normal_color = texture(TEXTURE, UV).rgb;
 	COLOR.rgb = normal_color + shock_color * exp(-3.0*exponent);
 }
-

@@ -40,6 +40,7 @@ theme = ExtResource("1_8rvck")
 script = ExtResource("2_5tm1x")
 
 [node name="Background" type="NinePatchRect" parent="."]
+visible = false
 clip_children = 2
 layout_mode = 1
 anchors_preset = 15
@@ -313,36 +314,6 @@ text = "Spirit
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Title2" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(6.59, 34.78)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Title2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Title" type="Label" parent="Border/Scroll/VBoxContainer/Title2/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "Title"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Button" type="Control" parent="Border/Scroll/VBoxContainer"]
 custom_minimum_size = Vector2(6.59, 40.26)
 layout_mode = 2
@@ -490,12 +461,12 @@ text = "texttexttexttexttexttexttexttexttextttt"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Title3" type="Control" parent="Border/Scroll/VBoxContainer"]
+[node name="Title2" type="Control" parent="Border/Scroll/VBoxContainer"]
 custom_minimum_size = Vector2(6.59, 34.78)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Title3"]
+[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Title2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -508,7 +479,7 @@ patch_margin_top = 22
 patch_margin_right = 17
 patch_margin_bottom = 19
 
-[node name="Title" type="Label" parent="Border/Scroll/VBoxContainer/Title3/TitleBorder"]
+[node name="Title" type="Label" parent="Border/Scroll/VBoxContainer/Title2/TitleBorder"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -528,3 +499,7 @@ theme_override_font_sizes/font_size = 15
 text = "texttexttexttexttexttexttexttexttextttt"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[connection signal="pressed" from="Border/Scroll/VBoxContainer/Button/TitleBorder/Button" to="." method="NAbuttonPressed"]
+[connection signal="pressed" from="Border/Scroll/VBoxContainer/Button2/TitleBorder/Button" to="." method="SAbuttonPressed"]
+[connection signal="pressed" from="Border/Scroll/VBoxContainer/Button3/TitleBorder/Button" to="." method="CAbuttonPressed"]

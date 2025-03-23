@@ -284,8 +284,13 @@ func removeAllEffects():
 	for effect in appliedEffects:
 		removeEffect(effect)
 
-func getDisplayInfo() -> Array[Array]:
-	return [["Title", "DefaultDisplay"],["Title", "Extend this"]]
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter"],
+["Text", getCardDescription()]
+]
 
 # Getters and Setters ----------------------------------------------------------
 
@@ -312,3 +317,6 @@ func setCardOwner(player: PlayerState):
 	
 func getCardOwner(player: PlayerState):
 	return cardOwner
+	
+func getCardDescription():
+	return "This is the default description."

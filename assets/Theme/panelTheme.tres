@@ -1,7 +1,24 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://d2w1aa0rw0nno"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d2w1aa0rw0nno"]
 
 [ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="1_rt00q"]
 [ext_resource type="Texture2D" uid="uid://bu67uspkp3d47" path="res://assets/Cards/CardAssets/Card border small.png" id="2_rbv07"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3sb4"]
+bg_color = Color(1, 1, 1, 0.415686)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_size = 5
+anti_aliasing = false
+anti_aliasing_size = 0.01
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qx8g"]
 
@@ -33,6 +50,7 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_rt00q")
+Button/styles/normal = SubResource("StyleBoxFlat_f3sb4")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)

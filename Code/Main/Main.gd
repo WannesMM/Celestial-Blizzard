@@ -21,13 +21,8 @@ func _ready() -> void:
 	$Control/TitleLight.energy = 0
 	
 func audio():
-	if Random.generateRandom(1,1,1000) == 1:
-		AudioEngine.playTitleScreenMusic(5)
-		$"Control/CardShatter-3".modulate.a = 1
-		$Camera.startShimmer()
-	else:
-		AudioEngine.playTitleScreenMusic(Random.generateRandom(1,1,4))
-		AudioEngine.playAmbience("Wind",3,4)
+	AudioEngine.playTitleScreenMusic(Random.generateRandom(1,1,4))
+	AudioEngine.playAmbience("Wind",3,4)
 	
 func fadeScreen():
 	var fadeTween = create_tween()
@@ -87,3 +82,9 @@ func doTitleAnimation():
 	if titleAnimation:
 		AudioEngine.playSFX("Title")
 		await Random.wait(7)
+
+
+func infoButton() -> void:
+	var pdf_path = "res://File/Version pre-alpha info.pdf"  # Your PDF inside the project folder
+	var absolute_path = ProjectSettings.globalize_path(pdf_path)
+	OS.shell_open(absolute_path)

@@ -12,6 +12,7 @@ func hideAll():
 		child.visible = false
 
 func displayCardInformation(card: Card):
+	currentCard = card
 	var titleCounter := 1
 	var paramCounter := 1
 	var buttonCounter := 1
@@ -55,7 +56,7 @@ func displayCardInformation(card: Card):
 						$Border/Scroll/VBoxContainer/Button3.visible = true
 				buttonCounter += 1
 			"Portrait":
-				$Border/Scroll/VBoxContainer/Portrait/PortraitMask/PortraitImage.setImage(element[1],Vector2(100,0),Vector2(0.1,0.1))
+				$Border/Scroll/VBoxContainer/Portrait/PortraitMask/PortraitImage.setImage(element[1],Vector2(100,100),Vector2(0.7,0.7))
 				$Border/Scroll/VBoxContainer/Portrait/PortraitMask/PortraitImage.scale = Vector2(0.1,0.1)
 				$Border/Scroll/VBoxContainer/Portrait.visible = true
 			"Text":
@@ -69,6 +70,9 @@ func displayCardInformation(card: Card):
 					3:
 						$Border/Scroll/VBoxContainer/Text3.text = element[1]
 						$Border/Scroll/VBoxContainer/Text3.visible = true
+					4:
+						$Border/Scroll/VBoxContainer/Text4.text = element[1]
+						$Border/Scroll/VBoxContainer/Text4.visible = true
 				textCounter += 1
 	$Background.modulate = card.sampleColor
 	visible = true
