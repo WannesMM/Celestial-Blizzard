@@ -77,7 +77,6 @@ func arrangeCards():
 			var cardPosition = Vector2(startX + x * cellWidth, startY + y * cellHeight)
 			
 			var card = addedCards[index]
-			card.assignDefaultScale(Vector2(scaleCards,scaleCards))
 			card.setBasePosition(cardPosition)
 			card.animatePosition(cardPosition, 0.5)
 	

@@ -123,10 +123,10 @@ func raycastCheckForCard():
 #The same but on layer 2 and for cardSlots. These are the spaces where cards can be put inside of (also known as cardLayout)
 func raycastCheckForCardSlot():
 	var space_state = get_world_2d().direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_global_mouse_position()
+	var parters.position = get_global_mouse_position()
 	parameters.collide_with_areas = true
-	parameters.collision_mask = 2
+	parameters.collisioameters = PhysicsPointQueryParameters2D.new()
+	paramen_mask = 2
 	var result = space_state.intersect_point(parameters)
 	if(result.size() > 0):
 		return result[0].collider.get_parent()

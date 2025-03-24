@@ -2,4 +2,4 @@ extends GridCardLayout
 
 
 func cardLayoutConstructor():
-	addCards([TorinnInn.new(),TorinnInn.new(),TorinnInn.new(),TorinnInn.new(), TorinnInn.new(), TorinnInn.new(), TorinnInn.new(), TorinnInn.new(), TorinnInn.new(), TorinnInn.new(), Kin.new(), HatsuneMiku.new(),NomaGreon.new()])
+	addCards(Load.loadCards(["Torinn Inn", "Bartholomew Balderstone", "DQ Mall", "Monster Mayhem", "Psuedo Dragon"]))

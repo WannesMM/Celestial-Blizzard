@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcpmy2rfu7oa8"]
+
+[ext_resource type="Script" path="res://Code/DeckBuilder/DeckBuilderManager.gd" id="1_4e8k0"]
+[ext_resource type="PackedScene" uid="uid://crtg5vvt2rfgb" path="res://Scenes/Deckbuilder/DeckPicker.tscn" id="2_rcp0d"]
+[ext_resource type="PackedScene" uid="uid://3svo4gf7a0h8" path="res://Scenes/Deckbuilder/deck.tscn" id="3_rttcn"]
+[ext_resource type="PackedScene" uid="uid://b01lkl2l8uhmq" path="res://Scenes/Main/right_slider.tscn" id="4_swvmd"]
+[ext_resource type="PackedScene" uid="uid://ds6s2317l17h6" path="res://Scenes/Deckbuilder/CharacterPicker.tscn" id="4_tuwe7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kf6k"]
+
+[node name="DeckBuilder" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4e8k0")
+
+[node name="DeckPicker" parent="." instance=ExtResource("2_rcp0d")]
+position = Vector2(358, 433)
+scale = Vector2(0.9, 0.9)
+
+[node name="Deck" parent="." instance=ExtResource("3_rttcn")]
+position = Vector2(356, 142)
+scale = Vector2(0.9, 0.9)
+
+[node name="CharacterPicker" parent="." instance=ExtResource("4_tuwe7")]
+position = Vector2(925, 434)
+
+[node name="Right Slider" parent="." instance=ExtResource("4_swvmd")]
+z_index = -3
+layout_mode = 1
+offset_left = 929.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 4.0
+offset_right = 525.0
+offset_bottom = 59.0
+text = "Deck"
+label_settings = SubResource("LabelSettings_8kf6k")
+horizontal_alignment = 1
+vertical_alignment = 1
