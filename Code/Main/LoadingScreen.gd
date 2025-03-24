@@ -70,9 +70,7 @@ func battleSpecificLoad(battle):
 	return false
 	
 func deckBuilderSpecificLoad(deckBuilderInstance):
-	await Random.message("Add deckBuilderSpecificLoad in LoadingScreen",4)
-	stopLoading()
-	return true
+	return false
 	
 func shopSpecificLoad(shopInstance):
 	await Random.message("Add ShopSpecificLoad in LoadingScreen",4)

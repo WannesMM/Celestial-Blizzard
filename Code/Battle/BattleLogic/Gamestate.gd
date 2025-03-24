@@ -12,7 +12,7 @@ var turnCounter: int = 0
 
 func _init(allyDeck: Deck, allyInput: InputHandler, allyCharacterLayout: CardLayout, allyHandLayout: CardLayout, allyAreaSupport: AreaSupportLayout, allyEntity: EntityLayout,
 enemyDeck: Deck, enemyInput: InputHandler, enemyCharacterLayout: CardLayout, enemyHandLayout: CardLayout, enemyAreaSupport: AreaSupportLayout, enemyEntity: EntityLayout, battleResources: BattleRightPanel,
-layout: LayoutManager) -> void:
+layout: BattleManager) -> void:
 	setLayoutManager(layout)
 	
 	allyState = PlayerState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity, battleResources.allyResources, self)
@@ -203,7 +203,7 @@ func executeEffects(timeFrame: String):
 func getLayoutManager():
 	return layoutManager
 	
-func setLayoutManager(layout: LayoutManager):
+func setLayoutManager(layout: BattleManager):
 	layoutManager = layout
 	
 func getAllyState():
