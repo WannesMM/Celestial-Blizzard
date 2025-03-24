@@ -56,23 +56,17 @@ func connectSignal(card):
 	if card.has_signal("cardMouseExited"):
 		card.connect("cardMouseExited", Callable(self, "cardMouseExited"))
 
-func cardMouseEntered(card):
-	cardMouseEnteredExtended(card)
+func cardMouseEntered(card: Card):
 	if !cardBeingDragged and hoverable:
-		card.highlightCard()
-		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+		card.highlightBorder()
+		card.highlightOuterGlow()
+		if self is CardHandLayout:
+			card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 		
 func cardMouseExited(card):
-	cardMouseExitedExtended(card)
-	card.undoHighlightCard()
+	card.undoHighlightBorder()
+	card.undoHighlightOuterGlow()
 	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-	
-#Functions for the extended versions of cardLayout such as characterCardLayout
-func cardMouseEnteredExtended(card):
-	pass
-	
-func cardMouseExitedExtended(card):
-	pass
 
 func _process(delta: float) -> void:
 	pass
@@ -88,10 +82,9 @@ func arrangeCard(card: Card):
 	card.setBasePosition(arrangedPos)
 	card.animatePosition(arrangedPos, 0.5)
 	arrangeRelatedCard(card, arrangedPos)
-	if card.cardLogic is CharacterCardLogic:
-		if card.cardLogic.active:
+	if card is CharacterCard:
+		if card.active:
 			card.moveCardUpSelect(card.ACTIVECHARMOVEMENT)
-	#print("Arranged " + card.getCardLogic().getCardName() + " in layout: " + CARD_LAYOUT_TYPE + " to position x:" + str(card.position.x) + " y" + str(card.position.y))
 	
 func arrangeCards():
 	for card in addedCards:
@@ -108,25 +101,6 @@ func arrangeRelatedCard(card: Card, basePos):
 
 func returnToBasePosition(card):
 	card.position = card.getBasePosition()
-
-var cardScene: PackedScene = preload("res://Scenes/Main/Card.tscn") # Preload at game start
-
-#Create a new cardScene with given card logic and add it to this layout
-func createCard(cardLogic: CardLogic):
-	if cardScene is PackedScene: 
-		var newCard: Card = cardScene.instantiate() 
-		newCard.setCard(cardLogic)
-		newCard.assignDefaultScale(Vector2(CARD_SCALE,CARD_SCALE))
-		connectSignal(newCard)
-		return newCard
-	else:
-		print("Failed to load the card scene!")
-		return null
-	
-#Create multiple new cards with a given array of cardLogic and add them to this layout
-func createCards(cardlogic):
-	for card in cardlogic:
-		createCard(card)
 	
 func removeAllCards():
 	var i = 0
@@ -138,39 +112,22 @@ func removeAllCards():
 	
 #Add a card to this layout. This can either be a cardLogic or an existing card.
 func addCard(card):
-	var cardScene: Card
-	if card is CardLogic:
-		if card.getCard() == null:
-			cardScene = createCard(card)
-		else:
-			cardScene = card.getCard()
-	else:
-		cardScene = card
-		
-	var layout = cardScene.getLayout()
+	var layout = card.getLayout()
 	if layout:
-		layout.removeCard(cardScene)
-	add_child(cardScene)  
-	addedCards.append(cardScene)
-	cardScene.setLayout(self)
+		layout.removeCard(card)
+	add_child(card)  
+	addedCards.append(card)
+	card.setLayout(self)
+	connectSignal(card)
 	arrangeCards()
 
 func addAdditionalCard(card):
-	var cardScene: Card
-	if card is CardLogic:
-		if card.getCard() == null:
-			cardScene = createCard(card)
-		else:
-			cardScene = card.getCard()
-	else:
-		cardScene = card
-		
-	var layout = cardScene.getLayout()
+	var layout = card.getLayout()
 	if layout:
-		layout.removeCard(cardScene)
-	add_child(cardScene)  
-	additionalCards.append(cardScene)
-	cardScene.setLayout(self)
+		layout.removeCard(card)
+	add_child(card)  
+	additionalCards.append(card)
+	card.setLayout(self)
 	arrangeCards()
 
 func addCards(cards):
@@ -182,8 +139,6 @@ func removeCard(card):
 	remove_child(card)
 	addedCards.erase(card)
 	card.setLayout(null)
-	#var viewport_size = get_viewport().get_visible_rect().size
-	#card.global_position = Vector2(viewport_size.x / 2, viewport_size.y / 2)
 	arrangeCards()
 
 	

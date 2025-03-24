@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://duhlyvrtcqji0"]
+
+[ext_resource type="Texture2D" uid="uid://c7gd077mkycww" path="res://assets/Setpieces/profileCircle.png" id="1_5nybc"]
+[ext_resource type="Script" path="res://Scenes/Visual/Icon.gd" id="2_q2228"]
+[ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="3_f1nqk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xgkbb"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_odwom"]
+light_mode = 1
+
+[node name="Icon" type="Sprite2D"]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_xgkbb")
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("1_5nybc")
+script = ExtResource("2_q2228")
+
+[node name="Image" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_odwom")
+position = Vector2(28.5714, 428.571)
+scale = Vector2(0.551, 0.551)
+script = ExtResource("3_f1nqk")

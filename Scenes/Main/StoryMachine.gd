@@ -1,12 +1,11 @@
-extends Control
+extends Node3D
 
 @export var dialogueSystem = "res://Scenes/Main/DialogueSystem.tscn"
 
 func startChapter(chapter: String):
 	startDialogueSystem(chapter)
-	$Middle/Background.startScroll()
 	AudioEngine.playAmbience("Wind")
-	AudioEngine.playStory("Resident Evil 4 Remake OST  Main menu")
+	AudioEngine.playStory("Story1")
 	
 func startDialogueSystem(chapter):
 	var dialogueScene = load(dialogueSystem)

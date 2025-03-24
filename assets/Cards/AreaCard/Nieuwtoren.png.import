@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Nieuwtoren.png-1875cc9d1b4d25981864724c649b6b
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

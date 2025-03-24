@@ -1,0 +1,179 @@
+[gd_scene load_steps=33 format=3 uid="uid://hwxrkb6prsxe"]
+
+[ext_resource type="Script" path="res://Scenes/Main/Introduce.gd" id="1_ud1nx"]
+[ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="2_o8vgh"]
+[ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="2_qqar8"]
+[ext_resource type="Texture2D" uid="uid://kh8cgsqr4bc5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-2.png" id="3_0lcxe"]
+[ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="3_bhuv0"]
+[ext_resource type="Texture2D" uid="uid://bjkq1iikogg7h" path="res://assets/Animated/Harsh fog/Untitled_Artwork-3.png" id="4_otfxm"]
+[ext_resource type="Script" path="res://Code/Engine/TextLabel.gd" id="4_rsqwg"]
+[ext_resource type="Texture2D" uid="uid://dwnsxqlisapr4" path="res://assets/Animated/Harsh fog/Untitled_Artwork-4.png" id="5_ss8gp"]
+[ext_resource type="Texture2D" uid="uid://0mk1nxj4fjaf" path="res://assets/Animated/Harsh fog/Untitled_Artwork-5.png" id="6_m5l18"]
+[ext_resource type="Texture2D" uid="uid://c2657tnxy8oi" path="res://assets/Animated/Harsh fog/Untitled_Artwork-6.png" id="7_ogxur"]
+[ext_resource type="Texture2D" uid="uid://cvn2cla68yt04" path="res://assets/Animated/Harsh fog/Untitled_Artwork-7.png" id="8_0ydh8"]
+[ext_resource type="Texture2D" uid="uid://y3uvpo0wpee7" path="res://assets/Animated/Harsh fog/Untitled_Artwork-8.png" id="9_g54wj"]
+[ext_resource type="Texture2D" uid="uid://bchhogib46tyr" path="res://assets/Animated/Harsh fog/Untitled_Artwork-9.png" id="10_8p5j2"]
+[ext_resource type="Texture2D" uid="uid://b744pjtbcjy2q" path="res://assets/Animated/Harsh fog/Untitled_Artwork-10.png" id="11_uov16"]
+[ext_resource type="Texture2D" uid="uid://doaf35gpn6oep" path="res://assets/Animated/Harsh fog/Untitled_Artwork-11.png" id="12_rhmow"]
+[ext_resource type="Texture2D" uid="uid://be3h2a3corhkg" path="res://assets/Animated/Harsh fog/Untitled_Artwork-12.png" id="13_dmlk7"]
+[ext_resource type="Texture2D" uid="uid://dxivr2mvfl156" path="res://assets/Animated/Harsh fog/Untitled_Artwork-13.png" id="14_xjgnh"]
+[ext_resource type="Texture2D" uid="uid://dgo167iqikf5k" path="res://assets/Animated/Harsh fog/Untitled_Artwork-14.png" id="15_1xke3"]
+[ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="16_uvuf8"]
+[ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="17_qh3yn"]
+[ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="18_v7f74"]
+[ext_resource type="Texture2D" uid="uid://c4ypqsrrrc81y" path="res://assets/Animated/Spirit trail/Untitled_Artwork-1.png" id="22_5th8i"]
+[ext_resource type="Texture2D" uid="uid://b52hnvanbumwe" path="res://assets/Animated/Spirit trail/Untitled_Artwork-2.png" id="23_e54ya"]
+[ext_resource type="Texture2D" uid="uid://cydpjwyyut3qr" path="res://assets/Animated/Spirit trail/Untitled_Artwork-3.png" id="24_fnefg"]
+[ext_resource type="Texture2D" uid="uid://j53t6xbqjsib" path="res://assets/Animated/Spirit trail/Untitled_Artwork-4.png" id="25_cegrh"]
+[ext_resource type="Texture2D" uid="uid://dn87n8n86m8q4" path="res://assets/Animated/Spirit trail/Untitled_Artwork-5.png" id="26_0gjtv"]
+[ext_resource type="Texture2D" uid="uid://bmgkff7xld85f" path="res://assets/Animated/Spirit trail/Untitled_Artwork-6.png" id="27_pbq6p"]
+[ext_resource type="Texture2D" uid="uid://bldr8365iswwa" path="res://assets/Animated/Spirit trail/Untitled_Artwork-7.png" id="28_swc8q"]
+[ext_resource type="Texture2D" uid="uid://cb0umvcrah0o" path="res://assets/Animated/Spirit trail/Untitled_Artwork-8.png" id="29_svoir"]
+[ext_resource type="Texture2D" uid="uid://cxks1q2minbaw" path="res://assets/Animated/Spirit trail/Untitled_Artwork-9.png" id="30_jj73f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skii8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qqar8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0lcxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_otfxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ss8gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m5l18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ogxur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0ydh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g54wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8p5j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uov16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rhmow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dmlk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xjgnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1xke3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_uvuf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qh3yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_v7f74")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qi37j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_5th8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_e54ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fnefg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_cegrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_0gjtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_pbq6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_swc8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_svoir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_jj73f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Message" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ud1nx")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_o8vgh")
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource("3_bhuv0")
+theme_override_font_sizes/font_size = 100
+text = "ROUND 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("4_rsqwg")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.141176)
+position = Vector2(576, 323)
+scale = Vector2(0.565, 0.565)
+sprite_frames = SubResource("SpriteFrames_skii8")
+autoplay = "default"
+frame_progress = 0.848311
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.811765)
+position = Vector2(575, 315)
+scale = Vector2(0.52, 0.52)
+sprite_frames = SubResource("SpriteFrames_qi37j")
+autoplay = "default"
+frame_progress = 0.151538

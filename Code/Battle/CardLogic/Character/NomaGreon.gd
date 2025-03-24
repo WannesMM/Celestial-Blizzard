@@ -1,10 +1,11 @@
-extends CharacterCardLogic
+extends CharacterCard
 
 class_name NomaGreon
 
 func characterCardConstructor():
 	cardName = "Noma Greon"
 	imageLink = "Noma Greon - skin1"
+	sampleColor = Color.DARK_GRAY
 	
 	maxHP = 10
 	HP = 10
@@ -17,6 +18,8 @@ func characterCardConstructor():
 	CAdmg = 4
 	CAcost = 3
 	CAenergyCost = 3
+	
+	cardCost = 2
 
 #-------------------------------------------------------------------------------
 

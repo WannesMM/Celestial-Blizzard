@@ -1,6 +1,6 @@
-extends CardLogic
+extends Card
 
-class_name EntityCardLogic
+class_name EntityCard
 
 func cardConstructor():
 	cardType = "EntityCard"
@@ -15,6 +15,15 @@ func playableOn():
 	return [cardOwner.entityCards.collision]
 
 #-------------------------------------------------------------------------------
+
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter"],
+["Title", getEffectName()],
+["Text", getCardDescription()]
+]
 
 func getEffectName() -> String:
 	return "Defaultname"

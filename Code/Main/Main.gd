@@ -7,22 +7,22 @@ func _ready() -> void:
 	modulate.v = 0
 	#await doTitleAnimation()
 	$Control/TitleLight.energy = 0
+	$Account/SnowCrystal.modulate.a = 0
 	audio()
 	Random.wait(1)
 	var fadeTween = create_tween()
+	$Node3D/Camera3D.animateRotation(Vector3(0,0,0),7)
+	$ColorRect.animateScale(Vector2(1,1))
+	$ColorRect2.animateScale(Vector2(1,1))
+	
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
 	await fadeTween.finished
-	
+	$Node3D/WorldEnvironment.rotateSky()
 	$Control/TitleLight.energy = 0
 	
 func audio():
-	if Random.generateRandom(1,1,1000) == 1:
-		AudioEngine.playTitleScreenMusic(5)
-		$"Control/CardShatter-3".modulate.a = 1
-		$Camera.startShimmer()
-	else:
-		AudioEngine.playTitleScreenMusic(Random.generateRandom(1,1,4))
-		AudioEngine.playAmbience("Wind",3,4)
+	AudioEngine.playTitleScreenMusic(Random.generateRandom(1,1,4))
+	AudioEngine.playAmbience("Wind",3,4)
 	
 func fadeScreen():
 	var fadeTween = create_tween()
@@ -82,3 +82,9 @@ func doTitleAnimation():
 	if titleAnimation:
 		AudioEngine.playSFX("Title")
 		await Random.wait(7)
+
+
+func infoButton() -> void:
+	var pdf_path = "res://File/Version pre-alpha info.pdf"  # Your PDF inside the project folder
+	var absolute_path = ProjectSettings.globalize_path(pdf_path)
+	OS.shell_open(absolute_path)

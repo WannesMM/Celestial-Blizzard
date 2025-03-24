@@ -1,10 +1,9 @@
-extends CharacterCardLogic
-
-class_name TorinnInn
+extends CharacterCard
 
 func characterCardConstructor():
 	cardName = "Torinn Inn"
 	imageLink = "Torinn Inn test"
+	sampleColor = Color.GOLDENROD
 	
 	maxHP = 10
 	HP = 10
@@ -17,6 +16,8 @@ func characterCardConstructor():
 	CAdmg = 0
 	CAcost = 3
 	CAenergyCost = 3
+	
+	cardCost = 4
 
 #-------------------------------------------------------------------------------
 
@@ -61,10 +62,30 @@ func getSP2Description() -> String:
 var goldenBreath: int = 0
 
 func SA():
+	cardOwner.reduceGold(SAcost)
 	if(goldenBreath != 0):
-		Burning.new(self)
-		
+		var newBurning = Load.loadEffect("Burning", self)
+		newBurning.stacks = goldenBreath
+		gameState.scheduleEffect(newBurning)
+		goldenBreath = 0
+	gainEnergy()
 	
+func CA():
+	cardOwner.reduceGold(CAcost)
+	reduceEnergy()
+	heal(3)
+	goldenBreath += 3
+
+var previousTurn
+var previousRound
+
+func divineSense():
+	if previousTurn != gameState.turnCounter or previousRound != gameState.roundCounter:
+		goldenBreath += 1
+		gainEnergy()
+		previousTurn = gameState.turnCounter
+		previousRound = gameState.roundCounter
 	
-	
+func onHit():
+	divineSense()
 	

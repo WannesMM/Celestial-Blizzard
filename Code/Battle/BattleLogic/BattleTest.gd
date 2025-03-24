@@ -2,48 +2,10 @@ extends Node
 
 class_name BattleTest
 
-var TorinnInn1: CharacterCardLogic = null
-var TorinnInn2: CharacterCardLogic = null
-var TorinnInn3: CharacterCardLogic = null
+var TestDeck1 = Deck.new(["Bartholomew Balderstone", "Berlaar", "DQ Mall", "Monster Mayhem", "Nieuwtoren", "Noma Mountains", "Towers Region", "Hatsune Miku", "Ballista", "Greon's Cooking Pot", "Blinking Dog", "Hermit", "Homunculus", "Phoenix Hatchling"])
+var TestDeck2 = Deck.new(["Torinn Inn","Bartholomew Balderstone", "Berlaar", "DQ Mall", "Monster Mayhem", "Nieuwtoren", "Noma Mountains", "Towers Region", "Fragmentum General", "Hatsune Miku", "Kin", "Noma Greon", "Torinn Inn", "Ballista", "Greon's Cooking Pot", "Blinking Dog", "Hermit", "Homunculus", "Phoenix Hatchling"])
 
-var NomaGreon1: CharacterCardLogic = null
-var NomaGreon2: CharacterCardLogic = null
-var NomaGreon3: CharacterCardLogic = null
-
-var BartholomewBalderstone1: CharacterCardLogic = null
-var BartholomewBalderstone2: CharacterCardLogic = null
-var BartholomewBalderstone3: CharacterCardLogic = null
-
-var HatsuneMiku1: CharacterCardLogic = null
-var HatsuneMiku2: CharacterCardLogic = null
-var HatsuneMiku3: CharacterCardLogic = null
-
-var berlaar: AreaCardLogic = null
-var dqMall: AreaCardLogic = null
-var monsterMayhem: AreaCardLogic = null
-
-var deck1: Deck = null
-var deck2: Deck = Deck.new([HatsuneMiku.new()])
-var deck3: Deck = null
-
-var burningDeck: Deck = Deck.new([TorinnInn.new(), Kin.new(), FragmentumGeneral.new(), Berlaar.new(), Berlaar.new(), TowersRegion.new(), TowersRegion.new(),
-	Homunculus.new(), Homunculus.new(), PseudoDragon.new(), PseudoDragon.new(), PseudoDragon.new(), MonsterMayhem.new(), MonsterMayhem.new(), Hermit.new(), Hermit.new(),
-	DQMall.new(), DQMall.new(), NieuwToren.new(), Ballista.new(), Ballista.new(), GreonsCookingPot.new(), GreonsCookingPot.new(), GreonsCookingPot. new()
-	])
-
-var burningDeck2: Deck = Deck.new([TorinnInn.new(), Kin.new(), FragmentumGeneral.new(), Berlaar.new(), Berlaar.new(), TowersRegion.new(), TowersRegion.new(),
-	Homunculus.new(), Homunculus.new(), PseudoDragon.new(), PseudoDragon.new(), PseudoDragon.new(), MonsterMayhem.new(), MonsterMayhem.new(), Hermit.new(), Hermit.new(),
-	DQMall.new(), DQMall.new(), NieuwToren.new(), Ballista.new(), Ballista.new(), GreonsCookingPot.new(), GreonsCookingPot.new(), GreonsCookingPot. new()
-	])
-
-var hatsuneMikuDeck: Deck = Deck.new([HatsuneMiku.new(),HatsuneMiku.new(), HatsuneMiku.new(), Berlaar.new(), Berlaar.new(), TowersRegion.new(), TowersRegion.new(),
-	Homunculus.new(), Homunculus.new(), PseudoDragon.new(), PseudoDragon.new(), PseudoDragon.new(), MonsterMayhem.new(), MonsterMayhem.new(), Hermit.new(), Hermit.new(),
-	DQMall.new(), DQMall.new(), NieuwToren.new(), Ballista.new(), Ballista.new(), GreonsCookingPot.new(), GreonsCookingPot.new(), GreonsCookingPot. new()
-	])
-
-func _init() -> void:
-	pass
+var monsterMayhemTest = Deck.new(["Torinn Inn","Monster Mayhem","Monster Mayhem","Monster Mayhem","Monster Mayhem","Monster Mayhem","Psuedo Dragon","Blinking Dog","Phoenix Hatchling"])
+var nieuwTorenTest = Deck.new(["Bartholomew Balderstone","Nieuwtoren","Nieuwtoren","Nieuwtoren","Nieuwtoren","Nieuwtoren"])
 	
-	
-	
-	
+var burningDeck1 = Deck.new(["Torinn Inn", "Kin", "Fragmentum General", "Nieuwtoren", "Monster Mayhem", "Monster Mayhem", "Monster Mayhem", "Psuedo Dragon", "Psuedo Dragon", "Psuedo Dragon", "Berlaar", "Berlaar", "Berlaar", "DQ Mall", "DQ Mall", "DQ Mall"])

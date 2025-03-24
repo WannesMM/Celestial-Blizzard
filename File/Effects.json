@@ -1,0 +1,14 @@
+{
+	"Burning": 
+	{
+		"Code": "res://Code/Battle/CardLogic/Effects/Burning.gd"
+	},
+	"BurningDraw": 
+	{
+		"Code": "res://Code/Battle/CardLogic/Effects/Effect-BurningDraw.gd"
+	},
+	"Segmentation": 
+	{
+		"Code": "res://Code/Battle/CardLogic/Effects/Effect-Segmentation.gd"
+	},
+}

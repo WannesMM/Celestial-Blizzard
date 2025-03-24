@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://8exl10cxc0ot"]
 
-[ext_resource type="Script" path="res://Scenes/Battle/DisplayManager.gd" id="1_nc4qt"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/LayoutManagers/DisplayManager.gd" id="1_nc4qt"]
 [ext_resource type="PackedScene" uid="uid://bytpcr0d24q6y" path="res://Scenes/Battle/card_hand.tscn" id="1_nswog"]
-[ext_resource type="Script" path="res://Scenes/Battle/DisplayLayout.gd" id="2_1wqhi"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/CardLayouts/DisplayLayout.gd" id="2_1wqhi"]
 
 [node name="DisplayLayout" type="Control"]
 layout_mode = 3

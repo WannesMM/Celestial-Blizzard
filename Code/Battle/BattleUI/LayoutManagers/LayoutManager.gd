@@ -23,7 +23,11 @@ var deselectWhenClickEmpty = true
 
 func _ready():
 	screenSize = get_viewport_rect().size
-	initializeBattle()
+	layoutManagerConstructor()
+	
+# Called at ready, to be extended
+func layoutManagerConstructor():
+	pass
 	
 func _process(delta: float) -> void:
 	cardFollowMouse(delta)
@@ -57,13 +61,17 @@ func clickAndHoldLogic(delta):
 func startDrag():
 	var card = raycastCheckForCard()
 	if card and card.getLayout().isMovable():
-		highlightCollider(card.getCardLogic().playableOn())
 		cardBeingDragged = card
-		
+		startCardDrag(cardBeingDragged)
+
+#Function called when a card starts being dragged
+func startCardDrag(card: Card):
+	pass
+
 #Finish the drag
 func finishDrag():
 	var cardSlotFound = raycastCheckForCardSlot()
-	undoHighlightCollider(cardBeingDragged.getCardLogic().playableOn())
+	finishCardDrag(cardBeingDragged)
 	if cardSlotFound:
 		var layout = cardSlotFound.getRespectiveCardLayout()
 		if cardSlotFound is CardCollision:
@@ -72,7 +80,11 @@ func finishDrag():
 	else:
 		cardBeingDragged.animatePosition(cardBeingDragged.getBasePosition(), 0.7)
 	cardBeingDragged = null
-	
+
+#Function called when the card is stopped dragging
+func finishCardDrag(card: Card):
+	pass
+
 #When clicked
 func click():
 	var card = raycastCheckForCard()
@@ -84,14 +96,8 @@ func click():
 
 func clickOnCard(card: Card):
 	card.getLayout().onClick(card)
-	if selectedCards.size() == 1:
-		if card.currentLayout is CharacterCardLayout and card == selectedCards[0]:
-			characterCardSwitch(card)
 	if card.getLayout().getSelectable():
 		selectCard(card)
-
-func characterCardSwitch(card):
-	pass
 
 func clickEmpty():
 	if deselectWhenClickEmpty:
@@ -138,14 +144,11 @@ func cardFollowMouse(delta):
 func selectCard(card: Card):
 	if card in selectedCards:
 		undoSelect(card)
-		closeCardInformation()
 	elif selectedCards.size() >= multiselect:
 		undoSelect(selectedCards[0])
 		highlightSelect(card)
-		displayCardInformation(card)
 	else:
 		highlightSelect(card)
-		displayCardInformation(card)
 	
 func deselectAllCards():
 	var i = 0
@@ -153,7 +156,6 @@ func deselectAllCards():
 	while i < len:
 		undoSelect(selectedCards[0])
 		i = i + 1
-	closeCardInformation()
 	assert(selectedCards == [])
 	
 #This unselects a card
@@ -161,11 +163,8 @@ func undoSelect(card):
 	if(card.get_tree() != null):
 		card.undoHighlightCard()
 		card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
-		if card.getLayout().CARD_LAYOUT_TYPE != "CharacterCardLayout":
-			card.moveCardDownSelect()
+		card.moveCardDownSelect()
 	selectedCards.erase(card)
-	if card.currentLayout is CharacterCardLayout:
-		card.stopSwitchAnimation()
 	
 #All the animations for selecting
 func highlightSelect(card):
@@ -177,16 +176,6 @@ func highlightSelect(card):
 		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 		card.moveCardUpSelect(SELECTMOVEMENT)
 	selectedCards.append(card)
-
-#For the information slider when selected
-func closeCardInformation():
-	$"Right Slider".closeCardInformation()
-
-func displayCardInformation(card: Card):
-	if card.getLayout().getShowInformation():
-		$"Right Slider".displayCardInformation(card)
-	if card.currentLayout is CharacterCardLayout and !card.cardLogic.active:
-		card.playSwitchAnimation()
 
 func setMultiselect(x):
 	deselectAllCards()
@@ -200,15 +189,3 @@ func setDeselectWhenClickEmpty(x):
 	
 func wait(time: float):
 	await get_tree().create_timer(time).timeout
-	
-# BattleManager ------------------------------------------------------------------------------------
-
-#Executes at the start of the battle. This is an abstract function.
-func initializeBattle():
-	pass
-
-func highlightCollider(layout):
-	pass
-
-func undoHighlightCollider(layout):
-	pass

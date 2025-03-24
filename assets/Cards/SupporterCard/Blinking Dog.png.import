@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Blinking Dog.png-a1b6439fb46152f02a86579765e7
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

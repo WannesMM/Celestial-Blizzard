@@ -1,6 +1,6 @@
-extends CardLogic
+extends Card
 
-class_name SupporterCardLogic
+class_name SupporterCard
 
 func cardConstructor():
 	cardType = "SupporterCard"
@@ -18,6 +18,15 @@ func playableOn():
 	return collisions
 
 #-------------------------------------------------------------------------------
+
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter"],
+["Title", getEffectName()],
+["Text", getCardDescription()]
+]
 
 func getEffectName() -> String:
 	return "Defaultname"

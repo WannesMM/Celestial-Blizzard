@@ -1,4 +1,4 @@
-extends SupporterCardLogic
+extends SupporterCard
 
 class_name PseudoDragon
 
@@ -6,6 +6,7 @@ func supporterCardConstructor():
 	cardName = "Pseudo Dragon"
 	imageLink = "PseudoDragon"
 	cardCost = 3
+	sampleColor = Color.DARK_ORANGE
 	
 #---------------------------------------------------------------------------------------------------
 

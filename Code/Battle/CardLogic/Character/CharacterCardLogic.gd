@@ -1,6 +1,6 @@
-extends CardLogic
+extends Card
 
-class_name CharacterCardLogic
+class_name CharacterCard
 
 var maxHP: int = 10
 var HP: int = 10: set = setHP
@@ -19,6 +19,7 @@ var defeated: bool = false
 
 func cardConstructor():
 	cardType = "CharacterCard"
+	
 	characterCardConstructor()
 
 func characterCardConstructor():
@@ -28,26 +29,52 @@ func characterCardConstructor():
 
 func setActive(x: bool):
 	active = x
-	card.setActive(x)
+	if active:
+		moveCardUpSelect(ACTIVECHARMOVEMENT)
+	else:
+		moveCardDownSelect()
 
 func playableOn():
 	return [cardOwner.characterCards.collision]
 
 func NA():
-	if checkCost(NAdmg):
-		await attack(NAdmg)
+	cardOwner.reduceGold(NAcost)
+	gainEnergy()
+	await attack(NAdmg)
 	
 func SA():
-	print("Default SA has been executed")
+	cardOwner.reduceGold(SAcost)
+	gainEnergy()
+	await attack(SAdmg)
 	
 func CA():
-	print("Default CA has been executed")
+	cardOwner.reduceGold(CAcost)
+	reduceEnergy()
+	await attack(CAdmg)
+
+func onMove(attackType: String):
+	gameState.layoutManager.camera.zoomGlobal(global_position, 1.7, 1)
 	
+	await Load.announce(cardName + " uses " + getMoveName(attackType))
+	
+	gameState.layoutManager.camera.zoom(Vector2(0,0), 1, 1.5)
+
 func receiveDamage(amt: int):
+	var anim = Load.loadAnimation("Take Damage")
+	anim.setText("- " + str(amt))
+	anim.setPosition(global_position)
+	await Load.playAnimation(anim)
+	
 	await setHP(HP - amt)
+	onHit()
+	
+func onHit():
+	pass
 	
 func defeatCard(card = self):
 	card.defeated = true
+	card.targetable = false
+	card.removeAllEffects()
 	await gameState.characterDefeated(card, card.cardOwner)
 	
 func isPossibleMove(move: String):
@@ -56,12 +83,66 @@ func isPossibleMove(move: String):
 	gameState.layoutManager.message("This character is not currently active")
 	return false
 	
+func gainEnergy(amt: int = 1):
+	if energy + amt > maxEnergy:
+		energy = maxEnergy
+	else:
+		energy += amt
+	
+func getMoveCost(move: String):
+	match move:
+		"NA":
+			return NAcost
+		"SA":
+			return SAcost
+		"CA":
+			return CAcost
+
+func getMoveName(move: String):
+	match move:
+		"NA":
+			return getNAName()
+		"SA":
+			return getSAName()
+		"CA":
+			return getCAName()
+
+func checkEnergy():
+	if energy >= CAenergyCost:
+		return true
+	else:
+		return false
+		
+func reduceEnergy():
+	energy = energy - CAenergyCost
+	
+func heal(amt: int):
+	setHP(HP + amt)
+	
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter"],
+["Parameter"],
+["Button", getNAName()],
+["Text", getNADescription()],
+["Button", getSAName()],
+["Text", getSADescription()],
+["Button", getCAName()],
+["Text", getCADescription()],
+["Title", getAbilityName()],
+["Text", getAbilityDescription()]
+]
+	
 #---------------------------------------------------------------------------------------------------
 
 func getMaxHP():
 	return maxHP
 
 func setHP(amt: int):
+	if amt > maxHP:
+		HP = maxHP
 	if amt <= 0:
 		HP = 0
 		card.setLabel1(str(HP))

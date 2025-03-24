@@ -1,15 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=36 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
-[ext_resource type="Texture2D" uid="uid://c8godjr2ljcr4" path="res://assets/Setpieces/MainScreenLandscape.jpg" id="3_1omaa"]
+[ext_resource type="FontFile" uid="uid://rhn3wt06rvrw" path="res://assets/Font/Baskerville Bold.otf" id="2_82mvx"]
+[ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="2_n22yq"]
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="4_vdxj1"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="5_bc87f"]
 [ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="5_t2bfb"]
-[ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="6_iwfnr"]
 [ext_resource type="Texture2D" uid="uid://c7gd077mkycww" path="res://assets/Setpieces/profileCircle.png" id="7_bvpvn"]
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="7_ioo6v"]
+[ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="8_jir33"]
 [ext_resource type="Texture2D" uid="uid://cj2ng8c5q1r0o" path="res://assets/Cards/CharacterCard/Hatsune Miku.png" id="8_nmak3"]
+[ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="9_w145k"]
 [ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="10_v3w12"]
+[ext_resource type="Script" path="res://Code/Engine/World.gd" id="12_xxk26"]
+[ext_resource type="Script" path="res://Code/Engine/Rect.gd" id="15_ebcku"]
 
 [sub_resource type="Gradient" id="Gradient_sdrql"]
 offsets = PackedFloat32Array(0, 0.01, 0.64)
@@ -33,10 +37,6 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_tcgy4"]
 offsets = PackedFloat32Array(0.0466667, 0.2, 0.906667, 0.993333)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0.162066, 0.162066, 0.162066, 1, 1, 1, 1, 0)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yd6ln"]
-blend_mode = 1
-light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gr33s"]
 light_mode = 1
@@ -73,6 +73,57 @@ fill = 1
 fill_from = Vector2(0.490826, 0.518349)
 fill_to = Vector2(0.188073, 0.197248)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2015o"]
+emission_shape = 3
+emission_box_extents = Vector3(15.005, 5, 15)
+angle_min = -161.4
+angle_max = 215.2
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 17.24
+angular_velocity_min = -44.31
+angular_velocity_max = 99.31
+orbit_velocity_min = -0.667
+orbit_velocity_max = 0.276
+gravity = Vector3(0, -1, 0)
+radial_accel_min = -1.9
+radial_accel_max = 2.27
+tangential_accel_min = -3.0
+tangential_accel_max = 2.23
+scale_min = 0.5
+scale_max = 2.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv81k"]
+render_priority = 10
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("5_bc87f")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o8srt"]
+lightmap_size_hint = Vector2i(10, 10)
+material = SubResource("StandardMaterial3D_bv81k")
+uv2_padding = 0.0
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_p1x8r"]
+panorama = ExtResource("9_w145k")
+
+[sub_resource type="Sky" id="Sky_40egh"]
+sky_material = SubResource("PanoramaSkyMaterial_p1x8r")
+
+[sub_resource type="Environment" id="Environment_x4d88"]
+background_mode = 2
+sky = SubResource("Sky_40egh")
+glow_enabled = true
+glow_intensity = 1.29
+glow_strength = 1.67
+glow_bloom = 0.1
+fog_enabled = true
+fog_light_color = Color(0.0944922, 0.142084, 0.230469, 1)
+fog_density = 0.0733
+fog_aerial_perspective = 0.535
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pj8sw"]
+light_mode = 1
+
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -93,20 +144,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainScreenLandscape" type="Sprite2D" parent="Control2"]
-modulate = Color(0.0562916, 0.0562916, 0.0562916, 1)
-scale = Vector2(0.325, 0.325)
-texture = ExtResource("3_1omaa")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control2"]
-position = Vector2(-576, -324)
-energy = 0.8
-blend_mode = 1
-
-[node name="Snow" parent="Control2" instance=ExtResource("6_iwfnr")]
-z_index = -1
-position = Vector2(-576, -324)
-
 [node name="Battle" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -115,49 +152,86 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.5
-offset_top = -54.5
-offset_right = 142.5
-offset_bottom = 54.5
+offset_left = -240.5
+offset_top = -123.0
+offset_right = 240.5
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Battle"
 
-[node name="Deckbuilder" type="Button" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -94.0
-offset_right = 94.0
-offset_bottom = 50.0
+offset_left = -155.5
+offset_right = 155.5
+offset_bottom = 81.0
 grow_horizontal = 2
-text = "Deckbuilder"
+theme_override_fonts/font = ExtResource("2_82mvx")
+theme_override_font_sizes/font_size = 40
+text = "ARCHIVES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Deckbuilder" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -171.5
+offset_right = 171.5
+offset_bottom = 107.0
+grow_horizontal = 2
+theme = ExtResource("2_n22yq")
+text = "Archives"
 
 [node name="PointLight2D2" type="PointLight2D" parent="Deckbuilder"]
-position = Vector2(91, 37)
+modulate = Color(1, 1, 1, 0)
+position = Vector2(175.5, 59)
 scale = Vector2(5.6438, 2.10938)
 color = Color(0.253312, 0.645276, 1, 1)
 energy = 4.05
 texture = SubResource("GradientTexture2D_kycxr")
 script = ExtResource("4_vdxj1")
 
-[node name="Shop" type="Button" parent="."]
+[node name="Label2" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -94.0
-offset_top = -50.0
-offset_right = 94.0
+offset_left = -155.5
+offset_top = -81.0
+offset_right = 155.5
 grow_horizontal = 2
 grow_vertical = 0
-text = "Shop"
+theme_override_fonts/font = ExtResource("2_82mvx")
+theme_override_font_sizes/font_size = 40
+text = "VENTURE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shop" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -101.0
+offset_right = 156.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Venture"
 
 [node name="PointLight2D3" type="PointLight2D" parent="Shop"]
-position = Vector2(100, 25)
+position = Vector2(162, 38)
 scale = Vector2(5.6438, 2.10938)
 color = Color(0.253312, 0.645276, 1, 1)
 energy = 4.05
@@ -175,6 +249,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SnowParticles" type="CPUParticles2D" parent="Control"]
+visible = false
 modulate = Color(1, 1, 1, 0.254902)
 position = Vector2(2, -322)
 rotation = -1.5708
@@ -205,11 +280,6 @@ energy = 16.0
 texture = SubResource("GradientTexture2D_kycxr")
 texture_scale = 1.6
 
-[node name="Celestial Blizzard Logo" type="Sprite2D" parent="Control"]
-material = SubResource("CanvasItemMaterial_yd6ln")
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("5_t2bfb")
-
 [node name="PointLight2D" type="PointLight2D" parent="Control"]
 position = Vector2(0, 1)
 scale = Vector2(5.6438, 2.10938)
@@ -226,6 +296,7 @@ scale = Vector2(0.345, 0.345)
 texture = ExtResource("7_ioo6v")
 
 [node name="Account" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 
@@ -291,6 +362,77 @@ texture_scale = 1.6
 [node name="Camera" parent="." instance=ExtResource("10_v3w12")]
 layout_mode = 1
 
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -0.95737, -0.288865, 0, 0.288865, -0.95737, 0, 0, 0)
+rotation_edit_mode = 1
+script = ExtResource("8_jir33")
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.3423)
+texture = ExtResource("5_t2bfb")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -0.00383973, -0.999993, 0, 0.999993, -0.00383973, 0, 0.367824, 1.47864)
+amount = 25
+lifetime = 7.0
+trail_lifetime = 4.96
+process_material = SubResource("ParticleProcessMaterial_2015o")
+draw_pass_1 = SubResource("PlaneMesh_o8srt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.97901, 0.203812, 0, -0.203812, 0.97901, 0, 1.24618, 0.27871)
+light_color = Color(0, 0.164596, 0.851563, 1)
+light_energy = 4.007
+light_indirect_energy = 0.845
+shadow_enabled = true
+shadow_bias = 4.577
+shadow_normal_bias = 5.204
+shadow_transmittance_bias = -1.814
+shadow_blur = 2.456
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_x4d88")
+script = ExtResource("12_xxk26")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_pj8sw")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 84.0
+offset_top = 66.0
+offset_right = -77.0
+offset_bottom = 69.0
+grow_horizontal = 2
+pivot_offset = Vector2(496, 1)
+script = ExtResource("15_ebcku")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_pj8sw")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 78.0
+offset_top = 580.0
+offset_right = -83.0
+offset_bottom = 583.0
+grow_horizontal = 2
+pivot_offset = Vector2(500, 0)
+script = ExtResource("15_ebcku")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 67.0
+grow_vertical = 0
+theme = ExtResource("2_n22yq")
+text = "Info"
+
 [connection signal="mouse_entered" from="Battle" to="." method="BattleMouseEntered"]
 [connection signal="mouse_exited" from="Battle" to="." method="BattleMouseExited"]
 [connection signal="pressed" from="Battle" to="." method="loadBattlefield"]
@@ -299,3 +441,4 @@ layout_mode = 1
 [connection signal="mouse_entered" from="Account/AccountButton" to="." method="accountMouseEntered"]
 [connection signal="mouse_exited" from="Account/AccountButton" to="." method="accountMouseExited"]
 [connection signal="pressed" from="Account/AccountButton" to="." method="accountButton"]
+[connection signal="pressed" from="Button" to="." method="infoButton"]

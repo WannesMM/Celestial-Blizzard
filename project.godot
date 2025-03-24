@@ -23,6 +23,11 @@ GlobalSignals="*res://Code/GlobalSignals.gd"
 AudioEngine="*res://Code/AudioEngine.gd"
 Random="*res://Code/Random.gd"
 Server="*res://Code/Server/Server.gd"
+Load="*res://Code/Load.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 
@@ -34,6 +39,10 @@ window/vsync/vsync_mode=0
 [editor]
 
 movie_writer/movie_file="C:\\Users\\wanne\\Desktop\\Celestial TCG\\Blizzard.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [gui]
 
@@ -52,3 +61,4 @@ theme/custom="res://assets/Theme/panelTheme.tres"
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=true

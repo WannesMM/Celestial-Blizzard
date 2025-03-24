@@ -1,4 +1,4 @@
-extends EventCardLogic
+extends EventCard
 
 class_name BurningMemories
 
@@ -6,6 +6,7 @@ func eventCardConstructor():
 	cardName = "Burning Memories"
 	imageLink = "Burning Memories"
 	cardCost = 0
+	sampleColor = Color.FIREBRICK
 	
 #---------------------------------------------------------------------------------------------------
 

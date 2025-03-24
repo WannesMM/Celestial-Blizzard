@@ -36,4 +36,3 @@ void fragment() {
 
     COLOR = color;  // Apply the color to the rectangle
 }
-

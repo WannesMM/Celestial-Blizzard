@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ct4x310t8u04p"]
 
-[ext_resource type="Script" path="res://Camera.gd" id="1_uxck8"]
+[ext_resource type="Script" path="res://Code/Main/Camera.gd" id="1_uxck8"]
 
 [node name="Camera" type="Control"]
 layout_mode = 3

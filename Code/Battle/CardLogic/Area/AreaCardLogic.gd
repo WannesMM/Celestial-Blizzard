@@ -1,6 +1,6 @@
-extends CardLogic
+extends Card
 
-class_name AreaCardLogic
+class_name AreaCard
 
 func cardConstructor():
 	cardType = "AreaCard"
@@ -15,6 +15,15 @@ func playableOn():
 	return [cardOwner.areaSupportCards.collision]
 
 #-------------------------------------------------------------------------------
+
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter"],
+["Title", getEffectName()],
+["Text", getCardDescription()]
+]
 
 func getEffectName() -> String:
 	return "Default effect"

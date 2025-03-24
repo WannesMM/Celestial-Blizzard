@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Fragmentum General.png-cc3c97778d93b1e00e11f3
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

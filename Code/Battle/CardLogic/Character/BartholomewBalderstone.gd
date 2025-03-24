@@ -1,10 +1,9 @@
-extends CharacterCardLogic
-
-class_name BartholomewBalderstone
+extends CharacterCard
 
 func characterCardConstructor():
 	cardName = "Bartholomew Balderstone"
 	imageLink = "Bartholomew Balderstone"
+	sampleColor = Color.BROWN
 
 	maxHP = 10
 	HP = 10
@@ -17,6 +16,8 @@ func characterCardConstructor():
 	CAdmg = 5
 	CAcost = 4
 	CAenergyCost = 2
+	
+	cardCost = 2
 
 #-------------------------------------------------------------------------------
 

@@ -18,7 +18,7 @@ func chooseActiveCharacter():
 	pass
 
 func convertToCardLogic(cards):
-	var cardLogic: Array[CardLogic] = []
+	var cardLogic: Array[Card] = []
 	for card in cards:
 		cardLogic.append(card.getCardLogic())
 	return cardLogic

@@ -1,4 +1,4 @@
-extends AreaCardLogic
+extends AreaCard
 
 class_name NomaMountains
 
@@ -6,6 +6,7 @@ func areaCardConstructor():
 	cardName = "Noma Mountains"
 	imageLink = "Noma Gebergte"
 	cardCost = 2
+	sampleColor = Color.CORNFLOWER_BLUE
 	
 #---------------------------------------------------------------------------------------------------
 

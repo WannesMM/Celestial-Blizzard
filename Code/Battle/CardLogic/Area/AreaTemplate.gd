@@ -1,6 +1,4 @@
-extends AreaCardLogic
-
-class_name AreaTemplate
+extends AreaCard
 
 func areaCardConstructor():
 	cardName = "CardName"
@@ -14,3 +12,6 @@ func getEffectName() -> String:
 
 func getCardDescription() -> String:
 	return "EffectDescription"
+
+func playCardLogic():
+	Random.message("This card is yet to be implemented")

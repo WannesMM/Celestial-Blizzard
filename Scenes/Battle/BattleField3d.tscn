@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://br4t3duorucdx"]
+
+[ext_resource type="Script" path="res://3dInputTest.gd" id="1_68sth"]
+[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Main/Environment3dTest.tscn" id="1_hljdy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wk3r2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6eruj"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_wk3r2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bipqj"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_6eruj")
+size = Vector2(2.89, 1.905)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_68sth")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.551937, 0.833886, 0, -0.833886, 0.551937, 0, 1.17993, 0.897385)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.583045, 0.81244, 0, -0.81244, 0.583045, 0, 1.77219, 1.35638)
+visible = false
+light_color = Color(0.601869, 0.894194, 1, 1)
+light_energy = 3.667
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_bipqj")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1024, 1024)
+
+[node name="Story" parent="SubViewport" instance=ExtResource("1_hljdy")]

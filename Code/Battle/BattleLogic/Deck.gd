@@ -2,62 +2,30 @@ extends Node
 
 class_name Deck
 
-var cards: Array[CardLogic]
+var cards: Array[String]
 
-var characterCards: Array[CharacterCardLogic] = []
-var areaCards: Array[AreaCardLogic] = []
-var eventCards: Array[EventCardLogic] = []
-var supporterCards: Array[SupporterCardLogic] = []
-var equipmentCards: Array[EquipmentCardLogic] = []
-var entityCards: Array[EntityCardLogic] = []
+var characterCards: Array[String] = []
+var areaCards: Array[String] = []
+var eventCards: Array[String] = []
+var supporterCards: Array[String] = []
+var equipmentCards: Array[String] = []
+var entityCards: Array[String] = []
 
-func _init(newDeck: Array[CardLogic] = []) -> void:
+func _init(newDeck: Array[String] = []) -> void:
 	cards = newDeck
 	updateDeck()
 	
 # Actual Functionality ---------------------------------------------------------
 
 func updateDeck():
-	updateCardArrays()
-
-func updateCardArrays():
-	characterCards = []
-	for card in cards:
-		match card.getCardType():
-			"CharacterCard":
-				characterCards.append(card)
-			"EventCard":
-				eventCards.append(card)
-			"AreaCard":
-				areaCards.append(card)
-			"EntityCard":
-				entityCards.append(card)
-			"EquipmentCard":
-				equipmentCards.append(card)
-			"SupporterCard":
-				supporterCards.append(card)
+	pass
 
 # Gamefunctionality ------------------------------------------------------------
 
-var stack: Array[CardLogic] = []
+var stack: Array[Card] = []
 
 func createStack() -> void:
-	stack = cards.duplicate(true)
-	var creator = CardLayout.new()
-	process_cards_async(creator)
-
-# Asynchronous card processing
-func process_cards_async(creator: CardLayout) -> void:
-	for card in stack:
-		await _yield_frame()  # Custom frame-yield workaround
-		creator.createCard(card)
-		assert(card == card.card.cardLogic)
-		assert(card.card != null)
-	GlobalSignals.deckLoaded.emit()
-
-# Manual frame-yielding without relying on scene tree
-func _yield_frame():
-	return await Engine.get_main_loop().process_frame
+	stack = Load.loadCards(cards)
 
 func assignOwner(player: PlayerState):
 	for card in stack:
@@ -72,16 +40,16 @@ func drawCards(count: int) -> Array:
 	stack = stack.slice(count, stack.size()) 
 	return drawn_cards
 
-func stackAddToBottom(card: CardLogic):
+func stackAddToBottom(card: Card):
 	stack.append(card)
 
-func stackRemoveCard(card: CardLogic):
+func stackRemoveCard(card: Card):
 	stack.erase(card)
 	
 func stackGetCharacters():
-	var toReturn: Array[CharacterCardLogic] = []
+	var toReturn: Array[CharacterCard] = []
 	for card in stack:
-		if card.getCardType() == "CharacterCard":
+		if card is CharacterCard:
 			toReturn.append(card)
 	return toReturn
 
@@ -92,7 +60,7 @@ func stackGetCharacters():
 func getCards():
 	return cards
 	
-func setCards(newCards: Array[CardLogic]):
+func setCards(newCards: Array[String]):
 	cards = newCards
 	updateDeck()
 

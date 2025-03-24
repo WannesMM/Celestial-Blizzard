@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Homunculus.png-b4c99a87304efa433373050ad4ec0a
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

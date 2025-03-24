@@ -1,10 +1,11 @@
-extends CharacterCardLogic
+extends CharacterCard
 
 class_name HatsuneMiku
 
 func characterCardConstructor():
 	cardName = "Hatsune Miku"
 	imageLink = "Hatsune Miku"
+	sampleColor = Color.AQUA
 	
 	maxHP = 7
 	HP = 7

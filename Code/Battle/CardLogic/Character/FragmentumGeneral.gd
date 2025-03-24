@@ -1,10 +1,11 @@
-extends CharacterCardLogic
+extends CharacterCard
 
 class_name FragmentumGeneral
 
 func characterCardConstructor():
 	cardName = "Fragmentum General"
 	imageLink = "Fragmentum General"
+	sampleColor = Color.CADET_BLUE
 	
 	maxHP = 10
 	HP = 10
@@ -17,7 +18,8 @@ func characterCardConstructor():
 	CAdmg = 5
 	CAcost = 3
 	CAenergyCost = 3
-
+	
+	cardCost = 1
 #-------------------------------------------------------------------------------
 
 func getNAName() -> String:

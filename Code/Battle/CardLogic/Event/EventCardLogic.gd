@@ -1,6 +1,6 @@
-extends CardLogic
+extends Card
 
-class_name EventCardLogic
+class_name EventCard
 
 func cardConstructor():
 	cardType = "EventCard"
@@ -15,6 +15,15 @@ func playableOn():
 	return [cardOwner.gameState.layoutManager.eventCardCollision]
 
 #-------------------------------------------------------------------------------
+
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter"],
+["Title", getEffectName()],
+["Text", getCardDescription()]
+]
 
 func getEffectName() -> String:
 	return "Default effect"

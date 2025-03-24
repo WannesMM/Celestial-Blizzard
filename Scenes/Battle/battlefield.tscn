@@ -1,20 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://dg4dd53dv5m3"]
+[gd_scene load_steps=14 format=3 uid="uid://dg4dd53dv5m3"]
 
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/LayoutManagers/BattleManager.gd" id="1_6n5sf"]
 [ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/Battle/CharacterCardLayout.tscn" id="1_n8f8j"]
 [ext_resource type="PackedScene" uid="uid://bk8j8jr4ty6m7" path="res://Scenes/Battle/AreaSupportLayout.tscn" id="2_2blwc"]
 [ext_resource type="PackedScene" uid="uid://nguo3bhhp25g" path="res://Scenes/Battle/AllyCardHandLayout.tscn" id="2_yoii6"]
 [ext_resource type="PackedScene" uid="uid://f2nq33vsa7ds" path="res://Scenes/Main/Message.tscn" id="3_5daux"]
-[ext_resource type="PackedScene" uid="uid://cb7oa87cih75h" path="res://Scenes/Battle/BattleBackground.tscn" id="3_gtcky"]
-[ext_resource type="PackedScene" uid="uid://b01lkl2l8uhmq" path="res://Scenes/Main/right_slider.tscn" id="3_i0k80"]
 [ext_resource type="PackedScene" uid="uid://btqnrpqo1cmdj" path="res://Scenes/Battle/EntityLayout.tscn" id="3_yi7qp"]
 [ext_resource type="PackedScene" uid="uid://ckhyiinbbhy4e" path="res://Scenes/Battle/eventCardCollision.tscn" id="4_34dst"]
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/Collision/EventCollision.gd" id="5_1oj4e"]
 [ext_resource type="PackedScene" uid="uid://y2otj6ibuy0b" path="res://Scenes/Battle/EnemyCardHandLayout.tscn" id="5_fpnce"]
 [ext_resource type="PackedScene" uid="uid://tkvf733tsgu0" path="res://Scenes/Main/BattleRightPanel.tscn" id="8_0ewpx"]
 [ext_resource type="PackedScene" uid="uid://cb1c77crf2lod" path="res://Scenes/Main/MessageChooseCard.tscn" id="8_1eiu0"]
-[ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="12_afkar"]
 [ext_resource type="PackedScene" uid="uid://8exl10cxc0ot" path="res://Scenes/Battle/DisplayLayout.tscn" id="12_fpewq"]
+[ext_resource type="PackedScene" uid="uid://kiy6jj6oeflt" path="res://Scenes/Main/InformationPanel.tscn" id="13_og874"]
 
 [node name="Battlefield" type="Control"]
 layout_mode = 3
@@ -29,9 +27,6 @@ mouse_filter = 2
 script = ExtResource("1_6n5sf")
 messageChooseCardScene = ExtResource("8_1eiu0")
 messageScene = ExtResource("3_5daux")
-
-[node name="BattleBackground" parent="." instance=ExtResource("3_gtcky")]
-layout_mode = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -64,8 +59,6 @@ layout_mode = 1
 [node name="EnemyCardHandLayout" parent="." instance=ExtResource("5_fpnce")]
 layout_mode = 1
 
-[node name="Snow" parent="." instance=ExtResource("12_afkar")]
-
 [node name="End Round" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 4
@@ -84,8 +77,7 @@ layout_mode = 1
 [node name="BattleRightPanel" parent="." instance=ExtResource("8_0ewpx")]
 layout_mode = 1
 
-[node name="Right Slider" parent="." instance=ExtResource("3_i0k80")]
+[node name="Right Slider" parent="." instance=ExtResource("13_og874")]
 layout_mode = 1
-mouse_filter = 2
 
 [connection signal="pressed" from="End Round" to="." method="endRound"]

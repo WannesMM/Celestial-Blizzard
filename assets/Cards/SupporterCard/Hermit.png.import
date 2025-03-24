@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Hermit.png-f52c9752e3a979e54160c76251774201.c
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

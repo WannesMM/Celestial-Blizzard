@@ -15,4 +15,4 @@ mouse_filter = 2
 
 [node name="Card Hand" parent="." instance=ExtResource("1_gkp0e")]
 position = Vector2(0, -50)
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.8, 0.8)

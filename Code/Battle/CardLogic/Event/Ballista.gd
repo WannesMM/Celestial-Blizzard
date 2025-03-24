@@ -1,4 +1,4 @@
-extends EventCardLogic
+extends EventCard
 
 class_name Ballista
 
@@ -6,6 +6,7 @@ func eventCardConstructor():
 	cardName = "Ballista"
 	imageLink = "Ballista"
 	cardCost = 3
+	sampleColor = Color.SEA_GREEN
 	
 #---------------------------------------------------------------------------------------------------
 

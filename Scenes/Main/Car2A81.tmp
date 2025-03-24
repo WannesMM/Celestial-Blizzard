@@ -1,0 +1,207 @@
+[gd_scene load_steps=40 format=3 uid="uid://bux5s4cf5dm4m"]
+
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/Card.gd" id="1_3o3o6"]
+[ext_resource type="Texture2D" uid="uid://ctcsw22cm6kbk" path="res://assets/Cards/CharacterCard/cardNotFound.png" id="2_jyits"]
+[ext_resource type="Texture2D" uid="uid://nn3ccgf1of5e" path="res://assets/Cards/CardAssets/character card template.png" id="3_jfgm8"]
+[ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="4_k5ml6"]
+[ext_resource type="Texture2D" uid="uid://dl240cey6b0jm" path="res://assets/Cards/CardAssets/card highlight.png" id="5_6oau7"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/CardHighlight.gd" id="6_f3m15"]
+[ext_resource type="PackedScene" uid="uid://6av56go0gqa2" path="res://Scenes/Main/cardCollision.tscn" id="8_l8wq4"]
+[ext_resource type="Script" path="res://Code/Battle/BattleUI/Collision/CardCollision.gd" id="9_ho1ab"]
+[ext_resource type="Texture2D" uid="uid://cm4jvcn84m3ok" path="res://assets/Animated/CharacterSwitch/frame_01.png" id="10_vilbv"]
+[ext_resource type="Texture2D" uid="uid://cwxne505omkhs" path="res://assets/Animated/CharacterSwitch/frame_02.png" id="11_4sqep"]
+[ext_resource type="Texture2D" uid="uid://dkickwjcp81nt" path="res://assets/Animated/CharacterSwitch/frame_03.png" id="12_anq43"]
+[ext_resource type="Texture2D" uid="uid://bbnindtxfol02" path="res://assets/Animated/CharacterSwitch/frame_04.png" id="13_w8ry2"]
+[ext_resource type="Texture2D" uid="uid://ku4d88h3dq5a" path="res://assets/Animated/CharacterSwitch/frame_05.png" id="14_uymm2"]
+[ext_resource type="Texture2D" uid="uid://bf1mfteaehda1" path="res://assets/Animated/CharacterSwitch/frame_06.png" id="15_i2rrr"]
+[ext_resource type="Texture2D" uid="uid://cq84t2u1np4fp" path="res://assets/Animated/CharacterSwitch/frame_07.png" id="16_3vsx8"]
+[ext_resource type="Texture2D" uid="uid://b84ch485je6hk" path="res://assets/Animated/CharacterSwitch/frame_08.png" id="17_21fhv"]
+[ext_resource type="Texture2D" uid="uid://dnx2v5fy8ymdy" path="res://assets/Animated/CharacterSwitch/frame_09.png" id="18_yjx7f"]
+[ext_resource type="Texture2D" uid="uid://572pwlw7ps2v" path="res://assets/Animated/CharacterSwitch/frame_10.png" id="19_urkja"]
+[ext_resource type="Texture2D" uid="uid://sk5rh1lunj76" path="res://assets/Animated/CharacterSwitch/frame_11.png" id="20_33mms"]
+[ext_resource type="Texture2D" uid="uid://b7jhhrrlas3ks" path="res://assets/Animated/CharacterSwitch/frame_12.png" id="21_o6qih"]
+[ext_resource type="Texture2D" uid="uid://cd8koef6uqtmd" path="res://assets/Animated/CharacterSwitch/frame_13.png" id="22_ee2qp"]
+[ext_resource type="Texture2D" uid="uid://crjl2ca0af680" path="res://assets/Animated/CharacterSwitch/frame_14.png" id="23_5nh68"]
+[ext_resource type="Texture2D" uid="uid://b6ydsed2imv8f" path="res://assets/Animated/CharacterSwitch/frame_15.png" id="24_vuwn2"]
+[ext_resource type="Texture2D" uid="uid://ce6ovr4phin51" path="res://assets/Animated/CharacterSwitch/frame_16.png" id="25_iala0"]
+[ext_resource type="Texture2D" uid="uid://dwsm16ootirna" path="res://assets/Animated/CharacterSwitch/frame_17.png" id="26_euq3m"]
+[ext_resource type="Texture2D" uid="uid://bl8tio24bvjgl" path="res://assets/Animated/CharacterSwitch/frame_18.png" id="27_gydd1"]
+[ext_resource type="Texture2D" uid="uid://dljwfwqk4lnc4" path="res://assets/Animated/CharacterSwitch/frame_19.png" id="28_xbl7t"]
+[ext_resource type="Texture2D" uid="uid://c2ejd34ffwnej" path="res://assets/Animated/CharacterSwitch/frame_20.png" id="29_lu3bi"]
+[ext_resource type="Texture2D" uid="uid://bh7q4evggarw8" path="res://assets/Animated/CharacterSwitch/frame_21.png" id="30_kf00g"]
+[ext_resource type="Texture2D" uid="uid://drylwccq7pmdm" path="res://assets/Animated/CharacterSwitch/frame_22.png" id="31_6hg27"]
+[ext_resource type="Texture2D" uid="uid://b2k6ywisucm2x" path="res://assets/Animated/CharacterSwitch/frame_23.png" id="32_7lq73"]
+[ext_resource type="Texture2D" uid="uid://r0pliyka6xyi" path="res://assets/Animated/CharacterSwitch/frame_24.png" id="33_7kxr0"]
+[ext_resource type="Texture2D" uid="uid://c7s00vcuyxlen" path="res://assets/Animated/CharacterSwitch/frame_25.png" id="34_chg33"]
+[ext_resource type="Texture2D" uid="uid://bdnsdyock5c20" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-1.png" id="35_xs3bj"]
+[ext_resource type="Texture2D" uid="uid://b0eafygnnr2cf" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-2.png" id="36_nurd4"]
+[ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="37_fgqw6"]
+[ext_resource type="PackedScene" uid="uid://cr0lltj7npuu2" path="res://Scenes/Visual/IconDisplay.tscn" id="37_noqv0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8slk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_vilbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4sqep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_anq43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w8ry2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_uymm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_i2rrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3vsx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_21fhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yjx7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_urkja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_33mms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_o6qih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ee2qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_5nh68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_vuwn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_iala0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_euq3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_gydd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_xbl7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_lu3bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_kf00g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_6hg27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7lq73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_7kxr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_chg33")
+}],
+"loop": true,
+"name": &"CharacterSwitch",
+"speed": 24.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ls5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_xs3bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_nurd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_fgqw6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Card" type="Node2D"]
+position = Vector2(608, 331)
+script = ExtResource("1_3o3o6")
+
+[node name="cardImage" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_jyits")
+
+[node name="CardBorder" type="Sprite2D" parent="."]
+clip_children = 2
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_jfgm8")
+
+[node name="CardShader" type="Sprite2D" parent="CardBorder"]
+scale = Vector2(3.555, 3.555)
+texture = ExtResource("4_k5ml6")
+
+[node name="Highlight" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_6oau7")
+script = ExtResource("6_f3m15")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 35.0
+offset_top = -86.0
+offset_right = 55.0
+offset_bottom = -66.0
+text = "10
+"
+
+[node name="Darken" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_6oau7")
+
+[node name="CardPlacementCollision" parent="." node_paths=PackedStringArray("cardScene") instance=ExtResource("8_l8wq4")]
+script = ExtResource("9_ho1ab")
+cardScene = NodePath("..")
+
+[node name="Area2D" parent="CardPlacementCollision" index="0"]
+collision_layer = 1
+collision_mask = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -4.53)
+scale = Vector2(0.06, 0.06)
+sprite_frames = SubResource("SpriteFrames_i8slk")
+animation = &"CharacterSwitch"
+frame_progress = 0.936593
+
+[node name="CardShatter" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_8ls5m")
+frame = 2
+frame_progress = 0.0693526
+
+[node name="IconDisplay" parent="." instance=ExtResource("37_noqv0")]
+position = Vector2(50, 105)
+
+[connection signal="mouse_entered" from="CardPlacementCollision/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CardPlacementCollision/Area2D" to="." method="_on_area_2d_mouse_exited"]
+
+[editable path="CardPlacementCollision"]

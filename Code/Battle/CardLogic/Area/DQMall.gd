@@ -1,11 +1,10 @@
-extends AreaCardLogic
-
-class_name DQMall
+extends AreaCard
 
 func areaCardConstructor():
 	cardName = "DQ Mall"
 	imageLink = "DQ Mall"
 	cardCost = 4
+	sampleColor = Color.PERU
 	
 #---------------------------------------------------------------------------------------------------
 
@@ -17,3 +16,6 @@ func getCardDescription() -> String:
 		<6 --> Gain 2 gold
 		<8 --> Gain 1 card
 		<10 --> Gain 1 energy on the active character"
+
+func playCardLogic():
+	gameState.scheduleEffect(Load.loadEffect("Segmentation",self,self))

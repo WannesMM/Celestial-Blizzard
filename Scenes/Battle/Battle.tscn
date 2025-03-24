@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://bobmf4tohecn"]
+
+[ext_resource type="Script" path="res://Scenes/Battle/Battle.gd" id="1_ifpgi"]
+[ext_resource type="PackedScene" uid="uid://dg4dd53dv5m3" path="res://Scenes/Battle/battlefield.tscn" id="1_xlgde"]
+[ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="3_v7neh"]
+[ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="4_jqy5t"]
+[ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="5_2734u"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vwmv7"]
+panorama = ExtResource("4_jqy5t")
+energy_multiplier = 4.27
+
+[sub_resource type="Sky" id="Sky_f6lxl"]
+sky_material = SubResource("PanoramaSkyMaterial_vwmv7")
+
+[sub_resource type="Environment" id="Environment_4ftog"]
+background_mode = 2
+background_energy_multiplier = 0.76
+sky = SubResource("Sky_f6lxl")
+ambient_light_source = 3
+ambient_light_color = Color(0, 0.0995307, 0.570313, 1)
+ambient_light_sky_contribution = 0.03
+ambient_light_energy = 0.52
+glow_enabled = true
+glow_intensity = 0.4
+glow_strength = 1.13
+glow_bloom = 0.12
+glow_blend_mode = 0
+fog_enabled = true
+fog_light_color = Color(0.114727, 0.172959, 0.347656, 1)
+fog_light_energy = 0.2
+fog_sun_scatter = 0.31
+fog_density = 0.0214
+fog_aerial_perspective = 0.035
+fog_depth_end = 2421.8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_po8g6"]
+emission_shape = 3
+emission_box_extents = Vector3(15.005, 5, 15)
+angle_min = -161.4
+angle_max = 215.2
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 17.24
+angular_velocity_min = -44.31
+angular_velocity_max = 99.31
+orbit_velocity_min = -0.667
+orbit_velocity_max = 0.276
+gravity = Vector3(0, -1, 0)
+radial_accel_min = -1.9
+radial_accel_max = 2.27
+tangential_accel_min = -3.0
+tangential_accel_max = 2.23
+scale_min = 0.5
+scale_max = 2.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gsvm"]
+render_priority = 10
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("5_2734u")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ajg47"]
+lightmap_size_hint = Vector2i(10, 10)
+material = SubResource("StandardMaterial3D_2gsvm")
+uv2_padding = 0.0
+
+[node name="Battle" type="Control" node_paths=PackedStringArray("battleField")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ifpgi")
+battleField = NodePath("Battlefield")
+
+[node name="Battlefield" parent="." instance=ExtResource("1_xlgde")]
+layout_mode = 1
+
+[node name="Camera" parent="." instance=ExtResource("3_v7neh")]
+layout_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ftog")
+
+[node name="3d" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="3d"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 46.4676, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48.5563, 0)
+amount = 50
+lifetime = 7.0
+process_material = SubResource("ParticleProcessMaterial_po8g6")
+draw_pass_1 = SubResource("PlaneMesh_ajg47")

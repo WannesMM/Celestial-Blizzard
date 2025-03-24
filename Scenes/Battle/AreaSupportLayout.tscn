@@ -27,10 +27,10 @@ cardLayout = NodePath("../AllyLayout")
 
 [node name="AllyLayout" type="Node2D" parent="."]
 position = Vector2(-400, 170)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 script = ExtResource("3_3kvwn")
 
 [node name="EnemyLayout" type="Node2D" parent="."]
 position = Vector2(-400, -170)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 script = ExtResource("4_vg7w8")
