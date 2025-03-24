@@ -105,7 +105,7 @@ func clickEmpty():
 
 #What happens to a card when it is dragged from one layout to another. This may differ for applications so thats why this is a function.
 func draggedIntoLayout(layout, card):
-	layout.addCardToLayout(card)
+	layout.addCard(card)
 	
 #This checks al the collisions with the mouse pointer on layer 1 and returns an array of items collided.
 #This is used to check which card should be dragged etc
