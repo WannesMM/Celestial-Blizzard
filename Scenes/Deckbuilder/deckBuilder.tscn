@@ -1,58 +1,80 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcpmy2rfu7oa8"]
+[gd_scene load_steps=14 format=3 uid="uid://bcpmy2rfu7oa8"]
 
 [ext_resource type="Script" path="res://Code/DeckBuilder/DeckBuilderManager.gd" id="1_4e8k0"]
+[ext_resource type="Texture2D" uid="uid://drrfqwp0d3hu7" path="res://assets/Setpieces/background-paper.jpg" id="2_bgng5"]
 [ext_resource type="PackedScene" uid="uid://crtg5vvt2rfgb" path="res://Scenes/Deckbuilder/DeckPicker.tscn" id="2_rcp0d"]
 [ext_resource type="PackedScene" uid="uid://3svo4gf7a0h8" path="res://Scenes/Deckbuilder/deck.tscn" id="3_rttcn"]
 [ext_resource type="PackedScene" uid="uid://ds6s2317l17h6" path="res://Scenes/Deckbuilder/CharacterPicker.tscn" id="4_tuwe7"]
 [ext_resource type="PackedScene" uid="uid://bhudrmhwa0q0t" path="res://Scenes/Deckbuilder/Characters.tscn" id="5_5laxu"]
 [ext_resource type="PackedScene" uid="uid://kiy6jj6oeflt" path="res://Scenes/Main/InformationPanel.tscn" id="5_xr6dv"]
+[ext_resource type="Texture2D" uid="uid://cyv1ur7luky3" path="res://assets/ArrowLeft.png" id="8_mnepa"]
+[ext_resource type="StyleBox" path="res://assets/Theme/ButtonHover.tres" id="8_mxkss"]
+[ext_resource type="StyleBox" path="res://assets/Theme/Button.tres" id="8_w47ay"]
+[ext_resource type="Script" path="res://Scenes/Deckbuilder/back-button.gd" id="9_q4jsr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kf6k"]
 
+[sub_resource type="Theme" id="Theme_fd3sx"]
+
 [node name="DeckBuilder" type="Control"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4e8k0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bgng5")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -314.0
-offset_right = -576.0
-offset_bottom = -314.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4e8k0")
 
-[node name="DeckPicker" parent="." instance=ExtResource("2_rcp0d")]
-position = Vector2(328, 434)
+[node name="DeckPicker" parent="UI" instance=ExtResource("2_rcp0d")]
+position = Vector2(-213, 117)
 
-[node name="Deck" parent="." instance=ExtResource("3_rttcn")]
-position = Vector2(327, 142)
+[node name="Deck" parent="UI" instance=ExtResource("3_rttcn")]
+position = Vector2(-214, -175)
 
-[node name="CharacterPicker" parent="." instance=ExtResource("4_tuwe7")]
-position = Vector2(920, 436)
+[node name="CharacterPicker" parent="UI" instance=ExtResource("4_tuwe7")]
+position = Vector2(325, 118)
 
-[node name="Characters" parent="." instance=ExtResource("5_5laxu")]
-position = Vector2(921, 143)
+[node name="Characters" parent="UI" instance=ExtResource("5_5laxu")]
+position = Vector2(326, -175)
 
-[node name="DeckLabel" type="Label" parent="."]
+[node name="DeckLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 158.0
-offset_top = 9.0
-offset_right = 492.0
-offset_bottom = 64.0
+offset_left = -383.0
+offset_top = -308.0
+offset_right = -49.0
+offset_bottom = -253.0
 text = "Deck"
 label_settings = SubResource("LabelSettings_8kf6k")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CharacterLabel" type="Label" parent="."]
+[node name="CharacterLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 762.0
-offset_top = 8.0
-offset_right = 1096.0
-offset_bottom = 63.0
+offset_left = 167.0
+offset_top = -310.0
+offset_right = 501.0
+offset_bottom = -255.0
 text = "Characters"
 label_settings = SubResource("LabelSettings_8kf6k")
 horizontal_alignment = 1
@@ -60,7 +82,17 @@ vertical_alignment = 1
 
 [node name="Right Slider" parent="." instance=ExtResource("5_xr6dv")]
 layout_mode = 1
-offset_left = 933.0
-offset_top = -3.0
-offset_right = 1144.0
+offset_left = -178.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 593.0
+offset_right = 61.0
 offset_bottom = 631.0
+theme = SubResource("Theme_fd3sx")
+theme_override_styles/hover = ExtResource("8_mxkss")
+theme_override_styles/normal = ExtResource("8_w47ay")
+icon = ExtResource("8_mnepa")
+expand_icon = true
+script = ExtResource("9_q4jsr")

@@ -18,6 +18,8 @@ class_name GridCardLayout
 @export var innerMarginX: float = 0.0
 # Y Margins between cards (only when scroll is vertical)
 @export var innerMarginY: float = 0.0
+# Reverses the order in which cards are put on the screen
+@export var reverseDrawingOrder: bool = false
 # The collider associated with the layout
 @export var collider: LayoutCollision
 
@@ -71,16 +73,19 @@ func arrangeCards():
 	for y in range(Yitterations):
 		for x in range(Xitterations):
 			var index = y * gridSizeX + x
-			if index >= addedCards.size():
+			if reverseDrawingOrder:
+				index = addedCards.size() - 1 - index
+
+			if index < 0 or index >= addedCards.size():
 				break
-			
+
 			var cardPosition = Vector2(startX + x * cellWidth, startY + y * cellHeight)
-			
+
 			var card: Card = addedCards[index]
 			card.scale = Vector2(scaleCards, scaleCards)
 			card.setBasePosition(cardPosition)
 			card.animatePosition(cardPosition, 0.5)
-	
+		
 	
 	# HBox-containergrootte aanpassen
 	var box = get_parent()  # Zorg dat de HBoxContainer de directe parent is

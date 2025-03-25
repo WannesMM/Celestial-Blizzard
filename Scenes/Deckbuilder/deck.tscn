@@ -32,6 +32,7 @@ scroll = "horizontal"
 scaleCards = 0.7
 outerMarginY = 30.0
 innerMarginX = -20.0
+reverseDrawingOrder = true
 collider = NodePath("../DeckCollider")
 
 [node name="DeckCollider" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("cardLayout")]

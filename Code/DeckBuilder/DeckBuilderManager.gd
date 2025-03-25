@@ -1,5 +1,8 @@
 extends LayoutManager
 
+var deck
+var characters
+
 var currentStartLayout: CardLayout
 
 func startCardDrag(card: Card):
@@ -46,4 +49,34 @@ func isValidMove(cardType: String, cardSlotFound) -> bool:
 		return false
 		
 	return true
-	
+
+func selectCard(card: Card):
+	if card in selectedCards:
+		undoSelect(card)
+		closeCardInformation()
+	elif selectedCards.size() >= multiselect:
+		undoSelect(selectedCards[0])
+		highlightSelect(card)
+		displayCardInformation(card)
+	else:
+		highlightSelect(card)
+		displayCardInformation(card)
+
+func deselectAllCards():
+	var i = 0
+	var len = selectedCards.size()
+	while i < len:
+		undoSelect(selectedCards[0])
+		i = i + 1
+	closeCardInformation()
+	assert(selectedCards == [])
+
+#For the information slider when selected
+func closeCardInformation():
+	$"Right Slider".closeCardInformation()
+
+func displayCardInformation(card: Card):
+	if card.getLayout().getShowInformation():
+		$"Right Slider".displayCardInformation(card)
+	if card.currentLayout is CharacterCardLayout and !card.active:
+		card.playSwitchAnimation()
