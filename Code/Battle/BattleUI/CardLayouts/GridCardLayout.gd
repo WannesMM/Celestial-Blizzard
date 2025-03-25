@@ -45,7 +45,7 @@ func arrangeCards():
 		return
 	
 	var cardSize = addedCards[0].getSize() * scaleCards
-	print("cs=", cardSize)
+	
 	# calculate correct widths and starting positions
 	var cellWidth = colliderSize.x / gridSizeX
 	var cellHeight = colliderSize.y / gridSizeY
@@ -54,7 +54,7 @@ func arrangeCards():
 	var Xitterations = gridSizeX
 	var Yitterations = gridSizeY
 	
-	print(scroll)
+
 	match scroll:
 		"horizontal":
 			startX  = -colliderSize.x / 2 + cardSize.x / 2 
@@ -64,9 +64,7 @@ func arrangeCards():
 			startY  = -colliderSize.y / 2 + cardSize.y / 2 
 			cellHeight = cardSize.y + innerMarginY
 			Yitterations = ceil(float(len(addedCards))/gridSizeX)
-	print("loop")
-	print(Xitterations,"  ", Yitterations)
-	print(len(addedCards))
+	
 	# Set the remaining cards
 	for y in range(Yitterations):
 		for x in range(Xitterations):
@@ -76,7 +74,8 @@ func arrangeCards():
 			
 			var cardPosition = Vector2(startX + x * cellWidth, startY + y * cellHeight)
 			
-			var card = addedCards[index]
+			var card: Card = addedCards[index]
+			card.scale = Vector2(scaleCards, scaleCards)
 			card.setBasePosition(cardPosition)
 			card.animatePosition(cardPosition, 0.5)
 	
@@ -97,3 +96,6 @@ func arrangeCards():
 			"vertical":
 				container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 				container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+			"none":
+				container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+				container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER

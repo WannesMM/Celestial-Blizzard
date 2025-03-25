@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://crtg5vvt2rfgb"]
 
-[ext_resource type="PackedScene" uid="uid://p77pv0qh1sgk" path="res://Scenes/Deckbuilder/allCardsCollider.tscn" id="1_gmdt0"]
-[ext_resource type="Script" path="res://Code/DeckBuilder/test.gd" id="2_vqkbg"]
+[ext_resource type="PackedScene" uid="uid://p77pv0qh1sgk" path="res://Scenes/Deckbuilder/DeckPickerCollider.tscn" id="1_gmdt0"]
+[ext_resource type="Script" path="res://Code/DeckBuilder/DeckPicker.gd" id="2_vqkbg"]
 
 [node name="DeckPicker" type="Node2D"]
 
@@ -11,10 +11,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -373.5
-offset_top = -212.5
-offset_right = 373.5
-offset_bottom = 212.5
+offset_left = -286.0
+offset_top = -188.0
+offset_right = 286.0
+offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -25,18 +25,17 @@ vertical_scroll_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="allCardsCollider" parent="ScrollContainer/HBoxContainer" node_paths=PackedStringArray("cardLayout") instance=ExtResource("1_gmdt0")]
-position = Vector2(372.5, 211.5)
-cardLayout = NodePath("../allCards")
+[node name="DeckPickerCollider" parent="ScrollContainer/HBoxContainer" node_paths=PackedStringArray("cardLayout") instance=ExtResource("1_gmdt0")]
+position = Vector2(288, 188)
+cardLayout = NodePath("../DeckPicker")
 
-[node name="allCards" type="Node2D" parent="ScrollContainer/HBoxContainer" node_paths=PackedStringArray("collider")]
+[node name="DeckPicker" type="Node2D" parent="ScrollContainer/HBoxContainer" node_paths=PackedStringArray("collider")]
 z_index = 1
 position = Vector2(500, 0)
 script = ExtResource("2_vqkbg")
 gridSizeX = 6
 gridSizeY = 3
 scroll = "vertical"
-scaleCards = 0.8
-outerMargin = 20.0
-innerMarginY = 5.0
-collider = NodePath("../allCardsCollider")
+scaleCards = 0.65
+innerMarginY = 8.0
+collider = NodePath("../DeckPickerCollider")
