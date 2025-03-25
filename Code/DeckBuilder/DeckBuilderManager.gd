@@ -15,14 +15,20 @@ func finishCardDrag(card: Card):
 	card.get_parent().remove_child(card)
 	currentStartLayout.addCard(card)
 	
-	
 #Finish the drag
 func finishDrag():
 	var cardSlotFound = raycastCheckForCardSlot()
-	finishCardDrag(cardBeingDragged)
 	
-	if isValidMove(cardBeingDragged.getCardType(), cardSlotFound):
-		var layout = cardSlotFound.getRespectiveCardLayout()
+	if isValidMove(cardBeingDragged.getCardType(), cardSlotFound):		
+		var layout: GridCardLayout = cardSlotFound.getRespectiveCardLayout()
+		
+		if layout.name == "Characters":
+			var cardToBeRemoved: Card = layout.addedCards[0] 
+			layout.removeCard(cardToBeRemoved)
+			$CharacterPicker.find_child("CharacterPicker").addCard(cardToBeRemoved)
+		
+		finishCardDrag(cardBeingDragged)
+
 		if cardSlotFound is CardCollision:
 			layout = cardSlotFound.cardScene
 		draggedIntoLayout(layout, cardBeingDragged)
