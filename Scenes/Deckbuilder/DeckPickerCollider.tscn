@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://mw84mjtsjyn7" path="res://assets/User Interface/SelectRect.png" id="2_w5g22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x270y"]
-size = Vector2(560, 375)
+size = Vector2(560, 400)
 
 [node name="DeckPickerCollider" type="Node2D"]
 script = ExtResource("1_psw7f")
@@ -18,9 +18,9 @@ shape = SubResource("RectangleShape2D_x270y")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Area2D"]
 offset_left = -282.0
-offset_top = -189.0
+offset_top = -202.0
 offset_right = 6756.0
-offset_bottom = 4524.0
+offset_bottom = 4798.0
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_w5g22")
 region_rect = Rect2(141, 167, 2198, 3046)

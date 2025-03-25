@@ -10,8 +10,10 @@ class_name GridCardLayout
 @export_enum("none", "horizontal", "vertical") var scroll: String = "none"
 # Scale all the cards relative to the default card size
 @export var scaleCards: float = 1.0
-# Outer margins of the grid
-@export var outerMargin: float = 0.0
+# X Outer margins of the grid
+@export var outerMarginX: float = 0.0
+# Y Outer margins of the grid
+@export var outerMarginY: float = 0.0
 # X Margins between cards (only when scroll is horizontal)
 @export var innerMarginX: float = 0.0
 # Y Margins between cards (only when scroll is vertical)
@@ -34,7 +36,7 @@ func arrangeCards():
 		return
 	
 	# Apply margins
-	colliderSize -= Vector2(outerMargin * 2, outerMargin * 2)
+	colliderSize -= Vector2(outerMarginX * 2, outerMarginY * 2)
 	
 	# Return error when the cards do not fit
 	if (gridSizeX * gridSizeY < addedCards.size()) && scroll == "none":
@@ -83,8 +85,8 @@ func arrangeCards():
 	# HBox-containergrootte aanpassen
 	var box = get_parent()  # Zorg dat de HBoxContainer de directe parent is
 	if box is HBoxContainer || box is VBoxContainer:
-		var totalWidth =  Xitterations * cellWidth + outerMargin * 2
-		var totalHeight = Yitterations * cellHeight + outerMargin * 2
+		var totalWidth =  Xitterations * cellWidth + outerMarginX * 2
+		var totalHeight = Yitterations * cellHeight + outerMarginY * 2
 		box.custom_minimum_size = Vector2(totalWidth, totalHeight)
 	
 	var container: ScrollContainer = box.get_parent()

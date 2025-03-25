@@ -25,16 +25,16 @@ grow_vertical = 2
 script = ExtResource("1_4e8k0")
 
 [node name="DeckPicker" parent="." instance=ExtResource("2_rcp0d")]
-position = Vector2(322, 439)
+position = Vector2(328, 434)
 
 [node name="Deck" parent="." instance=ExtResource("3_rttcn")]
-position = Vector2(323, 148)
+position = Vector2(327, 142)
 
 [node name="CharacterPicker" parent="." instance=ExtResource("4_tuwe7")]
-position = Vector2(924, 441)
+position = Vector2(920, 436)
 
 [node name="Characters" parent="." instance=ExtResource("5_5laxu")]
-position = Vector2(922, 147)
+position = Vector2(921, 143)
 
 [node name="DeckLabel" type="Label" parent="."]
 layout_mode = 0
@@ -60,7 +60,7 @@ vertical_alignment = 1
 
 [node name="Right Slider" parent="." instance=ExtResource("5_xr6dv")]
 layout_mode = 1
-offset_left = 936.0
-offset_top = -11.0
-offset_right = 1147.0
-offset_bottom = 623.0
+offset_left = 933.0
+offset_top = -3.0
+offset_right = 1144.0
+offset_bottom = 631.0

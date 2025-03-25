@@ -16,6 +16,7 @@ var isPressed = false
 var holdTimer = 0.0
 
 var selectedCards = []
+var previousScale: Vector2
 
 #LayoutSettings
 var multiselect: int = 1
@@ -162,19 +163,21 @@ func deselectAllCards():
 func undoSelect(card):
 	if(card.get_tree() != null):
 		card.undoHighlightCard()
-		card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
+		card.scaleRelative(previousScale, ANIMATIONDURATION)
 		card.moveCardDownSelect()
 	selectedCards.erase(card)
 	
 #All the animations for selecting
-func highlightSelect(card):
+func highlightSelect(card: Card):
+	previousScale = card.scale
+	
 	if card.getLayout().CARD_LAYOUT_TYPE == "CharacterCardLayout":
 		card.highlightCard()
-		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
+		card.scaleRelative(card.scale * ANIMATIONSCALE, ANIMATIONDURATION)
 	else:
 		card.highlightCard()
-		card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
-		card.moveCardUpSelect(SELECTMOVEMENT)
+		card.scaleRelative(card.scale * ANIMATIONSCALE, ANIMATIONDURATION)
+		card.moveCardUpSelect(card.scale * SELECTMOVEMENT)
 	selectedCards.append(card)
 
 func setMultiselect(x):
