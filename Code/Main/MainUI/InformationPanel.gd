@@ -3,82 +3,82 @@ extends Control
 var layoutManager: LayoutManager = null
 var currentCard: Card
 
+const titleScene = preload("res://Scenes/Main/UI components/Title.tscn")
+const portraitScene = preload("res://Scenes/Main/UI components/Portrait.tscn")
+const buttonScene = preload("res://Scenes/Main/UI components/Button.tscn")
+const textScene = preload("res://Scenes/Main/UI components/Text.tscn")
+const parameterScene = preload("res://Scenes/Visual/ParameterDisplay.tscn")
+
 func _ready() -> void:
-	hideAll()
 	visible = false
-
-func hideAll():
-	for child in $Border/Scroll/VBoxContainer.get_children():
-		child.visible = false
-
+	
 func displayCardInformation(card: Card):
-	currentCard = card
-	var titleCounter := 1
-	var paramCounter := 1
-	var buttonCounter := 1
-	var textCounter := 1
+	if card != currentCard:
+		removeAll()
+		currentCard = card
 	
-	hideAll()
-	
-	for element in card.getDisplayInfo():
-		match element[0]:
+	buttonCounter = 1
+	for item in card.getDisplayInfo():
+		var element = item[0]
+		var body = item[1]
+		match element:
 			"Title":
-				match titleCounter:
-					1:
-						$Border/Scroll/VBoxContainer/Title/TitleBorder/Title.text = element[1]
-						$Border/Scroll/VBoxContainer/Title.visible = true
-					2:
-						$Border/Scroll/VBoxContainer/Title2/TitleBorder/Title.text = element[1]
-						$Border/Scroll/VBoxContainer/Title2.visible = true
-					3:
-						$Border/Scroll/VBoxContainer/Title3/TitleBorder/Title.text = element[1]
-						$Border/Scroll/VBoxContainer/Title3.visible = true
-				titleCounter += 1
-			"Parameter":
-				match paramCounter:
-					1:
-						$Border/Scroll/VBoxContainer/Parameter1.visible = true
-					2:
-						$Border/Scroll/VBoxContainer/Parameter2.visible = true
-					3:
-						$Border/Scroll/VBoxContainer/Parameter3.visible = true
-				paramCounter += 1
-			"Button":
-				match buttonCounter:
-					1:
-						$Border/Scroll/VBoxContainer/Button/TitleBorder/Title.text = element[1]
-						$Border/Scroll/VBoxContainer/Button.visible = true
-					2:
-						$Border/Scroll/VBoxContainer/Button2/TitleBorder/Title.text = element[1]
-						$Border/Scroll/VBoxContainer/Button2.visible = true
-					3:
-						$Border/Scroll/VBoxContainer/Button3/TitleBorder/Title.text = element[1]
-						$Border/Scroll/VBoxContainer/Button3.visible = true
-				buttonCounter += 1
+				createTitle(body)
 			"Portrait":
-				$Border/Scroll/VBoxContainer/Portrait/PortraitMask/PortraitImage.setImage(element[1],Vector2(100,100),Vector2(0.7,0.7))
-				$Border/Scroll/VBoxContainer/Portrait/PortraitMask/PortraitImage.scale = Vector2(0.1,0.1)
-				$Border/Scroll/VBoxContainer/Portrait.visible = true
+				createPortrait(body)
+			"Button":
+				createButton(body)
 			"Text":
-				match textCounter:
-					1:
-						$Border/Scroll/VBoxContainer/Text.text = element[1]
-						$Border/Scroll/VBoxContainer/Text.visible = true
-					2:
-						$Border/Scroll/VBoxContainer/Text2.text = element[1]
-						$Border/Scroll/VBoxContainer/Text2.visible = true
-					3:
-						$Border/Scroll/VBoxContainer/Text3.text = element[1]
-						$Border/Scroll/VBoxContainer/Text3.visible = true
-					4:
-						$Border/Scroll/VBoxContainer/Text4.text = element[1]
-						$Border/Scroll/VBoxContainer/Text4.visible = true
-				textCounter += 1
-	$Background.modulate = card.sampleColor
+				createText(body)
+			"Parameter":
+				createParameter(item[1], item[2], item[3])
 	visible = true
 
+func removeAll():
+	for element in $Scroll/VBoxContainer.get_children():
+		$Scroll/VBoxContainer.remove_child(element)
+		element.queue_free()
+
+func createTitle(newText: String):
+	var title = titleScene.instantiate()
+	title.text = newText
+	$Scroll/VBoxContainer.add_child(title)
+	
+func createPortrait(portrait: Texture):
+	var scene = portraitScene.instantiate()
+	scene.setTexture(portrait)
+	$Scroll/VBoxContainer.add_child(scene)
+
+var buttonCounter := 1
+
+func createButton(newText: String):
+	var scene = buttonScene.instantiate()
+	scene.text = newText
+	
+	match buttonCounter:
+		1:
+			scene.callbackFunction = NAbuttonPressed
+		2:
+			scene.callbackFunction = SAbuttonPressed
+		3:
+			scene.callbackFunction = CAbuttonPressed
+	
+	buttonCounter += 1
+	$Scroll/VBoxContainer.add_child(scene)
+	
+func createText(newText: String):
+	var scene = textScene.instantiate()
+	scene.text = newText
+	$Scroll/VBoxContainer.add_child(scene)
+	
+func createParameter(newValue: int, newMin: int, newMax: int):
+	var scene = parameterScene.instantiate()
+	scene.initialise(newValue, newMin, newMax)
+	$Scroll/VBoxContainer.add_child(scene)
+	
 func closeCardInformation():
 	visible = false
+	removeAll()
 
 func NAbuttonPressed() -> void:
 	layoutManager.characterCardMove("NA", currentCard)

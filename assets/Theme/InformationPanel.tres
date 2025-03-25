@@ -1,0 +1,69 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://66w2344pmkxj"]
+
+[ext_resource type="StyleBox" uid="uid://b0xx3equtq2ef" path="res://assets/Theme/ButtonHover.tres" id="1_3uyy8"]
+[ext_resource type="StyleBox" uid="uid://chand3p8jxn7v" path="res://assets/Theme/Button.tres" id="1_bbqbd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3jiu"]
+bg_color = Color(0.608618, 0.608618, 0.608618, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o87w"]
+bg_color = Color(0.649351, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0uxa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyd3x"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ae6sl"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3skum"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knbw1"]
+bg_color = Color(0.920897, 0.920897, 0.920897, 1)
+
+[resource]
+BoxContainer/styles/normal = SubResource("StyleBoxFlat_b3jiu")
+Button/font_sizes/font_size = 20
+Button/styles/hover = ExtResource("1_3uyy8")
+Button/styles/normal = ExtResource("1_bbqbd")
+Label/font_sizes/font_size = 20
+Label/styles/normal = ExtResource("1_bbqbd")
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+MarginContainer/styles/normal = SubResource("StyleBoxFlat_8o87w")
+Panel/styles/SecondPanel = SubResource("StyleBoxFlat_b0uxa")
+Panel/styles/panel = SubResource("StyleBoxFlat_cyd3x")
+ScrollContainer/styles/normal = SubResource("StyleBoxFlat_ae6sl")
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_3skum")
+VBoxContainer/styles/border = SubResource("StyleBoxFlat_knbw1")

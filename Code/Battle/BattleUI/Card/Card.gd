@@ -288,7 +288,6 @@ func getDisplayInfo():
 	return [
 ["Title", cardName],
 ["Portrait", cardImage],
-["Parameter"],
 ["Text", getCardDescription()]
 ]
 

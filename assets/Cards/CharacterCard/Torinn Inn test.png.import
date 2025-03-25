@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7pdpdhh2ukoi"
-path="res://.godot/imported/Torinn Inn test.png-611399024c0a93557d8ab583da0f40c5.ctex"
+path.s3tc="res://.godot/imported/Torinn Inn test.png-611399024c0a93557d8ab583da0f40c5.s3tc.ctex"
+path.etc2="res://.godot/imported/Torinn Inn test.png-611399024c0a93557d8ab583da0f40c5.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Cards/CharacterCard/Torinn Inn test.png"
-dest_files=["res://.godot/imported/Torinn Inn test.png-611399024c0a93557d8ab583da0f40c5.ctex"]
+dest_files=["res://.godot/imported/Torinn Inn test.png-611399024c0a93557d8ab583da0f40c5.s3tc.ctex", "res://.godot/imported/Torinn Inn test.png-611399024c0a93557d8ab583da0f40c5.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

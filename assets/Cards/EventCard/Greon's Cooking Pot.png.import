@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2spya2wux0cp"
-path="res://.godot/imported/Greon's Cooking Pot.png-8dce2aa91976cec64f03b4395b2faca4.ctex"
+path.s3tc="res://.godot/imported/Greon\'s Cooking Pot.png-8dce2aa91976cec64f03b4395b2faca4.s3tc.ctex"
+path.etc2="res://.godot/imported/Greon\'s Cooking Pot.png-8dce2aa91976cec64f03b4395b2faca4.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Cards/EventCard/Greon's Cooking Pot.png"
-dest_files=["res://.godot/imported/Greon's Cooking Pot.png-8dce2aa91976cec64f03b4395b2faca4.ctex"]
+dest_files=["res://.godot/imported/Greon\\'s Cooking Pot.png-8dce2aa91976cec64f03b4395b2faca4.s3tc.ctex", "res://.godot/imported/Greon\\'s Cooking Pot.png-8dce2aa91976cec64f03b4395b2faca4.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

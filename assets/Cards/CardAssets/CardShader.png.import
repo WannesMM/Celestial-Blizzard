@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh1810n62fsis"
-path="res://.godot/imported/CardShader.png-480d346c02e6c5eeca2884054c1bb6c4.ctex"
+path.s3tc="res://.godot/imported/CardShader.png-480d346c02e6c5eeca2884054c1bb6c4.s3tc.ctex"
+path.etc2="res://.godot/imported/CardShader.png-480d346c02e6c5eeca2884054c1bb6c4.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Cards/CardAssets/CardShader.png"
-dest_files=["res://.godot/imported/CardShader.png-480d346c02e6c5eeca2884054c1bb6c4.ctex"]
+dest_files=["res://.godot/imported/CardShader.png-480d346c02e6c5eeca2884054c1bb6c4.s3tc.ctex", "res://.godot/imported/CardShader.png-480d346c02e6c5eeca2884054c1bb6c4.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
