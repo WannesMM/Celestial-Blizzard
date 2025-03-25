@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://j53t6xbqjsib"
-path="res://.godot/imported/Untitled_Artwork-4.png-bd0eb892c6d7d9a10546f740e1b906a9.ctex"
+path.s3tc="res://.godot/imported/Untitled_Artwork-4.png-bd0eb892c6d7d9a10546f740e1b906a9.s3tc.ctex"
+path.etc2="res://.godot/imported/Untitled_Artwork-4.png-bd0eb892c6d7d9a10546f740e1b906a9.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Animated/Spirit trail/Untitled_Artwork-4.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-4.png-bd0eb892c6d7d9a10546f740e1b906a9.ctex"]
+dest_files=["res://.godot/imported/Untitled_Artwork-4.png-bd0eb892c6d7d9a10546f740e1b906a9.s3tc.ctex", "res://.godot/imported/Untitled_Artwork-4.png-bd0eb892c6d7d9a10546f740e1b906a9.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

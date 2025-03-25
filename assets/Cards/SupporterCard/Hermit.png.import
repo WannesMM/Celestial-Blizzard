@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs3nku03iwnho"
-path="res://.godot/imported/Hermit.png-f52c9752e3a979e54160c76251774201.ctex"
+path.s3tc="res://.godot/imported/Hermit.png-f52c9752e3a979e54160c76251774201.s3tc.ctex"
+path.etc2="res://.godot/imported/Hermit.png-f52c9752e3a979e54160c76251774201.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Cards/SupporterCard/Hermit.png"
-dest_files=["res://.godot/imported/Hermit.png-f52c9752e3a979e54160c76251774201.ctex"]
+dest_files=["res://.godot/imported/Hermit.png-f52c9752e3a979e54160c76251774201.s3tc.ctex", "res://.godot/imported/Hermit.png-f52c9752e3a979e54160c76251774201.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

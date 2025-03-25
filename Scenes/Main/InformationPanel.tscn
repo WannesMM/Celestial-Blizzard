@@ -1,14 +1,108 @@
-[gd_scene load_steps=14 format=3 uid="uid://kiy6jj6oeflt"]
+[gd_scene load_steps=43 format=3 uid="uid://kiy6jj6oeflt"]
 
-[ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="1_8rvck"]
+[ext_resource type="Theme" uid="uid://66w2344pmkxj" path="res://assets/Theme/InformationPanel.tres" id="1_jw0si"]
 [ext_resource type="Script" path="res://Code/Main/MainUI/InformationPanel.gd" id="2_5tm1x"]
-[ext_resource type="Texture2D" uid="uid://bu67uspkp3d47" path="res://assets/Cards/CardAssets/Card border small.png" id="2_kkjt7"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_p2lmq"]
-[ext_resource type="Texture2D" uid="uid://ckx2d6ueet882" path="res://assets/Cards/CardAssets/card fill small.png" id="3_xofbf"]
-[ext_resource type="Texture2D" uid="uid://dpl4mgjq1dpl6" path="res://assets/Cards/CharacterCard/Nessa of Loch.png" id="4_kgrry"]
-[ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="5_imjut"]
+[ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="4_3nsha"]
+[ext_resource type="PackedScene" uid="uid://2vhwcbrfxgpa" path="res://Scenes/Main/UI components/Title.tscn" id="4_annwf"]
+[ext_resource type="Texture2D" uid="uid://kh8cgsqr4bc5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-2.png" id="5_eus3e"]
+[ext_resource type="PackedScene" uid="uid://dptkf7e36y5vl" path="res://Scenes/Main/UI components/Portrait.tscn" id="5_ups67"]
+[ext_resource type="Texture2D" uid="uid://bjkq1iikogg7h" path="res://assets/Animated/Harsh fog/Untitled_Artwork-3.png" id="6_kkosd"]
 [ext_resource type="PackedScene" uid="uid://phmkbxss411d" path="res://Scenes/Visual/ParameterDisplay.tscn" id="6_l3vxr"]
-[ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="7_6wy1j"]
+[ext_resource type="PackedScene" uid="uid://bpjfgh7pitxdp" path="res://Scenes/Main/UI components/Button.tscn" id="6_t1odt"]
+[ext_resource type="PackedScene" uid="uid://csjde6mcsyvm" path="res://Scenes/Main/UI components/Text.tscn" id="7_31jda"]
+[ext_resource type="Texture2D" uid="uid://dwnsxqlisapr4" path="res://assets/Animated/Harsh fog/Untitled_Artwork-4.png" id="7_wtdcm"]
+[ext_resource type="Texture2D" uid="uid://0mk1nxj4fjaf" path="res://assets/Animated/Harsh fog/Untitled_Artwork-5.png" id="8_4hbkm"]
+[ext_resource type="Texture2D" uid="uid://c2657tnxy8oi" path="res://assets/Animated/Harsh fog/Untitled_Artwork-6.png" id="9_vw87y"]
+[ext_resource type="Texture2D" uid="uid://cvn2cla68yt04" path="res://assets/Animated/Harsh fog/Untitled_Artwork-7.png" id="10_cqctk"]
+[ext_resource type="Texture2D" uid="uid://y3uvpo0wpee7" path="res://assets/Animated/Harsh fog/Untitled_Artwork-8.png" id="11_qn8lo"]
+[ext_resource type="Texture2D" uid="uid://bchhogib46tyr" path="res://assets/Animated/Harsh fog/Untitled_Artwork-9.png" id="12_k60sd"]
+[ext_resource type="Texture2D" uid="uid://b744pjtbcjy2q" path="res://assets/Animated/Harsh fog/Untitled_Artwork-10.png" id="13_pkgvc"]
+[ext_resource type="Texture2D" uid="uid://doaf35gpn6oep" path="res://assets/Animated/Harsh fog/Untitled_Artwork-11.png" id="14_om8nc"]
+[ext_resource type="Texture2D" uid="uid://be3h2a3corhkg" path="res://assets/Animated/Harsh fog/Untitled_Artwork-12.png" id="15_k7o31"]
+[ext_resource type="Texture2D" uid="uid://dxivr2mvfl156" path="res://assets/Animated/Harsh fog/Untitled_Artwork-13.png" id="16_3fivn"]
+[ext_resource type="Texture2D" uid="uid://dgo167iqikf5k" path="res://assets/Animated/Harsh fog/Untitled_Artwork-14.png" id="17_qc8jh"]
+[ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="18_6wqd1"]
+[ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="19_rkb23"]
+[ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="20_rhe0b"]
+[ext_resource type="Texture2D" uid="uid://c4ypqsrrrc81y" path="res://assets/Animated/Spirit trail/Untitled_Artwork-1.png" id="21_qhmlq"]
+[ext_resource type="Texture2D" uid="uid://b52hnvanbumwe" path="res://assets/Animated/Spirit trail/Untitled_Artwork-2.png" id="22_d2fc3"]
+[ext_resource type="Texture2D" uid="uid://cydpjwyyut3qr" path="res://assets/Animated/Spirit trail/Untitled_Artwork-3.png" id="23_ym63n"]
+[ext_resource type="Texture2D" uid="uid://j53t6xbqjsib" path="res://assets/Animated/Spirit trail/Untitled_Artwork-4.png" id="24_dlgst"]
+[ext_resource type="Texture2D" uid="uid://dn87n8n86m8q4" path="res://assets/Animated/Spirit trail/Untitled_Artwork-5.png" id="25_rhrxq"]
+[ext_resource type="Texture2D" uid="uid://bmgkff7xld85f" path="res://assets/Animated/Spirit trail/Untitled_Artwork-6.png" id="26_qhl2o"]
+[ext_resource type="Texture2D" uid="uid://bldr8365iswwa" path="res://assets/Animated/Spirit trail/Untitled_Artwork-7.png" id="27_u5uyx"]
+[ext_resource type="Texture2D" uid="uid://cb0umvcrah0o" path="res://assets/Animated/Spirit trail/Untitled_Artwork-8.png" id="28_wt78d"]
+[ext_resource type="Texture2D" uid="uid://cxks1q2minbaw" path="res://assets/Animated/Spirit trail/Untitled_Artwork-9.png" id="29_oktw6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncucc"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_rub3o"]
+Panel/styles/panel = SubResource("StyleBoxFlat_ncucc")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvbvh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3nsha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eus3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kkosd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wtdcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4hbkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vw87y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cqctk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qn8lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_k60sd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pkgvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_om8nc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k7o31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3fivn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qc8jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6wqd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rkb23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rhe0b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oihj3"]
 light_mode = 1
@@ -27,20 +121,55 @@ point_count = 2
 offsets = PackedFloat32Array(0.0466667, 0.2, 0.68, 0.993333)
 colors = PackedColorArray(0, 0, 0, 0, 0.270222, 0.270222, 0.270222, 1, 0.41598, 0.41598, 0.41598, 1, 1, 1, 1, 0)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_eopoo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_qhmlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_d2fc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ym63n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_dlgst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rhrxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_qhl2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_u5uyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_wt78d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_oktw6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Right Slider" type="Control"]
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -211.0
+offset_left = -207.0
 grow_horizontal = 0
 grow_vertical = 2
-theme = ExtResource("1_8rvck")
+theme = ExtResource("1_jw0si")
 script = ExtResource("2_5tm1x")
 
-[node name="Background" type="NinePatchRect" parent="."]
-visible = false
+[node name="TitleBorder2" type="Panel" parent="."]
+modulate = Color(0.785124, 0.785124, 0.785124, 0.780392)
 clip_children = 2
 layout_mode = 1
 anchors_preset = 15
@@ -48,15 +177,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_xofbf")
-patch_margin_left = 41
-patch_margin_top = 44
-patch_margin_right = 43
-patch_margin_bottom = 44
+theme = SubResource("Theme_rub3o")
 
-[node name="SnowParticles" type="CPUParticles2D" parent="Background"]
+[node name="Control" type="Control" parent="TitleBorder2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TitleBorder2/Control"]
+modulate = Color(0, 0, 0, 0.498039)
+scale = Vector2(0.565, 0.565)
+sprite_frames = SubResource("SpriteFrames_pvbvh")
+autoplay = "default"
+frame_progress = 0.242085
+
+[node name="SnowParticles" type="CPUParticles2D" parent="TitleBorder2/Control"]
 material = SubResource("CanvasItemMaterial_oihj3")
-position = Vector2(99, 297)
 scale = Vector2(1.165, 1.165)
 amount = 3
 lifetime = 10.0
@@ -77,429 +218,47 @@ scale_amount_max = 0.4
 scale_amount_curve = SubResource("Curve_af2qk")
 color_ramp = SubResource("Gradient_8hjbd")
 
-[node name="Border" type="NinePatchRect" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TitleBorder2/Control"]
+modulate = Color(1, 1, 1, 0.337255)
+position = Vector2(-16.335, 0)
+rotation = 1.5708
+scale = Vector2(0.295, 0.295)
+sprite_frames = SubResource("SpriteFrames_eopoo")
+autoplay = "default"
+frame_progress = 0.778142
+
+[node name="Scroll" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Scroll" type="ScrollContainer" parent="Border"]
-custom_minimum_size = Vector2(226.855, 648.555)
-layout_mode = 0
-offset_right = 226.855
-offset_bottom = 648.555
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Border/Scroll"]
-custom_minimum_size = Vector2(211.12, 100)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="Title" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(6.59, 34.78)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Title"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Title" type="Label" parent="Border/Scroll/VBoxContainer/Title/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "Title"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Portrait" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-
-[node name="PortraitMask" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Portrait"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_xofbf")
-patch_margin_left = 24
-
-[node name="PortraitImage" type="Sprite2D" parent="Border/Scroll/VBoxContainer/Portrait/PortraitMask"]
-position = Vector2(85, 183)
-scale = Vector2(0.33, 0.33)
-texture = ExtResource("4_kgrry")
-script = ExtResource("7_6wy1j")
-
-[node name="Shatter" type="Sprite2D" parent="Border/Scroll/VBoxContainer/Portrait/PortraitMask"]
-visible = false
-position = Vector2(105, 61)
-rotation = 1.53589
-scale = Vector2(0.065, 0.065)
-texture = ExtResource("5_imjut")
-
-[node name="PortraitBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Portrait"]
-z_index = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Parameter1" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Parameter1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="PortraitMask2" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Parameter1/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_xofbf")
-patch_margin_left = 24
-
-[node name="ParameterDisplay" parent="Border/Scroll/VBoxContainer/Parameter1/TitleBorder/PortraitMask2" instance=ExtResource("6_l3vxr")]
-layout_mode = 1
-
-[node name="HP" type="Label" parent="Border/Scroll/VBoxContainer/Parameter1/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = 7.0
-offset_right = -160.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "HP"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme = ExtResource("1_jw0si")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
 
-[node name="Parameter2" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroll"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Title" parent="Scroll/VBoxContainer" instance=ExtResource("4_annwf")]
 layout_mode = 2
 
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Parameter2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="PortraitMask2" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Parameter2/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_xofbf")
-patch_margin_left = 24
-
-[node name="ParameterDisplay" parent="Border/Scroll/VBoxContainer/Parameter2/TitleBorder/PortraitMask2" instance=ExtResource("6_l3vxr")]
-layout_mode = 1
-
-[node name="Spirit" type="Label" parent="Border/Scroll/VBoxContainer/Parameter2/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = 8.5
-offset_right = -133.0
-offset_bottom = 2.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "Spirit
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Parameter3" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="Portrait" parent="Scroll/VBoxContainer" instance=ExtResource("5_ups67")]
 layout_mode = 2
 
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Parameter3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="PortraitMask2" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Parameter3/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_xofbf")
-patch_margin_left = 24
-
-[node name="ParameterDisplay" parent="Border/Scroll/VBoxContainer/Parameter3/TitleBorder/PortraitMask2" instance=ExtResource("6_l3vxr")]
-layout_mode = 1
-
-[node name="Spirit" type="Label" parent="Border/Scroll/VBoxContainer/Parameter3/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = 8.5
-offset_right = -133.0
-offset_bottom = 2.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "Spirit
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(6.59, 40.26)
+[node name="Button" parent="Scroll/VBoxContainer" instance=ExtResource("6_t1odt")]
 layout_mode = 2
-size_flags_vertical = 0
 
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Title" type="Label" parent="Border/Scroll/VBoxContainer/Button/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "Button"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Border/Scroll/VBoxContainer/Button/TitleBorder"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Button"
-
-[node name="Text" type="Label" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(0, 15)
+[node name="Text" parent="Scroll/VBoxContainer" instance=ExtResource("7_31jda")]
 layout_mode = 2
-theme = ExtResource("1_8rvck")
-theme_override_font_sizes/font_size = 15
-text = "texttexttexttexttexttexttexttexttextttt"
-horizontal_alignment = 1
-autowrap_mode = 3
+theme_override_font_sizes/font_size = 14
+text = "texttexttexttexttexttexttexttexttexttttkddddddddddddddddddddddddddddddddddddddddddddds"
 
-[node name="Button2" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(6.59, 40.26)
+[node name="ParameterDisplay" parent="Scroll/VBoxContainer" instance=ExtResource("6_l3vxr")]
 layout_mode = 2
-size_flags_vertical = 0
-
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Button2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Title" type="Label" parent="Border/Scroll/VBoxContainer/Button2/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "Button"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Border/Scroll/VBoxContainer/Button2/TitleBorder"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Button"
-
-[node name="Text2" type="Label" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 2
-theme = ExtResource("1_8rvck")
-theme_override_font_sizes/font_size = 15
-text = "texttexttexttexttexttexttexttexttextttt"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Button3" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(6.59, 40.26)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Button3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Title" type="Label" parent="Border/Scroll/VBoxContainer/Button3/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "Button"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Border/Scroll/VBoxContainer/Button3/TitleBorder"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Button"
-
-[node name="Text3" type="Label" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 2
-theme = ExtResource("1_8rvck")
-theme_override_font_sizes/font_size = 15
-text = "texttexttexttexttexttexttexttexttextttt"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Title2" type="Control" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(6.59, 34.78)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="TitleBorder" type="NinePatchRect" parent="Border/Scroll/VBoxContainer/Title2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_kkjt7")
-patch_margin_left = 20
-patch_margin_top = 22
-patch_margin_right = 17
-patch_margin_bottom = 19
-
-[node name="Title" type="Label" parent="Border/Scroll/VBoxContainer/Title2/TitleBorder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_8rvck")
-text = "Title"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Text4" type="Label" parent="Border/Scroll/VBoxContainer"]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 2
-theme = ExtResource("1_8rvck")
-theme_override_font_sizes/font_size = 15
-text = "texttexttexttexttexttexttexttexttextttt"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[connection signal="pressed" from="Border/Scroll/VBoxContainer/Button/TitleBorder/Button" to="." method="NAbuttonPressed"]
-[connection signal="pressed" from="Border/Scroll/VBoxContainer/Button2/TitleBorder/Button" to="." method="SAbuttonPressed"]
-[connection signal="pressed" from="Border/Scroll/VBoxContainer/Button3/TitleBorder/Button" to="." method="CAbuttonPressed"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://csjde6mcsyvm"]
+
+[ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="1_ol28x"]
+
+[node name="Text" type="Label"]
+custom_minimum_size = Vector2(0, 15)
+theme = ExtResource("1_ol28x")
+theme_override_font_sizes/font_size = 15
+text = "texttexttexttexttexttexttexttexttextttt"
+autowrap_mode = 3

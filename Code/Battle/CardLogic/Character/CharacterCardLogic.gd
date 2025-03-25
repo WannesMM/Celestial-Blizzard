@@ -123,8 +123,8 @@ func getDisplayInfo():
 	return [
 ["Title", cardName],
 ["Portrait", cardImage],
-["Parameter"],
-["Parameter"],
+["Parameter", getHP(), 0, getMaxHP()],
+["Parameter", getEnergy(), 0, getMaxEnergy()],
 ["Button", getNAName()],
 ["Text", getNADescription()],
 ["Button", getSAName()],

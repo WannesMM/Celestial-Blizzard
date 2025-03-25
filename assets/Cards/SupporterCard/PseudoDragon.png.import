@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://56qr07kqt662"
-path="res://.godot/imported/PseudoDragon.png-2cc2f3082c3792fedbe8d20aa158186b.ctex"
+path.s3tc="res://.godot/imported/PseudoDragon.png-2cc2f3082c3792fedbe8d20aa158186b.s3tc.ctex"
+path.etc2="res://.godot/imported/PseudoDragon.png-2cc2f3082c3792fedbe8d20aa158186b.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Cards/SupporterCard/PseudoDragon.png"
-dest_files=["res://.godot/imported/PseudoDragon.png-2cc2f3082c3792fedbe8d20aa158186b.ctex"]
+dest_files=["res://.godot/imported/PseudoDragon.png-2cc2f3082c3792fedbe8d20aa158186b.s3tc.ctex", "res://.godot/imported/PseudoDragon.png-2cc2f3082c3792fedbe8d20aa158186b.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

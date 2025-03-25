@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b315ff1gfupu6"
-path="res://.godot/imported/Fragmentum General.png-cc3c97778d93b1e00e11f35f103b8436.ctex"
+path.s3tc="res://.godot/imported/Fragmentum General.png-cc3c97778d93b1e00e11f35f103b8436.s3tc.ctex"
+path.etc2="res://.godot/imported/Fragmentum General.png-cc3c97778d93b1e00e11f35f103b8436.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Cards/CharacterCard/Fragmentum General.png"
-dest_files=["res://.godot/imported/Fragmentum General.png-cc3c97778d93b1e00e11f35f103b8436.ctex"]
+dest_files=["res://.godot/imported/Fragmentum General.png-cc3c97778d93b1e00e11f35f103b8436.s3tc.ctex", "res://.godot/imported/Fragmentum General.png-cc3c97778d93b1e00e11f35f103b8436.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

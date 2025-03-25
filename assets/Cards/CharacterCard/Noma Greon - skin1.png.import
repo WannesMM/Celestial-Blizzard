@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crr7lce1ujbgc"
-path="res://.godot/imported/Noma Greon - skin1.png-c7536214bff3e746e16490a395533a3a.ctex"
+path.s3tc="res://.godot/imported/Noma Greon - skin1.png-c7536214bff3e746e16490a395533a3a.s3tc.ctex"
+path.etc2="res://.godot/imported/Noma Greon - skin1.png-c7536214bff3e746e16490a395533a3a.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Cards/CharacterCard/Noma Greon - skin1.png"
-dest_files=["res://.godot/imported/Noma Greon - skin1.png-c7536214bff3e746e16490a395533a3a.ctex"]
+dest_files=["res://.godot/imported/Noma Greon - skin1.png-c7536214bff3e746e16490a395533a3a.s3tc.ctex", "res://.godot/imported/Noma Greon - skin1.png-c7536214bff3e746e16490a395533a3a.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
