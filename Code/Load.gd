@@ -62,7 +62,7 @@ func removeAnimation(animation: Animate):
 
 @export var effectsPath: String = "res://File/Effects.json"
 
-func loadEffect(effect: String, initialiser: Card, target: Card = initialiser.cardOwner.opponent.activeCharacter) -> Effect:
+func loadEffect(effect: String, initialiser: Card, stacks: int = 0 ,target: Card = initialiser.cardOwner.opponent.activeCharacter) -> Effect:
 	loadData(effect, effectsPath)
 	var script: Script = load(data.get("Code"))
 	return script.new(initialiser, target)

@@ -39,10 +39,12 @@ func setActive(x: bool):
 func playableOn():
 	return [cardOwner.characterCards.collision]
 
+var NABonusDamage: int = 0
+
 func NA():
 	cardOwner.reduceGold(NAcost)
 	gainEnergy()
-	await attack(NAdmg)
+	await attack(NAdmg + NABonusDamage)
 	
 func SA():
 	cardOwner.reduceGold(SAcost)
@@ -62,13 +64,16 @@ func onMove(attackType: String):
 	gameState.layoutManager.camera.zoom(Vector2(0,0), 1, 1.5)
 
 func receiveDamage(amt: int):
+	var receivedAmount = amt - damageReduction
+	
 	var anim = Load.loadAnimation("Take Damage")
-	anim.setText("- " + str(amt))
+	anim.setText("- " + str(receivedAmount))
 	anim.setPosition(global_position)
 	anim.setColor(Color.MAROON)
 	await Load.playAnimation(anim)
 	
-	await setHP(HP - amt + damageReduction)
+	await setHP(HP - receivedAmount)
+	await gameState.executeEffects("Specific Character Takes Damage", self)
 	onHit()
 	
 func onHit():
@@ -155,12 +160,13 @@ func getMaxHP():
 func setHP(amt: int):
 	if amt > maxHP:
 		HP = maxHP
-	if amt <= 0:
+	elif amt <= 0:
 		HP = 0
 		card.setLabel1(str(HP))
 		await defeatCard(self)
 	else:
 		HP = amt
+		
 	if card:
 		card.setLabel1(str(HP))
 	if HP == 0:

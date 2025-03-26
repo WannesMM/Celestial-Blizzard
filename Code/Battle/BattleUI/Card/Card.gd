@@ -296,6 +296,7 @@ func checkCost(req: int):
 	else:
 		return true
 
+#This is extended in Bartholomew
 func attack(dmg: int):
 	await cardOwner.damage(self, dmg + damageBonus)
 	

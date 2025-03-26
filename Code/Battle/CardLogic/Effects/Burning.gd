@@ -2,10 +2,10 @@ extends Effect
 
 func effectConstructor():
 	effectName = "Burning"
-	timeFrame = "AllyTurn"
+	timeFrames = ["AllyTurn"]
 	image = "Burning"
 	
-func executeEffect():
+func executeEffect(timeFrame: String = ""):
 	gameState.damage(applicator,1,target)
 	stacks -= 1
 	gameState.executeEffects("OnBurning")

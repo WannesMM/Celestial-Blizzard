@@ -2,9 +2,9 @@ extends Effect
 
 func effectConstructor():
 	effectName = "BurningDraw"
-	timeFrame = "OnBurning"
+	timeFrames = ["OnBurning"]
 	image = "Burning"
 	
-func executeEffect():
+func executeEffect(timeFrame: String = ""):
 	applicator.flashCard()
 	applicator.cardOwner.drawCards(1)

@@ -19,7 +19,18 @@ func characterCardConstructor():
 	
 	cardCost = 2
 
-var target: Card = null
+var target: CharacterCard = null
+
+func attack(dmg: int):
+	if target:
+		if target.active == false:
+			await cardOwner.damage(self, dmg + damageBonus + 1, target)
+		else:
+			await cardOwner.damage(self, dmg + damageBonus)
+		if target.defeated:
+			target = null
+	else:
+		await cardOwner.damage(self, dmg + damageBonus)
 
 func getTargetName():
 	if target:
@@ -31,7 +42,28 @@ func SA():
 	cardOwner.reduceGold(SAcost)
 	var cards = await cardOwner.getInputhandler().chooseTarget(cardOwner.opponent.characterCards.addedCards, 1, "Choose the target to mark")
 	target = cards[0]
+	
+	var newHuntersMark = Load.loadEffect("Hunter's Mark", self, -1, target)
+	gameState.scheduleEffect(newHuntersMark)
 	gainEnergy()
+	
+var CABuff = false
+	
+func CA():
+	cardOwner.reduceGold(CAcost)
+	reduceEnergy()
+	CABuff = true
+	await attack(CAdmg)
+
+func NA():
+	cardOwner.reduceGold(NAcost)
+	gainEnergy()
+	if CABuff == true:
+		await attack(NAdmg + NABonusDamage + 1)
+		CABuff = false
+	else:
+		attack(NAdmg + NABonusDamage)
+	
 
 func getDisplayInfo():
 	return [

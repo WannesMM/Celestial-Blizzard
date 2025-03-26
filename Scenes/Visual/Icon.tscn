@@ -12,8 +12,8 @@ light_mode = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_ky10m"]
 font_size = 900
-shadow_size = 50
-shadow_color = Color(0, 0, 0, 0.686275)
+shadow_size = 100
+shadow_color = Color(0, 0, 0, 0.443137)
 
 [node name="Icon" type="Sprite2D"]
 clip_children = 2

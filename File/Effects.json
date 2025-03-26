@@ -11,4 +11,8 @@
 	{
 		"Code": "res://Code/Battle/CardLogic/Effects/Effect-Segmentation.gd"
 	},
+	"Hunter's Mark": 
+	{
+		"Code": "res://Code/Battle/CardLogic/Effects/Effect-HuntersMark.gd"
+	},
 }

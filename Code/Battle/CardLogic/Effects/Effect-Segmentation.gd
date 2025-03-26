@@ -2,10 +2,10 @@ extends Effect
 
 func effectConstructor():
 	effectName = "Segmentation"
-	timeFrame = "Start of Round"
+	timeFrames = ["Start of Round"]
 	image = "DQMall"
 	
-func executeEffect():
+func executeEffect(timeFrame: String = ""):
 	applicator.flashCard()
 	var gold = applicator.cardOwner.battleResources.gold
 	if gold < 6:
