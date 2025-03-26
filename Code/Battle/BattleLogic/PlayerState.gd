@@ -152,7 +152,7 @@ func getGameState():
 func setGameState(state: GameState):
 	gameState = state
 	
-func getInputhandler():
+func getInputhandler() -> InputHandler:
 	return input
 	
 func setInputHandler(handler: InputHandler):

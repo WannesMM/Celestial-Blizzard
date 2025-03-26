@@ -18,6 +18,20 @@ func selectCards(cards, amount, message = "Select card(s)"):
 	layoutManager.removeCurrentMessage()
 	return selectedCards
 	
+func chooseTarget(cards: Array[Card], amount, message = "Choose your Target"):
+	selectedCards = []
+	layoutManager.multiselect = amount
+	layoutManager.currentInput = self
+	layoutManager.allowAction = [5]
+	Random.message(message)
+	while selectedCards == []:
+		layoutManager.selectTarget(cards)
+		await cardsSelected
+	layoutManager.multiselect = 1
+	layoutManager.allowAction = []
+	layoutManager.currentInput = null
+	return selectedCards
+	
 #Allows the player to choose one of the following actions: Play card, Use move, End round, Discard card. This will return the result in the form of an array
 func chooseAction():
 	selectedAction = []

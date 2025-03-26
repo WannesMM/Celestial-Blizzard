@@ -2,7 +2,7 @@ extends Node2D
 
 class_name CardLayout
 
-var addedCards = []
+var addedCards: Array[Card] = []
 var additionalCards = []
 
 var gamestate: PlayerState = null

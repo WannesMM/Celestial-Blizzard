@@ -42,7 +42,9 @@
 [ext_resource type="Texture2D" uid="uid://h6bfe4vr5rqg" path="res://assets/Cards/CardAssets/card inside shade.png" id="39_l6jqo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqvhu"]
-shadow_size = 2
+font_size = 17
+outline_color = Color(0.825856, 0.825856, 0.825856, 1)
+shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.152941)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8slk"]
@@ -189,13 +191,16 @@ texture = ExtResource("2_jhpte")
 script = ExtResource("6_f3m15")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 21.0
-offset_top = -87.0
+offset_left = 20.0
+offset_top = -91.0
 offset_right = 64.0
-offset_bottom = -41.0
+offset_bottom = -44.0
+theme_override_font_sizes/font_size = 23
 text = "10
 "
 label_settings = SubResource("LabelSettings_xqvhu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Darken" type="Sprite2D" parent="."]
 visible = false

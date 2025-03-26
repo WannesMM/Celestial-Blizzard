@@ -17,6 +17,9 @@ func chooseAction():
 func chooseActiveCharacter():
 	pass
 
+func chooseTarget(cards, amount, message):
+	pass
+
 func convertToCardLogic(cards):
 	var cardLogic: Array[Card] = []
 	for card in cards:

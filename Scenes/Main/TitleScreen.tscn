@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=37 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="FontFile" uid="uid://rhn3wt06rvrw" path="res://assets/Font/Baskerville Bold.otf" id="2_82mvx"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cj2ng8c5q1r0o" path="res://assets/Cards/CharacterCard/Hatsune Miku.png" id="8_nmak3"]
 [ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="9_w145k"]
 [ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="10_v3w12"]
+[ext_resource type="Texture2D" uid="uid://dybj0swdibv4f" path="res://assets/Animated/CharacterHit/HitShatter.png" id="12_31nyf"]
 [ext_resource type="Script" path="res://Code/Engine/World.gd" id="12_xxk26"]
 [ext_resource type="Script" path="res://Code/Engine/Rect.gd" id="15_ebcku"]
 
@@ -112,10 +113,12 @@ sky_material = SubResource("PanoramaSkyMaterial_p1x8r")
 [sub_resource type="Environment" id="Environment_x4d88"]
 background_mode = 2
 sky = SubResource("Sky_40egh")
+ambient_light_color = Color(0.360366, 0.389623, 0.80549, 1)
+ambient_light_energy = 3.53
 glow_enabled = true
 glow_intensity = 1.29
 glow_strength = 1.67
-glow_bloom = 0.1
+glow_bloom = 0.27
 fog_enabled = true
 fog_light_color = Color(0.0944922, 0.142084, 0.230469, 1)
 fog_density = 0.0733
@@ -373,6 +376,11 @@ script = ExtResource("8_jir33")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.3423)
 texture = ExtResource("5_t2bfb")
 
+[node name="Sprite3D2" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(2.045, 0, 0, 0, 2.045, 0, 0, 0, 2.045, 0, 0, -8.01379)
+modulate = Color(1, 1, 1, 0.541176)
+texture = ExtResource("12_31nyf")
+
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -0.00383973, -0.999993, 0, 0.999993, -0.00383973, 0, 0.367824, 1.47864)
 amount = 25
@@ -424,14 +432,34 @@ script = ExtResource("15_ebcku")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -42.0
-offset_right = 67.0
-grow_vertical = 0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = 64.0
+offset_bottom = 106.0
+grow_horizontal = 0
+grow_vertical = 2
 theme = ExtResource("2_n22yq")
 text = "Info"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -94.0
+offset_right = -1.0
+offset_bottom = -52.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_n22yq")
+text = "Wiki"
 
 [connection signal="mouse_entered" from="Battle" to="." method="BattleMouseEntered"]
 [connection signal="mouse_exited" from="Battle" to="." method="BattleMouseExited"]
@@ -442,3 +470,4 @@ text = "Info"
 [connection signal="mouse_exited" from="Account/AccountButton" to="." method="accountMouseExited"]
 [connection signal="pressed" from="Account/AccountButton" to="." method="accountButton"]
 [connection signal="pressed" from="Button" to="." method="infoButton"]
+[connection signal="pressed" from="Button2" to="." method="wikiButton"]

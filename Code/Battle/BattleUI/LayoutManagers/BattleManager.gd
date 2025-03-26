@@ -54,6 +54,7 @@ func selectCard(card: Card):
 	else:
 		highlightSelect(card)
 		displayCardInformation(card)
+		selectTarget(selectedCards)
 	
 func deselectAllCards():
 	var i = 0
@@ -177,6 +178,13 @@ func characterCardSwitch(card: Card):
 			message("You cannot switch to a defeated character")
 	else:
 		message("It is not your turn")
+
+#Permission 5: Select Target(s)
+func selectTarget(cards: Array[Card]):
+	if 5 in allowAction:
+		if multiselect == selectedCards.size():
+			currentInput.setSelectedCards()
+	
 
 func checkActionAllowed(card):
 	if currentInput != null:

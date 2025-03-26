@@ -9,9 +9,12 @@ var timeFrame: String
 var applicator: Card
 var target: Card
 
-var stacks: int = 0
+var stacks: int = -1: set = setStacks
 
+var representative: Icon: set = setRepresentative
 var image: String
+
+var additionalInfo
 
 func _init(initializer: Card, targetCard: Card = initializer.cardOwner.opponent.activeCharacter) -> void:
 	applicator = initializer
@@ -36,3 +39,10 @@ func removeEffect():
 	target.appliedEffects.erase(self)
 	target.card.removeEffect(self)
 	queue_free()
+
+func setRepresentative(repr: Icon):
+	representative = repr
+
+func setStacks(newStacks: int):
+	stacks = newStacks
+	representative.setUses(str(stacks))

@@ -31,7 +31,10 @@ func displayCardInformation(card: Card):
 			"Text":
 				createText(body)
 			"Parameter":
-				createParameter(item[1], item[2], item[3])
+				if item.size() == 5:
+					createParameter(item[1], item[2], item[3], item[4])
+				else:
+					createParameter(item[1], item[2], item[3])
 	visible = true
 
 func removeAll():
@@ -71,10 +74,10 @@ func createText(newText: String):
 	scene.text = newText
 	$Scroll/VBoxContainer.add_child(scene)
 	
-func createParameter(newValue: int, newMin: int, newMax: int):
+func createParameter(newValue: int, newMin: int, newMax: int, newColor = Color.MAROON):
 	var scene = parameterScene.instantiate()
-	scene.initialise(newValue, newMin, newMax)
 	$Scroll/VBoxContainer.add_child(scene)
+	scene.initialise(newValue, newMin, newMax, newColor)
 	
 func closeCardInformation():
 	visible = false

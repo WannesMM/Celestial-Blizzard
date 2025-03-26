@@ -15,7 +15,7 @@ var screenSize
 var isPressed = false
 var holdTimer = 0.0
 
-var selectedCards = []
+var selectedCards: Array[Card] = []
 
 #LayoutSettings
 var multiselect: int = 1

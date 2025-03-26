@@ -12,7 +12,7 @@ var turnCounter: int = 0
 
 func _init(allyDeck: Deck, allyInput: InputHandler, allyCharacterLayout: CardLayout, allyHandLayout: CardLayout, allyAreaSupport: AreaSupportLayout, allyEntity: EntityLayout,
 enemyDeck: Deck, enemyInput: InputHandler, enemyCharacterLayout: CardLayout, enemyHandLayout: CardLayout, enemyAreaSupport: AreaSupportLayout, enemyEntity: EntityLayout, battleResources: BattleRightPanel,
-layout: LayoutManager) -> void:
+layout: BattleManager) -> void:
 	setLayoutManager(layout)
 	
 	allyState = PlayerState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity, battleResources.allyResources, self)
@@ -28,6 +28,8 @@ layout: LayoutManager) -> void:
 var activePlayer: PlayerState: set = setActivePlayer
 var lastTurnEnder: PlayerState
 var playerWin: PlayerState = null
+
+var audioSet: int = Random.generateRandom(1,1,3)
 
 func startGame():
 	
@@ -164,7 +166,7 @@ func increaseGamePhase():
 	gamePhase = gamePhase + 1
 	if gamePhase > 3:
 		gamePhase = 3
-	AudioEngine.playBattleMusic(1, gamePhase)
+	AudioEngine.playBattleMusic(audioSet, gamePhase)
 	
 var scheduledEffects: Array[Effect] = []
 	
@@ -179,7 +181,7 @@ func scheduleEffect(newEffect: Effect):
 		mergeEffect.mergeEffect(newEffect)
 	
 #Timeframes: Start of Turn, AllyTurn, EnemyTurn
-func executeEffects(timeFrame: String):
+func executeEffects(timeFrame: String, additionalInfo = null):
 	match timeFrame:
 		"Start of Turn":
 			for effect in scheduledEffects:
@@ -193,6 +195,10 @@ func executeEffects(timeFrame: String):
 			for effect in scheduledEffects:
 				if timeFrame == effect.timeFrame and effect.target.cardOwner == activePlayer.opponent:
 					effect.executeEffect()
+		"Specific Character Takes Damage":
+			for effect in scheduledEffects:
+				if timeFrame == effect.timeFrame and (additionalInfo == effect.target):
+					effect.executeEffect()
 		_:
 			for effect in scheduledEffects:
 				if timeFrame == effect.timeFrame:
@@ -203,7 +209,7 @@ func executeEffects(timeFrame: String):
 func getLayoutManager():
 	return layoutManager
 	
-func setLayoutManager(layout: LayoutManager):
+func setLayoutManager(layout: BattleManager):
 	layoutManager = layout
 	
 func getAllyState():

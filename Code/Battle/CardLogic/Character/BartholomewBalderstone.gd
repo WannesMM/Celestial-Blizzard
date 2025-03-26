@@ -19,6 +19,37 @@ func characterCardConstructor():
 	
 	cardCost = 2
 
+var target: Card = null
+
+func getTargetName():
+	if target:
+		return target.cardName
+	else:
+		return "No Target"
+
+func SA():
+	cardOwner.reduceGold(SAcost)
+	var cards = await cardOwner.getInputhandler().chooseTarget(cardOwner.opponent.characterCards.addedCards, 1, "Choose the target to mark")
+	target = cards[0]
+	gainEnergy()
+
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter", getHP(), 0, getMaxHP()],
+["Parameter", getEnergy(), 0, getMaxEnergy(), Color.LIGHT_STEEL_BLUE],
+["Title", getTargetName()],
+["Button", getNAName()],
+["Text", getNADescription()],
+["Button", getSAName()],
+["Text", getSADescription()],
+["Button", getCAName()],
+["Text", getCADescription()],
+["Title", getAbilityName()],
+["Text", getAbilityDescription()]
+]
+
 #-------------------------------------------------------------------------------
 
 func getNAName() -> String:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://duhlyvrtcqji0"]
+[gd_scene load_steps=7 format=3 uid="uid://duhlyvrtcqji0"]
 
 [ext_resource type="Texture2D" uid="uid://c7gd077mkycww" path="res://assets/Setpieces/profileCircle.png" id="1_5nybc"]
 [ext_resource type="Script" path="res://Scenes/Visual/Icon.gd" id="2_q2228"]
@@ -9,6 +9,11 @@ light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_odwom"]
 light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_ky10m"]
+font_size = 900
+shadow_size = 50
+shadow_color = Color(0, 0, 0, 0.686275)
 
 [node name="Icon" type="Sprite2D"]
 clip_children = 2
@@ -22,3 +27,21 @@ material = SubResource("CanvasItemMaterial_odwom")
 position = Vector2(28.5714, 428.571)
 scale = Vector2(0.551, 0.551)
 script = ExtResource("3_f1nqk")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -548.5
+offset_top = -535.5
+offset_right = -475.5
+offset_bottom = -488.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1
+"
+label_settings = SubResource("LabelSettings_ky10m")
+horizontal_alignment = 1
+vertical_alignment = 1

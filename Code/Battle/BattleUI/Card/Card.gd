@@ -171,6 +171,19 @@ func cardShatterStage(stage: int):
 		var fadeTween = create_tween()
 		fadeTween.tween_property($Darken,"modulate:a",0.4,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
 
+func darkenCard(cards: Array[Card]):
+	if (self in cards) == false:
+		$Darken.modulate.a = 0
+		$Darken.visible = true
+		var fadeTween = create_tween()
+		fadeTween.tween_property($Darken,"modulate:a",0.4,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
+
+func undoDarkenCard():
+	$Darken.modulate.a = 0.4
+	$Darken.visible = true
+	var fadeTween = create_tween()
+	fadeTween.tween_property($Darken,"modulate:a",0,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
+
 #---------------------------------------------------------------------------------------------------------------------
 
 var cardImage: Texture
@@ -217,6 +230,9 @@ func removeRelatedCard(card: Card):
 func setLabel1(text: String):
 	$Label.text = text
 
+func setLabel1Color(color: Color):
+	$Label.modulate = color
+
 const iconPath = "res://Scenes/Visual/Icon.tscn"
 
 func addEffect(effect: Effect):
@@ -225,6 +241,7 @@ func addEffect(effect: Effect):
 	var iconScene = load(iconPath)
 	var icon: Icon = iconScene.instantiate()
 	icon.setIcon(effect.image)
+	icon.setUses(str(effect.stacks))
 	icon.representative = effect
 	$IconDisplay.addIcon(icon)
 
@@ -235,14 +252,14 @@ func removeEffect(effect: Effect):
 	for icon: Icon in $IconDisplay.icons:
 		if icon.representative == effect:
 			$IconDisplay.removeIcon(icon)
-	
+
 # CardLogic --------------------------------------------------------------------
 
 var card: Card = self
 
 var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
-var cardCost: int = 1
+var cardCost: int = 1: set = setCost
 
 # Card image settings
 var imageLink: String = "Card Unknown": set = setCardImage
@@ -254,6 +271,8 @@ var cardOwner: PlayerState = null
 var gameState: GameState = null
 
 var appliedEffects: Array[Effect] = []
+
+var damageBonus: int = 0
 
 # Gamefunctionality ------------------------------------------------------------
 
@@ -278,7 +297,7 @@ func checkCost(req: int):
 		return true
 
 func attack(dmg: int):
-	await cardOwner.damage(self, dmg)
+	await cardOwner.damage(self, dmg + damageBonus)
 	
 func removeAllEffects():
 	for effect in appliedEffects:
@@ -290,6 +309,10 @@ func getDisplayInfo():
 ["Portrait", cardImage],
 ["Text", getCardDescription()]
 ]
+
+func setCost(newCost: int):
+	cardCost = newCost
+	setLabel1(str(cardCost))
 
 # Getters and Setters ----------------------------------------------------------
 
