@@ -228,7 +228,6 @@ autoplay = "default"
 frame_progress = 0.976642
 
 [node name="Snow" parent="Middle" instance=ExtResource("28_1mb8r")]
-visible = false
 modulate = Color(1, 1, 1, 0.317647)
 self_modulate = Color(1, 1, 1, 0.176471)
 position = Vector2(-576, -324)

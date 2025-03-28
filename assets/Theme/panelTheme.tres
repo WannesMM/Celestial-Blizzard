@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d2w1aa0rw0nno"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://d2w1aa0rw0nno"]
 
 [ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="1_rt00q"]
-[ext_resource type="Texture2D" uid="uid://bu67uspkp3d47" path="res://assets/Cards/CardAssets/Card border small.png" id="2_rbv07"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3sb4"]
 bg_color = Color(1, 1, 1, 0.415686)
@@ -28,7 +27,6 @@ content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jd0ng"]
-texture = ExtResource("2_rbv07")
 texture_margin_left = 24.0
 texture_margin_top = 24.0
 texture_margin_right = 24.0

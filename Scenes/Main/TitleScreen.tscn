@@ -113,6 +113,7 @@ sky_material = SubResource("PanoramaSkyMaterial_p1x8r")
 [sub_resource type="Environment" id="Environment_x4d88"]
 background_mode = 2
 sky = SubResource("Sky_40egh")
+sky_rotation = Vector3(3.68264, -0.432842, 0)
 ambient_light_color = Color(0.360366, 0.389623, 0.80549, 1)
 ambient_light_energy = 3.53
 glow_enabled = true
