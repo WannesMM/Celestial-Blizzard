@@ -40,6 +40,7 @@ uv1_scale = Vector3(10.6, 10.6, 10.6)
 material = SubResource("StandardMaterial3D_6e80u")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtxuh"]
+albedo_color = Color(0.28, 0.28, 0.28, 1)
 albedo_texture = ExtResource("1_8ctnr")
 metallic_specular = 0.35
 roughness = 0.83
@@ -53,7 +54,7 @@ ao_texture = ExtResource("2_lt8ea")
 heightmap_enabled = true
 heightmap_scale = 16.0
 heightmap_texture = ExtResource("3_4hua1")
-uv1_scale = Vector3(-48.245, -48.245, -48.245)
+uv1_scale = Vector3(-16.86, -16.86, -16.86)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7avfy"]
 panorama = ExtResource("8_sajsp")
@@ -68,13 +69,14 @@ sky_rotation = Vector3(-0.216421, 3.2498, 0)
 reflected_light_source = 2
 glow_enabled = true
 glow_intensity = 2.5
+glow_strength = 2.0
 glow_bloom = 0.03
 fog_enabled = true
-fog_light_color = Color(0.642308, 0.685708, 0.753906, 1)
+fog_light_color = Color(0.00433594, 0.00716601, 0.0117188, 1)
 fog_light_energy = 11.18
 fog_sun_scatter = 0.27
 fog_density = 0.0063
-fog_aerial_perspective = 1.0
+fog_aerial_perspective = 0.172
 fog_height = 2.35
 adjustment_enabled = true
 
@@ -98,17 +100,17 @@ albedo_texture = ExtResource("11_0qwa0")
 transparency = 1
 albedo_texture = ExtResource("16_8owp3")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2ein"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.396078)
+albedo_texture = ExtResource("18_hj3ml")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbu1j"]
 transparency = 1
 shading_mode = 0
 disable_fog = true
 albedo_color = Color(0.810879, 0.879309, 1, 1)
 albedo_texture = ExtResource("17_jaeaj")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2ein"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.396078)
-albedo_texture = ExtResource("18_hj3ml")
 
 [node name="Environment" type="Node3D"]
 
@@ -760,7 +762,7 @@ material_override = SubResource("StandardMaterial3D_mgh4t")
 texture = ExtResource("16_8owp3")
 
 [node name="Fog2" type="Node3D" parent="."]
-transform = Transform3D(1.36661, 0, 1.78113, 0, 2.245, 0, -1.78113, 0, 1.36661, -17.1278, 12.49, -25.8281)
+transform = Transform3D(1.36661, 0, 1.78113, 0, 2.245, 0, -1.78113, 0, 1.36661, -17.1278, 17.3942, -25.8281)
 
 [node name="Sprite3D" type="Sprite3D" parent="Fog2"]
 transform = Transform3D(0.999429, 0.0337831, 0, -0.0337831, 0.999429, 0, 0, 0, 1, 0, 3.16702, -6.5727)
@@ -773,7 +775,7 @@ material_override = SubResource("StandardMaterial3D_mgh4t")
 texture = ExtResource("16_8owp3")
 
 [node name="Fog3" type="Node3D" parent="."]
-transform = Transform3D(1.76277, 0, -1.3902, 0, 2.245, 0, 1.3902, 0, 1.76277, 22.7179, 10.0215, -23.8571)
+transform = Transform3D(1.76277, 0, -1.3902, 0, 2.245, 0, 1.3902, 0, 1.76277, 22.7179, 16.9927, -23.8571)
 
 [node name="Sprite3D" type="Sprite3D" parent="Fog3"]
 transform = Transform3D(0.999429, 0.0337831, 0, -0.0337831, 0.999429, 0, 0, 0, 1, 0, 3.16702, -6.5727)
@@ -785,14 +787,14 @@ transform = Transform3D(-0.999186, -0.040341, 0, 0.040341, -0.999186, 0, 0, 0, 1
 material_override = SubResource("StandardMaterial3D_mgh4t")
 texture = ExtResource("16_8owp3")
 
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(75.8814, 0, -2.04799, 0, 75.9089, 0, 2.04799, 0, 75.8814, 6.70295, 22.0741, -175.735)
+material_override = SubResource("StandardMaterial3D_b2ein")
+texture = ExtResource("18_hj3ml")
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(5.085, 0, 0, 0, 5.085, 0, 0, 0, 5.085, -14.5522, 73.7909, -174.167)
+visible = false
 material_override = SubResource("StandardMaterial3D_cbu1j")
 billboard = 2
 texture = ExtResource("17_jaeaj")
-
-[node name="Sprite3D2" type="Sprite3D" parent="Sprite3D"]
-transform = Transform3D(14.9226, 0, -0.402752, 0, 14.928, 0, 0.402752, 0, 14.9226, 4.17997, 6.65749, -0.308296)
-visible = false
-material_override = SubResource("StandardMaterial3D_b2ein")
-texture = ExtResource("18_hj3ml")
