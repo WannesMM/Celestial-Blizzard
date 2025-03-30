@@ -1,6 +1,6 @@
 extends WorldEnvironment
 
-var rotateS: bool = false
+@export var rotateS: bool = false
 
 func _process(delta: float) -> void:
 	if rotateS:

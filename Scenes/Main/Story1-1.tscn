@@ -1,0 +1,167 @@
+[gd_scene load_steps=27 format=3 uid="uid://cqeqg13s6llw5"]
+
+[ext_resource type="Script" path="res://Code/Story/Story1-1.gd" id="1_ha1om"]
+[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="1_rpylp"]
+[ext_resource type="Script" path="res://Code/Engine/FirstPersonCamera.gd" id="2_6w461"]
+[ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="4_w7rj4"]
+[ext_resource type="Texture2D" uid="uid://kh8cgsqr4bc5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-2.png" id="5_sjkf2"]
+[ext_resource type="Texture2D" uid="uid://bjkq1iikogg7h" path="res://assets/Animated/Harsh fog/Untitled_Artwork-3.png" id="6_xrlxk"]
+[ext_resource type="Texture2D" uid="uid://dwnsxqlisapr4" path="res://assets/Animated/Harsh fog/Untitled_Artwork-4.png" id="7_2jnta"]
+[ext_resource type="Texture2D" uid="uid://0mk1nxj4fjaf" path="res://assets/Animated/Harsh fog/Untitled_Artwork-5.png" id="8_43rb7"]
+[ext_resource type="Texture2D" uid="uid://c2657tnxy8oi" path="res://assets/Animated/Harsh fog/Untitled_Artwork-6.png" id="9_ymwm5"]
+[ext_resource type="Texture2D" uid="uid://cvn2cla68yt04" path="res://assets/Animated/Harsh fog/Untitled_Artwork-7.png" id="10_iwg6n"]
+[ext_resource type="Texture2D" uid="uid://y3uvpo0wpee7" path="res://assets/Animated/Harsh fog/Untitled_Artwork-8.png" id="11_doe47"]
+[ext_resource type="Texture2D" uid="uid://bchhogib46tyr" path="res://assets/Animated/Harsh fog/Untitled_Artwork-9.png" id="12_mivfs"]
+[ext_resource type="Texture2D" uid="uid://b744pjtbcjy2q" path="res://assets/Animated/Harsh fog/Untitled_Artwork-10.png" id="13_ipjl0"]
+[ext_resource type="Texture2D" uid="uid://doaf35gpn6oep" path="res://assets/Animated/Harsh fog/Untitled_Artwork-11.png" id="14_8eub4"]
+[ext_resource type="Texture2D" uid="uid://be3h2a3corhkg" path="res://assets/Animated/Harsh fog/Untitled_Artwork-12.png" id="15_55ltb"]
+[ext_resource type="Texture2D" uid="uid://dxivr2mvfl156" path="res://assets/Animated/Harsh fog/Untitled_Artwork-13.png" id="16_nlut0"]
+[ext_resource type="Texture2D" uid="uid://dgo167iqikf5k" path="res://assets/Animated/Harsh fog/Untitled_Artwork-14.png" id="17_va1ht"]
+[ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="18_1ad80"]
+[ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="19_edgou"]
+[ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="20_4mikx"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vmae4"]
+emission_shape_scale = Vector3(4, 4, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -362.0
+angle_max = 358.0
+inherit_velocity_ratio = 0.017
+spread = 180.0
+gravity = Vector3(-0.04, -0.075, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 1.09
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.0499978
+scale_min = 0.15
+scale_max = 0.25
+
+[sub_resource type="Gradient" id="Gradient_4g5ql"]
+colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ofvkb"]
+gradient = SubResource("Gradient_4g5ql")
+fill = 1
+fill_from = Vector2(0.502674, 0.508021)
+fill_to = Vector2(0.508021, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_micpd"]
+transparency = 2
+alpha_scissor_threshold = 0.635
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_ofvkb")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_imju8"]
+material = SubResource("StandardMaterial3D_micpd")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqncp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_w7rj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sjkf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xrlxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2jnta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_43rb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ymwm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_iwg6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_doe47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mivfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ipjl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8eub4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_55ltb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_nlut0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_va1ht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1ad80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_edgou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_4mikx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[node name="Story1-1" type="Node3D"]
+script = ExtResource("1_ha1om")
+
+[node name="Environment" parent="." instance=ExtResource("1_rpylp")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19248, 0)
+script = ExtResource("2_6w461")
+max_yaw = 0.505
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -0.922065, -0.387032, 0, 0.387032, -0.922065, 0, 4.4303, -0.423716)
+amount = 2000
+lifetime = 10.0
+trail_lifetime = 3.1
+process_material = SubResource("ParticleProcessMaterial_vmae4")
+draw_pass_1 = SubResource("PlaneMesh_imju8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+light_color = Color(0.461412, 0.609073, 0.67, 1)
+light_energy = 2.554
+omni_range = 10.924
+omni_attenuation = 0.063
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control"]
+modulate = Color(1, 1, 1, 0.0823529)
+scale = Vector2(0.565, 0.565)
+sprite_frames = SubResource("SpriteFrames_sqncp")
+autoplay = "default"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = 50
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

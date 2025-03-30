@@ -1,4 +1,4 @@
-extends Node3D
+extends Camera3D
 
 class_name Camera3d
 
@@ -13,4 +13,16 @@ func shimmerRotate():
 	while shimmerRot:
 		await animateRotation(Vector3(-10,0,0), 10)
 		await animateRotation(Vector3(0,0,0), 10)
+
+var shakeStrength := 0.0
+
+func _process(delta: float) -> void:
+	if shakeStrength > 0:
+		shakeStrength = lerpf(shakeStrength,0,3 * delta)
+		h_offset = randomOffset()
+
+func shake(intensity: float = 0.1):
+	shakeStrength = intensity
 	
+func randomOffset():
+	return randf_range(-shakeStrength,shakeStrength)

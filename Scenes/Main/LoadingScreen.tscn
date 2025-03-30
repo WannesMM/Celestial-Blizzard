@@ -47,7 +47,7 @@ battleFieldScene = "res://Scenes/Battle/Battle.tscn"
 deckBuilderScene = "res://Scenes/Deckbuilder/deckBuilder.tscn"
 shopScene = "res://Scenes/Shop/Shop.tscn"
 TitleScene = "res://Scenes/Main/TitleScreen.tscn"
-storyScene = "res://Scenes/Main/Story.tscn"
+storyScene = "res://Scenes/Main/Story1-1.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("CanvasItemMaterial_vyr3u")

@@ -101,8 +101,12 @@ func checkConnection():
 			return false
 	return true
 	
-func startLoad(newScene: String = "BattleField"):
+func startLoad(newScene: String = "BattleField", mode: String = "Normal"):
 	nextScene = getScenePath(newScene)
+	
+	if mode == "Silent":
+		$Control.visible = false
+		$Tip.visible = false
 	
 	var fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
