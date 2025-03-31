@@ -3,7 +3,7 @@ extends StoryMachine
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	AudioEngine.playStory("Story2")
 	#startChapter("1-1")
 
 

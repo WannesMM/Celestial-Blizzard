@@ -1,0 +1,239 @@
+[gd_scene load_steps=18 format=3 uid="uid://dq2wj0rwhyo78"]
+
+[ext_resource type="Script" path="res://Scenes/Main/DialogueSystem.gd" id="1_oydpv"]
+[ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="2_ydmt6"]
+[ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_a5bfg"]
+[ext_resource type="Texture2D" uid="uid://dgo25iibpn31b" path="res://assets/Setpieces/Portrait Rect.png" id="4_joyxt"]
+[ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="5_ya81p"]
+[ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="6_x7uvc"]
+[ext_resource type="Script" path="res://Scenes/Main/Text.gd" id="7_e8t1m"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gcdlh"]
+light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwkij"]
+bg_color = Color(0, 0, 0, 0.352941)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0, 0, 0.564706)
+corner_radius_top_left = 21
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 21
+
+[sub_resource type="Theme" id="Theme_qmda1"]
+Panel/styles/panel = SubResource("StyleBoxFlat_uwkij")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5oo01"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_l2jif"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 98.9011), 0.0, 0.0, 0, 0, Vector2(1, 170.11), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_tisd8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483516), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5ubv0"]
+offsets = PackedFloat32Array(0.0466667, 0.2, 0.68, 0.993333)
+colors = PackedColorArray(0, 0, 0, 0, 0.270222, 0.270222, 0.270222, 1, 0.41598, 0.41598, 0.41598, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fafy7"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brpv7"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dy17v"]
+light_mode = 1
+
+[node name="DialogueSystem" type="Control"]
+material = SubResource("CanvasItemMaterial_gcdlh")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oydpv")
+
+[node name="Continue" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -136.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogueBoxBackground" type="Panel" parent="DialogueContainer"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -19.0
+offset_right = -20.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_qmda1")
+
+[node name="CardShader" type="Sprite2D" parent="DialogueContainer/DialogueBoxBackground"]
+position = Vector2(389, 99)
+scale = Vector2(1.165, 1.165)
+texture = ExtResource("2_ydmt6")
+
+[node name="SnowParticles" type="CPUParticles2D" parent="DialogueContainer/DialogueBoxBackground"]
+material = SubResource("CanvasItemMaterial_5oo01")
+position = Vector2(582, 92)
+scale = Vector2(1.165, 1.165)
+amount = 7
+lifetime = 10.0
+explosiveness = 0.11
+lifetime_randomness = 0.25
+texture = ExtResource("3_a5bfg")
+emission_shape = 3
+emission_rect_extents = Vector2(500, 100)
+spread = 89.09
+gravity = Vector2(0, 2.5)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -0.1
+angular_velocity_max = 0.1
+angular_velocity_curve = SubResource("Curve_l2jif")
+scale_amount_min = 0.25
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_tisd8")
+color_ramp = SubResource("Gradient_5ubv0")
+
+[node name="PortraitBox" type="Control" parent="DialogueContainer"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 172.0
+grow_vertical = 2
+
+[node name="PortraitAnchor" type="Control" parent="DialogueContainer/PortraitBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PortraitScaler" type="Node2D" parent="DialogueContainer/PortraitBox/PortraitAnchor"]
+position = Vector2(22, -21)
+scale = Vector2(0.68, 0.68)
+
+[node name="PortraitOutline" type="NinePatchRect" parent="DialogueContainer/PortraitBox/PortraitAnchor/PortraitScaler"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -148.0
+offset_right = 211.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+texture = ExtResource("4_joyxt")
+
+[node name="PortraitMask" type="NinePatchRect" parent="DialogueContainer/PortraitBox/PortraitAnchor/PortraitScaler"]
+clip_children = 1
+offset_left = -0.507584
+offset_top = -139.0
+offset_right = 199.492
+offset_bottom = 61.0
+rotation = 0.785398
+texture = ExtResource("4_joyxt")
+
+[node name="PortraitSprite" type="Sprite2D" parent="DialogueContainer/PortraitBox/PortraitAnchor/PortraitScaler/PortraitMask"]
+material = SubResource("CanvasItemMaterial_fafy7")
+position = Vector2(94.8066, 116.904)
+rotation = -0.785398
+scale = Vector2(0.415, 0.415)
+script = ExtResource("5_ya81p")
+
+[node name="TextContainer" type="Control" parent="DialogueContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 252.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.974582, 1)
+
+[node name="TextBox" type="RichTextLabel" parent="DialogueContainer/TextContainer"]
+material = SubResource("CanvasItemMaterial_brpv7")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.829
+anchor_bottom = 1.0
+offset_top = 39.0
+offset_right = -0.848083
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 5
+theme_override_fonts/normal_font = ExtResource("6_x7uvc")
+theme_override_font_sizes/normal_font_size = 15
+script = ExtResource("7_e8t1m")
+
+[node name="CharacterName" type="RichTextLabel" parent="DialogueContainer/TextContainer"]
+material = SubResource("CanvasItemMaterial_dy17v")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("6_x7uvc")
+theme_override_font_sizes/normal_font_size = 28
+scroll_active = false
+script = ExtResource("7_e8t1m")
+
+[node name="CardHighlight" type="Sprite2D" parent="DialogueContainer/TextContainer"]
+visible = false
+clip_children = 1
+position = Vector2(342, -189)
+scale = Vector2(0.167742, 0.107611)
+
+[node name="Middle" type="Control" parent="DialogueContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 556.0
+offset_top = 46.5
+offset_right = 556.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Continue" to="." method="proceed"]
