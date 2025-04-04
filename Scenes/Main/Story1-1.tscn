@@ -38,16 +38,16 @@ tangential_accel_max = 0.0499978
 scale_min = 0.15
 scale_max = 0.25
 
-[sub_resource type="Gradient" id="Gradient_4g5ql"]
+[sub_resource type="Gradient" id="Gradient_u43yx"]
 colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ofvkb"]
-gradient = SubResource("Gradient_4g5ql")
+gradient = SubResource("Gradient_u43yx")
 fill = 1
 fill_from = Vector2(0.502674, 0.508021)
 fill_to = Vector2(0.508021, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_micpd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvquq"]
 transparency = 2
 alpha_scissor_threshold = 0.635
 alpha_antialiasing_mode = 0
@@ -55,7 +55,7 @@ shading_mode = 0
 albedo_texture = SubResource("GradientTexture2D_ofvkb")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_imju8"]
-material = SubResource("StandardMaterial3D_micpd")
+material = SubResource("StandardMaterial3D_xvquq")
 size = Vector2(0.15, 0.15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sqncp"]

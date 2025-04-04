@@ -92,7 +92,7 @@ func executeRounds():
 			else:
 				push_error("Random genereert een onmogelijk getal")
 		
-		executeEffects("Start of Round")
+		executeEffects(Event.new())
 				
 		await layoutManager.wait(2)
 		
@@ -105,9 +105,9 @@ func executeRounds():
 		
 func executeTurn():
 	turnCounter += 1
-	executeEffects("Start of Turn")
-	executeEffects("AllyTurn")
-	executeEffects("EnemyTurn")
+	executeEffects(Event_StartOfTurn.new())
+	executeEffects(Event_AllyTurn.new())
+	executeEffects(Event_EnemyTurn.new())
 	layoutManager.message("Turn " + str(turnCounter))
 	
 	await layoutManager.wait(2)
@@ -170,32 +170,35 @@ func increaseGamePhase():
 	
 var scheduledEffects: Array[Effect] = []
 	
-func scheduleEffect(newEffect: Effect):
-	scheduledEffects.append(newEffect)
-	
 #Timeframes: Start of Turn, AllyTurn, EnemyTurn
-func executeEffects(timeFrame: String, additionalInfo = null):
-	match timeFrame:
-		"Start of Turn":
+func executeEffects(currentEvent: Event):
+	var eventType = currentEvent.get_class()
+	match eventType:
+		Event_StartOfTurn:
 			for effect in scheduledEffects:
-				if timeFrame in effect.timeFrames:
-					effect.executeEffect(timeFrame)
-		"AllyTurn":
+				for event in effect.events:
+					if event.is_class(eventType):
+						effect.executeEffect(eventType)
+		Event_AllyTurn:
 			for effect in scheduledEffects:
-				if timeFrame in effect.timeFrames and effect.target.cardOwner == activePlayer:
-					effect.executeEffect(timeFrame)
-		"EnemyTurn":
+				for event in effect.events:
+					if event.is_class(eventType) and effect.target.cardOwner == activePlayer:
+						effect.executeEffect(eventType)
+		Event_EnemyTurn:
 			for effect in scheduledEffects:
-				if timeFrame in effect.timeFrames and effect.target.cardOwner == activePlayer.opponent:
-					effect.executeEffect(timeFrame)
-		"Specific Character Takes Damage":
+				for event in effect.events:
+					if event.is_class(eventType) and effect.target.cardOwner == activePlayer.opponent:
+						effect.executeEffect(eventType)
+		Event_CharacterTakesDamage:
 			for effect in scheduledEffects:
-				if timeFrame in effect.timeFrames and (additionalInfo == effect.target):
-					effect.executeEffect(timeFrame)
-		_:
+				for event in effect.events:
+					if event.is_class(eventType) and event.character == effect.target:
+						effect.executeEffect(eventType)
+		Event_Generic:
 			for effect in scheduledEffects:
-				if timeFrame in effect.timeFrames:
-					effect.executeEffect(timeFrame)
+				for event in effect.events:
+					if event.is_class(eventType) and currentEvent.timeFrame == event.timeFrame:
+						effect.executeEffect(eventType)
 	
 # Getter and Setters -------------------------------------------------------------------------------
 

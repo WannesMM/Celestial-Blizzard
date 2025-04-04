@@ -86,8 +86,7 @@ func setGoldenBreath(new: int):
 func SA():
 	cardOwner.reduceGold(SAcost)
 	if(goldenBreath != 0):
-		var newBurning = Load.loadEffect("Burning", self, goldenBreath)
-		gameState.scheduleEffect(newBurning)
+		Effect_Burning.new(self,cardOwner.opponent.activeCharacter,goldenBreath)
 		goldenBreath = 0
 	gainEnergy()
 	

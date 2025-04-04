@@ -73,7 +73,7 @@ func receiveDamage(amt: int):
 	await Load.playAnimation(anim)
 	
 	await setHP(HP - receivedAmount)
-	await gameState.executeEffects("Specific Character Takes Damage", self)
+	await gameState.executeEffects(Event_CharacterTakesDamage.new(self))
 	onHit()
 	
 func onHit():

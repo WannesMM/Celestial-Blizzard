@@ -2,7 +2,7 @@ extends Effect
 
 func effectConstructor():
 	effectName = "Hunter's Mark"
-	timeFrames = ["Specific Character Takes Damage", "EnemyTurn"]
+	events = [Event_CharacterTakesDamage.new(target), Event_EnemyTurn.new()]
 	additionalInfo = target
 	image = "Hunter's Mark"
 	

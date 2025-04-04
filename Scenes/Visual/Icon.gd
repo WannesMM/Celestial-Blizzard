@@ -2,15 +2,8 @@ extends Sprite2D
 
 class_name Icon
 
-var representative = null: set = setRepresentative
-
-func setRepresentative(repr):
-	representative = repr
-	repr.setRepresentative(self)
-
-func setIcon(icon: String):
-	var arr = getIconPath(icon)
-	$Image.setPortraitImage(arr[0], arr[1], arr[2])
+func initialise(texture: Texture) -> void:
+	$Image.texture = texture
 
 func setUses(uses: String = ""):
 	if uses == "-1":

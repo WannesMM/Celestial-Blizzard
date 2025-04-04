@@ -238,20 +238,12 @@ const iconPath = "res://Scenes/Visual/Icon.tscn"
 func addEffect(effect: Effect):
 	appliedEffects.append(effect)
 	
-	var iconScene = load(iconPath)
-	var icon: Icon = iconScene.instantiate()
-	icon.setIcon(effect.image)
-	icon.setUses(str(effect.stacks))
-	icon.representative = effect
-	$IconDisplay.addIcon(icon)
+	$IconDisplay.addIcon(effect.icon)
 
 func removeEffect(effect: Effect):
 	appliedEffects.erase(effect)
-	gameState.scheduledEffects.erase(effect)
 	
-	for icon: Icon in $IconDisplay.icons:
-		if icon.representative == effect:
-			$IconDisplay.removeIcon(icon)
+	$IconDisplay.removeIcon(effect.icon)
 
 # CardLogic --------------------------------------------------------------------
 
