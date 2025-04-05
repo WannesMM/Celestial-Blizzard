@@ -92,7 +92,7 @@ func executeRounds():
 			else:
 				push_error("Random genereert een onmogelijk getal")
 		
-		executeEffects(Event.new())
+		executeEffects(Event_StartOfRound.new())
 				
 		await layoutManager.wait(2)
 		
@@ -172,33 +172,31 @@ var scheduledEffects: Array[Effect] = []
 	
 #Timeframes: Start of Turn, AllyTurn, EnemyTurn
 func executeEffects(currentEvent: Event):
-	var eventType = currentEvent.get_class()
-	match eventType:
-		Event_StartOfTurn:
-			for effect in scheduledEffects:
-				for event in effect.events:
-					if event.is_class(eventType):
-						effect.executeEffect(eventType)
-		Event_AllyTurn:
-			for effect in scheduledEffects:
-				for event in effect.events:
-					if event.is_class(eventType) and effect.target.cardOwner == activePlayer:
-						effect.executeEffect(eventType)
-		Event_EnemyTurn:
-			for effect in scheduledEffects:
-				for event in effect.events:
-					if event.is_class(eventType) and effect.target.cardOwner == activePlayer.opponent:
-						effect.executeEffect(eventType)
-		Event_CharacterTakesDamage:
-			for effect in scheduledEffects:
-				for event in effect.events:
-					if event.is_class(eventType) and event.character == effect.target:
-						effect.executeEffect(eventType)
-		Event_Generic:
-			for effect in scheduledEffects:
-				for event in effect.events:
-					if event.is_class(eventType) and currentEvent.timeFrame == event.timeFrame:
-						effect.executeEffect(eventType)
+	if currentEvent is Event_StartOfTurn:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_StartOfTurn:
+					effect.execute(currentEvent)
+	elif currentEvent is Event_AllyTurn:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_AllyTurn and effect.target.cardOwner == activePlayer:
+					effect.execute(currentEvent)
+	elif currentEvent is Event_EnemyTurn:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_EnemyTurn and effect.target.cardOwner == activePlayer.opponent:
+					effect.execute(currentEvent)
+	elif currentEvent is Event_CharacterTakesDamage:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_CharacterTakesDamage and event.character == effect.target:
+					effect.execute(currentEvent)
+	elif currentEvent is Event_Generic:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_Generic and currentEvent.timeFrame == event.timeFrame:
+					effect.execute(currentEvent)
 	
 # Getter and Setters -------------------------------------------------------------------------------
 
