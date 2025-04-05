@@ -163,6 +163,7 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_jhpte")
 
 [node name="cardImage" type="Sprite2D" parent="CardMask"]
+scale = Vector2(6.78, 6.78)
 texture = ExtResource("2_jyits")
 script = ExtResource("4_hdf5q")
 
