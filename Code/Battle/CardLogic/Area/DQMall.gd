@@ -18,4 +18,4 @@ func getCardDescription() -> String:
 		<10 --> Gain 1 energy on the active character"
 
 func playCardLogic():
-	gameState.scheduleEffect(Load.loadEffect("Segmentation",self, -1 ,self))
+	Effect_Segmentation.new(self,self)

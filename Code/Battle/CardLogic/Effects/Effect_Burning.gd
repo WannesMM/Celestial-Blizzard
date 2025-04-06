@@ -3,6 +3,7 @@ extends CountdownEffect
 class_name Effect_Burning
 
 func _init(applicator: Card, target: Card, counter: int) -> void:
+	texture = preload("res://assets/Icons/Burning Icon.png")
 	super._init(applicator, target, counter)
 	events = [Event_AllyTurn.new()]
 	

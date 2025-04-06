@@ -234,7 +234,7 @@ frame = 2
 frame_progress = 0.0693526
 
 [node name="IconDisplay" parent="." instance=ExtResource("37_noqv0")]
-position = Vector2(55, 103)
+position = Vector2(40, 96)
 scale = Vector2(0.75, 0.75)
 
 [node name="CardInsideShade" type="Sprite2D" parent="."]

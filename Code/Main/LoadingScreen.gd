@@ -63,7 +63,7 @@ func battleSpecificLoad(battle):
 	var enemyInput = PlayerInput.new(battleField)
 	var test = BattleTest.new()
 	
-	var deck1 = test.burningDeck1
+	var deck1 = test.Monsters
 	var deck2 = test.TestDeck1
 	
 	battleField.initialiseGame(deck1,allyInput,deck2,enemyInput)

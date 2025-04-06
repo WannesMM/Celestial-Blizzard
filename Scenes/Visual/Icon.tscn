@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://duhlyvrtcqji0"]
 
-[ext_resource type="Texture2D" uid="uid://c7gd077mkycww" path="res://assets/Setpieces/profileCircle.png" id="1_5nybc"]
+[ext_resource type="Texture2D" uid="uid://sovxu8u6cn52" path="res://assets/Icons/Buff Icon.png" id="2_1oxi6"]
 [ext_resource type="Script" path="res://Scenes/Visual/Icon.gd" id="2_q2228"]
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="3_f1nqk"]
 
@@ -12,20 +12,18 @@ light_mode = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_ky10m"]
 font_size = 900
-shadow_size = 100
-shadow_color = Color(0, 0, 0, 0.443137)
+shadow_size = 175
+shadow_color = Color(0, 0, 0, 0.419608)
 
-[node name="Icon" type="Sprite2D"]
-clip_children = 2
+[node name="Icon" type="Node2D"]
 material = SubResource("CanvasItemMaterial_xgkbb")
-scale = Vector2(0.025, 0.025)
-texture = ExtResource("1_5nybc")
+scale = Vector2(0.015, 0.015)
 script = ExtResource("2_q2228")
 
 [node name="Image" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_odwom")
-position = Vector2(28.5714, 428.571)
-scale = Vector2(0.551, 0.551)
+scale = Vector2(10.43, 10.43)
+texture = ExtResource("2_1oxi6")
 script = ExtResource("3_f1nqk")
 
 [node name="Label" type="Label" parent="."]
@@ -34,10 +32,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -548.5
-offset_top = -535.5
-offset_right = -475.5
-offset_bottom = -488.5
+offset_left = 320.0
+offset_top = -120.0
+offset_right = 696.0
+offset_bottom = 996.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "1

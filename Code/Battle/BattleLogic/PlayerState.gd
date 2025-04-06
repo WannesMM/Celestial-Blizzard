@@ -96,6 +96,8 @@ func playCard(card: Card, layout = null):
 		"EquipmentCard":
 			pass
 	card.playCard()
+	gameState.executeEffects(Event_PlayCard.new(card))
+	gameState.executeEffects(Event_PlayCardType.new(card.getCardType()))
 
 func playSupporter(card: Card, layout):
 	if layout is Card:

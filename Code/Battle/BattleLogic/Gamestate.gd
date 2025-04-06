@@ -197,6 +197,16 @@ func executeEffects(currentEvent: Event):
 			for event in effect.events:
 				if event is Event_Generic and currentEvent.timeFrame == event.timeFrame:
 					effect.execute(currentEvent)
+	elif currentEvent is Event_PlayCard:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_PlayCard and currentEvent.card == event.card:
+					effect.execute(currentEvent)
+	elif currentEvent is Event_PlayCardType:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_PlayCardType and currentEvent.cardType == event.cardType:
+					effect.execute(currentEvent)
 	
 # Getter and Setters -------------------------------------------------------------------------------
 

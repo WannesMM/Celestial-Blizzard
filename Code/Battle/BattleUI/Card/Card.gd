@@ -258,7 +258,7 @@ var imageLink: String = "Card Unknown": set = setCardImage
 var imagePosition: Vector2 = Vector2(0,0)
 var sampleColor: Color
 
-var cardOwner: PlayerState = null
+var cardOwner: PlayerState = null: set = setCardOwner
 var gameState: GameState = null
 
 var appliedEffects: Array[Effect] = []
@@ -328,6 +328,7 @@ func setCardCost(cost):
 
 func setCardOwner(player: PlayerState):
 	cardOwner = player
+	gameState = player.gameState
 	
 func getCardOwner(player: PlayerState):
 	return cardOwner

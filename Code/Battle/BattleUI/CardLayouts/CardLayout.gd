@@ -59,13 +59,11 @@ func connectSignal(card):
 func cardMouseEntered(card: Card):
 	if !cardBeingDragged and hoverable:
 		card.highlightBorder()
-		card.highlightOuterGlow()
 		if self is CardHandLayout:
 			card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 		
 func cardMouseExited(card):
 	card.undoHighlightBorder()
-	card.undoHighlightOuterGlow()
 	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
 
 func _process(delta: float) -> void:

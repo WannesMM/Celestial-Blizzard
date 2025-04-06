@@ -41,10 +41,9 @@ func getTargetName():
 func SA():
 	cardOwner.reduceGold(SAcost)
 	var cards = await cardOwner.getInputhandler().chooseTarget(cardOwner.opponent.characterCards.addedCards, 1, "Choose the target to mark")
-	target = cards[0]
-	
-	var newHuntersMark = Load.loadEffect("Hunter's Mark", self, -1, target)
-	gameState.scheduleEffect(newHuntersMark)
+	if target != cards[0]:
+		target = cards[0]
+		Effect_HuntersMark.new(self,target,1)
 	gainEnergy()
 	
 var CABuff = false

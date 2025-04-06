@@ -54,7 +54,7 @@ func selectCard(card: Card):
 	else:
 		highlightSelect(card)
 		displayCardInformation(card)
-		selectTarget(selectedCards)
+		selectTarget()
 	
 func deselectAllCards():
 	var i = 0
@@ -179,11 +179,21 @@ func characterCardSwitch(card: Card):
 	else:
 		message("It is not your turn")
 
+var viableTargets: Array[Card] = []
+
 #Permission 5: Select Target(s)
-func selectTarget(cards: Array[Card]):
+func selectTarget():
 	if 5 in allowAction:
 		if multiselect == selectedCards.size():
-			currentInput.setSelectedCards()
+			var allowed = true
+			for card in selectedCards:
+				if !(card in viableTargets):
+					allowed = false
+			if allowed:
+				currentInput.setSelectedCards()
+			else:
+				Random.message("Choose a valid target")
+				deselectAllCards()
 	
 
 func checkActionAllowed(card):
