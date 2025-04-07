@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://duhlyvrtcqji0"]
+[gd_scene load_steps=6 format=3 uid="uid://duhlyvrtcqji0"]
 
-[ext_resource type="Texture2D" uid="uid://sovxu8u6cn52" path="res://assets/Icons/Buff Icon.png" id="2_1oxi6"]
 [ext_resource type="Script" path="res://Scenes/Visual/Icon.gd" id="2_q2228"]
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="3_f1nqk"]
 
@@ -23,10 +22,10 @@ script = ExtResource("2_q2228")
 [node name="Image" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_odwom")
 scale = Vector2(10.43, 10.43)
-texture = ExtResource("2_1oxi6")
 script = ExtResource("3_f1nqk")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

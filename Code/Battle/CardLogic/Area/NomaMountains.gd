@@ -15,3 +15,14 @@ func getEffectName() -> String:
 
 func getCardDescription() -> String:
 	return "At the start of the next 2 rounds, draw an additional 2 cards."
+
+var counter = 2
+
+func playCardLogic(layout):
+	Effect_Recall.new(self,self,[Event_StartOfRound.new()],drawCards)
+	
+func drawCards():
+	cardOwner.drawCards(2)
+	counter -= 1
+	if counter <= 0:
+		discard()

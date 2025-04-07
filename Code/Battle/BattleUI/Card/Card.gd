@@ -270,10 +270,10 @@ var damageBonus: int = 0
 var targetable: bool = true
 
 # Code that triggers when the card is played, to be extended
-func playCard():
-	playCardLogic()
+func playCard(layout):
+	playCardLogic(layout)
 	
-func playCardLogic():
+func playCardLogic(layout):
 	Random.message("This card has not been implemented")
 
 # This returns the layouts that this card is playable on
@@ -306,6 +306,22 @@ func setCost(newCost: int):
 	cardCost = newCost
 	setLabel1(str(cardCost))
 
+func delete():
+	if currentLayout:
+		getLayout().removeCard(self)
+	removeAllEffects()
+	for relatedCard: Card in relatedCards:
+		relatedCard.delete()
+	queue_free()
+	
+func discard():
+	if currentLayout:
+		getLayout().removeCard(self)
+	removeAllEffects()
+	for relatedCard: Card in relatedCards:
+		relatedCard.discard()
+	cardOwner.deck.stackAddToBottom(self)
+	
 # Getters and Setters ----------------------------------------------------------
 
 func getCardName():

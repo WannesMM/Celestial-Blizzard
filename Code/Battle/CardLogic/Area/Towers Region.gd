@@ -15,3 +15,10 @@ func getEffectName() -> String:
 
 func getCardDescription() -> String:
 	return "When a characters' move deals no damage, gain 1 gold."
+
+func playCardLogic(layout):
+	Effect_Recall.new(self,self,[Event_CharacterUsesMove.new()],towersEffect)
+
+func towersEffect():
+	flashCard()
+	cardOwner.gainGold(1)

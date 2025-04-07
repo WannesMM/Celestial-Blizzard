@@ -68,6 +68,7 @@ func chooseAction():
 							setTurnEnded(true)
 						else:
 							Random.message("You don't have enough spirit")
+				gameState.executeEffects(Event_CharacterUsesMove.new(action[1],action[2]))
 		"End Round": 
 			setTurnEnded(true)
 			setRoundEnded(true)
@@ -95,7 +96,7 @@ func playCard(card: Card, layout = null):
 			getEntityCards().addCard(card)
 		"EquipmentCard":
 			pass
-	card.playCard()
+	card.playCard(layout)
 	gameState.executeEffects(Event_PlayCard.new(card))
 	gameState.executeEffects(Event_PlayCardType.new(card.getCardType()))
 
@@ -139,12 +140,6 @@ func checkCost(cost: int):
 		return false
 	else:
 		return true
-		
-func deleteCard(card: Card):
-	card.getLayout().removeCard(card)
-	card.removeAllEffects()
-	for relatedCard in card.relatedCards:
-		deleteCard(relatedCard)
 	
 # Getters and Setters ------------------------------------------------------------------------------
 

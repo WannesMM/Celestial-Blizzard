@@ -177,6 +177,11 @@ func executeEffects(currentEvent: Event):
 			for event in effect.events:
 				if event is Event_StartOfTurn:
 					effect.execute(currentEvent)
+	if currentEvent is Event_StartOfRound:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_StartOfRound:
+					effect.execute(currentEvent)
 	elif currentEvent is Event_AllyTurn:
 		for effect in scheduledEffects:
 			for event in effect.events:
@@ -191,6 +196,11 @@ func executeEffects(currentEvent: Event):
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_CharacterTakesDamage and event.character == effect.target:
+					effect.execute(currentEvent)
+	elif currentEvent is Event_CharacterUsesMove:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_CharacterUsesMove:
 					effect.execute(currentEvent)
 	elif currentEvent is Event_Generic:
 		for effect in scheduledEffects:

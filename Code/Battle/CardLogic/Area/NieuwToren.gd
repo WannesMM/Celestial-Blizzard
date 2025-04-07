@@ -14,7 +14,7 @@ func getEffectName() -> String:
 func getCardDescription() -> String:
 	return "Destroy every supporter and region card on the arena, both yours and your opponent's and replace them with an Ashen Remains card"
 
-func playCardLogic():
+func playCardLogic(layout):
 	for card: Card in cardOwner.getAreaSupportCards().addedCards.duplicate(false):
 		cardOwner.deleteCard(card)
 		var ashenRemains: Card = Load.loadCard("Ashen Remains")

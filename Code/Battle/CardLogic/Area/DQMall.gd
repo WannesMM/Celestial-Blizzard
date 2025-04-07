@@ -17,5 +17,5 @@ func getCardDescription() -> String:
 		<8 --> Gain 1 card
 		<10 --> Gain 1 energy on the active character"
 
-func playCardLogic():
+func playCardLogic(layout):
 	Effect_Segmentation.new(self,self)

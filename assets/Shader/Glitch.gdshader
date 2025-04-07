@@ -7,13 +7,13 @@ uniform vec4 color2 = vec4(1.0, 1.0, 0.2, 1.0); // Yellow color
 
 void fragment() {
     vec2 uv = UV;
-    
+
     // Time-based flickering (randomized intensity)
     float flicker = step(flicker_intensity, fract(sin(dot(uv, vec2(12.9898,78.233))) * 43758.5453 + TIME * time_speed));
 
     // Horizontal distortion effect
     float offset = sin(TIME * 10.0 + uv.y * 5.0) * 0.02;
-    
+
     // Mix colors based on flicker effect
     vec4 final_color = mix(color1, color2, flicker);
 

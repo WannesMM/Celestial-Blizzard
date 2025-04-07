@@ -18,7 +18,7 @@ func getCardDescription() -> String:
 
 var recall: Effect
 
-func playCardLogic():
+func playCardLogic(layout):
 	var target: Card = null
 	for card in cardOwner.opponent.areaSupportCards.addedCards:
 		if card.relatedCards == []:

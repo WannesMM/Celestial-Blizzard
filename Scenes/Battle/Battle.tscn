@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bobmf4tohecn"]
+[gd_scene load_steps=14 format=3 uid="uid://bobmf4tohecn"]
 
 [ext_resource type="Script" path="res://Scenes/Battle/Battle.gd" id="1_ifpgi"]
 [ext_resource type="PackedScene" uid="uid://dg4dd53dv5m3" path="res://Scenes/Battle/battlefield.tscn" id="1_xlgde"]
 [ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="3_v7neh"]
 [ext_resource type="Script" path="res://Code/Engine/FirstPersonCamera.gd" id="4_v2hy8"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="5_2734u"]
-[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="5_wi3rj"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fc4ds"]
 emission_shape_scale = Vector3(4, 4, 0)
@@ -115,6 +114,3 @@ amount = 50
 lifetime = 7.0
 process_material = SubResource("ParticleProcessMaterial_po8g6")
 draw_pass_1 = SubResource("PlaneMesh_ajg47")
-
-[node name="Environment" parent="3d" instance=ExtResource("5_wi3rj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.47433)
