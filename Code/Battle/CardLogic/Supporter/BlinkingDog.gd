@@ -20,8 +20,8 @@ var recall: Effect
 
 func playCardLogic(layout):
 	var target: Card = null
-	for card in cardOwner.opponent.areaSupportCards.addedCards:
-		if card.relatedCards == []:
+	for card: AreaCard in cardOwner.opponent.areaSupportCards.addedCards:
+		if card.allowMoreSupporters():
 			target = card
 	if target:
 		moveDog(target)

@@ -102,8 +102,8 @@ func playCard(card: Card, layout = null):
 
 func playSupporter(card: Card, layout):
 	if layout is Card:
-					if layout.getCardType() == "AreaCard":
-						layout.addRelatedCard(card)
+		if layout.getCardType() == "AreaCard":
+			layout.addRelatedCard(card)
 	
 func drawCards(amt: int):
 	cardHand.addCards(deck.drawCards(amt))

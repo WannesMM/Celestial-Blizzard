@@ -2,10 +2,10 @@ extends AreaCard
 
 func areaCardConstructor():
 	cardName = "Ashen Remains"
-	imageScale = Vector2(4,4)
 	imageLink = "Ashen Remains"
 	sampleColor = Color.DIM_GRAY
 	
+	amountSupporter = 0
 	cardCost = 0
 	
 #---------------------------------------------------------------------------------------------------

@@ -2,6 +2,8 @@ extends Card
 
 class_name AreaCard
 
+var amountSupporter: int = 1
+
 func cardConstructor():
 	cardType = "AreaCard"
 	areaCardConstructor()
@@ -29,3 +31,6 @@ func getEffectName() -> String:
 
 func getCardDescription() -> String:
 	return "This area does nothing besides existing"
+
+func allowMoreSupporters():
+	return relatedCards.size() < amountSupporter

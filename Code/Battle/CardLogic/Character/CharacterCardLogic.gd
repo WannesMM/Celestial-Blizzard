@@ -106,6 +106,15 @@ func getMoveCost(move: String):
 		"CA":
 			return CAcost
 
+func getMoveDamage(move: String):
+	match move:
+		"NA":
+			return NAdmg
+		"SA":
+			return SAdmg
+		"CA":
+			return CAdmg
+
 func getMoveName(move: String):
 	match move:
 		"NA":

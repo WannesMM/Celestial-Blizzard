@@ -16,13 +16,13 @@ func getCardDescription() -> String:
 
 func playCardLogic(layout):
 	for card: Card in cardOwner.getAreaSupportCards().addedCards.duplicate(false):
-		cardOwner.deleteCard(card)
+		card.discard()
 		var ashenRemains: Card = Load.loadCard("Ashen Remains")
 		ashenRemains.setCardOwner(cardOwner)
 		cardOwner.getAreaSupportCards().addCard(ashenRemains)
 	
 	for card in cardOwner.opponent.getAreaSupportCards().addedCards.duplicate(false):
-		cardOwner.opponent.deleteCard(card)
+		card.discard()
 		var ashenRemains = Load.loadCard("Ashen Remains")
 		ashenRemains.setCardOwner(cardOwner.opponent)
 		cardOwner.opponent.getAreaSupportCards().addCard(ashenRemains)

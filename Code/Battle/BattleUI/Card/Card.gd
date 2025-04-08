@@ -218,14 +218,20 @@ func generateShaderColor():
 	
 	$CardOutsideShade.fade(0)
 
+var baseCard: Card
+
 func addRelatedCard(card: Card):
+	if card.baseCard:
+		card.baseCard.removeRelatedCard(card)
+	card.baseCard = self
 	relatedCards.append(card)
 	if currentLayout:
 		currentLayout.addAdditionalCard(card)
 		assert(currentLayout.additionalCards.size() != 0)
-	
+		
 func removeRelatedCard(card: Card):
 	relatedCards.erase(card)
+	card.baseCard = null
 
 func setLabel1(text: String):
 	$Label.text = text
