@@ -51,12 +51,31 @@ func chooseAction():
 	return selectedAction
 
 func chooseActiveCharacter():
-	selectedAction = []
 	layoutManager.allowAction = [4]
 	layoutManager.currentInput = self
-	while selectedAction == []:
-		await actionSelected
-	assert(selectedAction.size() != 0)
+	for card: CharacterCard in playerState.characterCards.addedCards:
+		if card.defeated == false:
+			card.highlightOuterGlow()
+	
+	if playerState.characterCards.addedCards.size() != 1:
+		var guard: bool = false
+		while guard == false:
+			selectedAction = []
+			Random.message("Choose a new active Character")
+			guard = true
+			while selectedAction == []:
+				await actionSelected
+				if selectedAction != []:
+					if selectedAction[1].active:
+						guard = false
+		assert(selectedAction.size() != 0)
+		assert(selectedAction[1].active == false)
+	else:
+		selectedAction = ["Switch",playerState.characterCards.addedCards[0]]
+		
+	for card: CharacterCard in playerState.characterCards.addedCards:
+		if card.defeated == false:
+			card.undoHighlightOuterGlow()
 	layoutManager.allowAction = []
 	layoutManager.currentInput = null
 	return selectedAction

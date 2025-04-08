@@ -68,7 +68,7 @@ func chooseAction():
 							setTurnEnded(true)
 						else:
 							Random.message("You don't have enough spirit")
-				gameState.executeEffects(Event_CharacterUsesMove.new(action[1],action[2]))
+				await gameState.executeEffects(Event_CharacterUsesMove.new(action[1],action[2]))
 		"End Round": 
 			setTurnEnded(true)
 			setRoundEnded(true)
@@ -97,8 +97,8 @@ func playCard(card: Card, layout = null):
 		"EquipmentCard":
 			pass
 	card.playCard(layout)
-	gameState.executeEffects(Event_PlayCard.new(card))
-	gameState.executeEffects(Event_PlayCardType.new(card.getCardType()))
+	await gameState.executeEffects(Event_PlayCard.new(card))
+	await gameState.executeEffects(Event_PlayCardType.new(card.getCardType()))
 
 func playSupporter(card: Card, layout):
 	if layout is Card:
@@ -140,6 +140,10 @@ func checkCost(cost: int):
 		return false
 	else:
 		return true
+	
+func chooseActiveCharacter():
+	var switch = await input.chooseActiveCharacter()
+	setActiveCharacter(switch[1])
 	
 # Getters and Setters ------------------------------------------------------------------------------
 

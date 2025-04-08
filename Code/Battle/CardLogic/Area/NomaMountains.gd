@@ -19,6 +19,7 @@ func getCardDescription() -> String:
 var counter = 2
 
 func playCardLogic(layout):
+	counter = 2
 	Effect_Recall.new(self,self,[Event_StartOfRound.new()],drawCards)
 	
 func drawCards(event):

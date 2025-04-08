@@ -18,10 +18,10 @@ func getCardDescription() -> String:
 
 func playCardLogic(layout):
 	attack(1)
-	gameState.executeEffects(Event_Generic.new("Burning"))
+	await gameState.executeEffects(Event_Generic.new("Burning"))
 	Effect_Recall.new(self,self,[Event_StartOfRound.new()],flame)
 	
 func flame():
 	flashCard()
-	gameState.executeEffects(Event_Generic.new("Burning"))
+	await gameState.executeEffects(Event_Generic.new("Burning"))
 	attack(1)

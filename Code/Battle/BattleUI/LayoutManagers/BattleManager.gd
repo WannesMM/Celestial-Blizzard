@@ -169,6 +169,8 @@ func endRound():
 	else:
 		message("It is not your turn")
 
+
+
 #Permission 4: Switch active character
 func characterCardSwitch(card: Card):
 	if checkActionAllowed(card) and 4 in allowAction:

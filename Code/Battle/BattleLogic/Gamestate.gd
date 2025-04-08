@@ -92,7 +92,7 @@ func executeRounds():
 			else:
 				push_error("Random genereert een onmogelijk getal")
 		
-		executeEffects(Event_StartOfRound.new())
+		await executeEffects(Event_StartOfRound.new())
 				
 		await layoutManager.wait(2)
 		
@@ -140,8 +140,7 @@ func damage(attacker: Card, dmg: int, defender: Card):
 func characterDefeated(card: CharacterCard, player: PlayerState):
 	checkGameWin(player)
 	if playerWin == null:
-		var switch = await player.input.chooseActiveCharacter()
-		player.setActiveCharacter(switch[1])
+		player.chooseActiveCharacter()
 		if player.allied == false:
 			increaseGamePhase()
 	
@@ -176,47 +175,47 @@ func executeEffects(currentEvent: Event):
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_StartOfTurn:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	if currentEvent is Event_StartOfRound:
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_StartOfRound:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	elif currentEvent is Event_AllyTurn:
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_AllyTurn and effect.target.cardOwner == activePlayer:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	elif currentEvent is Event_EnemyTurn:
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_EnemyTurn and effect.target.cardOwner == activePlayer.opponent:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	elif currentEvent is Event_CharacterTakesDamage:
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_CharacterTakesDamage and event.character == effect.target:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	elif currentEvent is Event_CharacterUsesMove:
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_CharacterUsesMove:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	elif currentEvent is Event_Generic:
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_Generic and currentEvent.timeFrame == event.timeFrame:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	elif currentEvent is Event_PlayCard:
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_PlayCard and currentEvent.card == event.card:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	elif currentEvent is Event_PlayCardType:
 		for effect in scheduledEffects:
 			for event in effect.events:
 				if event is Event_PlayCardType and currentEvent.cardType == event.cardType:
-					effect.execute(currentEvent)
+					await effect.execute(currentEvent)
 	
 # Getter and Setters -------------------------------------------------------------------------------
 

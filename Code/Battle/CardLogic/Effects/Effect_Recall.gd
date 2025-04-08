@@ -13,4 +13,4 @@ var recallFunction: Callable
 func execute(event: Event):
 	super.execute(event)
 	applicator.flashCard()
-	recallFunction.call(event)
+	await recallFunction.call(event)
