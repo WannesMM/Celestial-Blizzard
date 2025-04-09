@@ -15,3 +15,17 @@ func getEffectName() -> String:
 
 func getCardDescription() -> String:
 	return "This card cannot be played. If this card is in your hand at the end of the round, apply 2 burning to the active character."
+
+func playableOn():
+	return []
+
+func addedToHand(player: PlayerState):
+	super.addedToHand(player)
+	Effect_Recall.new(self,self,[Event_EndOfRound.new()],applyBurn)
+	
+func applyBurn(event):
+	if currentLayout is CardHandLayout:
+		Effect_Burning.new(cardOwner.activeCharacter,cardOwner.activeCharacter,2)
+		delete()
+	else:
+		delete()

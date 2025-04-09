@@ -100,6 +100,8 @@ func executeRounds():
 		while ((allyState.roundEnded == false) or (enemyState.roundEnded == false)) and playerWin == null:
 			await executeTurn()
 			nextActivePlayer()
+			
+		await executeEffects(Event_EndOfRound.new())
 		
 	endGame(playerWin)
 		
@@ -181,6 +183,11 @@ func executeEffects(currentEvent: Event):
 			for event in effect.events:
 				if event is Event_StartOfRound:
 					await effect.execute(currentEvent)
+	elif currentEvent is Event_EndOfRound:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_EndOfRound:
+					await effect.execute(currentEvent)
 	elif currentEvent is Event_AllyTurn:
 		for effect in scheduledEffects:
 			for event in effect.events:
@@ -230,6 +237,11 @@ func getAllyState():
 	
 func setAllyState(state: PlayerState):
 	allyState = state
+	
+func getPlayer(allied: bool):
+	if allied:
+		return allyState
+	return enemyState
 	
 func getEnemyState():
 	return enemyState

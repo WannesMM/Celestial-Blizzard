@@ -43,6 +43,10 @@ func drawCards(count: int) -> Array:
 func stackAddToBottom(card: Card):
 	stack.append(card)
 
+func stackAddMultipleToBottom(cards: Array[Card]):
+	for card in cards:
+		stackAddToBottom(card)
+
 func stackRemoveCard(card: Card):
 	stack.erase(card)
 	

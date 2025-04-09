@@ -11,3 +11,7 @@ func cardLayoutConstructor():
 func cardHandConstructor():
 	pass
 	
+func addCards(cards: Array[Card]):
+	super.addCards(cards)
+	for card in cards:
+		card.addedToHand(player)

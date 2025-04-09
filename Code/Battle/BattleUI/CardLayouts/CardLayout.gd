@@ -5,7 +5,7 @@ class_name CardLayout
 var addedCards: Array[Card] = []
 var additionalCards = []
 
-var gamestate: PlayerState = null
+var player: PlayerState = null
 
 func getAddedCards():
 	return addedCards

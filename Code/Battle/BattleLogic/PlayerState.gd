@@ -6,7 +6,7 @@ var gameState: GameState
 var input: InputHandler: set = setInputHandler
 
 var characterCards: CardLayout = null
-var cardHand: CardLayout = null
+var cardHand: CardHandLayout = null
 var areaSupportCards: AreaSupportLayout = null
 var entityCards: EntityLayout = null
 
@@ -144,6 +144,11 @@ func checkCost(cost: int):
 func chooseActiveCharacter():
 	var switch = await input.chooseActiveCharacter()
 	setActiveCharacter(switch[1])
+
+func createCard(cardName: String):
+	var card: Card = Load.loadCard(cardName)
+	card.setCardOwner(self)
+	return card
 	
 # Getters and Setters ------------------------------------------------------------------------------
 

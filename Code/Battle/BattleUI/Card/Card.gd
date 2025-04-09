@@ -243,12 +243,10 @@ const iconPath = "res://Scenes/Visual/Icon.tscn"
 
 func addEffect(effect: Effect):
 	appliedEffects.append(effect)
-	
 	$IconDisplay.addIcon(effect.icon)
 
 func removeEffect(effect: Effect):
 	appliedEffects.erase(effect)
-	
 	$IconDisplay.removeIcon(effect.icon)
 
 # CardLogic --------------------------------------------------------------------
@@ -299,7 +297,7 @@ func attack(dmg: int):
 	
 func removeAllEffects():
 	for effect in appliedEffects:
-		removeEffect(effect)
+		effect.remove()
 
 func getDisplayInfo():
 	return [
@@ -327,6 +325,9 @@ func discard():
 	for relatedCard: Card in relatedCards:
 		relatedCard.discard()
 	cardOwner.deck.stackAddToBottom(self)
+	
+func addedToHand(player: PlayerState):
+	pass
 	
 # Getters and Setters ----------------------------------------------------------
 
