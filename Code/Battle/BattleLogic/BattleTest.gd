@@ -11,3 +11,4 @@ var Monsters = Deck.new(["Torinn Inn","Monster Mayhem","Berlaar","Berlaar","Psue
 var NomaAndTowers = Deck.new(["Torinn Inn","Noma Mountains","Noma Mountains","Noma Mountains","Towers Region","Towers Region","Towers Region","Nieuwtoren", "Nieuwtoren"])
 
 var burningDeck1 = Deck.new(["Torinn Inn", "Kin", "Fragmentum General", "Nieuwtoren", "Monster Mayhem", "Monster Mayhem", "Monster Mayhem", "Psuedo Dragon", "Psuedo Dragon", "Psuedo Dragon", "Berlaar", "Berlaar", "Berlaar", "DQ Mall", "DQ Mall", "DQ Mall"])
+var myDeck1 = Deck.new(["Nessa of Loch","Elina","Fragmentum General","Monster Mayhem", "Monster Mayhem"])

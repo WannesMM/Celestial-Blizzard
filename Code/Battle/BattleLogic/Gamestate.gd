@@ -142,7 +142,8 @@ func damage(attacker: Card, dmg: int, defender: Card):
 func characterDefeated(card: CharacterCard, player: PlayerState):
 	checkGameWin(player)
 	if playerWin == null:
-		player.chooseActiveCharacter()
+		if card.active:
+			await player.chooseActiveCharacter()
 		if player.allied == false:
 			increaseGamePhase()
 	

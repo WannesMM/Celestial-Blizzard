@@ -30,8 +30,6 @@ func SA():
 	cardOwner.opponent.deck.shuffleStack()
 	await cardOwner.chooseActiveCharacter()
 	
-var damageReducedEnemies: Array[CharacterCard] = []
-	
 func CA():
 	cardOwner.reduceGold(CAcost)
 	reduceEnergy()
@@ -39,13 +37,7 @@ func CA():
 	for character: CharacterCard in cardOwner.opponent.characterCards.addedCards:
 		for effect: Effect in character.appliedEffects:
 			if effect is Effect_Burning:
-				character.damageReduction -= 1
-				damageReducedEnemies.append(character)
-	Effect_Recall.new(self,self,[Event_StartOfRound.new()],removeDamageReduction,preload("res://assets/Icons/Nerf Icon.png"))
-	
-func removeDamageReduction(event):
-	for character: CharacterCard in damageReducedEnemies:
-		character.damageReduction += 1
+				Effect_Vulnerable.new(self,character,1)
 
 func setActive(x: bool):
 	super.setActive(x)

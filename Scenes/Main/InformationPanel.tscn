@@ -191,7 +191,8 @@ grow_vertical = 2
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TitleBorder2/Control"]
 modulate = Color(0, 0, 0, 0.498039)
-scale = Vector2(0.565, 0.565)
+rotation = 1.61443
+scale = Vector2(2.685, 2.685)
 sprite_frames = SubResource("SpriteFrames_pvbvh")
 autoplay = "default"
 frame_progress = 0.242085
@@ -222,7 +223,7 @@ color_ramp = SubResource("Gradient_8hjbd")
 modulate = Color(1, 1, 1, 0.337255)
 position = Vector2(-16.335, 0)
 rotation = 1.5708
-scale = Vector2(0.295, 0.295)
+scale = Vector2(2.585, 2.585)
 sprite_frames = SubResource("SpriteFrames_eopoo")
 autoplay = "default"
 frame_progress = 0.778142

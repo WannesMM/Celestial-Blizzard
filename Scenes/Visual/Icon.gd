@@ -12,3 +12,13 @@ func setUses(uses: String = ""):
 		$Label.text = ""
 	else:
 		$Label.text = uses
+
+func showInfo() -> void:
+	if $Label2.text != "":
+		var tween = create_tween().tween_property($Label2,"modulate:a",1,0.5)
+
+func hideInfo() -> void:
+	var tween = create_tween().tween_property($Label2,"modulate:a",0,0.5)
+
+func setInfo(text: String):
+	$Label2.text = text

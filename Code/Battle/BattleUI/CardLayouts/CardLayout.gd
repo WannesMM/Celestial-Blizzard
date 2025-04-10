@@ -42,6 +42,7 @@ var showInformation: bool = true
 var selectable: bool = true
 #Do the cards in this layout respond when hovered over?
 var hoverable:bool = true
+var maxCards: int = -1
 
 signal signalAddExistingCard
 

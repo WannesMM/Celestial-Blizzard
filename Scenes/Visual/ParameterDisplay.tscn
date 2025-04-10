@@ -41,7 +41,7 @@ theme = SubResource("Theme_msa2s")
 [node name="Liquid" type="Sprite2D" parent="TitleBorder2"]
 material = SubResource("ShaderMaterial_gbjag")
 position = Vector2(470, 336)
-scale = Vector2(1.848, 1.838)
+scale = Vector2(10.665, 10.665)
 texture = ExtResource("2_pctjd")
 
 [node name="TitleBorder" type="ScrollContainer" parent="."]

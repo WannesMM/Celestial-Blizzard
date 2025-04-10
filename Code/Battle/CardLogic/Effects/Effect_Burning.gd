@@ -4,6 +4,7 @@ class_name Effect_Burning
 
 func _init(applicator: Card, target: Card, counter: int) -> void:
 	texture = preload("res://assets/Icons/Burning Icon.png")
+	info = "Receive 1 damage at the start of each turn"
 	super._init(applicator, target, counter)
 	events = [Event_AllyTurn.new()]
 	

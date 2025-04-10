@@ -21,18 +21,16 @@ func selectCards(cards, amount, message = "Select card(s)"):
 func chooseTarget(cards: Array[Card], amount, message = "Choose your Target"):
 	selectedCards = []
 	layoutManager.multiselect = amount
-	layoutManager.currentInput = self
+	layoutManager.newInput(self,[5])
 	layoutManager.viableTargets = cards
 	for card in cards:
 		card.highlightOuterGlow()
-	layoutManager.allowAction = [5]
 	Random.message(message)
 	while selectedCards == []:
 		layoutManager.selectTarget()
 		await cardsSelected
 	layoutManager.multiselect = 1
-	layoutManager.allowAction = []
-	layoutManager.currentInput = null
+	layoutManager.restoreInputSettings()
 	layoutManager.viableTargets = []
 	for card in cards:
 		card.undoHighlightOuterGlow()
@@ -41,18 +39,15 @@ func chooseTarget(cards: Array[Card], amount, message = "Choose your Target"):
 #Allows the player to choose one of the following actions: Play card, Use move, End round, Discard card. This will return the result in the form of an array
 func chooseAction():
 	selectedAction = []
-	layoutManager.allowAction = [1,2,3,4]
-	layoutManager.currentInput = self
+	layoutManager.newInput(self,[1,2,3,4])
 	while selectedAction == []:
 		await actionSelected
 	assert(selectedAction.size() != 0)
-	layoutManager.allowAction = []
-	layoutManager.currentInput = null
+	layoutManager.restoreInputSettings()
 	return selectedAction
 
 func chooseActiveCharacter():
-	layoutManager.allowAction = [4]
-	layoutManager.currentInput = self
+	layoutManager.newInput(self,[4])
 	for card: CharacterCard in playerState.characterCards.addedCards:
 		if card.defeated == false:
 			card.highlightOuterGlow()
@@ -76,8 +71,7 @@ func chooseActiveCharacter():
 	for card: CharacterCard in playerState.characterCards.addedCards:
 		if card.defeated == false:
 			card.undoHighlightOuterGlow()
-	layoutManager.allowAction = []
-	layoutManager.currentInput = null
+	layoutManager.restoreInputSettings()
 	return selectedAction
 	
 func setSelectedCards():

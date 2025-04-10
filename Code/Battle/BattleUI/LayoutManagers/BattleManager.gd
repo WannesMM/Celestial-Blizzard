@@ -147,6 +147,19 @@ var currentMessageChooseCard
 
 @export var messageScene: PackedScene
 
+var currentInputBackup: PlayerInput
+var allowActionBackup: Array[int]
+func newInput(player: PlayerInput, permissions: Array[int]):
+	currentInputBackup = currentInput
+	allowActionBackup = allowAction
+	
+	currentInput = player
+	allowAction = permissions
+	
+func restoreInputSettings():
+	currentInput = currentInputBackup
+	allowAction = allowActionBackup
+
 #Permission 1: Play card
 func draggedIntoLayout(layout, card: Card):
 	if checkActionAllowed(card) and 1 in allowAction:
@@ -168,8 +181,6 @@ func endRound():
 		currentInput.setSelectedAction(["End Round"])
 	else:
 		message("It is not your turn")
-
-
 
 #Permission 4: Switch active character
 func characterCardSwitch(card: Card):

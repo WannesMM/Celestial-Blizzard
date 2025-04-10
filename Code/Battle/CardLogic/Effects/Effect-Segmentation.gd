@@ -4,6 +4,7 @@ class_name Effect_Segmentation
 
 func _init(applicator: Card, target: Card) -> void:
 	texture = preload("res://assets/Icons/Buff Icon.png")
+	info = "Just read the card description bro"
 	super._init(applicator, target)
 	events = [Event_StartOfRound.new()]
 	

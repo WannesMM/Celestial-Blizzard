@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://66w2344pmkxj" path="res://assets/Theme/InformationPanel.tres" id="1_cc82q"]
 [ext_resource type="Script" path="res://code/Main/MainUI/Portrait.gd" id="2_7fj7f"]
-[ext_resource type="Texture2D" uid="uid://dpl4mgjq1dpl6" path="res://assets/Cards/CharacterCard/Nessa of Loch.png" id="2_ybwht"]
+[ext_resource type="Texture2D" uid="uid://dkb285s13a8td" path="res://assets/Cards/CharacterCard/Bartholomew Balderstone.png" id="3_qojv3"]
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="3_y5pq7"]
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="4_yxwty"]
 
@@ -11,6 +11,15 @@ clip_children = 1
 custom_minimum_size = Vector2(0, 150)
 theme = ExtResource("1_cc82q")
 script = ExtResource("2_7fj7f")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -23,8 +32,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PortraitImage" type="Sprite2D" parent="Control"]
-scale = Vector2(0.33, 0.33)
-texture = ExtResource("2_ybwht")
+position = Vector2(0, 55)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_qojv3")
 script = ExtResource("3_y5pq7")
 
 [node name="Shatter" type="Sprite2D" parent="Control"]

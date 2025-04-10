@@ -21,7 +21,7 @@ func playableOn():
 
 func addedToHand(player: PlayerState):
 	super.addedToHand(player)
-	Effect_Recall.new(self,self,[Event_EndOfRound.new()],applyBurn)
+	Effect_Recall.new(self,self,[Event_EndOfRound.new()],applyBurn,preload("res://assets/Icons/Gear Icon.png"))
 	
 func applyBurn(event):
 	if currentLayout is CardHandLayout:

@@ -4,6 +4,7 @@ class_name Effect_HuntersMark
 
 func _init(applicator: Card, target: Card, counter: int) -> void:
 	texture = preload("res://assets/Icons/Hunter's Mark Icon.png")
+	info = "Receive 1 additional damage once per turn"
 	super._init(applicator,target,counter)
 	events = [Event_CharacterTakesDamage.new(target), Event_EnemyTurn.new()]
 	target.damageReduction -= currentBonus

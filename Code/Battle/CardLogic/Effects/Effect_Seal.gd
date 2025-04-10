@@ -4,6 +4,7 @@ class_name Effect_Seal
 
 func _init(applicator: Card, target: Card, counter: int) -> void:
 	texture = preload("res://assets/Icons/Heal Icon.png")
+	info = "This character receives -1dmg once per turn"
 	super._init(applicator,target,counter)
 	events = [Event_CharacterTakesDamage.new(target), Event_EnemyTurn.new(), Event_StartOfRound.new()]
 	target.damageReduction += currentBonus
@@ -24,6 +25,7 @@ func execute(event: Event):
 	elif event is Event_StartOfRound:
 		counter -= 1
 		if counter < 1:
+			target.damageReduction -= currentBonus
 			remove()
 
 func setCurrentBonus(newBonus: int):
