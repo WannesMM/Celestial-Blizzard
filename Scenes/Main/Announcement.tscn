@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dh510eyhdac5v"]
+[gd_scene load_steps=26 format=3 uid="uid://dh510eyhdac5v"]
 
 [ext_resource type="Script" path="res://Scenes/Main/Announcement.gd" id="1_iifek"]
 [ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="2_l3t6p"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="16_tktv8"]
 [ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="17_dwxkq"]
 [ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="18_8fpo3"]
+[ext_resource type="Script" path="res://Code/Engine/TextEngine.gd" id="19_m64re"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_skii8"]
 animations = [{
@@ -78,6 +79,40 @@ animations = [{
 "speed": 11.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_xkrsg"]
+offsets = PackedFloat32Array(0, 0.636364, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b87fq"]
+gradient = SubResource("Gradient_xkrsg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ajw5r"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(700, 1, 1)
+gravity = Vector3(0, -160, 0)
+linear_accel_min = 16.18
+linear_accel_max = 100.0
+radial_accel_min = -23.53
+radial_accel_max = 39.42
+tangential_accel_min = -52.94
+tangential_accel_max = 37.96
+scale_min = 0.01
+scale_max = 0.05
+color_ramp = SubResource("GradientTexture1D_b87fq")
+hue_variation_min = -0.01
+hue_variation_max = 0.00999998
+
+[sub_resource type="Gradient" id="Gradient_tet4c"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hwb8p"]
+gradient = SubResource("Gradient_tet4c")
+fill = 1
+fill_from = Vector2(0.495726, 0.504274)
+fill_to = Vector2(0.649573, 0.363248)
+
 [node name="Message" type="Control"]
 z_index = 5
 layout_mode = 3
@@ -113,28 +148,37 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ColorRect/Control"]
+modulate = Color(0, 0, 0, 1)
 self_modulate = Color(1, 1, 1, 0.372549)
-scale = Vector2(0.565, 0.565)
+position = Vector2(-3.99997, -3.50002)
+scale = Vector2(4.84375, 4.12994)
 sprite_frames = SubResource("SpriteFrames_skii8")
 autoplay = "default"
 frame_progress = 0.855973
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Control"]
+position = Vector2(-42.8789, 52.9201)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_ajw5r")
+texture = SubResource("GradientTexture2D_hwb8p")
+trail_enabled = true
+
+[node name="Label" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -538.0
-offset_top = -33.0
-offset_right = 538.0
-offset_bottom = 35.0
+offset_left = -542.0
+offset_top = -12.0
+offset_right = 534.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/shadow_outline_size = 7
-theme_override_font_sizes/font_size = 25
+bbcode_enabled = true
 text = "Message"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+scroll_active = false
+script = ExtResource("19_m64re")
+pulse = true

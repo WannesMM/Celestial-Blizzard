@@ -290,3 +290,9 @@ func undoHighlightCollider(collider):
 	for coll in collider:
 		coll.undoHighlightRect()
 		coll.disableCollision()
+
+func showVignette():
+	create_tween().tween_property($BottomOfScreen,"modulate:a",1,1)
+	
+func hideVignette():
+	create_tween().tween_property($BottomOfScreen,"modulate:a",0,1)

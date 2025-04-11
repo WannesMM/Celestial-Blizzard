@@ -71,8 +71,9 @@ func createButton(newText: String):
 	
 func createText(newText: String):
 	var scene = textScene.instantiate()
-	scene.text = newText
+	scene.setDisplayText(newText)
 	$Scroll/VBoxContainer.add_child(scene)
+	scene.fadeIn()
 	
 func createParameter(newValue: int, newMin: int, newMax: int, newColor = Color.MAROON):
 	var scene = parameterScene.instantiate()

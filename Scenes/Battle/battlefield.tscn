@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg4dd53dv5m3"]
+[gd_scene load_steps=21 format=3 uid="uid://dg4dd53dv5m3"]
 
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/LayoutManagers/BattleManager.gd" id="1_6n5sf"]
 [ext_resource type="PackedScene" uid="uid://bm5jf67wsb0j0" path="res://Scenes/Battle/CharacterCardLayout.tscn" id="1_n8f8j"]
@@ -13,6 +13,46 @@
 [ext_resource type="PackedScene" uid="uid://cb1c77crf2lod" path="res://Scenes/Main/MessageChooseCard.tscn" id="8_1eiu0"]
 [ext_resource type="PackedScene" uid="uid://8exl10cxc0ot" path="res://Scenes/Battle/DisplayLayout.tscn" id="12_fpewq"]
 [ext_resource type="PackedScene" uid="uid://kiy6jj6oeflt" path="res://Scenes/Main/InformationPanel.tscn" id="13_og874"]
+
+[sub_resource type="Gradient" id="Gradient_irm2n"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ia00x"]
+gradient = SubResource("Gradient_irm2n")
+
+[sub_resource type="Gradient" id="Gradient_otg0o"]
+offsets = PackedFloat32Array(0, 0.636364, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pycog"]
+gradient = SubResource("Gradient_otg0o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8mdi7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(700, 1, 1)
+gravity = Vector3(0, -160, 0)
+linear_accel_min = 16.18
+linear_accel_max = 100.0
+radial_accel_min = -23.53
+radial_accel_max = 39.42
+tangential_accel_min = -52.94
+tangential_accel_max = 37.96
+scale_min = 0.01
+scale_max = 0.05
+color_ramp = SubResource("GradientTexture1D_pycog")
+hue_variation_min = -0.01
+hue_variation_max = 0.00999998
+
+[sub_resource type="Gradient" id="Gradient_pw8u6"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3splj"]
+gradient = SubResource("Gradient_pw8u6")
+fill = 1
+fill_from = Vector2(0.495726, 0.504274)
+fill_to = Vector2(0.649573, 0.363248)
 
 [node name="Battlefield" type="Control"]
 layout_mode = 3
@@ -42,6 +82,40 @@ mouse_filter = 1
 [node name="EventCardCollision" parent="Control" instance=ExtResource("4_34dst")]
 position = Vector2(0, -50)
 script = ExtResource("5_1oj4e")
+
+[node name="BottomOfScreen" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PointLight2D" type="PointLight2D" parent="BottomOfScreen"]
+position = Vector2(-17, -119)
+rotation = -1.5708
+scale = Vector2(1, 27.1484)
+color = Color(0.341176, 0.909804, 1, 1)
+energy = 0.69
+blend_mode = 2
+texture = SubResource("GradientTexture2D_ia00x")
+texture_scale = 4.06
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BottomOfScreen"]
+position = Vector2(-31, 0)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_8mdi7")
+texture = SubResource("GradientTexture2D_3splj")
+trail_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomOfScreen"]
+position = Vector2(-1.01013, -52.7042)
+rotation = -1.5708
+scale = Vector2(1.70951, 21.6954)
+texture = SubResource("GradientTexture2D_ia00x")
 
 [node name="AreaSupportLayout" parent="." instance=ExtResource("2_2blwc")]
 layout_mode = 1

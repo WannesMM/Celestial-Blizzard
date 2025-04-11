@@ -177,3 +177,4 @@ theme = ExtResource("6_mpvwp")
 bbcode_enabled = true
 text = "Did you know that I made this for no reason whatshoever because the game loads in 1 second?"
 script = ExtResource("6_6f4ej")
+pulse = true

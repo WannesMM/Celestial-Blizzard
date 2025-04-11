@@ -134,7 +134,11 @@ func rollGold():
 	
 func nextActivePlayer():
 	if !activePlayer.opponent.roundEnded:
-		activePlayer = activePlayer.opponent	
+		activePlayer = activePlayer.opponent
+	if activePlayer.allied:
+		layoutManager.showVignette()
+	else:
+		layoutManager.hideVignette()
 	
 func damage(attacker: Card, dmg: int, defender: Card):
 	await defender.receiveDamage(dmg)

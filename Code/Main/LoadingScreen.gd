@@ -63,7 +63,7 @@ func battleSpecificLoad(battle):
 	var enemyInput = PlayerInput.new(battleField)
 	var test = BattleTest.new()
 	
-	var deck1 = test.myDeck1
+	var deck1 = test.burningDeck2
 	var deck2 = test.burningDeck1
 	
 	battleField.initialiseGame(deck1,allyInput,deck2,enemyInput)
@@ -197,6 +197,7 @@ var tips = [
 	]
 
 func generateTip():
-	$Tip.actualText = tips[Random.generateRandom(1,0,tips.size() - 1)]
+	$Tip.setDisplayText("[center][font_size=17]" + tips[Random.generateRandom(1,0,tips.size() - 1)] + "[/font_size][/center]")
+	$Tip.fadeIn()
 	
 	
