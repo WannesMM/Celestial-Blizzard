@@ -1,8 +1,5 @@
 extends LayoutManager
 
-var deck
-var characters
-
 var currentStartLayout: CardLayout
 
 func startCardDrag(card: Card):
@@ -17,6 +14,7 @@ func startCardDrag(card: Card):
 func finishCardDrag(card: Card):
 	card.get_parent().remove_child(card)
 	currentStartLayout.addCard(card)
+
 	
 #Finish the drag
 func finishDrag():
@@ -29,8 +27,10 @@ func finishDrag():
 			var cardToBeRemoved: Card = layout.addedCards[0] 
 			layout.removeCard(cardToBeRemoved)
 			$CharacterPicker.find_child("CharacterPicker").addCard(cardToBeRemoved)
+			UserInfo.removeCardsFromCharacters([cardToBeRemoved])
 		
 		finishCardDrag(cardBeingDragged)
+		saveMove(cardBeingDragged, cardSlotFound)
 
 		if cardSlotFound is CardCollision:
 			layout = cardSlotFound.cardScene
@@ -49,6 +49,19 @@ func isValidMove(cardType: String, cardSlotFound) -> bool:
 		return false
 		
 	return true
+
+func saveMove(card: Card, cardSlotFound):
+	if cardSlotFound is CardCollision:
+		var layout: CardLayout = cardSlotFound.cardScene
+		if layout.name == "Deck" && currentStartLayout.name == "DeckPicker":
+			UserInfo.addCardsToDeck([card.getCardName()])
+		elif layout.name == "DeckPicker" && currentStartLayout.name == "Deck":
+			UserInfo.removeCardsFromDeck([card.getCardName()])
+		elif layout.name == "Characters" && currentStartLayout.name == "CharacterPicker":
+			UserInfo.addCardsToCharacters([card.getCardName()])
+		elif layout.name == "CharacterPicker" && currentStartLayout.name == "Characters":
+			UserInfo.removeCardsFromCharacters([card.getCardName()])
+		
 
 func selectCard(card: Card):
 	if card in selectedCards:

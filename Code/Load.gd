@@ -24,7 +24,7 @@ func loadCard(cardName: String) -> Card:
 	card.cardConstructor()
 	return card
 
-func loadCards(cardNames: Array[String]) -> Array[Card]:
+func loadCards(cardNames) -> Array[Card]:
 	var cards: Array[Card] = []
 	
 	for cardName in cardNames:

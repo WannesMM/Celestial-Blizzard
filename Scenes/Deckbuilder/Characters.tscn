@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhudrmhwa0q0t"]
+[gd_scene load_steps=5 format=3 uid="uid://c5pocxej48nff"]
 
 [ext_resource type="Script" path="res://Code/DeckBuilder/characters.gd" id="1_3jkir"]
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/LayoutManagers/LayoutCollision.gd" id="2_ekrwp"]
@@ -29,7 +29,14 @@ layout_mode = 2
 [node name="Characters" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("collider")]
 script = ExtResource("1_3jkir")
 gridSizeX = 3
+gridSizeY = null
+scroll = null
 scaleCards = 0.7
+outerMarginX = null
+outerMarginY = null
+innerMarginX = null
+innerMarginY = null
+reverseDrawingOrder = null
 collider = NodePath("../CharactersCollider")
 
 [node name="CharactersCollider" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("cardLayout")]

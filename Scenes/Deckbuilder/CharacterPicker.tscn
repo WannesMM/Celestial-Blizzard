@@ -29,10 +29,14 @@ layout_mode = 2
 [node name="CharacterPicker" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("collider")]
 script = ExtResource("1_035fw")
 gridSizeX = 4
+gridSizeY = null
 scroll = "vertical"
 scaleCards = 0.65
+outerMarginX = null
 outerMarginY = 27.0
+innerMarginX = null
 innerMarginY = 8.0
+reverseDrawingOrder = null
 collider = NodePath("../CharacterPickerCollider")
 
 [node name="CharacterPickerCollider" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("cardLayout")]

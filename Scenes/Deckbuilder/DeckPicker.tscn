@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crtg5vvt2rfgb"]
 
-[ext_resource type="PackedScene" uid="uid://p77pv0qh1sgk" path="res://Scenes/Deckbuilder/DeckPickerCollider.tscn" id="1_gmdt0"]
+[ext_resource type="PackedScene" path="res://Scenes/Deckbuilder/DeckPickerCollider.tscn" id="1_gmdt0"]
 [ext_resource type="Script" path="res://Code/DeckBuilder/DeckPicker.gd" id="2_vqkbg"]
 
 [node name="DeckPicker" type="Node2D"]

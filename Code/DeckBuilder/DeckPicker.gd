@@ -2,4 +2,4 @@ extends GridCardLayout
 
 
 func cardLayoutConstructor():
-	addCards(Load.loadCards(["Ballista", "Burning Memories", "Greon's Cooking Pot","Homunculus", "Hermit", "Phoenix Hatchling", "Ashen Remains", "DQ Mall", "Monster Mayhem", "Psuedo Dragon"]))
+	addCards(Load.loadCards(UserInfo.getEnabledCards().filter(func(x): return x not in UserInfo.getDeck())))

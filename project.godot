@@ -24,6 +24,7 @@ AudioEngine="*res://Code/AudioEngine.gd"
 Random="*res://Code/Random.gd"
 Server="*res://Code/Server/Server.gd"
 Load="*res://Code/Load.gd"
+UserInfo="*res://Code/UserInfo.gd"
 
 [debug]
 

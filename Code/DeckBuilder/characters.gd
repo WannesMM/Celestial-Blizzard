@@ -2,6 +2,6 @@ extends GridCardLayout
 
 
 func cardLayoutConstructor():
-	addCards(Load.loadCards(["Torinn Inn", "Bartholomew Balderstone", "Noma Greon"]))
+	addCards(Load.loadCards(UserInfo.getCharacters()))
 	for card: Card in addedCards:
 		card.currentLayout.setMovable(false)

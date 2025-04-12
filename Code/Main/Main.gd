@@ -4,6 +4,8 @@ var battleFieldPath: String = "res://Scenes/battlefield.tscn"
 @export var loadingScene: String
 
 func _ready() -> void:
+	initializeUser()
+
 	modulate.v = 0
 	#await doTitleAnimation()
 	$Control/TitleLight.energy = 0
@@ -91,3 +93,8 @@ func infoButton() -> void:
 func wikiButton() -> void:
 	var website_url = "https://celestial-tcg.fandom.com/wiki/Celestial_TCG_Wiki"
 	OS.shell_open(website_url)  
+
+
+func initializeUser() -> void:
+	# For now enable all cards. In future this should come from the server.
+	UserInfo.loadUserData()

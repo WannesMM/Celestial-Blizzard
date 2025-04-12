@@ -6,5 +6,5 @@ func _ready() -> void:
 	self.pressed.connect(_button_pressed)
 	
 func _button_pressed():
-	print("Hello world!")
+	UserInfo.saveUserData()
 	Random.callLoadingScreen("Title")
