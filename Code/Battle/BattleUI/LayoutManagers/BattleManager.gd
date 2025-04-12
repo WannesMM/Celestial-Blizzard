@@ -54,6 +54,7 @@ func selectCard(card: Card):
 	else:
 		highlightSelect(card)
 		displayCardInformation(card)
+		selectTarget()
 	
 func deselectAllCards():
 	var i = 0
@@ -146,6 +147,19 @@ var currentMessageChooseCard
 
 @export var messageScene: PackedScene
 
+var currentInputBackup: PlayerInput
+var allowActionBackup: Array[int]
+func newInput(player: PlayerInput, permissions: Array[int]):
+	currentInputBackup = currentInput
+	allowActionBackup = allowAction
+	
+	currentInput = player
+	allowAction = permissions
+	
+func restoreInputSettings():
+	currentInput = currentInputBackup
+	allowAction = allowActionBackup
+
 #Permission 1: Play card
 func draggedIntoLayout(layout, card: Card):
 	if checkActionAllowed(card) and 1 in allowAction:
@@ -177,6 +191,23 @@ func characterCardSwitch(card: Card):
 			message("You cannot switch to a defeated character")
 	else:
 		message("It is not your turn")
+
+var viableTargets: Array[Card] = []
+
+#Permission 5: Select Target(s)
+func selectTarget():
+	if 5 in allowAction:
+		if multiselect == selectedCards.size():
+			var allowed = true
+			for card in selectedCards:
+				if !(card in viableTargets):
+					allowed = false
+			if allowed:
+				currentInput.setSelectedCards()
+			else:
+				Random.message("Choose a valid target")
+				deselectAllCards()
+	
 
 func checkActionAllowed(card):
 	if currentInput != null:

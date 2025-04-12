@@ -1,24 +1,134 @@
-[gd_scene load_steps=6 format=3 uid="uid://duhlyvrtcqji0"]
+[gd_scene load_steps=17 format=3 uid="uid://duhlyvrtcqji0"]
 
-[ext_resource type="Texture2D" uid="uid://c7gd077mkycww" path="res://assets/Setpieces/profileCircle.png" id="1_5nybc"]
+[ext_resource type="Texture2D" uid="uid://sovxu8u6cn52" path="res://assets/Icons/Buff Icon.png" id="2_n1xdx"]
 [ext_resource type="Script" path="res://Scenes/Visual/Icon.gd" id="2_q2228"]
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="3_f1nqk"]
+[ext_resource type="Theme" uid="uid://66w2344pmkxj" path="res://assets/Theme/InformationPanel.tres" id="4_h5ej4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xgkbb"]
 light_mode = 1
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tuole"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_qgf3y"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yqpam"]
+gradient = SubResource("Gradient_qgf3y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3hr50"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(22.055, 19.56, 1)
+spread = 180.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.01
+scale_max = 0.01
+color_ramp = SubResource("GradientTexture1D_yqpam")
+
+[sub_resource type="Gradient" id="Gradient_jtt4b"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0.68, 0.68, 0.68, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_htc44"]
+gradient = SubResource("Gradient_jtt4b")
+fill = 1
+fill_from = Vector2(0.502203, 0.493392)
+fill_to = Vector2(0.621145, 0.343612)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_odwom"]
 light_mode = 1
 
-[node name="Icon" type="Sprite2D"]
-clip_children = 2
+[sub_resource type="LabelSettings" id="LabelSettings_ky10m"]
+font_size = 21
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.419608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q6kbk"]
+font_size = 24
+
+[sub_resource type="Gradient" id="Gradient_yjox1"]
+colors = PackedColorArray(1, 1, 1, 1, 0.0431373, 0.0431373, 0.0431373, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dgnaj"]
+gradient = SubResource("Gradient_yjox1")
+fill = 1
+fill_from = Vector2(0.497797, 0.502203)
+fill_to = Vector2(0.770925, 0.193833)
+
+[node name="Icon" type="Node2D"]
 material = SubResource("CanvasItemMaterial_xgkbb")
-scale = Vector2(0.025, 0.025)
-texture = ExtResource("1_5nybc")
+scale = Vector2(0.67, 0.67)
 script = ExtResource("2_q2228")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tuole")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_3hr50")
+texture = SubResource("GradientTexture2D_htc44")
+trail_lifetime = 2.19
 
 [node name="Image" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_odwom")
-position = Vector2(28.5714, 428.571)
-scale = Vector2(0.551, 0.551)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_n1xdx")
 script = ExtResource("3_f1nqk")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -544.0
+offset_right = 202.0
+offset_bottom = 572.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1
+"
+label_settings = SubResource("LabelSettings_ky10m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -248.0
+offset_top = -204.0
+offset_right = 248.0
+offset_bottom = -37.0
+pivot_offset = Vector2(2176.47, 4764.71)
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_h5ej4")
+label_settings = SubResource("LabelSettings_q6kbk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.495, 1.495)
+color = Color(0.509614, 0.749489, 1, 1)
+energy = 2.81
+blend_mode = 2
+texture = SubResource("GradientTexture2D_dgnaj")
+
+[connection signal="mouse_entered" from="Button" to="." method="showInfo"]
+[connection signal="mouse_exited" from="Button" to="." method="hideInfo"]

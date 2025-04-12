@@ -63,8 +63,8 @@ func battleSpecificLoad(battle):
 	var enemyInput = PlayerInput.new(battleField)
 	var test = BattleTest.new()
 	
-	var deck1 = test.burningDeck1
-	var deck2 = test.TestDeck1
+	var deck1 = test.myDeck1
+	var deck2 = test.burningDeck1
 	
 	battleField.initialiseGame(deck1,allyInput,deck2,enemyInput)
 	return false
@@ -99,8 +99,12 @@ func checkConnection():
 			return false
 	return true
 	
-func startLoad(newScene: String = "BattleField"):
+func startLoad(newScene: String = "BattleField", mode: String = "Normal"):
 	nextScene = getScenePath(newScene)
+	
+	if mode == "Silent":
+		$Control.visible = false
+		$Tip.visible = false
 	
 	var fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 1, 1)

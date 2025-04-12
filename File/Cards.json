@@ -87,4 +87,12 @@
 	{
 		"Script": "res://Code/Battle/CardLogic/Area/AshenRemains.gd"
 	},
+	"Nessa of Loch":
+	{
+		"Script": "res://Code/Battle/CardLogic/Character/Nessa.gd"
+	},
+	"Elina":
+	{
+		"Script": "res://Code/Battle/CardLogic/Character/Elina.gd"
+	},
 }

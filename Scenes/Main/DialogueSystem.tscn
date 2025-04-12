@@ -1,17 +1,30 @@
-[gd_scene load_steps=20 format=3 uid="uid://coeo7k7wf8v1w"]
+[gd_scene load_steps=18 format=3 uid="uid://coeo7k7wf8v1w"]
 
 [ext_resource type="Texture2D" uid="uid://dgo25iibpn31b" path="res://assets/Setpieces/Portrait Rect.png" id="1_5odlv"]
 [ext_resource type="Script" path="res://Scenes/Main/DialogueSystem.gd" id="1_plbh7"]
 [ext_resource type="Texture2D" uid="uid://dh1810n62fsis" path="res://assets/Cards/CardAssets/CardShader.png" id="2_fx5h4"]
-[ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="2_ifhti"]
 [ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="3_82fl8"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_n2lwl"]
 [ext_resource type="Script" path="res://Scenes/Main/Image.gd" id="7_6ik0f"]
 [ext_resource type="Script" path="res://Scenes/Main/Text.gd" id="8_ye3q2"]
-[ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="10_20idr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gcdlh"]
 light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwkij"]
+bg_color = Color(0, 0, 0, 0.352941)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0, 0, 0.564706)
+corner_radius_top_left = 21
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 21
+
+[sub_resource type="Theme" id="Theme_qmda1"]
+Panel/styles/panel = SubResource("StyleBoxFlat_uwkij")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5oo01"]
 light_mode = 1
@@ -39,14 +52,6 @@ light_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dy17v"]
 light_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_pxl3s"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ufs4k"]
-gradient = SubResource("Gradient_pxl3s")
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-
 [node name="DialogueSystem" type="Control"]
 material = SubResource("CanvasItemMaterial_gcdlh")
 layout_mode = 3
@@ -56,6 +61,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_plbh7")
+
+[node name="Continue" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DialogueContainer" type="Control" parent="."]
 layout_mode = 1
@@ -67,20 +81,22 @@ offset_top = -136.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="DialogueBoxBackground" type="NinePatchRect" parent="DialogueContainer"]
-modulate = Color(0.125, 0.125, 0.125, 0.729412)
+[node name="DialogueBoxBackground" type="Panel" parent="DialogueContainer"]
 clip_children = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -19.0
+offset_right = -20.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_5odlv")
-region_rect = Rect2(242.4, 158.293, 1170.32, 631.766)
+mouse_filter = 2
+theme = SubResource("Theme_qmda1")
 
 [node name="CardShader" type="Sprite2D" parent="DialogueContainer/DialogueBoxBackground"]
-modulate = Color(1, 1, 1, 0.698039)
 position = Vector2(389, 99)
 scale = Vector2(1.165, 1.165)
 texture = ExtResource("2_fx5h4")
@@ -108,29 +124,6 @@ scale_amount_max = 0.4
 scale_amount_curve = SubResource("Curve_tisd8")
 color_ramp = SubResource("Gradient_5ubv0")
 
-[node name="BoxEdge" type="NinePatchRect" parent="DialogueContainer"]
-modulate = Color(0.199219, 0.199219, 0.199219, 0.741176)
-clip_children = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.00128, -0.104911)
-texture = ExtResource("1_5odlv")
-region_rect = Rect2(242.4, 158.293, 1170.32, 631.766)
-
-[node name="NinePatchRect" type="NinePatchRect" parent="DialogueContainer"]
-modulate = Color(1, 1, 1, 0.564706)
-layout_mode = 0
-offset_left = -4.0
-offset_top = -23.0
-offset_right = 239.0
-offset_bottom = 144.0
-scale = Vector2(0.956447, 1.00559)
-texture = ExtResource("2_ifhti")
-
 [node name="PortraitBox" type="Control" parent="DialogueContainer"]
 layout_mode = 1
 anchors_preset = 9
@@ -149,8 +142,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PortraitScaler" type="Node2D" parent="DialogueContainer/PortraitBox/PortraitAnchor"]
-position = Vector2(27.165, -17.56)
-scale = Vector2(0.94, 0.94)
+position = Vector2(22, -21)
+scale = Vector2(0.68, 0.68)
 
 [node name="PortraitOutline" type="NinePatchRect" parent="DialogueContainer/PortraitBox/PortraitAnchor/PortraitScaler"]
 anchors_preset = 8
@@ -224,6 +217,7 @@ scroll_active = false
 script = ExtResource("8_ye3q2")
 
 [node name="CardHighlight" type="Sprite2D" parent="DialogueContainer/TextContainer"]
+visible = false
 clip_children = 1
 position = Vector2(342, -189)
 scale = Vector2(0.167742, 0.107611)
@@ -242,22 +236,4 @@ offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PointLight2D2" type="PointLight2D" parent="DialogueContainer/Middle"]
-visible = false
-position = Vector2(-189, 18.5)
-scale = Vector2(38.4844, 2.6875)
-color = Color(0.0224172, 0.401369, 0.846222, 1)
-energy = 5.9
-texture = SubResource("GradientTexture2D_ufs4k")
-script = ExtResource("10_20idr")
-
-[node name="Continue" type="Button" parent="DialogueContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[connection signal="pressed" from="DialogueContainer/Continue" to="." method="proceed"]
+[connection signal="pressed" from="Continue" to="." method="proceed"]

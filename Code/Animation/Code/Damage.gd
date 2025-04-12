@@ -18,5 +18,9 @@ func play():
 func setText(newText: String):
 	$Node2D/Label.text = newText
 
+func setColor(color: Color):
+	$Node2D/Label.modulate = color
+	$Node2D/GPUParticles2D.modulate = color
+
 func setPosition(pos: Vector2):
 	$Node2D.global_position = pos

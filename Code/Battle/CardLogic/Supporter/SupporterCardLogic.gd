@@ -13,8 +13,9 @@ func supporterCardConstructor():
 
 func playableOn():
 	var collisions = []
-	for card in cardOwner.areaSupportCards.addedCards:
-		collisions.append(card.collision)
+	for card: AreaCard in cardOwner.areaSupportCards.addedCards:
+		if card.amountSupporter > card.relatedCards.size():
+			collisions.append(card.collision)
 	return collisions
 
 #-------------------------------------------------------------------------------

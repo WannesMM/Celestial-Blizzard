@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bs1o1fumm4pfv"
+path="res://.godot/imported/Activation.mp3-850b0c3e0a5663247b049b8d77cef0d6.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Sound effects/Activation.mp3"
+dest_files=["res://.godot/imported/Activation.mp3-850b0c3e0a5663247b049b8d77cef0d6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

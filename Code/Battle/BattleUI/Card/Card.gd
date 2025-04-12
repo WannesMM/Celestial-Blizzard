@@ -174,6 +174,19 @@ func cardShatterStage(stage: int):
 		var fadeTween = create_tween()
 		fadeTween.tween_property($Darken,"modulate:a",0.4,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
 
+func darkenCard(cards: Array[Card]):
+	if (self in cards) == false:
+		$Darken.modulate.a = 0
+		$Darken.visible = true
+		var fadeTween = create_tween()
+		fadeTween.tween_property($Darken,"modulate:a",0.4,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
+
+func undoDarkenCard():
+	$Darken.modulate.a = 0.4
+	$Darken.visible = true
+	var fadeTween = create_tween()
+	fadeTween.tween_property($Darken,"modulate:a",0,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
+
 #---------------------------------------------------------------------------------------------------------------------
 
 var cardImage: Texture
@@ -191,7 +204,7 @@ func setCardImage(image: String):
 	var texture = ResourceLoader.load_threaded_get(imagePath)
 	
 	if texture and texture is Texture2D:
-		$CardMask/cardImage.setImage(texture, imagePosition, imageScale)
+		$CardMask/cardImage.texture = texture
 		cardImage = texture
 	else:
 		print("card Image does not exist:")
@@ -208,65 +221,66 @@ func generateShaderColor():
 	
 	$CardOutsideShade.fade(0)
 
+var baseCard: Card
+
 func addRelatedCard(card: Card):
+	if card.baseCard:
+		card.baseCard.removeRelatedCard(card)
+	card.baseCard = self
 	relatedCards.append(card)
 	if currentLayout:
 		currentLayout.addAdditionalCard(card)
 		assert(currentLayout.additionalCards.size() != 0)
-	
+		
 func removeRelatedCard(card: Card):
 	relatedCards.erase(card)
+	card.baseCard = null
 
 func setLabel1(text: String):
 	$Label.text = text
+
+func setLabel1Color(color: Color):
+	$Label.modulate = color
 
 const iconPath = "res://Scenes/Visual/Icon.tscn"
 
 func addEffect(effect: Effect):
 	appliedEffects.append(effect)
-	
-	var iconScene = load(iconPath)
-	var icon: Icon = iconScene.instantiate()
-	icon.setIcon(effect.image)
-	icon.representative = effect
-	$IconDisplay.addIcon(icon)
+	$IconDisplay.addIcon(effect.icon)
 
 func removeEffect(effect: Effect):
 	appliedEffects.erase(effect)
-	gameState.scheduledEffects.erase(effect)
-	
-	for icon: Icon in $IconDisplay.icons:
-		if icon.representative == effect:
-			$IconDisplay.removeIcon(icon)
-	
+	$IconDisplay.removeIcon(effect.icon)
+
 # CardLogic --------------------------------------------------------------------
 
 var card: Card = self
 
 var cardName: String = "Name Unknown"
 var cardType: String = "Type Unknown"
-var cardCost: int = 1
+var cardCost: int = 1: set = setCost
 
 # Card image settings
 var imageLink: String = "Card Unknown": set = setCardImage
 var imagePosition: Vector2 = Vector2(0,0)
-var imageScale: Vector2 = Vector2(1,1)
 var sampleColor: Color
 
-var cardOwner: PlayerState = null
+var cardOwner: PlayerState = null: set = setCardOwner
 var gameState: GameState = null
 
 var appliedEffects: Array[Effect] = []
+
+var damageBonus: int = 0
 
 # Gamefunctionality ------------------------------------------------------------
 
 var targetable: bool = true
 
 # Code that triggers when the card is played, to be extended
-func playCard():
-	playCardLogic()
+func playCard(layout):
+	playCardLogic(layout)
 	
-func playCardLogic():
+func playCardLogic(layout):
 	Random.message("This card has not been implemented")
 
 # This returns the layouts that this card is playable on
@@ -280,12 +294,13 @@ func checkCost(req: int):
 	else:
 		return true
 
+#This is extended in Bartholomew
 func attack(dmg: int):
-	await cardOwner.damage(self, dmg)
+	await cardOwner.damage(self, dmg + damageBonus)
 	
 func removeAllEffects():
 	for effect in appliedEffects:
-		removeEffect(effect)
+		effect.remove()
 
 func getDisplayInfo():
 	return [
@@ -294,6 +309,29 @@ func getDisplayInfo():
 ["Text", getCardDescription()]
 ]
 
+func setCost(newCost: int):
+	cardCost = newCost
+	setLabel1(str(cardCost))
+
+func delete():
+	if currentLayout:
+		getLayout().removeCard(self)
+	removeAllEffects()
+	for relatedCard: Card in relatedCards:
+		relatedCard.delete()
+	queue_free()
+	
+func discard():
+	if currentLayout:
+		getLayout().removeCard(self)
+	removeAllEffects()
+	for relatedCard: Card in relatedCards:
+		relatedCard.discard()
+	cardOwner.deck.stackAddToBottom(self)
+	
+func addedToHand(player: PlayerState):
+	pass
+	
 # Getters and Setters ----------------------------------------------------------
 
 func getCardName():
@@ -316,6 +354,7 @@ func setCardCost(cost):
 
 func setCardOwner(player: PlayerState):
 	cardOwner = player
+	gameState = player.gameState
 	
 func getCardOwner(player: PlayerState):
 	return cardOwner

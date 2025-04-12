@@ -47,7 +47,7 @@ battleFieldScene = "res://Scenes/Battle/Battle.tscn"
 deckBuilderScene = "res://Scenes/Deckbuilder/deckBuilder.tscn"
 shopScene = "res://Scenes/Shop/Shop.tscn"
 TitleScene = "res://Scenes/Main/TitleScreen.tscn"
-storyScene = "res://Scenes/Main/Story.tscn"
+storyScene = "res://Scenes/Main/Story1-1.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("CanvasItemMaterial_vyr3u")
@@ -112,8 +112,8 @@ texture = SubResource("GradientTexture2D_vq278")
 texture_scale = 1.6
 
 [node name="CelestialBlizzardLogo" type="Sprite2D" parent="Control/Control"]
-position = Vector2(-125, 0)
-scale = Vector2(0.3, 0.3)
+position = Vector2(-140.13, 0)
+scale = Vector2(0.635, 0.635)
 texture = ExtResource("3_l06gx")
 
 [node name="ProgressBar" type="Label" parent="Control/Control"]

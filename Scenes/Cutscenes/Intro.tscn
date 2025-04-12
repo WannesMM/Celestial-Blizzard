@@ -1,0 +1,447 @@
+[gd_scene load_steps=47 format=3 uid="uid://b23p536okj4k2"]
+
+[ext_resource type="Script" path="res://Code/Cutscene/Cutscene-Intro.gd" id="1_57xbd"]
+[ext_resource type="Texture2D" uid="uid://dyjfrg4rp44b5" path="res://assets/Material/AllSky_Night_MoonBurst Equirect.png" id="1_ks0cs"]
+[ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="3_6fgl2"]
+[ext_resource type="FontFile" uid="uid://dhrhio7wmy25h" path="res://assets/Font/zh-cn.ttf" id="4_pg2na"]
+[ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="5_356oc"]
+[ext_resource type="Texture2D" uid="uid://kh8cgsqr4bc5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-2.png" id="6_ur08m"]
+[ext_resource type="Texture2D" uid="uid://bjkq1iikogg7h" path="res://assets/Animated/Harsh fog/Untitled_Artwork-3.png" id="7_jh7hr"]
+[ext_resource type="Texture2D" uid="uid://dwnsxqlisapr4" path="res://assets/Animated/Harsh fog/Untitled_Artwork-4.png" id="8_8478m"]
+[ext_resource type="Texture2D" uid="uid://0mk1nxj4fjaf" path="res://assets/Animated/Harsh fog/Untitled_Artwork-5.png" id="9_hhhnp"]
+[ext_resource type="Texture2D" uid="uid://c2657tnxy8oi" path="res://assets/Animated/Harsh fog/Untitled_Artwork-6.png" id="10_av88q"]
+[ext_resource type="Texture2D" uid="uid://cvn2cla68yt04" path="res://assets/Animated/Harsh fog/Untitled_Artwork-7.png" id="11_iyr58"]
+[ext_resource type="Texture2D" uid="uid://y3uvpo0wpee7" path="res://assets/Animated/Harsh fog/Untitled_Artwork-8.png" id="12_pwshp"]
+[ext_resource type="Texture2D" uid="uid://bchhogib46tyr" path="res://assets/Animated/Harsh fog/Untitled_Artwork-9.png" id="13_30o6s"]
+[ext_resource type="Texture2D" uid="uid://b744pjtbcjy2q" path="res://assets/Animated/Harsh fog/Untitled_Artwork-10.png" id="14_mhlhm"]
+[ext_resource type="Texture2D" uid="uid://doaf35gpn6oep" path="res://assets/Animated/Harsh fog/Untitled_Artwork-11.png" id="15_h1wjg"]
+[ext_resource type="Texture2D" uid="uid://be3h2a3corhkg" path="res://assets/Animated/Harsh fog/Untitled_Artwork-12.png" id="16_lrysr"]
+[ext_resource type="Texture2D" uid="uid://dxivr2mvfl156" path="res://assets/Animated/Harsh fog/Untitled_Artwork-13.png" id="17_32x0j"]
+[ext_resource type="Texture2D" uid="uid://dgo167iqikf5k" path="res://assets/Animated/Harsh fog/Untitled_Artwork-14.png" id="18_nkyal"]
+[ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="19_gk2hs"]
+[ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="20_8ldqj"]
+[ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="21_a387e"]
+[ext_resource type="Texture2D" uid="uid://c4ypqsrrrc81y" path="res://assets/Animated/Spirit trail/Untitled_Artwork-1.png" id="22_kbk0f"]
+[ext_resource type="Texture2D" uid="uid://b52hnvanbumwe" path="res://assets/Animated/Spirit trail/Untitled_Artwork-2.png" id="23_xs541"]
+[ext_resource type="Texture2D" uid="uid://cydpjwyyut3qr" path="res://assets/Animated/Spirit trail/Untitled_Artwork-3.png" id="24_y50u2"]
+[ext_resource type="Texture2D" uid="uid://j53t6xbqjsib" path="res://assets/Animated/Spirit trail/Untitled_Artwork-4.png" id="25_b28pe"]
+[ext_resource type="Texture2D" uid="uid://dn87n8n86m8q4" path="res://assets/Animated/Spirit trail/Untitled_Artwork-5.png" id="26_baspi"]
+[ext_resource type="Texture2D" uid="uid://bmgkff7xld85f" path="res://assets/Animated/Spirit trail/Untitled_Artwork-6.png" id="27_nm26q"]
+[ext_resource type="Texture2D" uid="uid://bldr8365iswwa" path="res://assets/Animated/Spirit trail/Untitled_Artwork-7.png" id="28_8k7w5"]
+[ext_resource type="Texture2D" uid="uid://cb0umvcrah0o" path="res://assets/Animated/Spirit trail/Untitled_Artwork-8.png" id="29_ojiyj"]
+[ext_resource type="Texture2D" uid="uid://cxks1q2minbaw" path="res://assets/Animated/Spirit trail/Untitled_Artwork-9.png" id="30_s440w"]
+[ext_resource type="PackedScene" uid="uid://cj623mojtldyj" path="res://Scenes/Visual/Snow.tscn" id="31_k36sp"]
+[ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="32_xuij1"]
+[ext_resource type="AudioStream" uid="uid://bvja36xjk5ypd" path="res://assets/Audio/Music/Story/Intro.mp3" id="33_ikase"]
+
+[sub_resource type="Animation" id="Animation_yall3"]
+resource_name = "Label"
+length = 35.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.133333, 10.0333),
+"transitions": PackedFloat32Array(1, 2.14355),
+"update": 0,
+"values": [Vector3(0, 0, -3.38237), Vector3(0, 0, -2.711)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 2.53333, 6.86667, 9.9),
+"transitions": PackedFloat32Array(0.5, 1, 1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(14.5667, 25.1667),
+"transitions": PackedFloat32Array(2.54912, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite3D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0666667, 11.3, 17.6, 23.0333, 29.3667),
+"transitions": PackedFloat32Array(1, 1, 1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.266667, 31.8667),
+"transitions": PackedFloat32Array(0.34151, 0.329878),
+"update": 0,
+"values": [Vector3(0, 0, -7.134), Vector3(0, 0, -4.017)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.766667, 31.2333, 33.4667),
+"transitions": PackedFloat32Array(0.435275, 4.59479, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(34.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"nextScene"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../AudioStreamPlayer:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(10.3667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wgsx4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.38237)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite3D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -11.3636)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../AudioStreamPlayer:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n638j"]
+_data = {
+"Intro": SubResource("Animation_yall3"),
+"RESET": SubResource("Animation_wgsx4")
+}
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4v1db"]
+panorama = ExtResource("1_ks0cs")
+
+[sub_resource type="Sky" id="Sky_okxm3"]
+sky_material = SubResource("PanoramaSkyMaterial_4v1db")
+
+[sub_resource type="Environment" id="Environment_02sl8"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_okxm3")
+sky_rotation = Vector3(0, 3.15905, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ch6h"]
+emission_shape_scale = Vector3(1, 1.345, 2.25)
+emission_shape = 3
+emission_box_extents = Vector3(0.8, 0.79, 0.445)
+angle_min = -362.0
+angle_max = 358.0
+inherit_velocity_ratio = 0.017
+spread = 180.0
+gravity = Vector3(0, -0.075, 0)
+scale_min = 0.0
+scale_max = 0.02
+
+[sub_resource type="Gradient" id="Gradient_j7hqd"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bqyjo"]
+gradient = SubResource("Gradient_j7hqd")
+fill = 1
+fill_from = Vector2(0.502674, 0.508021)
+fill_to = Vector2(0.84492, 0.737968)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5goyq"]
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_bqyjo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xfbpp"]
+material = SubResource("StandardMaterial3D_5goyq")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2dmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_356oc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ur08m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jh7hr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8478m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hhhnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_av88q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_iyr58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pwshp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_30o6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mhlhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_h1wjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_lrysr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_32x0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_nkyal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gk2hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_8ldqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_a387e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qissm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_kbk0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_xs541")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_y50u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_b28pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_baspi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_nm26q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_8k7w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ojiyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_s440w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Intro" type="Node3D"]
+script = ExtResource("1_57xbd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Label3D")
+libraries = {
+"": SubResource("AnimationLibrary_n638j")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_02sl8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("3_6fgl2")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.138879, -0.990309, 0, 0.990309, 0.138879, 0, 0, -0.984087)
+amount = 150
+trail_lifetime = 3.1
+process_material = SubResource("ParticleProcessMaterial_0ch6h")
+draw_pass_1 = SubResource("PlaneMesh_xfbpp")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.38237)
+text = "Created by Wannes MM"
+font = ExtResource("4_pg2na")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(0.63, 0.778, 1, 1)
+light_energy = 1.427
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.6)
+scale = Vector2(0.565, 0.565)
+sprite_frames = SubResource("SpriteFrames_d2dmt")
+autoplay = "default"
+frame_progress = 0.336012
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
+self_modulate = Color(0, 0, 0, 0.65098)
+scale = Vector2(0.52, 0.52)
+sprite_frames = SubResource("SpriteFrames_qissm")
+autoplay = "default"
+frame_progress = 0.428236
+
+[node name="Snow" parent="Control" instance=ExtResource("31_k36sp")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-576, -324)
+
+[node name="Snow2" parent="Control" instance=ExtResource("31_k36sp")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-541, -294)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.3636)
+texture_filter = 4
+texture = ExtResource("32_xuij1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_ikase")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]

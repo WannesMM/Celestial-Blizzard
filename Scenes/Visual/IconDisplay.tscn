@@ -5,3 +5,4 @@
 [node name="IconDisplay" type="Node2D"]
 position = Vector2(573, 316)
 script = ExtResource("1_qsltt")
+iconDistance = Vector2(-27, 0)

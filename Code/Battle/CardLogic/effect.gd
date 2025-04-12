@@ -4,35 +4,22 @@ class_name Effect
 
 var gameState: GameState
 
-var effectName: String
-var timeFrame: String
+var events: Array[Event] = []
 var applicator: Card
-var target: Card
 
-var stacks: int = 0
+var texture = preload("res://assets/Cards/CharacterCard/Hatsune Miku.png")
+var iconScene = preload("res://Scenes/Visual/Icon.tscn")
 
-var image: String
-
-func _init(initializer: Card, targetCard: Card = initializer.cardOwner.opponent.activeCharacter) -> void:
-	applicator = initializer
-	target = targetCard
+func _init(applicator: Card) -> void:
+	self.applicator = applicator
 	gameState = applicator.gameState
-	
-	effectConstructor()
-	
-	target.addEffect(self)
-	
-func effectConstructor():
+	gameState.scheduledEffects.append(self)
+
+# Effect -----------------------------------------------------------------------
+
+func execute(event: Event):
 	pass
 
-func executeEffect():
-	pass
-
-func mergeEffect(effect: Effect):
-	stacks += effect.stacks
-
-func removeEffect():
+func remove():
 	gameState.scheduledEffects.erase(self)
-	target.appliedEffects.erase(self)
-	target.card.removeEffect(self)
 	queue_free()

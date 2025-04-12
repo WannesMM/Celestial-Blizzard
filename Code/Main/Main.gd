@@ -83,8 +83,11 @@ func doTitleAnimation():
 		AudioEngine.playSFX("Title")
 		await Random.wait(7)
 
-
 func infoButton() -> void:
 	var pdf_path = "res://File/Version pre-alpha info.pdf"  # Your PDF inside the project folder
 	var absolute_path = ProjectSettings.globalize_path(pdf_path)
 	OS.shell_open(absolute_path)
+
+func wikiButton() -> void:
+	var website_url = "https://celestial-tcg.fandom.com/wiki/Celestial_TCG_Wiki"
+	OS.shell_open(website_url)  

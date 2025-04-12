@@ -2,10 +2,10 @@ extends Node2D
 
 class_name CardLayout
 
-var addedCards = []
+var addedCards: Array[Card] = []
 var additionalCards = []
 
-var gamestate: PlayerState = null
+var player: PlayerState = null
 
 func getAddedCards():
 	return addedCards
@@ -42,6 +42,7 @@ var showInformation: bool = true
 var selectable: bool = true
 #Do the cards in this layout respond when hovered over?
 var hoverable:bool = true
+var maxCards: int = -1
 
 signal signalAddExistingCard
 
@@ -59,13 +60,11 @@ func connectSignal(card):
 func cardMouseEntered(card: Card):
 	if !cardBeingDragged and hoverable:
 		card.highlightBorder()
-		card.highlightOuterGlow()
 		if self is CardHandLayout:
 			card.scaleRelative(ANIMATIONSCALE, ANIMATIONDURATION)
 		
 func cardMouseExited(card):
 	card.undoHighlightBorder()
-	card.undoHighlightOuterGlow()
 	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
 
 func _process(delta: float) -> void:

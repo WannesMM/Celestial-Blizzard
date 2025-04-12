@@ -57,16 +57,36 @@ func getSP2Name() -> String:
 func getSP2Description() -> String:
 	return "When an area card is destroyed, gain 2 stacks of golden breath"
 
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter", getHP(), 0, getMaxHP()],
+["Parameter", getEnergy(), 0, getMaxEnergy(), Color.LIGHT_STEEL_BLUE],
+["Parameter", goldenBreath, 0, 5, Color.GOLDENROD],
+["Button", getNAName()],
+["Text", getNADescription()],
+["Button", getSAName()],
+["Text", getSADescription()],
+["Button", getCAName()],
+["Text", getCADescription()],
+["Title", getAbilityName()],
+["Text", getAbilityDescription()]
+]
+
 # BattleFunctionality ----------------------------------------------------------
 
-var goldenBreath: int = 0
+var goldenBreath: int = 0: set = setGoldenBreath
+
+func setGoldenBreath(new: int):
+	goldenBreath = new
+	if goldenBreath > 5:
+		goldenBreath = 5
 
 func SA():
 	cardOwner.reduceGold(SAcost)
 	if(goldenBreath != 0):
-		var newBurning = Load.loadEffect("Burning", self)
-		newBurning.stacks = goldenBreath
-		gameState.scheduleEffect(newBurning)
+		Effect_Burning.new(self,cardOwner.opponent.activeCharacter,goldenBreath)
 		goldenBreath = 0
 	gainEnergy()
 	

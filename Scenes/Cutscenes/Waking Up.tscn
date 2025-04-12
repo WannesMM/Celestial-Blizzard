@@ -1,0 +1,284 @@
+[gd_scene load_steps=32 format=3 uid="uid://deaerv647xkrr"]
+
+[ext_resource type="Script" path="res://Code/Cutscene/Cutscene-Waking Up.gd" id="1_ukdi2"]
+[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="1_xmewl"]
+[ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="3_e72oy"]
+[ext_resource type="AudioStream" uid="uid://6jig6hsnevmf" path="res://assets/Audio/Music/Story/Waking Up.mp3" id="4_w64un"]
+[ext_resource type="PackedScene" uid="uid://cv0wjist0ee11" path="res://Code/Animation/Scene/cinematicBars.tscn" id="5_gemjc"]
+[ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="6_8k6gf"]
+[ext_resource type="Texture2D" uid="uid://kh8cgsqr4bc5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-2.png" id="7_pg44q"]
+[ext_resource type="Texture2D" uid="uid://bjkq1iikogg7h" path="res://assets/Animated/Harsh fog/Untitled_Artwork-3.png" id="8_dolis"]
+[ext_resource type="Texture2D" uid="uid://dwnsxqlisapr4" path="res://assets/Animated/Harsh fog/Untitled_Artwork-4.png" id="9_vwbp8"]
+[ext_resource type="Texture2D" uid="uid://0mk1nxj4fjaf" path="res://assets/Animated/Harsh fog/Untitled_Artwork-5.png" id="10_1bqee"]
+[ext_resource type="Texture2D" uid="uid://c2657tnxy8oi" path="res://assets/Animated/Harsh fog/Untitled_Artwork-6.png" id="11_nx41x"]
+[ext_resource type="Texture2D" uid="uid://cvn2cla68yt04" path="res://assets/Animated/Harsh fog/Untitled_Artwork-7.png" id="12_7xsrt"]
+[ext_resource type="Texture2D" uid="uid://y3uvpo0wpee7" path="res://assets/Animated/Harsh fog/Untitled_Artwork-8.png" id="13_fvo4d"]
+[ext_resource type="Texture2D" uid="uid://bchhogib46tyr" path="res://assets/Animated/Harsh fog/Untitled_Artwork-9.png" id="14_66u51"]
+[ext_resource type="Texture2D" uid="uid://b744pjtbcjy2q" path="res://assets/Animated/Harsh fog/Untitled_Artwork-10.png" id="15_uky1q"]
+[ext_resource type="Texture2D" uid="uid://doaf35gpn6oep" path="res://assets/Animated/Harsh fog/Untitled_Artwork-11.png" id="16_xd7s5"]
+[ext_resource type="Texture2D" uid="uid://be3h2a3corhkg" path="res://assets/Animated/Harsh fog/Untitled_Artwork-12.png" id="17_mfyg4"]
+[ext_resource type="Texture2D" uid="uid://dxivr2mvfl156" path="res://assets/Animated/Harsh fog/Untitled_Artwork-13.png" id="18_pe3wv"]
+[ext_resource type="Texture2D" uid="uid://dgo167iqikf5k" path="res://assets/Animated/Harsh fog/Untitled_Artwork-14.png" id="19_ikgjd"]
+[ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="20_ew8ha"]
+[ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="21_6qjaq"]
+[ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="22_clx4w"]
+
+[sub_resource type="Animation" id="Animation_a1lbj"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ail63"]
+resource_name = "Waking Up"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.666667, 23.9333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CinematicBars")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.833333, 2.46667, 3.9, 5.26667, 6.53333, 7.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0.4],
+"method": &"shake"
+}, {
+"args": [0.25],
+"method": &"shake"
+}, {
+"args": [0.245],
+"method": &"shake"
+}, {
+"args": [0.185],
+"method": &"shake"
+}, {
+"args": [0.075],
+"method": &"shake"
+}, {
+"args": [0.04],
+"method": &"shake"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.43333, 7.06667, 11.7667, 14.7667, 23.1),
+"transitions": PackedFloat32Array(-1.8025, -2, -2, -2, -2, -5.09824),
+"update": 0,
+"values": [Vector3(-1.18531, 0, 0), Vector3(-0.753982, 0.191986, 0), Vector3(-0.972148, 0.0698132, 0.0785398), Vector3(-0.26529, 0, 0), Vector3(-0.37001, -0.0767945, 0.0349066), Vector3(0.261799, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.63333, 5.3, 7.63333, 20.4, 22.8),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.8, 0.8, 0.8, 0.72549), Color(0, 0, 0, 0.568627), Color(0.96, 0.96, 0.96, 0.458824), Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(24.9333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"nextScene"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7g580"]
+_data = {
+"RESET": SubResource("Animation_a1lbj"),
+"Waking Up": SubResource("Animation_ail63")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nur3i"]
+emission_shape_scale = Vector3(4, 4, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -362.0
+angle_max = 358.0
+inherit_velocity_ratio = 0.017
+spread = 180.0
+gravity = Vector3(-0.04, -0.075, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 1.09
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.0499978
+scale_min = 0.15
+scale_max = 0.25
+
+[sub_resource type="Gradient" id="Gradient_4g5ql"]
+colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uqjbe"]
+gradient = SubResource("Gradient_4g5ql")
+fill = 1
+fill_from = Vector2(0.502674, 0.508021)
+fill_to = Vector2(0.508021, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_micpd"]
+transparency = 2
+alpha_scissor_threshold = 0.635
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_uqjbe")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y2ama"]
+material = SubResource("StandardMaterial3D_micpd")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7tyjj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8k6gf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pg44q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dolis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vwbp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1bqee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nx41x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7xsrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fvo4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_66u51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_uky1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xd7s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_mfyg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_pe3wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ikgjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ew8ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6qjaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_clx4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[node name="WakingUp" type="Node3D"]
+script = ExtResource("1_ukdi2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7g580")
+}
+
+[node name="Story" parent="." instance=ExtResource("1_xmewl")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.37601, 0.926616, 0, -0.926616, 0.37601, 0, 4.19248, 0)
+script = ExtResource("3_e72oy")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -0.922065, -0.387032, 0, 0.387032, -0.922065, 0, 4.4303, -0.423716)
+amount = 2000
+lifetime = 10.0
+trail_lifetime = 3.1
+process_material = SubResource("ParticleProcessMaterial_nur3i")
+draw_pass_1 = SubResource("PlaneMesh_y2ama")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+light_color = Color(0.461412, 0.609073, 0.67, 1)
+light_energy = 2.554
+omni_range = 10.924
+omni_attenuation = 0.063
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w64un")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control"]
+modulate = Color(1, 1, 1, 0.0823529)
+scale = Vector2(0.565, 0.565)
+sprite_frames = SubResource("SpriteFrames_7tyjj")
+autoplay = "default"
+
+[node name="CinematicBars" parent="." instance=ExtResource("5_gemjc")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

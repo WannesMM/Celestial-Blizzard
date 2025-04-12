@@ -42,7 +42,9 @@
 [ext_resource type="Texture2D" uid="uid://h6bfe4vr5rqg" path="res://assets/Cards/CardAssets/card inside shade.png" id="39_l6jqo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqvhu"]
-shadow_size = 2
+font_size = 17
+outline_color = Color(0.825856, 0.825856, 0.825856, 1)
+shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.152941)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8slk"]
@@ -151,56 +153,60 @@ script = ExtResource("1_3o3o6")
 
 [node name="CardOutsideShade" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-scale = Vector2(0.065, 0.065)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_tfvjt")
 script = ExtResource("4_hdf5q")
 
 [node name="CardMask" type="Sprite2D" parent="."]
 clip_children = 1
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_jhpte")
 
 [node name="cardImage" type="Sprite2D" parent="CardMask"]
+scale = Vector2(0.51, 0.51)
 texture = ExtResource("2_jyits")
 script = ExtResource("4_hdf5q")
 
 [node name="CardBorder" type="Sprite2D" parent="."]
 self_modulate = Color(0.226563, 0.226563, 0.226563, 1)
 clip_children = 2
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("5_m8hfi")
 script = ExtResource("4_hdf5q")
 
 [node name="CardShader" type="Sprite2D" parent="CardBorder"]
-scale = Vector2(3.555, 3.555)
+scale = Vector2(2.26, 2.26)
 texture = ExtResource("4_k5ml6")
 
 [node name="CardBorderHighlight" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 clip_children = 2
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("5_m8hfi")
 script = ExtResource("4_hdf5q")
 
 [node name="Highlight" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_jhpte")
 script = ExtResource("6_f3m15")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 21.0
-offset_top = -87.0
+offset_left = 20.0
+offset_top = -91.0
 offset_right = 64.0
-offset_bottom = -41.0
+offset_bottom = -44.0
+theme_override_font_sizes/font_size = 23
 text = "10
 "
 label_settings = SubResource("LabelSettings_xqvhu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Darken" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_jhpte")
 
 [node name="CardPlacementCollision" parent="." node_paths=PackedStringArray("cardScene") instance=ExtResource("8_l8wq4")]
@@ -213,28 +219,27 @@ collision_layer = 1
 collision_mask = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(0, -4.53)
-scale = Vector2(0.06, 0.06)
+scale = Vector2(0.89, 0.89)
 sprite_frames = SubResource("SpriteFrames_i8slk")
 animation = &"CharacterSwitch"
-frame_progress = 0.936593
+frame_progress = 0.557013
 
 [node name="CardShatter" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.63, 0.63)
 sprite_frames = SubResource("SpriteFrames_8ls5m")
 frame = 2
 frame_progress = 0.0693526
 
-[node name="IconDisplay" parent="." instance=ExtResource("37_noqv0")]
-position = Vector2(55, 103)
-scale = Vector2(0.75, 0.75)
-
 [node name="CardInsideShade" type="Sprite2D" parent="."]
 self_modulate = Color(0.261719, 0.261719, 0.261719, 1)
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("39_l6jqo")
+
+[node name="IconDisplay" parent="." instance=ExtResource("37_noqv0")]
+position = Vector2(52, 96)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="mouse_entered" from="CardPlacementCollision/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="CardPlacementCollision/Area2D" to="." method="_on_area_2d_mouse_exited"]

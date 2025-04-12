@@ -19,6 +19,68 @@ func characterCardConstructor():
 	
 	cardCost = 2
 
+var target: CharacterCard = null
+
+func attack(dmg: int):
+	if target:
+		if target.active == false:
+			await cardOwner.damage(self, dmg + damageBonus + 1, target)
+		else:
+			await cardOwner.damage(self, dmg + damageBonus)
+		if target.defeated:
+			target = null
+	else:
+		await cardOwner.damage(self, dmg + damageBonus)
+
+func getTargetName():
+	if target:
+		return target.cardName
+	else:
+		return "No Target"
+
+func SA():
+	cardOwner.reduceGold(SAcost)
+	var cards = await cardOwner.getInputhandler().chooseTarget(cardOwner.opponent.characterCards.addedCards, 1, "Choose the target to mark")
+	if target != cards[0]:
+		target = cards[0]
+		Effect_HuntersMark.new(self,target,1)
+	gainEnergy()
+	
+var CABuff = false
+	
+func CA():
+	cardOwner.reduceGold(CAcost)
+	reduceEnergy()
+	CABuff = true
+	await attack(CAdmg)
+
+func NA():
+	cardOwner.reduceGold(NAcost)
+	gainEnergy()
+	if CABuff == true:
+		await attack(NAdmg + NABonusDamage + 1)
+		CABuff = false
+	else:
+		attack(NAdmg + NABonusDamage)
+	
+
+func getDisplayInfo():
+	return [
+["Title", cardName],
+["Portrait", cardImage],
+["Parameter", getHP(), 0, getMaxHP()],
+["Parameter", getEnergy(), 0, getMaxEnergy(), Color.LIGHT_STEEL_BLUE],
+["Title", getTargetName()],
+["Button", getNAName()],
+["Text", getNADescription()],
+["Button", getSAName()],
+["Text", getSADescription()],
+["Button", getCAName()],
+["Text", getCADescription()],
+["Title", getAbilityName()],
+["Text", getAbilityDescription()]
+]
+
 #-------------------------------------------------------------------------------
 
 func getNAName() -> String:

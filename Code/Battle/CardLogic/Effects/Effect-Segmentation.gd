@@ -1,11 +1,14 @@
-extends Effect
+extends CardEffect
 
-func effectConstructor():
-	effectName = "Segmentation"
-	timeFrame = "Start of Round"
-	image = "DQMall"
+class_name Effect_Segmentation
+
+func _init(applicator: Card, target: Card) -> void:
+	texture = preload("res://assets/Icons/Buff Icon.png")
+	info = "Just read the card description bro"
+	super._init(applicator, target)
+	events = [Event_StartOfRound.new()]
 	
-func executeEffect():
+func execute(event: Event):
 	applicator.flashCard()
 	var gold = applicator.cardOwner.battleResources.gold
 	if gold < 6:

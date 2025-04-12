@@ -58,15 +58,6 @@ func removeAnimation(animation: Animate):
 	get_tree().current_scene.remove_child(animation)
 	animation.queue_free()
 
-# Load Effect ------------------------------------------------------------------
-
-@export var effectsPath: String = "res://File/Effects.json"
-
-func loadEffect(effect: String, initialiser: Card, target: Card = initialiser.cardOwner.opponent.activeCharacter) -> Effect:
-	loadData(effect, effectsPath)
-	var script: Script = load(data.get("Code"))
-	return script.new(initialiser, target)
-
 # Messages ---------------------------------------------------------------------
 
 var announcementScene = preload("res://Scenes/Main/Announcement.tscn")

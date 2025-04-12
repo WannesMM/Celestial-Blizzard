@@ -6,7 +6,7 @@ var gameState: GameState
 var input: InputHandler: set = setInputHandler
 
 var characterCards: CardLayout = null
-var cardHand: CardLayout = null
+var cardHand: CardHandLayout = null
 var areaSupportCards: AreaSupportLayout = null
 var entityCards: EntityLayout = null
 
@@ -68,6 +68,7 @@ func chooseAction():
 							setTurnEnded(true)
 						else:
 							Random.message("You don't have enough spirit")
+				await gameState.executeEffects(Event_CharacterUsesMove.new(action[1],action[2]))
 		"End Round": 
 			setTurnEnded(true)
 			setRoundEnded(true)
@@ -95,12 +96,14 @@ func playCard(card: Card, layout = null):
 			getEntityCards().addCard(card)
 		"EquipmentCard":
 			pass
-	card.playCard()
+	card.playCard(layout)
+	await gameState.executeEffects(Event_PlayCard.new(card))
+	await gameState.executeEffects(Event_PlayCardType.new(card.getCardType()))
 
 func playSupporter(card: Card, layout):
 	if layout is Card:
-					if layout.getCardType() == "AreaCard":
-						layout.addRelatedCard(card)
+		if layout.getCardType() == "AreaCard":
+			layout.addRelatedCard(card)
 	
 func drawCards(amt: int):
 	cardHand.addCards(deck.drawCards(amt))
@@ -137,12 +140,15 @@ func checkCost(cost: int):
 		return false
 	else:
 		return true
-		
-func deleteCard(card: Card):
-	card.getLayout().removeCard(card)
-	card.removeAllEffects()
-	for relatedCard in card.relatedCards:
-		deleteCard(relatedCard)
+	
+func chooseActiveCharacter():
+	var switch = await input.chooseActiveCharacter()
+	setActiveCharacter(switch[1])
+
+func createCard(cardName: String):
+	var card: Card = Load.loadCard(cardName)
+	card.setCardOwner(self)
+	return card
 	
 # Getters and Setters ------------------------------------------------------------------------------
 
@@ -152,7 +158,7 @@ func getGameState():
 func setGameState(state: GameState):
 	gameState = state
 	
-func getInputhandler():
+func getInputhandler() -> InputHandler:
 	return input
 	
 func setInputHandler(handler: InputHandler):

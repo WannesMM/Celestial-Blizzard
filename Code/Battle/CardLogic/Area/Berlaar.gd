@@ -14,6 +14,6 @@ func getEffectName() -> String:
 func getCardDescription() -> String:
 	return "When you deal burning damage to the opponent, draw a card"
 
-func playCardLogic():
-	gameState.scheduleEffect(Load.loadEffect("BurningDraw",self,self))
+func playCardLogic(layout):
+	Effect_BurningDraw.new(self,self)
 	

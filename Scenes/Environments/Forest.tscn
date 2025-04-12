@@ -1,0 +1,805 @@
+[gd_scene load_steps=32 format=3 uid="uid://bxomdgywf7vue"]
+
+[ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="1_8ctnr"]
+[ext_resource type="Texture2D" uid="uid://cu0wwu5oes8wl" path="res://assets/Material/snow_01_1k/snow_01_ambient_occlusion_1k.png" id="2_lt8ea"]
+[ext_resource type="Texture2D" uid="uid://cg81ykdty8wpf" path="res://assets/Material/snow_01_1k/snow_01_height_1k.png" id="3_4hua1"]
+[ext_resource type="Texture2D" uid="uid://y657xuirsy0u" path="res://assets/Material/snow_01_1k/snow_01_normal_gl_1k.png" id="4_hkph4"]
+[ext_resource type="Texture2D" uid="uid://bw6cpklcb6b6e" path="res://assets/Material/snow_01_1k/snow_01_roughness_1k.png" id="5_c6v51"]
+[ext_resource type="Texture2D" uid="uid://bfrd42je8v5nw" path="res://assets/Material/snow_01_1k/snow_01_normal_dx_1k.png" id="6_edclj"]
+[ext_resource type="ArrayMesh" uid="uid://cmypyfpetxan6" path="res://assets/3d/Snowfield2.obj" id="7_tev3a"]
+[ext_resource type="Texture2D" uid="uid://dyjfrg4rp44b5" path="res://assets/Material/AllSky_Night_MoonBurst Equirect.png" id="8_sajsp"]
+[ext_resource type="Script" path="res://Code/Engine/World.gd" id="9_36xxs"]
+[ext_resource type="Texture2D" uid="uid://wwifnvxmg8fu" path="res://assets/Setpieces/Tree2.tres" id="9_nrdpd"]
+[ext_resource type="Texture2D" uid="uid://bsusxo2q60nm2" path="res://assets/Setpieces/Tree1.tres" id="10_bn5i7"]
+[ext_resource type="Texture2D" uid="uid://cxwv16fdyhtfj" path="res://assets/Setpieces/Tree5.tres" id="11_0qwa0"]
+[ext_resource type="Texture2D" uid="uid://bnfi3d1xjgvs2" path="res://assets/Setpieces/Tree3.tres" id="12_mrvrj"]
+[ext_resource type="Texture2D" uid="uid://cxmqyroppotku" path="res://assets/Setpieces/Tree4.tres" id="13_scikt"]
+[ext_resource type="Texture2D" uid="uid://b5u7wmtnto5my" path="res://assets/Setpieces/Tree6.tres" id="14_mf2me"]
+[ext_resource type="Texture2D" uid="uid://dbhnp8qx37n45" path="res://assets/Setpieces/Tree7.tres" id="15_cr4uj"]
+[ext_resource type="Texture2D" uid="uid://b8jslkb141knd" path="res://assets/Setpieces/Fog.png" id="16_8owp3"]
+[ext_resource type="Texture2D" uid="uid://bvrqbcg7er3x6" path="res://assets/Setpieces/full moon.png" id="17_jaeaj"]
+[ext_resource type="Texture2D" uid="uid://dybj0swdibv4f" path="res://assets/Animated/CharacterHit/HitShatter.png" id="18_hj3ml"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e80u"]
+albedo_color = Color(0.570313, 0.570313, 0.570313, 1)
+albedo_texture = ExtResource("1_8ctnr")
+roughness = 0.16
+roughness_texture = ExtResource("5_c6v51")
+normal_enabled = true
+normal_scale = 2.3
+normal_texture = ExtResource("4_hkph4")
+ao_enabled = true
+ao_light_affect = 0.55
+ao_texture = ExtResource("2_lt8ea")
+heightmap_enabled = true
+heightmap_scale = 2.0
+heightmap_texture = ExtResource("3_4hua1")
+uv1_scale = Vector3(10.6, 10.6, 10.6)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_au85o"]
+material = SubResource("StandardMaterial3D_6e80u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtxuh"]
+albedo_color = Color(0.28, 0.28, 0.28, 1)
+albedo_texture = ExtResource("1_8ctnr")
+metallic_specular = 0.35
+roughness = 0.83
+roughness_texture = ExtResource("5_c6v51")
+normal_enabled = true
+normal_scale = 0.31
+normal_texture = ExtResource("6_edclj")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("2_lt8ea")
+heightmap_enabled = true
+heightmap_scale = 16.0
+heightmap_texture = ExtResource("3_4hua1")
+uv1_scale = Vector3(-16.86, -16.86, -16.86)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7avfy"]
+panorama = ExtResource("8_sajsp")
+
+[sub_resource type="Sky" id="Sky_u0lcs"]
+sky_material = SubResource("PanoramaSkyMaterial_7avfy")
+
+[sub_resource type="Environment" id="Environment_tyf6g"]
+background_mode = 2
+sky = SubResource("Sky_u0lcs")
+sky_rotation = Vector3(-0.216421, 3.2498, 0)
+reflected_light_source = 2
+glow_enabled = true
+glow_intensity = 2.5
+glow_strength = 2.0
+glow_bloom = 0.03
+fog_enabled = true
+fog_light_color = Color(0.00433594, 0.00716601, 0.0117188, 1)
+fog_light_energy = 11.18
+fog_sun_scatter = 0.27
+fog_density = 0.0063
+fog_aerial_perspective = 0.172
+fog_height = 2.35
+adjustment_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0g6pc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60ky7"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("9_nrdpd")
+uv1_scale = Vector3(0.08, 0.08, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6wpw"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("11_0qwa0")
+uv1_scale = Vector3(0.08, 0.08, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgh4t"]
+transparency = 1
+albedo_texture = ExtResource("16_8owp3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2ein"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.396078)
+albedo_texture = ExtResource("18_hj3ml")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbu1j"]
+transparency = 1
+shading_mode = 0
+disable_fog = true
+albedo_color = Color(0.810879, 0.879309, 1, 1)
+albedo_texture = ExtResource("17_jaeaj")
+
+[node name="Environment" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(99.755, 0, 0, 0, 99.755, 0, 0, 0, 99.755, 0, 0.237599, -16.027)
+visible = false
+mesh = SubResource("PlaneMesh_au85o")
+
+[node name="Snowfield2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_vtxuh")
+mesh = ExtResource("7_tev3a")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tyf6g")
+script = ExtResource("9_36xxs")
+rotateS = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.746394, 0.665504, 0, -0.665504, -0.746394, 0, 9.73619, 0)
+light_color = Color(0.51, 0.697833, 1, 1)
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_blur = 0.633
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_0g6pc")
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="TreeSetMedium" type="Node3D" parent="Trees"]
+transform = Transform3D(0.805163, 0, -0.593054, 0, 1, 0, 0.593054, 0, 0.805163, 14.8067, 4.94746, -5.98743)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium2" type="Node3D" parent="Trees"]
+transform = Transform3D(0.0393819, 0, -0.999224, 0, 1, 0, 0.999224, 0, 0.0393819, 16.7732, 4.94746, 6.64061)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium2"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium2"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium2"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium2"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium2"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium2"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium2"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium3" type="Node3D" parent="Trees"]
+transform = Transform3D(0.0302458, 0.134368, 0.99047, 0.163757, 0.976868, -0.137524, -0.986037, 0.166356, 0.00754236, -21.2116, 8.28446, 4.76554)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium3"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium3"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium3"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium3"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium3"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium3"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium3"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium4" type="Node3D" parent="Trees"]
+transform = Transform3D(0.792621, 0.134368, 0.594725, -0.00519698, 0.976868, -0.213781, -0.609693, 0.166356, 0.774984, -12.0216, 8.53224, -4.11235)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium4"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium4"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium4"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium4"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium4"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium4"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium4"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium5" type="Node3D" parent="Trees"]
+transform = Transform3D(0.596533, 0, -0.802588, 0, 1, 0, 0.802588, 0, 0.596533, 13.6314, 4.94746, -18.5693)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium5"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium5"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium5"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium5"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium5"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium5"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium5"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium6" type="Node3D" parent="Trees"]
+transform = Transform3D(-0.254551, 0, -0.967059, 0, 1, 0, 0.967059, 0, -0.254551, 11.819, 4.94746, -5.91824)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium6"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium6"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium6"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium6"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium6"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium6"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium6"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium7" type="Node3D" parent="Trees"]
+transform = Transform3D(0.0302458, 0.134368, 0.99047, 0.163757, 0.976868, -0.137524, -0.986037, 0.166356, 0.00754236, -22.9905, 8.28446, -7.80483)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium7"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium7"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium7"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium7"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium7"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium7"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium7"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium8" type="Node3D" parent="Trees"]
+transform = Transform3D(0.792621, 0.134368, 0.594725, -0.00519698, 0.976868, -0.213781, -0.609693, 0.166356, 0.774984, -13.8005, 8.53224, -16.6827)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium8"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium8"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium8"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium8"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium8"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium8"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium8"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium9" type="Node3D" parent="Trees"]
+transform = Transform3D(0.449344, 0.286844, 1.38601, 0.236491, 1.41853, -0.370243, -1.39549, 0.332758, 0.383549, -15.9819, 9.65312, -24.7038)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium9"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium9"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium9"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium9"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium9"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium9"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium9"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium10" type="Node3D" parent="Trees"]
+transform = Transform3D(1.36326, 0.286845, 0.514273, -0.141586, 1.41853, -0.415886, -0.571585, 0.332758, 1.32958, -4.83527, 8.85369, -30.9045)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium10"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium10"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium10"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium10"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium10"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium10"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium10"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium11" type="Node3D" parent="Trees"]
+transform = Transform3D(0.302588, 0.193161, 0.933343, 0.159253, 0.955237, -0.249322, -0.939723, 0.224079, 0.258282, -14.4307, 7.47857, -37.3027)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium11"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium11"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium11"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium11"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium11"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium11"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium11"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium12" type="Node3D" parent="Trees"]
+transform = Transform3D(1.36326, 0.286845, 0.514273, -0.141586, 1.41853, -0.415886, -0.571585, 0.332758, 1.32958, -3.28414, 9.05609, -43.5034)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium12"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium12"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium12"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium12"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium12"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium12"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium12"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium13" type="Node3D" parent="Trees"]
+transform = Transform3D(1.46233, -0.254924, -0.0426441, 0.236491, 1.41853, -0.370243, 0.104293, 0.357801, 1.43747, -3.02409, 9.65312, -42.2539)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium13"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium13"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium13"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium13"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium13"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium13"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium13"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium14" type="Node3D" parent="Trees"]
+transform = Transform3D(0.879626, -0.254924, -1.16897, -0.141586, 1.41853, -0.415886, 1.18804, 0.357801, 0.815946, 5.6514, 8.85369, -32.9034)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium14"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium14"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium14"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium14"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium14"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium14"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium14"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium15" type="Node3D" parent="Trees"]
+transform = Transform3D(1.46233, -0.254924, -0.0426441, 0.236491, 1.41853, -0.370243, 0.104293, 0.357801, 1.43747, 9.58192, 9.85552, -43.7459)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium15"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium15"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium15"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium15"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium15"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium15"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium15"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="TreeSetMedium16" type="Node3D" parent="Trees"]
+transform = Transform3D(0.879626, -0.254924, -1.16897, -0.141586, 1.41853, -0.415886, 1.18804, 0.357801, 0.815946, 18.2574, 9.05609, -34.3955)
+
+[node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium16"]
+material_override = SubResource("StandardMaterial3D_60ky7")
+billboard = 2
+texture = ExtResource("10_bn5i7")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Trees/TreeSetMedium16"]
+transform = Transform3D(0.934441, 0, -0.356118, 0, 1, 0, 0.356118, 0, 0.934441, 4.35984, -0.213811, -0.915278)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("9_nrdpd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Trees/TreeSetMedium16"]
+transform = Transform3D(0.919955, 0.119201, 0.373462, -0.110447, 0.99287, -0.0448367, -0.376143, -1.66338e-10, 0.926561, -2.22029, 0.737513, -2.81178)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("12_mrvrj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Trees/TreeSetMedium16"]
+transform = Transform3D(0.874611, 0.118522, 0.470115, -0.110447, 0.99287, -0.0448367, -0.472077, -0.0127082, 0.881466, -2.22029, 0.300536, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("13_scikt")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Trees/TreeSetMedium16"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 3.68022, -0.334281, 3.17349)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("11_0qwa0")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Trees/TreeSetMedium16"]
+transform = Transform3D(0.947177, 0.091483, -0.307388, -0.110447, 0.99287, -0.0448367, 0.301095, 0.0764184, 0.950527, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("14_mf2me")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Trees/TreeSetMedium16"]
+transform = Transform3D(0.90244, 0.119085, 0.41403, -0.110447, 0.99287, -0.0448367, -0.416417, -0.00526599, 0.909158, -5.57062, 0.576249, 2.54604)
+material_override = SubResource("StandardMaterial3D_a6wpw")
+texture = ExtResource("15_cr4uj")
+
+[node name="Fog" type="Node3D" parent="."]
+transform = Transform3D(2.245, 0, 0, 0, 2.245, 0, 0, 0, 2.245, 0, 18.6166, -32.2011)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Fog"]
+transform = Transform3D(0.999429, 0.0337831, 0, -0.0337831, 0.999429, 0, 0, 0, 1, 0, 3.16702, -6.5727)
+material_override = SubResource("StandardMaterial3D_mgh4t")
+texture = ExtResource("16_8owp3")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Fog"]
+transform = Transform3D(-0.999186, -0.040341, 0, 0.040341, -0.999186, 0, 0, 0, 1, -0.332193, -5.77736, -6.5727)
+material_override = SubResource("StandardMaterial3D_mgh4t")
+texture = ExtResource("16_8owp3")
+
+[node name="Fog2" type="Node3D" parent="."]
+transform = Transform3D(1.36661, 0, 1.78113, 0, 2.245, 0, -1.78113, 0, 1.36661, -17.1278, 17.3942, -25.8281)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Fog2"]
+transform = Transform3D(0.999429, 0.0337831, 0, -0.0337831, 0.999429, 0, 0, 0, 1, 0, 3.16702, -6.5727)
+material_override = SubResource("StandardMaterial3D_mgh4t")
+texture = ExtResource("16_8owp3")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Fog2"]
+transform = Transform3D(-0.999186, -0.040341, 0, 0.040341, -0.999186, 0, 0, 0, 1, -0.332193, -5.77736, -6.5727)
+material_override = SubResource("StandardMaterial3D_mgh4t")
+texture = ExtResource("16_8owp3")
+
+[node name="Fog3" type="Node3D" parent="."]
+transform = Transform3D(1.76277, 0, -1.3902, 0, 2.245, 0, 1.3902, 0, 1.76277, 22.7179, 16.9927, -23.8571)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Fog3"]
+transform = Transform3D(0.999429, 0.0337831, 0, -0.0337831, 0.999429, 0, 0, 0, 1, 0, 3.16702, -6.5727)
+material_override = SubResource("StandardMaterial3D_mgh4t")
+texture = ExtResource("16_8owp3")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Fog3"]
+transform = Transform3D(-0.999186, -0.040341, 0, 0.040341, -0.999186, 0, 0, 0, 1, -0.332193, -5.77736, -6.5727)
+material_override = SubResource("StandardMaterial3D_mgh4t")
+texture = ExtResource("16_8owp3")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(163.559, 0, -4.41436, 0, 163.619, 0, 4.41436, 0, 163.559, 6.70295, 47.2802, -175.735)
+material_override = SubResource("StandardMaterial3D_b2ein")
+texture = ExtResource("18_hj3ml")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5.085, 0, 0, 0, 5.085, 0, 0, 0, 5.085, -14.5522, 73.7909, -174.167)
+visible = false
+material_override = SubResource("StandardMaterial3D_cbu1j")
+billboard = 2
+texture = ExtResource("17_jaeaj")

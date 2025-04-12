@@ -1,12 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://4o2y4c662gke"]
+[gd_scene load_steps=5 format=3 uid="uid://4o2y4c662gke"]
 
-[ext_resource type="Script" path="res://Test.gd" id="1_5p1lp"]
+[ext_resource type="Texture2D" uid="uid://cxwv16fdyhtfj" path="res://assets/Setpieces/Tree5.tres" id="2_7747d"]
+[ext_resource type="Texture2D" uid="uid://b5u7wmtnto5my" path="res://assets/Setpieces/Tree6.tres" id="3_bvsq4"]
+[ext_resource type="Script" path="res://Code/Animation/Scene/TreeSway.gd" id="4_loaao"]
 
-[node name="Node2D" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_5p1lp")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abu4n"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_7747d")
+
+[node name="Node2D" type="Node3D"]
+
+[node name="Sprite3D6" type="Sprite3D" parent="."]
+transform = Transform3D(0.069559, -0.0372801, -0.996881, -0.110447, 0.99287, -0.0448367, 0.991445, 0.113221, 0.0649455, 7.50294, -0.245769, 2.54604)
+material_override = SubResource("StandardMaterial3D_abu4n")
+texture = ExtResource("3_bvsq4")
+script = ExtResource("4_loaao")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.256576, 0, -0.966524, 0, 1, 0, 0.966524, 0, 0.256576, 0, 0, 4.01399)

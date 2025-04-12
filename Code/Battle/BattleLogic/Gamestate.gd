@@ -29,6 +29,8 @@ var activePlayer: PlayerState: set = setActivePlayer
 var lastTurnEnder: PlayerState
 var playerWin: PlayerState = null
 
+var audioSet: int = Random.generateRandom(1,1,3)
+
 func startGame():
 	
 	print("Game start")
@@ -90,7 +92,7 @@ func executeRounds():
 			else:
 				push_error("Random genereert een onmogelijk getal")
 		
-		executeEffects("Start of Round")
+		await executeEffects(Event_StartOfRound.new())
 				
 		await layoutManager.wait(2)
 		
@@ -98,14 +100,16 @@ func executeRounds():
 		while ((allyState.roundEnded == false) or (enemyState.roundEnded == false)) and playerWin == null:
 			await executeTurn()
 			nextActivePlayer()
+			
+		await executeEffects(Event_EndOfRound.new())
 		
 	endGame(playerWin)
 		
 func executeTurn():
 	turnCounter += 1
-	executeEffects("Start of Turn")
-	executeEffects("AllyTurn")
-	executeEffects("EnemyTurn")
+	executeEffects(Event_StartOfTurn.new())
+	executeEffects(Event_AllyTurn.new())
+	executeEffects(Event_EnemyTurn.new())
 	layoutManager.message("Turn " + str(turnCounter))
 	
 	await layoutManager.wait(2)
@@ -138,8 +142,8 @@ func damage(attacker: Card, dmg: int, defender: Card):
 func characterDefeated(card: CharacterCard, player: PlayerState):
 	checkGameWin(player)
 	if playerWin == null:
-		var switch = await player.input.chooseActiveCharacter()
-		player.setActiveCharacter(switch[1])
+		if card.active:
+			await player.chooseActiveCharacter()
 		if player.allied == false:
 			increaseGamePhase()
 	
@@ -164,39 +168,62 @@ func increaseGamePhase():
 	gamePhase = gamePhase + 1
 	if gamePhase > 3:
 		gamePhase = 3
-	AudioEngine.playBattleMusic(1, gamePhase)
+	AudioEngine.playBattleMusic(audioSet, gamePhase)
 	
 var scheduledEffects: Array[Effect] = []
 	
-func scheduleEffect(newEffect: Effect):
-	var mergeEffect: Effect = null
-	for effect in scheduledEffects:
-		if effect.get_class() == newEffect.get_class() and effect.target == newEffect.target:
-			mergeEffect = effect
-	if mergeEffect == null:
-		scheduledEffects.append(newEffect)
-	else:
-		mergeEffect.mergeEffect(newEffect)
-	
 #Timeframes: Start of Turn, AllyTurn, EnemyTurn
-func executeEffects(timeFrame: String):
-	match timeFrame:
-		"Start of Turn":
-			for effect in scheduledEffects:
-				if timeFrame == effect.timeFrame:
-					effect.executeEffect()
-		"AllyTurn":
-			for effect in scheduledEffects:
-				if timeFrame == effect.timeFrame and effect.target.cardOwner == activePlayer:
-					effect.executeEffect()
-		"EnemyTurn":
-			for effect in scheduledEffects:
-				if timeFrame == effect.timeFrame and effect.target.cardOwner == activePlayer.opponent:
-					effect.executeEffect()
-		_:
-			for effect in scheduledEffects:
-				if timeFrame == effect.timeFrame:
-					effect.executeEffect()
+func executeEffects(currentEvent: Event):
+	if currentEvent is Event_StartOfTurn:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_StartOfTurn:
+					await effect.execute(currentEvent)
+	if currentEvent is Event_StartOfRound:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_StartOfRound:
+					await effect.execute(currentEvent)
+	elif currentEvent is Event_EndOfRound:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_EndOfRound:
+					await effect.execute(currentEvent)
+	elif currentEvent is Event_AllyTurn:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_AllyTurn and effect.target.cardOwner == activePlayer:
+					await effect.execute(currentEvent)
+	elif currentEvent is Event_EnemyTurn:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_EnemyTurn and effect.target.cardOwner == activePlayer.opponent:
+					await effect.execute(currentEvent)
+	elif currentEvent is Event_CharacterTakesDamage:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_CharacterTakesDamage and event.character == effect.target:
+					await effect.execute(currentEvent)
+	elif currentEvent is Event_CharacterUsesMove:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_CharacterUsesMove:
+					await effect.execute(currentEvent)
+	elif currentEvent is Event_Generic:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_Generic and currentEvent.timeFrame == event.timeFrame:
+					await effect.execute(currentEvent)
+	elif currentEvent is Event_PlayCard:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_PlayCard and currentEvent.card == event.card:
+					await effect.execute(currentEvent)
+	elif currentEvent is Event_PlayCardType:
+		for effect in scheduledEffects:
+			for event in effect.events:
+				if event is Event_PlayCardType and currentEvent.cardType == event.cardType:
+					await effect.execute(currentEvent)
 	
 # Getter and Setters -------------------------------------------------------------------------------
 
@@ -211,6 +238,11 @@ func getAllyState():
 	
 func setAllyState(state: PlayerState):
 	allyState = state
+	
+func getPlayer(allied: bool):
+	if allied:
+		return allyState
+	return enemyState
 	
 func getEnemyState():
 	return enemyState

@@ -17,6 +17,8 @@ var CAenergyCost: int = 3
 var active: bool = false
 var defeated: bool = false
 
+var damageReduction: int = 0
+
 func cardConstructor():
 	cardType = "CharacterCard"
 	
@@ -37,10 +39,12 @@ func setActive(x: bool):
 func playableOn():
 	return [cardOwner.characterCards.collision]
 
+var NABonusDamage: int = 0
+
 func NA():
 	cardOwner.reduceGold(NAcost)
 	gainEnergy()
-	await attack(NAdmg)
+	await attack(NAdmg + NABonusDamage)
 	
 func SA():
 	cardOwner.reduceGold(SAcost)
@@ -60,12 +64,16 @@ func onMove(attackType: String):
 	gameState.layoutManager.camera.zoom(Vector2(0,0), 1, 1.5)
 
 func receiveDamage(amt: int):
+	var receivedAmount = amt - damageReduction
+	
 	var anim = Load.loadAnimation("Take Damage")
-	anim.setText("- " + str(amt))
+	anim.setText("- " + str(receivedAmount))
 	anim.setPosition(global_position)
+	anim.setColor(Color.MAROON)
 	await Load.playAnimation(anim)
 	
-	await setHP(HP - amt)
+	await setHP(HP - receivedAmount)
+	await gameState.executeEffects(Event_CharacterTakesDamage.new(self))
 	onHit()
 	
 func onHit():
@@ -98,6 +106,15 @@ func getMoveCost(move: String):
 		"CA":
 			return CAcost
 
+func getMoveDamage(move: String):
+	match move:
+		"NA":
+			return NAdmg
+		"SA":
+			return SAdmg
+		"CA":
+			return CAdmg
+
 func getMoveName(move: String):
 	match move:
 		"NA":
@@ -117,6 +134,12 @@ func reduceEnergy():
 	energy = energy - CAenergyCost
 	
 func heal(amt: int):
+	var anim = Load.loadAnimation("Take Damage")
+	anim.setText("+ " + str(amt))
+	anim.setPosition(global_position)
+	anim.setColor(Color.AQUA)
+	await Load.playAnimation(anim)
+	
 	setHP(HP + amt)
 	
 func getDisplayInfo():
@@ -124,7 +147,7 @@ func getDisplayInfo():
 ["Title", cardName],
 ["Portrait", cardImage],
 ["Parameter", getHP(), 0, getMaxHP()],
-["Parameter", getEnergy(), 0, getMaxEnergy()],
+["Parameter", getEnergy(), 0, getMaxEnergy(), Color.LIGHT_STEEL_BLUE],
 ["Button", getNAName()],
 ["Text", getNADescription()],
 ["Button", getSAName()],
@@ -134,8 +157,11 @@ func getDisplayInfo():
 ["Title", getAbilityName()],
 ["Text", getAbilityDescription()]
 ]
-	
+
 #---------------------------------------------------------------------------------------------------
+
+func setCost(cost: int):
+	cardCost = cost
 
 func getMaxHP():
 	return maxHP
@@ -143,18 +169,20 @@ func getMaxHP():
 func setHP(amt: int):
 	if amt > maxHP:
 		HP = maxHP
-	if amt <= 0:
+	elif amt <= 0:
 		HP = 0
 		card.setLabel1(str(HP))
 		await defeatCard(self)
 	else:
 		HP = amt
+		
 	if card:
 		card.setLabel1(str(HP))
 	if HP == 0:
 		card.cardShatterStage(4)
 	elif HP <= floor((maxHP/6)):
 		card.cardShatterStage(3)
+		card.setLabel1Color(Color.MAROON)
 	elif HP <= floor((maxHP/3)):
 		card.cardShatterStage(2)
 	elif HP <= floor((maxHP/2)):
