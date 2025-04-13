@@ -5,6 +5,8 @@ var characters = []
 var enabledCards = []
 var enabledCharacters = []
 
+func getAllCards():
+	return deck.duplicate() + characters.duplicate()
 
 # Deck functions
 func getDeck():
@@ -103,8 +105,6 @@ func saveUserData() -> bool:
 		"enabledCharacters": enabledCharacters
 	}
 	
-	print(save_data)
-
 	var save_file = FileAccess.open("user://save_data.json", FileAccess.WRITE)
 	if save_file:
 		save_file.store_string(JSON.stringify(save_data, "  "))
@@ -128,7 +128,7 @@ func loadUserData() -> bool:
 	var error = json.parse(json_text)
 
 	if error == OK:
-		var data: Dictionary = json.get_data()  
+		var data = json.get_data()  
 
 		if data.has("deck"):
 			deck = data.deck
@@ -144,3 +144,13 @@ func loadUserData() -> bool:
 	else:
 		printerr("JSON Parse Error: " + json.get_error_message() + " at line " + str(json.get_error_line()))
 		return false
+
+
+func to_string_array(input: Array) -> Array[String]:
+	var result: Array[String] = []
+	for item in input:
+		if typeof(item) == TYPE_STRING:
+			result.append(item)
+		else:
+			result.append(str(item))  # or skip if strict
+	return result

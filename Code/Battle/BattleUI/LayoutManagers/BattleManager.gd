@@ -113,7 +113,7 @@ func initializeBattle():
 	rightSlider.layoutManager = self
 	
 	#print("Ready")
-	#print(allyDeck)
+	print("allydeck: ", allyDeck.getCards())
 	gameState = GameState.new(allyDeck, allyInput, allyCharacterLayout, allyHandLayout, allyAreaSupport, allyEntity,
 	enemyDeck, enemyInput, enemyCharacterLayout, enemyHandLayout, enemyAreaSupport, enemyEntity,
 	battleResources, self)

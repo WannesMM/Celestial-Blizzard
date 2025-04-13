@@ -67,9 +67,6 @@ func cardMouseExited(card):
 	card.undoHighlightBorder()
 	card.scaleRelative(Vector2(1,1), ANIMATIONDURATION)
 
-func _process(delta: float) -> void:
-	pass
-
 func arrangeCard(card: Card):
 	var numCards = addedCards.size()
 	var index = addedCards.find(card)

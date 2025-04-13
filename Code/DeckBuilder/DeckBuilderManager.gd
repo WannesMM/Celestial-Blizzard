@@ -57,7 +57,7 @@ func saveMove(card: Card, layout):
 	elif layout.name == "CharacterPicker" && currentStartLayout.name == "Characters":
 		UserInfo.removeActiveCharacters([card.getCardName()])
 	else:
-		print("card not saved, origin:", currentStartLayout.name, "dest: ", layout.name)
+		print("card not saved, origin: ", currentStartLayout.name, " - dest: ", layout.name)
 	
 		
 
@@ -85,6 +85,11 @@ func deselectAllCards():
 #For the information slider when selected
 func closeCardInformation():
 	$"Right Slider".closeCardInformation()
+
+func _notification(what):
+	if what == NOTIFICATION_SCROLL_BEGIN or what == NOTIFICATION_DRAG_END:
+		# Reset card selection when scrolling happens
+		deselectAllCards()
 
 func displayCardInformation(card: Card):
 	if card.getLayout().getShowInformation():
