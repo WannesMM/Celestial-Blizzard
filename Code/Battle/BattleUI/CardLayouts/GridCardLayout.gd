@@ -94,15 +94,15 @@ func arrangeCards():
 		var totalHeight = Yitterations * cellHeight + outerMarginY * 2
 		box.custom_minimum_size = Vector2(totalWidth, totalHeight)
 	
-	var container: ScrollContainer = box.get_parent()
-	if container is ScrollContainer:
-		match scroll:
-			"horizontal":
-				container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
-				container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
-			"vertical":
-				container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
-				container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
-			"none":
-				container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
-				container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+		var container = box.get_parent()
+		if container is ScrollContainer:
+			match scroll:
+				"horizontal":
+					container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+					container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+				"vertical":
+					container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+					container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+				"none":
+					container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+					container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER

@@ -1,36 +1,33 @@
 extends LayoutManager
 
 var currentStartLayout: CardLayout
+var previousParent
 
 func startCardDrag(card: Card):
 	currentStartLayout = card.getLayout()
-	var drag_layer = get_tree().get_root()
-	if drag_layer:
-		var global_pos = card.global_position  # Store global position
-		card.get_parent().remove_child(card)  # Remove from previous parent
-		card.global_position = global_pos  # Restore correct position
-		drag_layer.add_child(card)  # Move to global layer
+	previousParent = card.get_parent()
+	card.reparent($DragLayer)
 		
 func finishCardDrag(card: Card):
-	card.get_parent().remove_child(card)
-	currentStartLayout.addCard(card)
+	card.reparent(previousParent)
 
 	
 #Finish the drag
 func finishDrag():
+	finishCardDrag(cardBeingDragged)
 	var cardSlotFound = raycastCheckForCardSlot()
 	
 	if isValidMove(cardBeingDragged.getCardType(), cardSlotFound):		
 		var layout: GridCardLayout = cardSlotFound.getRespectiveCardLayout()
 		
-		if layout.name == "Characters":
+		if layout.name == "Characters" && len(UserInfo.getCharacters()) == 3:
 			var cardToBeRemoved: Card = layout.addedCards[0] 
 			layout.removeCard(cardToBeRemoved)
-			$CharacterPicker.find_child("CharacterPicker").addCard(cardToBeRemoved)
-			UserInfo.removeCardsFromCharacters([cardToBeRemoved])
+			$UI/CharacterPicker.find_child("CharacterPicker").addCard(cardToBeRemoved)
+			UserInfo.removeActiveCharacters([cardToBeRemoved.getCardName()])
 		
-		finishCardDrag(cardBeingDragged)
-		saveMove(cardBeingDragged, cardSlotFound)
+		
+		saveMove(cardBeingDragged, layout)
 
 		if cardSlotFound is CardCollision:
 			layout = cardSlotFound.cardScene
@@ -50,17 +47,18 @@ func isValidMove(cardType: String, cardSlotFound) -> bool:
 		
 	return true
 
-func saveMove(card: Card, cardSlotFound):
-	if cardSlotFound is CardCollision:
-		var layout: CardLayout = cardSlotFound.cardScene
-		if layout.name == "Deck" && currentStartLayout.name == "DeckPicker":
-			UserInfo.addCardsToDeck([card.getCardName()])
-		elif layout.name == "DeckPicker" && currentStartLayout.name == "Deck":
-			UserInfo.removeCardsFromDeck([card.getCardName()])
-		elif layout.name == "Characters" && currentStartLayout.name == "CharacterPicker":
-			UserInfo.addCardsToCharacters([card.getCardName()])
-		elif layout.name == "CharacterPicker" && currentStartLayout.name == "Characters":
-			UserInfo.removeCardsFromCharacters([card.getCardName()])
+func saveMove(card: Card, layout):
+	if layout.name == "Deck" && currentStartLayout.name == "DeckPicker":
+		UserInfo.addCardsToDeck([card.getCardName()])
+	elif layout.name == "DeckPicker" && currentStartLayout.name == "Deck":
+		UserInfo.removeCardsFromDeck([card.getCardName()])
+	elif layout.name == "Characters" && currentStartLayout.name == "CharacterPicker":
+		UserInfo.addActiveCharacters([card.getCardName()])
+	elif layout.name == "CharacterPicker" && currentStartLayout.name == "Characters":
+		UserInfo.removeActiveCharacters([card.getCardName()])
+	else:
+		print("card not saved, origin:", currentStartLayout.name, "dest: ", layout.name)
+	
 		
 
 func selectCard(card: Card):

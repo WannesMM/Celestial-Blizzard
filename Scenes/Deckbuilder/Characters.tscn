@@ -29,14 +29,7 @@ layout_mode = 2
 [node name="Characters" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("collider")]
 script = ExtResource("1_3jkir")
 gridSizeX = 3
-gridSizeY = null
-scroll = null
 scaleCards = 0.7
-outerMarginX = null
-outerMarginY = null
-innerMarginX = null
-innerMarginY = null
-reverseDrawingOrder = null
 collider = NodePath("../CharactersCollider")
 
 [node name="CharactersCollider" type="Node2D" parent="ScrollContainer/VBoxContainer" node_paths=PackedStringArray("cardLayout")]

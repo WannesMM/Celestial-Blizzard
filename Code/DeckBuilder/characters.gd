@@ -4,4 +4,4 @@ extends GridCardLayout
 func cardLayoutConstructor():
 	addCards(Load.loadCards(UserInfo.getCharacters()))
 	for card: Card in addedCards:
-		card.currentLayout.setMovable(false)
+		card.currentLayout.setMovable(true)

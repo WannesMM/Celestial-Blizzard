@@ -102,6 +102,8 @@ func saveUserData() -> bool:
 		"enabledCards": enabledCards,
 		"enabledCharacters": enabledCharacters
 	}
+	
+	print(save_data)
 
 	var save_file = FileAccess.open("user://save_data.json", FileAccess.WRITE)
 	if save_file:

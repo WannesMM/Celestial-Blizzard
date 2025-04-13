@@ -7,4 +7,5 @@ func _ready() -> void:
 	
 func _button_pressed():
 	UserInfo.saveUserData()
+	print("hello world")
 	Random.callLoadingScreen("Title")
