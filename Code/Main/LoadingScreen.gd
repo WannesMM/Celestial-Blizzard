@@ -196,6 +196,7 @@ var tips = [
 	]
 
 func generateTip():
-	$Tip.text = tips[Random.generateRandom(1,0,tips.size() - 1)]
+	$Tip.setDisplayText("[center][font_size=17]" + tips[Random.generateRandom(1,0,tips.size() - 1)] + "[/font_size][/center]")
+	$Tip.fadeIn()
 	
 	

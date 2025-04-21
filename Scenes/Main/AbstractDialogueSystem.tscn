@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq2wj0rwhyo78"]
+[gd_scene load_steps=7 format=3 uid="uid://dq2wj0rwhyo78"]
 
 [ext_resource type="Script" path="res://Scenes/Main/AbstractDialogueStysem.gd" id="1_nyhah"]
 [ext_resource type="Script" path="res://Code/Engine/TextLabel.gd" id="2_immwh"]
+[ext_resource type="Script" path="res://Code/Engine/TextEngine.gd" id="3_b8j2f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gcdlh"]
 light_mode = 1
@@ -47,7 +48,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_immwh")
 
-[node name="TextBox" type="Label" parent="."]
+[node name="TextBox" type="RichTextLabel" parent="."]
 material = SubResource("CanvasItemMaterial_brpv7")
 layout_mode = 1
 anchors_preset = 12
@@ -57,8 +58,8 @@ anchor_bottom = 1.0
 offset_top = -121.0
 grow_horizontal = 2
 grow_vertical = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_immwh")
+bbcode_enabled = true
+script = ExtResource("3_b8j2f")
+fontSize = 17
 
 [connection signal="pressed" from="Continue" to="." method="proceed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bux5s4cf5dm4m"]
+[gd_scene load_steps=45 format=3 uid="uid://bux5s4cf5dm4m"]
 
 [ext_resource type="Script" path="res://Code/Battle/BattleUI/Card/Card.gd" id="1_3o3o6"]
 [ext_resource type="Texture2D" uid="uid://cjimy5351v2j5" path="res://assets/Cards/CardAssets/Card fill.png" id="2_jhpte"]
@@ -40,6 +40,9 @@
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="37_fgqw6"]
 [ext_resource type="PackedScene" uid="uid://cr0lltj7npuu2" path="res://Scenes/Visual/IconDisplay.tscn" id="37_noqv0"]
 [ext_resource type="Texture2D" uid="uid://h6bfe4vr5rqg" path="res://assets/Cards/CardAssets/card inside shade.png" id="39_l6jqo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rk46r"]
+light_mode = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqvhu"]
 font_size = 17
@@ -163,6 +166,7 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_jhpte")
 
 [node name="cardImage" type="Sprite2D" parent="CardMask"]
+material = SubResource("CanvasItemMaterial_rk46r")
 scale = Vector2(0.51, 0.51)
 texture = ExtResource("2_jyits")
 script = ExtResource("4_hdf5q")

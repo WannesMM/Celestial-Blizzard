@@ -66,7 +66,8 @@ func setDialogue(dialogue: String, name: String):
 	setTextBox(dialogue)
 	
 func setTextBox(dialogue: String):
-	$TextBox.setText(dialogue)
+	$TextBox.setDisplayText(dialogue)
+	$TextBox.fadeIn()
 	
 func setName(name: String):
 	$CharacterName.setText(name)

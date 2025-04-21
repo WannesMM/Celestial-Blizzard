@@ -258,7 +258,6 @@ layout_mode = 2
 
 [node name="Text" parent="Scroll/VBoxContainer" instance=ExtResource("7_31jda")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
 text = "texttexttexttexttexttexttexttexttexttttkddddddddddddddddddddddddddddddddddddddddddddds"
 
 [node name="ParameterDisplay" parent="Scroll/VBoxContainer" instance=ExtResource("6_l3vxr")]

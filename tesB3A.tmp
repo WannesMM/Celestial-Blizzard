@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://4o2y4c662gke"]
+[gd_scene load_steps=2 format=3 uid="uid://4o2y4c662gke"]
 
-[ext_resource type="Script" path="res://Code/Engine/Test.gd" id="1_ej73n"]
 [ext_resource type="Script" path="res://Code/Engine/TextEngine.gd" id="1_tcgl5"]
 
 [node name="Control" type="Control"]
@@ -10,7 +9,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ej73n")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -28,5 +26,3 @@ grow_vertical = 2
 bbcode_enabled = true
 scroll_active = false
 script = ExtResource("1_tcgl5")
-pulse = true
-center = false

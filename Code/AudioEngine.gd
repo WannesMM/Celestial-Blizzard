@@ -97,3 +97,6 @@ func loadStoryPath(name: String):
 	
 func playStory(name: String, channel: int = 1, fade: float = 1):
 	playAudio(loadStoryPath(name),channel,0, fade)
+
+func playSFXmp3(name: String):
+	playAudio("res://assets/Audio/Sound effects/" + str(name) + ".mp3",5)

@@ -3,7 +3,6 @@ extends Animate
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ColorRect.size.y = 0
-	play()
 	
 func play():
 	var tween = create_tween()
@@ -18,4 +17,4 @@ func play():
 	tween.kill()
 
 func setText(newText):
-	$ColorRect/Label.text = newText
+	$ColorRect/Label.setDisplayText(newText)
