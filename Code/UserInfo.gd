@@ -118,7 +118,22 @@ func saveUserData() -> bool:
 func loadUserData() -> bool:
 	var save_file = FileAccess.open("user://save_data.json", FileAccess.READ)
 	if not save_file:
-		printerr("No save data found")
+		var allCards = FileAccess.open("res://File/Cards.json", FileAccess.READ)
+		var json = JSON.new()
+		json.parse(allCards.get_as_text())
+		var data: Dictionary = json.get_data()
+		
+		var characters = []
+		var cards = []
+		for card in data.keys():
+			if data[card]["Script"].contains("Character"):
+				characters.append(card)
+			else:
+				cards.append(card)
+		enableCards(cards)
+		enableCharacters(characters)
+		
+		saveUserData()
 		return false
 		
 	var json_text = save_file.get_as_text()
