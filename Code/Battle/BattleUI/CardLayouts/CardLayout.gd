@@ -107,13 +107,14 @@ func removeAllCards():
 	assert(addedCards == [])
 	
 #Add a card to this layout. This can either be a cardLogic or an existing card.
-func addCard(card):
+func addCard(card: Card):
 	var layout = card.getLayout()
 	if layout:
 		layout.removeCard(card)
 	add_child(card)  
 	addedCards.append(card)
 	card.setLayout(self)
+	card.position = Vector2.ZERO
 	connectSignal(card)
 	arrangeCards()
 

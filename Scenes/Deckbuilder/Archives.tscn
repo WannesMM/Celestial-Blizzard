@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://cv47mt6hvvc4q"]
+
+[ext_resource type="PackedScene" uid="uid://bcpmy2rfu7oa8" path="res://Scenes/Deckbuilder/deckBuilder.tscn" id="1_dl0no"]
+[ext_resource type="Script" path="res://Code/Engine/FirstPersonCamera.gd" id="2_v63xb"]
+[ext_resource type="Texture2D" uid="uid://b050f8fljwedx" path="res://assets/Material/AllSky_Overcast4_Low.png" id="3_2dc7d"]
+[ext_resource type="Script" path="res://Code/Engine/World.gd" id="4_vluta"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vwu7h"]
+emission_shape_scale = Vector3(4, 4, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -362.0
+angle_max = 358.0
+inherit_velocity_ratio = 0.017
+spread = 180.0
+gravity = Vector3(-0.04, -0.075, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 1.09
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.0499978
+scale_min = 0.15
+scale_max = 0.25
+
+[sub_resource type="Gradient" id="Gradient_4g5ql"]
+colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1vpxm"]
+gradient = SubResource("Gradient_4g5ql")
+fill = 1
+fill_from = Vector2(0.502674, 0.508021)
+fill_to = Vector2(0.508021, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_micpd"]
+transparency = 2
+alpha_scissor_threshold = 0.635
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_1vpxm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8xt1u"]
+material = SubResource("StandardMaterial3D_micpd")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_deamj"]
+panorama = ExtResource("3_2dc7d")
+
+[sub_resource type="Sky" id="Sky_sldey"]
+sky_material = SubResource("PanoramaSkyMaterial_deamj")
+
+[sub_resource type="Environment" id="Environment_vcwg2"]
+background_mode = 2
+sky = SubResource("Sky_sldey")
+ambient_light_color = Color(0.360366, 0.389623, 0.80549, 1)
+ambient_light_energy = 3.53
+glow_enabled = true
+glow_intensity = 1.29
+glow_strength = 1.67
+glow_bloom = 0.27
+fog_enabled = true
+fog_light_color = Color(0.0944922, 0.142084, 0.230469, 1)
+fog_density = 0.0733
+fog_aerial_perspective = 0.535
+
+[node name="Archives" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeckBuilder" parent="." instance=ExtResource("1_dl0no")]
+layout_mode = 1
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D2" type="Camera3D" parent="Node3D"]
+script = ExtResource("2_v63xb")
+smoothing = 0.395
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D/Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, -0.922065, -0.387032, 0, 0.387032, -0.922065, 0, 0, 0)
+amount = 2000
+lifetime = 10.0
+trail_lifetime = 3.1
+process_material = SubResource("ParticleProcessMaterial_vwu7h")
+draw_pass_1 = SubResource("PlaneMesh_8xt1u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.97901, 0.203812, 0, -0.203812, 0.97901, 0, 1.24618, 0.27871)
+light_color = Color(0, 0.164596, 0.851563, 1)
+light_energy = 4.007
+light_indirect_energy = 0.845
+shadow_enabled = true
+shadow_bias = 4.577
+shadow_normal_bias = 5.204
+shadow_transmittance_bias = -1.814
+shadow_blur = 2.456
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_vcwg2")
+script = ExtResource("4_vluta")
+rotateS = true

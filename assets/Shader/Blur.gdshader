@@ -6,7 +6,7 @@ uniform sampler2D screen_texture;
 void fragment() {
     vec2 uv = SCREEN_UV;
     vec4 color = vec4(0.0);
-    
+
     float total = 0.0;
     float offset = 1.0 / 300.0; // Adjust for screen size
 
