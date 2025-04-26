@@ -3,11 +3,11 @@ extends Control
 var layoutManager: LayoutManager = null
 var currentCard: Card
 
-const titleScene = preload("res://Scenes/Main/UI components/Title.tscn")
-const portraitScene = preload("res://Scenes/Main/UI components/Portrait.tscn")
-const buttonScene = preload("res://Scenes/Main/UI components/Button.tscn")
-const textScene = preload("res://Scenes/Main/UI components/Text.tscn")
+const titleScene = preload("res://Scenes/Main/UIComponents/Title.tscn")
+const buttonScene = preload("res://Scenes/Main/UIComponents/Button.tscn")
+const textScene = preload("res://Scenes/Main/UIComponents/Text.tscn")
 const parameterScene = preload("res://Scenes/Visual/ParameterDisplay.tscn")
+const portraitScene = preload("res://Scenes/Main/UIComponents/Portrait.tscn")
 
 func _ready() -> void:
 	visible = false

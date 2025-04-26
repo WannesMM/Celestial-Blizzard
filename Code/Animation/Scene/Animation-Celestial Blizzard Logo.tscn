@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckc6egxmttex"]
 
-[ext_resource type="Script" path="res://Code/Animation/Code/Animation-Celestial Blizzard Logo.gd" id="1_7fu8n"]
+[ext_resource type="Script" path="res://Code/Animation/AnimationCode/Animation-Celestial Blizzard Logo.gd" id="1_7fu8n"]
 [ext_resource type="Texture2D" uid="uid://dvhq3hc40n1dx" path="res://assets/User Interface/Celestial Blizzard Logo.png" id="2_apkkm"]
 
 [node name="Animation-celestialBlizzardLogo" type="Control"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv0wjist0ee11"]
 
-[ext_resource type="Script" path="res://Code/Animation/Code/CinematicBars.gd" id="1_yf1fu"]
+[ext_resource type="Script" path="res://Code/Animation/AnimationCode/CinematicBars.gd" id="1_yf1fu"]
 
 [node name="CinematicBars" type="Control"]
 layout_mode = 3
