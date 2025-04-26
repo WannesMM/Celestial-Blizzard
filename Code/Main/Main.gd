@@ -17,6 +17,7 @@ func _ready() -> void:
 	$Node3D/Camera3D.animateRotation(Vector3(0,0,0),4)
 	$ColorRect.animateScale(Vector2(1,1))
 	$ColorRect2.animateScale(Vector2(1,1))
+	$Node3D/Camera3D.shimmerIdle()
 	
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
 	await fadeTween.finished
@@ -25,13 +26,13 @@ func _ready() -> void:
 func audio():
 	$AudioStreamPlayer.stream = load("res://assets/Audio/Music/TitleScreen/Mainscreen" + str(Random.generateRandom(1,1,4)) + ".wav")
 	$AudioStreamPlayer.play()
-	AudioEngine.playAmbience("Wind",3,4)
 
 func loadEnvironment(environment: PackedScene):
 	var env: Env = environment.instantiate()
 	$Node3D.add_child(env)
 	$Node3D/Camera3D.position = env.baseCameraPosition
-	$Node3D/Sprite3D.position.y = env.baseCameraPosition.y
+	$Node3D/Sprite3D.position.y += env.baseCameraPosition.y
+	$Node3D/Label3D.position.y += env.baseCameraPosition.y
 	
 func fadeScreen():
 	var fadeTween = create_tween()

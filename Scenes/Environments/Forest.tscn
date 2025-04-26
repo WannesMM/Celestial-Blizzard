@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bxomdgywf7vue"]
+[gd_scene load_steps=41 format=3 uid="uid://bxomdgywf7vue"]
 
 [ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="1_8ctnr"]
 [ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_22dne"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://wwifnvxmg8fu" path="res://assets/Setpieces/Tree2.tres" id="9_nrdpd"]
 [ext_resource type="Texture2D" uid="uid://bsusxo2q60nm2" path="res://assets/Setpieces/Tree1.tres" id="10_bn5i7"]
 [ext_resource type="Texture2D" uid="uid://cxwv16fdyhtfj" path="res://assets/Setpieces/Tree5.tres" id="11_0qwa0"]
+[ext_resource type="Script" path="res://Code/Engine/DirectionalLight.gd" id="11_th3ed"]
 [ext_resource type="Texture2D" uid="uid://bnfi3d1xjgvs2" path="res://assets/Setpieces/Tree3.tres" id="12_mrvrj"]
 [ext_resource type="Texture2D" uid="uid://cxmqyroppotku" path="res://assets/Setpieces/Tree4.tres" id="13_scikt"]
 [ext_resource type="Texture2D" uid="uid://b5u7wmtnto5my" path="res://assets/Setpieces/Tree6.tres" id="14_mf2me"]
@@ -69,9 +70,15 @@ sky = SubResource("Sky_u0lcs")
 sky_rotation = Vector3(-0.216421, 3.2498, 0)
 reflected_light_source = 2
 glow_enabled = true
+glow_levels/1 = 5.4
+glow_levels/2 = 4.16
+glow_levels/3 = 1.14
+glow_levels/5 = 2.6
+glow_levels/6 = 0.61
+glow_levels/7 = 0.41
 glow_intensity = 8.0
 glow_strength = 2.0
-glow_bloom = 0.03
+glow_bloom = 0.02
 glow_hdr_threshold = 0.15
 glow_hdr_scale = 1.23
 fog_enabled = true
@@ -99,7 +106,7 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("11_0qwa0")
-uv1_scale = Vector3(0.08, 0.08, 0.08)
+uv1_scale = Vector3(0.16, 0.16, 0.16)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgh4t"]
 transparency = 1
@@ -117,6 +124,13 @@ disable_fog = true
 albedo_color = Color(0.810879, 0.879309, 1, 1)
 albedo_texture = ExtResource("17_jaeaj")
 
+[sub_resource type="Curve" id="Curve_cmvqk"]
+_data = [Vector2(0, 0.402756), 0.0, 0.0, 0, 0, Vector2(0.390335, 0.721286), 0.0, 0.0, 0, 0, Vector2(0.565056, 0.502297), 0.0, 0.0, 0, 0, Vector2(0.732342, 0.980092), 0.0, 0.0, 0, 0, Vector2(1, 0.372894), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_aftgq"]
+curve = SubResource("Curve_cmvqk")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ruu40"]
 emission_shape_scale = Vector3(4, 4, 0)
 emission_shape = 3
@@ -130,8 +144,9 @@ linear_accel_min = -2.23517e-06
 linear_accel_max = 1.09
 tangential_accel_min = -2.23517e-06
 tangential_accel_max = 0.0499978
-scale_min = 0.15
-scale_max = 0.25
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_aftgq")
 
 [sub_resource type="Gradient" id="Gradient_u43yx"]
 colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
@@ -172,11 +187,13 @@ script = ExtResource("9_36xxs")
 rotateS = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.746394, 0.665504, 0, -0.665504, -0.746394, 0, 9.73619, 0)
-light_color = Color(0.51, 0.697833, 1, 1)
+transform = Transform3D(1, 0, 0, 0, -0.861097, 0.508441, 0, -0.508441, -0.861097, 0, 9.73619, 0)
+light_color = Color(0.3298, 0.60722, 0.97, 1)
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_blur = 0.633
+script = ExtResource("11_th3ed")
+idle = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_0g6pc")
@@ -847,7 +864,7 @@ texture = ExtResource("17_jaeaj")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.922065, -0.387032, 0, 0.387032, -0.922065, 0, 6.475, -0.906731)
-amount = 2000
+amount = 4000
 lifetime = 10.0
 trail_lifetime = 3.1
 process_material = SubResource("ParticleProcessMaterial_ruu40")

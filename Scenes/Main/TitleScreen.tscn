@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=100 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="FontFile" uid="uid://rhn3wt06rvrw" path="res://assets/Font/Baskerville Bold.otf" id="2_82mvx"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="10_v3w12"]
 [ext_resource type="AudioStream" uid="uid://url1q0r8c6jn" path="res://assets/Audio/Music/TitleScreen/Mainscreen1.wav" id="14_4f2jy"]
 [ext_resource type="Script" path="res://Code/Engine/Rect.gd" id="15_ebcku"]
+[ext_resource type="AudioStream" uid="uid://dmjf4qh22xn6y" path="res://assets/Audio/Ambience/Ambience_Leaves.mp3" id="15_mloev"]
 [ext_resource type="Texture2D" uid="uid://cnxkmj4kfhga" path="res://assets/Animated/Sheets/Shatter particle sheet.png" id="16_k37k4"]
+[ext_resource type="AudioStream" uid="uid://c3f8ubk257oqb" path="res://assets/Audio/Ambience/Wind.mp3" id="16_riuex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0r25u"]
 atlas = ExtResource("16_k37k4")
@@ -536,6 +538,15 @@ fill = 1
 fill_from = Vector2(0.490826, 0.518349)
 fill_to = Vector2(0.188073, 0.197248)
 
+[sub_resource type="Gradient" id="Gradient_6nuxf"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e63uw"]
+gradient = SubResource("Gradient_6nuxf")
+fill = 1
+fill_from = Vector2(0.491453, 0.504274)
+fill_to = Vector2(0.961538, 0.957265)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pj8sw"]
 light_mode = 1
 
@@ -803,8 +814,27 @@ rotation_edit_mode = 1
 script = ExtResource("8_jir33")
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D"]
-transform = Transform3D(2.45, 0, 0, 0, 2.45, 0, 0, 0, 2.45, 0, 0, -7.55108)
+transform = Transform3D(2.45, 0, 0, 0, 2.45, 0, 0, 0, 2.45, 0, 0.444538, -7.55108)
 texture = ExtResource("5_t2bfb")
+
+[node name="Label3D" type="Label3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.50421, -7.4985)
+pixel_size = 0.02
+outline_modulate = Color(0, 0, 0, 0.203922)
+text = "CHAPTER 1"
+font = ExtResource("2_82mvx")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0785515, -11.555)
+visible = false
+light_energy = 4.098
+light_indirect_energy = 4.025
+light_projector = SubResource("GradientTexture2D_e63uw")
+light_size = 1.0
+light_specular = 0.96
+shadow_enabled = true
+omni_range = 22.789
+omni_attenuation = 0.058
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("CanvasItemMaterial_pj8sw")
@@ -865,6 +895,14 @@ text = "Wiki"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_4f2jy")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_mloev")
+autoplay = true
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_riuex")
 autoplay = true
 
 [connection signal="mouse_entered" from="Battle" to="." method="BattleMouseEntered"]
