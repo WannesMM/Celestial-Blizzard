@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxomdgywf7vue"]
+[gd_scene load_steps=38 format=3 uid="uid://bxomdgywf7vue"]
 
 [ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="1_8ctnr"]
+[ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_22dne"]
 [ext_resource type="Texture2D" uid="uid://cu0wwu5oes8wl" path="res://assets/Material/snow_01_1k/snow_01_ambient_occlusion_1k.png" id="2_lt8ea"]
 [ext_resource type="Texture2D" uid="uid://cg81ykdty8wpf" path="res://assets/Material/snow_01_1k/snow_01_height_1k.png" id="3_4hua1"]
 [ext_resource type="Texture2D" uid="uid://y657xuirsy0u" path="res://assets/Material/snow_01_1k/snow_01_normal_gl_1k.png" id="4_hkph4"]
@@ -68,9 +69,11 @@ sky = SubResource("Sky_u0lcs")
 sky_rotation = Vector3(-0.216421, 3.2498, 0)
 reflected_light_source = 2
 glow_enabled = true
-glow_intensity = 2.5
+glow_intensity = 8.0
 glow_strength = 2.0
 glow_bloom = 0.03
+glow_hdr_threshold = 0.15
+glow_hdr_scale = 1.23
 fog_enabled = true
 fog_light_color = Color(0.00433594, 0.00716601, 0.0117188, 1)
 fog_light_energy = 11.18
@@ -114,7 +117,45 @@ disable_fog = true
 albedo_color = Color(0.810879, 0.879309, 1, 1)
 albedo_texture = ExtResource("17_jaeaj")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ruu40"]
+emission_shape_scale = Vector3(4, 4, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -362.0
+angle_max = 358.0
+inherit_velocity_ratio = 0.017
+spread = 180.0
+gravity = Vector3(-0.04, -0.075, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 1.09
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.0499978
+scale_min = 0.15
+scale_max = 0.25
+
+[sub_resource type="Gradient" id="Gradient_u43yx"]
+colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0p4iw"]
+gradient = SubResource("Gradient_u43yx")
+fill = 1
+fill_from = Vector2(0.502674, 0.508021)
+fill_to = Vector2(0.508021, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvquq"]
+transparency = 2
+alpha_scissor_threshold = 0.635
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_0p4iw")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3nmxp"]
+material = SubResource("StandardMaterial3D_xvquq")
+size = Vector2(0.15, 0.15)
+
 [node name="Environment" type="Node3D"]
+script = ExtResource("1_22dne")
+baseCameraPosition = Vector3(0, 6.502, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(99.755, 0, 0, 0, 99.755, 0, 0, 0, 99.755, 0, 0.237599, -16.027)
@@ -257,7 +298,7 @@ material_override = SubResource("StandardMaterial3D_a6wpw")
 texture = ExtResource("15_cr4uj")
 
 [node name="TreeSetMedium4" type="Node3D" parent="Trees"]
-transform = Transform3D(0.792621, 0.134368, 0.594725, -0.00519698, 0.976868, -0.213781, -0.609693, 0.166356, 0.774984, -12.0216, 8.53224, -4.11235)
+transform = Transform3D(0.529958, 0.183983, 0.827826, -0.00519699, 0.976868, -0.213781, -0.848008, 0.108992, 0.518655, -13.7188, 8.53224, -4.11235)
 
 [node name="Sprite3D" type="Sprite3D" parent="Trees/TreeSetMedium4"]
 material_override = SubResource("StandardMaterial3D_60ky7")
@@ -803,3 +844,11 @@ visible = false
 material_override = SubResource("StandardMaterial3D_cbu1j")
 billboard = 2
 texture = ExtResource("17_jaeaj")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.922065, -0.387032, 0, 0.387032, -0.922065, 0, 6.475, -0.906731)
+amount = 2000
+lifetime = 10.0
+trail_lifetime = 3.1
+process_material = SubResource("ParticleProcessMaterial_ruu40")
+draw_pass_1 = SubResource("PlaneMesh_3nmxp")

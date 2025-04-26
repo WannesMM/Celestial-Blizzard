@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cqeqg13s6llw5"]
+[gd_scene load_steps=23 format=3 uid="uid://cqeqg13s6llw5"]
 
 [ext_resource type="Script" path="res://Code/Story/Story1-1.gd" id="1_ha1om"]
 [ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="1_rpylp"]
@@ -21,42 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="18_1ad80"]
 [ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="19_edgou"]
 [ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="20_4mikx"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vmae4"]
-emission_shape_scale = Vector3(4, 4, 0)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-angle_min = -362.0
-angle_max = 358.0
-inherit_velocity_ratio = 0.017
-spread = 180.0
-gravity = Vector3(-0.04, -0.075, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 1.09
-tangential_accel_min = -2.23517e-06
-tangential_accel_max = 0.0499978
-scale_min = 0.15
-scale_max = 0.25
-
-[sub_resource type="Gradient" id="Gradient_u43yx"]
-colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ofvkb"]
-gradient = SubResource("Gradient_u43yx")
-fill = 1
-fill_from = Vector2(0.502674, 0.508021)
-fill_to = Vector2(0.508021, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvquq"]
-transparency = 2
-alpha_scissor_threshold = 0.635
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_texture = SubResource("GradientTexture2D_ofvkb")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_imju8"]
-material = SubResource("StandardMaterial3D_xvquq")
-size = Vector2(0.15, 0.15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sqncp"]
 animations = [{
@@ -123,17 +87,9 @@ script = ExtResource("1_ha1om")
 [node name="Environment" parent="." instance=ExtResource("1_rpylp")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19248, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.502, 0)
 script = ExtResource("2_6w461")
 max_yaw = 0.505
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -0.922065, -0.387032, 0, 0.387032, -0.922065, 0, 4.4303, -0.423716)
-amount = 2000
-lifetime = 10.0
-trail_lifetime = 3.1
-process_material = SubResource("ParticleProcessMaterial_vmae4")
-draw_pass_1 = SubResource("PlaneMesh_imju8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
 light_color = Color(0.461412, 0.609073, 0.67, 1)
@@ -153,7 +109,7 @@ grow_vertical = 2
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control"]
 modulate = Color(1, 1, 1, 0.0823529)
-scale = Vector2(0.565, 0.565)
+scale = Vector2(5.555, 5.555)
 sprite_frames = SubResource("SpriteFrames_sqncp")
 autoplay = "default"
 
