@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3antdxruwjk1"]
+[gd_scene load_steps=23 format=3 uid="uid://3antdxruwjk1"]
 
 [ext_resource type="Script" path="res://Code/Main/LoadingScreen.gd" id="1_0lv6y"]
 [ext_resource type="Script" path="res://Code/Main/ProgressBar.gd" id="2_l1hb6"]
@@ -36,6 +36,56 @@ fill = 1
 fill_from = Vector2(0.490826, 0.518349)
 fill_to = Vector2(0.188073, 0.197248)
 
+[sub_resource type="Curve" id="Curve_odj8a"]
+_data = [Vector2(0, 0.402756), 0.0, 0.0, 0, 0, Vector2(0.390335, 0.721286), 0.0, 0.0, 0, 0, Vector2(0.565056, 0.502297), 0.0, 0.0, 0, 0, Vector2(0.732342, 0.980092), 0.0, 0.0, 0, 0, Vector2(1, 0.372894), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_aftgq"]
+curve = SubResource("Curve_odj8a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_paybi"]
+emission_shape_scale = Vector3(4, 4, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -362.0
+angle_max = 358.0
+inherit_velocity_ratio = 0.017
+spread = 180.0
+gravity = Vector3(-0.04, -0.075, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 1.09
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.0499978
+scale_min = 0.7
+scale_max = 0.9
+scale_curve = SubResource("CurveTexture_aftgq")
+
+[sub_resource type="Gradient" id="Gradient_u43yx"]
+colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e26wo"]
+gradient = SubResource("Gradient_u43yx")
+fill = 1
+fill_from = Vector2(0.502674, 0.508021)
+fill_to = Vector2(0.508021, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvquq"]
+transparency = 2
+alpha_scissor_threshold = 0.635
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_e26wo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_etq0r"]
+material = SubResource("StandardMaterial3D_xvquq")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2h3bp"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jm8md"]
+
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -51,6 +101,7 @@ TitleScene = "res://Scenes/Main/TitleScreen.tscn"
 storyScene = "res://Scenes/Main/Story1-1.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("CanvasItemMaterial_vyr3u")
 layout_mode = 1
 anchors_preset = 15
@@ -178,3 +229,21 @@ bbcode_enabled = true
 text = "Did you know that I made this for no reason whatshoever because the game loads in 1 second?"
 script = ExtResource("6_6f4ej")
 pulse = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999982, 0.0055199, 0.00231695, 0.0043228, 0.933556, -0.358406, -0.00414137, -0.358389, -0.933563, 0, 5.28866, -5.67315)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.993574, -0.0201065, -0.111389, 0.111282, 0.00635847, -0.993767, 0.0206895, -0.999777, -0.00408018, 2.16951, 10.3072, -0.649867)
+amount = 100
+lifetime = 4.85
+preprocess = 6.5
+speed_scale = 0.95
+trail_lifetime = 3.1
+process_material = SubResource("ParticleProcessMaterial_paybi")
+draw_pass_1 = SubResource("PlaneMesh_etq0r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(23.61, 0, 0, 0, -4.7099, 23.1354, 0, -23.1354, -4.7099, 0, 7.83991, 4.88576)
+material_override = SubResource("StandardMaterial3D_2h3bp")
+mesh = SubResource("PlaneMesh_jm8md")
