@@ -1,0 +1,29 @@
+shader_type spatial;
+render_mode blend_mix, depth_prepass_alpha, cull_disabled;
+
+uniform sampler2D albedo_texture : source_color;
+uniform vec3 scale = vec3(1.0);
+uniform float wind_strength : hint_range(0.1, 1.0, 0.02);
+uniform float wind_speed : hint_range(0.5, 2.0, 0.1);
+
+void vertex() {
+	NORMAL = vec3(0.0, 1.0, 0.0);
+	VERTEX.x += sin(NODE_POSITION_WORLD.x + TIME * wind_speed + UV.y) * (1.0 - UV.y) * wind_strength;
+	VERTEX.z += cos(NODE_POSITION_WORLD.z + TIME * wind_speed + UV.y) * (1.0 - UV.y) * wind_strength;
+	VERTEX *= scale;
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(
+		vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0),
+		vec4(0.0, 1.0, 0.0, 0.0),
+		vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0),
+		MODEL_MATRIX[3]
+	);
+}
+
+void fragment() {
+	vec4 tex = texture(albedo_texture, UV);
+	if (tex.a < 0.1) {
+		discard;
+	}
+	ALBEDO = tex.rgb;
+	ALPHA = tex.a;
+}

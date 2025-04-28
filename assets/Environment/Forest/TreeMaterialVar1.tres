@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://qi3scc7lljau"]
+
+[ext_resource type="Shader" path="res://assets/Shader/Sway.gdshader" id="1_ilj8m"]
+[ext_resource type="Texture2D" uid="uid://dhiwv8ut7u3rb" path="res://assets/Setpieces/Trees/Tree1.png" id="2_jeq0b"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ilj8m")
+shader_parameter/scale = Vector3(2.29, 5.905, 1)
+shader_parameter/wind_strength = 0.12
+shader_parameter/wind_speed = 1.0
+shader_parameter/albedo_texture = ExtResource("2_jeq0b")
