@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqusv2kqd6tbr"
+path="res://.godot/imported/SFX_AthmosphericClick.mp3-b225bd08e31ee3d458dd7ecf779f66c5.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Sound effects/SFX_AthmosphericClick.mp3"
+dest_files=["res://.godot/imported/SFX_AthmosphericClick.mp3-b225bd08e31ee3d458dd7ecf779f66c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

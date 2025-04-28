@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckr2coljo25x"
+path="res://.godot/imported/SFX_IndustryCreepy.mp3-5014d4a2ffa3b73e9cec344c268d7405.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Sound effects/SFX_IndustryCreepy.mp3"
+dest_files=["res://.godot/imported/SFX_IndustryCreepy.mp3-5014d4a2ffa3b73e9cec344c268d7405.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

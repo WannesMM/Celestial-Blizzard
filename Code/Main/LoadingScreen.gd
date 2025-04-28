@@ -79,13 +79,11 @@ func shopSpecificLoad(shopInstance):
 	return true
 	
 func titleSpecificLoad(mainInstance):
-	mainInstance.loadDuringLoadingScreen()
 	return false
 	
 func startUpSpecificLoad(instance):
 	if await checkConnection():
 		var load = titleSpecificLoad(instance)
-		instance.titleAnimation = true
 		return load
 	return true
 

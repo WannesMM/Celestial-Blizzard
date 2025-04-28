@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://w3nr2nti4rcf"
+path="res://.godot/imported/SFX_CelestialBlizzardLogo.mp3-9585585e305a2f4697ce3b3e7e0453fe.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Sound effects/SFX_CelestialBlizzardLogo.mp3"
+dest_files=["res://.godot/imported/SFX_CelestialBlizzardLogo.mp3-9585585e305a2f4697ce3b3e7e0453fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

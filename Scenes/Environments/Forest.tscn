@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bxomdgywf7vue"]
+[gd_scene load_steps=56 format=3 uid="uid://bxomdgywf7vue"]
 
 [ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="1_8ctnr"]
 [ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_22dne"]
@@ -18,7 +18,24 @@
 [ext_resource type="Texture2D" uid="uid://b8jslkb141knd" path="res://assets/Setpieces/Fog.png" id="16_8owp3"]
 [ext_resource type="Texture2D" uid="uid://bvrqbcg7er3x6" path="res://assets/Setpieces/full moon.png" id="17_jaeaj"]
 [ext_resource type="Texture2D" uid="uid://dybj0swdibv4f" path="res://assets/Animated/CharacterHit/HitShatter.png" id="18_hj3ml"]
+[ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="20_w5dyg"]
+[ext_resource type="Texture2D" uid="uid://kh8cgsqr4bc5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-2.png" id="21_3gcdx"]
+[ext_resource type="Texture2D" uid="uid://bjkq1iikogg7h" path="res://assets/Animated/Harsh fog/Untitled_Artwork-3.png" id="22_h04ef"]
 [ext_resource type="Texture2D" uid="uid://btvbhgtutqkl3" path="res://assets/Setpieces/Mountain backdrop.png" id="22_n1v6b"]
+[ext_resource type="Texture2D" uid="uid://dwnsxqlisapr4" path="res://assets/Animated/Harsh fog/Untitled_Artwork-4.png" id="23_8edj0"]
+[ext_resource type="Texture2D" uid="uid://0mk1nxj4fjaf" path="res://assets/Animated/Harsh fog/Untitled_Artwork-5.png" id="24_sas76"]
+[ext_resource type="Texture2D" uid="uid://c2657tnxy8oi" path="res://assets/Animated/Harsh fog/Untitled_Artwork-6.png" id="25_gy6wq"]
+[ext_resource type="Texture2D" uid="uid://cvn2cla68yt04" path="res://assets/Animated/Harsh fog/Untitled_Artwork-7.png" id="26_vstes"]
+[ext_resource type="Texture2D" uid="uid://y3uvpo0wpee7" path="res://assets/Animated/Harsh fog/Untitled_Artwork-8.png" id="27_vupdo"]
+[ext_resource type="Texture2D" uid="uid://bchhogib46tyr" path="res://assets/Animated/Harsh fog/Untitled_Artwork-9.png" id="28_0qbg2"]
+[ext_resource type="Texture2D" uid="uid://b744pjtbcjy2q" path="res://assets/Animated/Harsh fog/Untitled_Artwork-10.png" id="29_p3k3l"]
+[ext_resource type="Texture2D" uid="uid://doaf35gpn6oep" path="res://assets/Animated/Harsh fog/Untitled_Artwork-11.png" id="30_eif50"]
+[ext_resource type="Texture2D" uid="uid://be3h2a3corhkg" path="res://assets/Animated/Harsh fog/Untitled_Artwork-12.png" id="31_hc1at"]
+[ext_resource type="Texture2D" uid="uid://dxivr2mvfl156" path="res://assets/Animated/Harsh fog/Untitled_Artwork-13.png" id="32_8o2t5"]
+[ext_resource type="Texture2D" uid="uid://dgo167iqikf5k" path="res://assets/Animated/Harsh fog/Untitled_Artwork-14.png" id="33_2ow8m"]
+[ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="34_6lwgb"]
+[ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="35_bvwrf"]
+[ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="36_q54k2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e80u"]
 albedo_color = Color(0.570313, 0.570313, 0.570313, 1)
@@ -78,7 +95,6 @@ glow_levels/5 = 0.0
 glow_levels/7 = 0.41
 glow_intensity = 8.0
 glow_strength = 2.0
-glow_bloom = 0.16
 glow_hdr_threshold = 0.15
 glow_hdr_scale = 1.23
 fog_enabled = true
@@ -156,6 +172,65 @@ disable_ambient_light = true
 disable_fog = true
 albedo_color = Color(0.061875, 0.0894375, 0.140625, 1)
 albedo_texture = ExtResource("22_n1v6b")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kywq7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_w5dyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_3gcdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_h04ef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_8edj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_sas76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_gy6wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_vstes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_vupdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_0qbg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_p3k3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_eif50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hc1at")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8o2t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_2ow8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_6lwgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_bvwrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_q54k2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
 
 [node name="Environment" type="Node3D"]
 script = ExtResource("1_22dne")
@@ -1088,7 +1163,7 @@ billboard = 2
 texture = ExtResource("17_jaeaj")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.922065, -0.387032, 0, 0.387032, -0.922065, 0, 6.475, -0.906731)
+transform = Transform3D(1, 0, 0, 0, 0.0231231, -0.999732, 0, 0.999732, 0.0231231, 0, 9.63872, 1.87723)
 amount = 4000
 lifetime = 10.0
 trail_lifetime = 3.1
@@ -1948,3 +2023,24 @@ material_override = ExtResource("15_gj1fn")
 cast_shadow = 2
 lod_bias = 0.001
 texture = ExtResource("13_vjyjd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control"]
+modulate = Color(1, 1, 1, 0.0313726)
+scale = Vector2(5.555, 5.555)
+sprite_frames = SubResource("SpriteFrames_kywq7")
+autoplay = "default"
+frame_progress = 0.343896

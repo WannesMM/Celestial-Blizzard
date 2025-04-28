@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xd7h1sce3i4e"
+path="res://.godot/imported/SFX_DramaticBell.mp3-9c7aff037f386091c298582e2f0e0ccd.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Sound effects/SFX_DramaticBell.mp3"
+dest_files=["res://.godot/imported/SFX_DramaticBell.mp3-9c7aff037f386091c298582e2f0e0ccd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

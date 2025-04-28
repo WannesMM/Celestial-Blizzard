@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://cb0umvcrah0o" path="res://assets/Animated/Spirit trail/Untitled_Artwork-8.png" id="28_wt78d"]
 [ext_resource type="Texture2D" uid="uid://cxks1q2minbaw" path="res://assets/Animated/Spirit trail/Untitled_Artwork-9.png" id="29_oktw6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncucc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p50el"]
 bg_color = Color(0.171875, 0.171875, 0.171875, 1)
 border_width_left = 2
 border_width_top = 2
@@ -47,7 +47,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="Theme" id="Theme_1avwj"]
-Panel/styles/panel = SubResource("StyleBoxFlat_ncucc")
+Panel/styles/panel = SubResource("StyleBoxFlat_p50el")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvbvh"]
 animations = [{

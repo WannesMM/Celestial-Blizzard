@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do6sf1omblkyj"
+path="res://.godot/imported/SFX_Card.mp3-3f71bbbef06d3c8e2b1d170ae1a0bf0d.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Sound effects/SFX_Card.mp3"
+dest_files=["res://.godot/imported/SFX_Card.mp3-3f71bbbef06d3c8e2b1d170ae1a0bf0d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

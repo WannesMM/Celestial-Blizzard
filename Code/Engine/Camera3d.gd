@@ -2,7 +2,7 @@ extends Camera3D
 
 class_name Camera3d
 
-func animateRotation(rotation: Vector3, duration: float):
+func animateRotation(rotation: Vector3, duration: float = 1):
 	var rot = create_tween().tween_property(self, "rotation", rotation, duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	await rot.finished
 	
