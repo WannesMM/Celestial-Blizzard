@@ -6,7 +6,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_xihoa")
-shader_parameter/scale = Vector3(3.3, 4.765, 1)
+shader_parameter/scale = Vector3(17.29, 34.05, 1)
 shader_parameter/wind_strength = 0.12
 shader_parameter/wind_speed = 1.0
+shader_parameter/alpha_cutoff = 0.7
 shader_parameter/albedo_texture = ExtResource("2_5sw7e")

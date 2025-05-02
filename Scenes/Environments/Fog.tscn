@@ -1,0 +1,258 @@
+[gd_scene load_steps=40 format=3 uid="uid://d05ntvvo83vls"]
+
+[ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_ewy8q"]
+[ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="2_4d3k5"]
+[ext_resource type="PackedScene" uid="uid://c67fb3e8phe6n" path="res://Scenes/Environments/Setpieces/TreeSet.tscn" id="2_rqtm0"]
+[ext_resource type="Texture2D" uid="uid://cu0wwu5oes8wl" path="res://assets/Material/snow_01_1k/snow_01_ambient_occlusion_1k.png" id="3_bts7h"]
+[ext_resource type="Texture2D" uid="uid://cg81ykdty8wpf" path="res://assets/Material/snow_01_1k/snow_01_height_1k.png" id="4_yn5kl"]
+[ext_resource type="Texture2D" uid="uid://bw6cpklcb6b6e" path="res://assets/Material/snow_01_1k/snow_01_roughness_1k.png" id="6_e6l8f"]
+[ext_resource type="Texture2D" uid="uid://bfrd42je8v5nw" path="res://assets/Material/snow_01_1k/snow_01_normal_dx_1k.png" id="7_a0fkw"]
+[ext_resource type="ArrayMesh" uid="uid://cmypyfpetxan6" path="res://assets/3d/Snowfield2.obj" id="8_qjihm"]
+[ext_resource type="Script" path="res://Code/Engine/World.gd" id="10_u00nu"]
+[ext_resource type="Script" path="res://Code/Engine/DirectionalLight.gd" id="11_fhljo"]
+[ext_resource type="Texture2D" uid="uid://d4kasni25ihj1" path="res://assets/Animated/Harsh fog/Untitled_Artwork-1.png" id="20_214es"]
+[ext_resource type="Texture2D" uid="uid://kh8cgsqr4bc5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-2.png" id="21_0yvnl"]
+[ext_resource type="Texture2D" uid="uid://bjkq1iikogg7h" path="res://assets/Animated/Harsh fog/Untitled_Artwork-3.png" id="22_rl2ia"]
+[ext_resource type="Texture2D" uid="uid://dwnsxqlisapr4" path="res://assets/Animated/Harsh fog/Untitled_Artwork-4.png" id="23_r6r0v"]
+[ext_resource type="Texture2D" uid="uid://0mk1nxj4fjaf" path="res://assets/Animated/Harsh fog/Untitled_Artwork-5.png" id="24_gryfl"]
+[ext_resource type="Texture2D" uid="uid://c2657tnxy8oi" path="res://assets/Animated/Harsh fog/Untitled_Artwork-6.png" id="25_pth60"]
+[ext_resource type="Texture2D" uid="uid://cvn2cla68yt04" path="res://assets/Animated/Harsh fog/Untitled_Artwork-7.png" id="26_myr3g"]
+[ext_resource type="Texture2D" uid="uid://y3uvpo0wpee7" path="res://assets/Animated/Harsh fog/Untitled_Artwork-8.png" id="27_jw3yh"]
+[ext_resource type="Script" path="res://Code/Engine/FirstPersonCamera.gd" id="28_7mpti"]
+[ext_resource type="Texture2D" uid="uid://bchhogib46tyr" path="res://assets/Animated/Harsh fog/Untitled_Artwork-9.png" id="28_y6yko"]
+[ext_resource type="Texture2D" uid="uid://b744pjtbcjy2q" path="res://assets/Animated/Harsh fog/Untitled_Artwork-10.png" id="29_bmraa"]
+[ext_resource type="Texture2D" uid="uid://doaf35gpn6oep" path="res://assets/Animated/Harsh fog/Untitled_Artwork-11.png" id="30_op0ln"]
+[ext_resource type="Texture2D" uid="uid://be3h2a3corhkg" path="res://assets/Animated/Harsh fog/Untitled_Artwork-12.png" id="31_7kaoa"]
+[ext_resource type="Texture2D" uid="uid://dxivr2mvfl156" path="res://assets/Animated/Harsh fog/Untitled_Artwork-13.png" id="32_goopf"]
+[ext_resource type="Texture2D" uid="uid://dgo167iqikf5k" path="res://assets/Animated/Harsh fog/Untitled_Artwork-14.png" id="33_mndp4"]
+[ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="34_py6ip"]
+[ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="35_mdv62"]
+[ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="36_0vb3u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtxuh"]
+albedo_color = Color(0.140625, 0.140625, 0.140625, 1)
+albedo_texture = ExtResource("2_4d3k5")
+metallic = 0.81
+metallic_specular = 0.56
+roughness = 0.83
+roughness_texture = ExtResource("6_e6l8f")
+normal_enabled = true
+normal_scale = 0.31
+normal_texture = ExtResource("7_a0fkw")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("3_bts7h")
+heightmap_enabled = true
+heightmap_scale = 16.0
+heightmap_texture = ExtResource("4_yn5kl")
+uv1_scale = Vector3(-16.86, -16.86, -16.86)
+
+[sub_resource type="Sky" id="Sky_28gln"]
+
+[sub_resource type="Environment" id="Environment_tyf6g"]
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_28gln")
+sky_rotation = Vector3(-0.216421, 3.2498, 0)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.0
+reflected_light_source = 2
+glow_enabled = true
+glow_levels/1 = 7.58
+glow_levels/2 = 5.51
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_levels/7 = 0.41
+glow_bloom = 0.01
+glow_hdr_threshold = 0.15
+glow_hdr_scale = 1.23
+fog_enabled = true
+fog_light_color = Color(0.0615234, 0.0865886, 0.136719, 1)
+fog_light_energy = 12.4
+fog_density = 0.0314
+fog_sky_affect = 0.456
+fog_height = 335.15
+adjustment_enabled = true
+
+[sub_resource type="Curve" id="Curve_cmvqk"]
+_data = [Vector2(0, 0.402756), 0.0, 0.0, 0, 0, Vector2(0.390335, 0.721286), 0.0, 0.0, 0, 0, Vector2(0.565056, 0.502297), 0.0, 0.0, 0, 0, Vector2(0.732342, 0.980092), 0.0, 0.0, 0, 0, Vector2(1, 0.372894), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_43pak"]
+curve = SubResource("Curve_cmvqk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ruu40"]
+emission_shape_scale = Vector3(4, 4, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -362.0
+angle_max = 358.0
+inherit_velocity_ratio = 0.017
+spread = 180.0
+gravity = Vector3(-0.04, -0.075, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 1.09
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.0499978
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_43pak")
+
+[sub_resource type="Gradient" id="Gradient_gakk8"]
+colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0p4iw"]
+gradient = SubResource("Gradient_gakk8")
+fill = 1
+fill_from = Vector2(0.502674, 0.508021)
+fill_to = Vector2(0.508021, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j4uh"]
+transparency = 2
+alpha_scissor_threshold = 0.635
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_0p4iw")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3nmxp"]
+material = SubResource("StandardMaterial3D_2j4uh")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kywq7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_214es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_0yvnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rl2ia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_r6r0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_gryfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_pth60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_myr3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_jw3yh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_y6yko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_bmraa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_op0ln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_7kaoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_goopf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_mndp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_py6ip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mdv62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_0vb3u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[node name="Environment" type="Node3D"]
+script = ExtResource("1_ewy8q")
+baseCameraPosition = Vector3(0, 8.007, 0)
+
+[node name="TreeSet2" parent="." instance=ExtResource("2_rqtm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4325, 0.733399, -29.3561)
+
+[node name="TreeSet" parent="." instance=ExtResource("2_rqtm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0881, 0.3667, -9.74531)
+
+[node name="TreeSet3" parent="." instance=ExtResource("2_rqtm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09111, -24.4565)
+
+[node name="TreeSet4" parent="." instance=ExtResource("2_rqtm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9449, 4.31328, -10.8097)
+
+[node name="TreeSet6" parent="." instance=ExtResource("2_rqtm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7211, 3.11863, 2.21038)
+
+[node name="TreeSet5" parent="." instance=ExtResource("2_rqtm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7406, 4.31328, 4.31302)
+
+[node name="Snowfield2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_vtxuh")
+mesh = ExtResource("8_qjihm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tyf6g")
+script = ExtResource("10_u00nu")
+rotateS = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.590766, 0.664218, 0.45805, 0.212957, -0.675938, 0.705519, 0.778232, -0.319251, -0.540771, 0, 9.73619, 0)
+layers = 0
+light_color = Color(0.47, 0.673167, 1, 1)
+light_bake_mode = 0
+light_cull_mask = 4293918721
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 3.354
+shadow_transmittance_bias = -16.0
+shadow_blur = 1.548
+directional_shadow_mode = 0
+directional_shadow_fade_start = 0.854
+directional_shadow_max_distance = 50.0
+script = ExtResource("11_fhljo")
+idle = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0231231, -0.999732, 0, 0.999732, 0.0231231, 0, 9.63872, 1.87723)
+amount = 4000
+lifetime = 10.0
+trail_lifetime = 3.1
+process_material = SubResource("ParticleProcessMaterial_ruu40")
+draw_pass_1 = SubResource("PlaneMesh_3nmxp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control"]
+modulate = Color(1, 1, 1, 0.0313726)
+scale = Vector2(5.555, 5.555)
+sprite_frames = SubResource("SpriteFrames_kywq7")
+autoplay = "default"
+frame_progress = 0.343896
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.44389, 0)
+script = ExtResource("28_7mpti")

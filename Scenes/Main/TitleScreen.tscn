@@ -1,4 +1,4 @@
-[gd_scene load_steps=441 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=439 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="Script" path="res://Code/Main/MainUI/TitleScreen.gd" id="1_nglne"]
@@ -432,15 +432,6 @@ Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("86_asklh")
 Label/styles/normal = SubResource("StyleBoxFlat_xagkg")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_jd0ng")
-
-[sub_resource type="Gradient" id="Gradient_6nuxf"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e63uw"]
-gradient = SubResource("Gradient_6nuxf")
-fill = 1
-fill_from = Vector2(0.491453, 0.504274)
-fill_to = Vector2(0.961538, 0.957265)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_803un"]
 animations = [{
@@ -2060,18 +2051,6 @@ transform = Transform3D(1, 0, 0, 0, 0.991411, -0.130786, 0, 0.130786, 0.991411, 
 rotation_edit_mode = 1
 script = ExtResource("8_jir33")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0785515, -11.555)
-visible = false
-light_energy = 4.098
-light_indirect_energy = 4.025
-light_projector = SubResource("GradientTexture2D_e63uw")
-light_size = 1.0
-light_specular = 0.96
-shadow_enabled = true
-omni_range = 22.789
-omni_attenuation = 0.058
-
 [node name="AnimatedLogo" type="AnimatedSprite3D" parent="Node3D"]
 transform = Transform3D(1.675, 0, 0, 0, 1.675, 0, 0, 0, 1.675, 0, 0.49003, -7.37457)
 sprite_frames = SubResource("SpriteFrames_803un")
@@ -2450,6 +2429,7 @@ center = false
 fontSize = 35
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Acount/TitleBorder2"]
+layout_mode = 0
 offset_left = 27.0
 offset_top = 116.0
 offset_right = 434.0

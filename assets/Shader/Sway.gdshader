@@ -1,10 +1,11 @@
 shader_type spatial;
-render_mode blend_mix, depth_prepass_alpha, cull_disabled;
+render_mode blend_mix, depth_prepass_alpha, cull_back;
 
 uniform sampler2D albedo_texture : source_color;
 uniform vec3 scale = vec3(1.0);
 uniform float wind_strength : hint_range(0.1, 1.0, 0.02);
 uniform float wind_speed : hint_range(0.5, 2.0, 0.1);
+uniform float alpha_cutoff : hint_range(0.0, 1.0) = 0.5; // Added uniform
 
 void vertex() {
 	NORMAL = vec3(0.0, 1.0, 0.0);
@@ -21,7 +22,7 @@ void vertex() {
 
 void fragment() {
 	vec4 tex = texture(albedo_texture, UV);
-	if (tex.a < 0.1) {
+	if (tex.a < alpha_cutoff) {
 		discard;
 	}
 	ALBEDO = tex.rgb;
