@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckx2d6ueet882"
-path.s3tc="res://.godot/imported/card fill small.png-df8115dfae5d4f72ab569a72db465618.s3tc.ctex"
-path.etc2="res://.godot/imported/card fill small.png-df8115dfae5d4f72ab569a72db465618.etc2.ctex"
+uid="uid://c6tf8kwsfhfti"
+path.s3tc="res://.godot/imported/Wolf-of-Towers_0001_Fog.png-0958b680832a4855f8322394cc49c6e1.s3tc.ctex"
+path.etc2="res://.godot/imported/Wolf-of-Towers_0001_Fog.png-0958b680832a4855f8322394cc49c6e1.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Cards/CardAssets/card fill small.png"
-dest_files=["res://.godot/imported/card fill small.png-df8115dfae5d4f72ab569a72db465618.s3tc.ctex", "res://.godot/imported/card fill small.png-df8115dfae5d4f72ab569a72db465618.etc2.ctex"]
+source_file="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0001_Fog.png"
+dest_files=["res://.godot/imported/Wolf-of-Towers_0001_Fog.png-0958b680832a4855f8322394cc49c6e1.s3tc.ctex", "res://.godot/imported/Wolf-of-Towers_0001_Fog.png-0958b680832a4855f8322394cc49c6e1.etc2.ctex"]
 
 [params]
 
@@ -32,5 +32,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=256
+process/size_limit=512
 detect_3d/compress_to=0

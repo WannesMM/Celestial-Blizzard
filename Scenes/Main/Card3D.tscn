@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbc6bf6b361ma"]
+
+[ext_resource type="Texture2D" uid="uid://mjui44k12ivm" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0004_the-curse-of-the-werewolf-01-am-fineartprints.png" id="1_udqk1"]
+[ext_resource type="Texture2D" uid="uid://bmfik61kb78na" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0002_Layer-1.png" id="3_s8om5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw1jl"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("3_s8om5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jcy6v"]
+material = SubResource("StandardMaterial3D_nw1jl")
+size = Vector2(1, 1.412)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1ubp"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("1_udqk1")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qvhm6"]
+material = SubResource("StandardMaterial3D_g1ubp")
+size = Vector2(1, 1.412)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t3lys"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cy6ie"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_t3lys")
+
+[sub_resource type="QuadMesh" id="QuadMesh_kq7d2"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_cy6ie")
+size = Vector2(1, 1.412)
+
+[node name="Card3d" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(512, 723)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport"]
+transform = Transform3D(0.855, 0, 0, 0, 0.855, 0, 0, 0, 0.855, 0, 0, 0)
+mesh = SubResource("QuadMesh_jcy6v")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport"]
+transform = Transform3D(1.285, 0, 0, 0, 1.285, 0, 0, 0, 1.285, 0, 0, -0.4)
+mesh = SubResource("QuadMesh_qvhm6")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.780849)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.68848)
+mesh = SubResource("QuadMesh_kq7d2")
