@@ -1,4 +1,4 @@
-[gd_scene load_steps=439 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=438 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="Script" path="res://Code/Main/MainUI/TitleScreen.gd" id="1_nglne"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="7_ioo6v"]
 [ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="8_jir33"]
 [ext_resource type="Texture2D" uid="uid://cj2ng8c5q1r0o" path="res://assets/Cards/CharacterCard/Hatsune Miku.png" id="8_nmak3"]
-[ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="10_v3w12"]
 [ext_resource type="Texture2D" uid="uid://bvwabuchkl274" path="res://assets/Animated/Logo/Main/Main_00000.png" id="12_2x4br"]
 [ext_resource type="Texture2D" uid="uid://3i0c0lo22y0m" path="res://assets/Animated/Logo/Main/Main_00001.png" id="13_m1rna"]
 [ext_resource type="AudioStream" uid="uid://url1q0r8c6jn" path="res://assets/Audio/Music/TitleScreen/Mainscreen1.wav" id="14_4f2jy"]
@@ -334,7 +333,7 @@
 [ext_resource type="Texture2D" uid="uid://c4xw7l67wcrjj" path="res://assets/Animated/Nessa/Only Nessa/Only Nessa_00239.png" id="332_cbcix"]
 [ext_resource type="Script" path="res://Code/Engine/TextEngine.gd" id="333_5f2wc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3sb4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3m2er"]
 bg_color = Color(1, 1, 1, 0.133333)
 border_width_left = 2
 border_width_top = 2
@@ -350,14 +349,14 @@ shadow_size = 5
 anti_aliasing = false
 anti_aliasing_size = 0.01
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xagkg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2w4b"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jd0ng"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_untx2"]
 texture_margin_left = 24.0
 texture_margin_top = 24.0
 texture_margin_right = 24.0
@@ -384,7 +383,7 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("2_82mvx")
-Button/styles/normal = SubResource("StyleBoxFlat_f3sb4")
+Button/styles/normal = SubResource("StyleBoxFlat_3m2er")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -395,8 +394,8 @@ Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("86_asklh")
-Label/styles/normal = SubResource("StyleBoxFlat_xagkg")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_jd0ng")
+Label/styles/normal = SubResource("StyleBoxFlat_y2w4b")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_untx2")
 
 [sub_resource type="Theme" id="Theme_4ha15"]
 Button/colors/dddd = Color(1, 1, 1, 1)
@@ -419,7 +418,7 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("2_82mvx")
-Button/styles/normal = SubResource("StyleBoxFlat_f3sb4")
+Button/styles/normal = SubResource("StyleBoxFlat_3m2er")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -430,8 +429,8 @@ Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("86_asklh")
-Label/styles/normal = SubResource("StyleBoxFlat_xagkg")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_jd0ng")
+Label/styles/normal = SubResource("StyleBoxFlat_y2w4b")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_untx2")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_803un"]
 animations = [{
@@ -714,7 +713,11 @@ alpha_curve = SubResource("CurveTexture_ek8he")
 hue_variation_curve = SubResource("CurveTexture_mm514")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8s2f"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(0.4891, 0.573415, 0.73, 1)
 albedo_texture = ExtResource("84_fn37a")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ilpjw"]
@@ -2006,13 +2009,14 @@ corner_radius_bottom_left = 21
 shadow_color = Color(0, 0, 0, 0.207843)
 anti_aliasing_size = 1.54
 
-[node name="TitleScreen" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_nglne")
 
 [node name="Right" type="Button" parent="."]
@@ -2022,9 +2026,8 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -44.0
+offset_left = -57.0
 offset_top = -48.0
-offset_right = 13.0
 offset_bottom = 48.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -2036,10 +2039,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 46.0
+offset_top = -48.0
+offset_right = 55.0
+offset_bottom = 48.0
 grow_vertical = 2
 theme = SubResource("Theme_4ha15")
 text = "<"
@@ -2049,16 +2051,19 @@ text = "<"
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.991411, -0.130786, 0, 0.130786, 0.991411, 0, 0, 0)
 rotation_edit_mode = 1
+current = true
 script = ExtResource("8_jir33")
 
 [node name="AnimatedLogo" type="AnimatedSprite3D" parent="Node3D"]
-transform = Transform3D(1.675, 0, 0, 0, 1.675, 0, 0, 0, 1.675, 0, 0.49003, -7.37457)
+transform = Transform3D(1.055, 0, 0, 0, 1.055, 0, 0, 0, 1.055, 0, 0.49003, -7.37457)
+cast_shadow = 0
+pixel_size = 0.019
 sprite_frames = SubResource("SpriteFrames_803un")
 autoplay = "default"
-frame_progress = 0.877562
+frame_progress = 0.92808
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="Node3D/AnimatedLogo"]
-transform = Transform3D(0.597015, 0, 0, 0, 0.0111695, -0.59691, 0, 0.59691, 0.0111695, 0, 0, -1.19024)
+transform = Transform3D(0.597015, 0, 0, 0, 0.0111695, -0.59691, 0, 0.59691, 0.0111695, 0, 0, -1.66947)
 amount = 50
 lifetime = 7.64
 preprocess = 12.14
@@ -2066,7 +2071,7 @@ process_material = SubResource("ParticleProcessMaterial_2jhqa")
 draw_pass_1 = SubResource("PlaneMesh_ilpjw")
 
 [node name="Label3D" type="Label3D" parent="Node3D/AnimatedLogo"]
-transform = Transform3D(0.597015, 0, 0, 0, 0.597015, 0, 0, 0, 0.597015, 0, -1.19059, -0.0739875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08184, -0.0739875)
 pixel_size = 0.02
 outline_modulate = Color(0, 0, 0, 0.203922)
 text = "CHAPTER 1"
@@ -2083,34 +2088,19 @@ autoplay = true
 stream = ExtResource("16_riuex")
 autoplay = true
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("89_l8tx0")
-volume_db = 18.318
-
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("90_nwodv")
 volume_db = 2.363
 
 [node name="Middle" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_0rkip")
-
-[node name="Control2" type="Control" parent="Middle"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 556.0
-offset_top = 304.0
-offset_right = 556.0
-offset_bottom = 304.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_0rkip")
 
 [node name="Battle" type="Button" parent="Middle"]
 modulate = Color(1, 1, 1, 0)
@@ -2120,10 +2110,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 315.5
-offset_top = 181.0
-offset_right = 796.5
-offset_bottom = 427.0
+offset_left = -240.5
+offset_top = -123.0
+offset_right = 240.5
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Battle"
@@ -2134,8 +2124,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 400.5
-offset_right = 711.5
+offset_left = -155.5
+offset_right = 155.5
 offset_bottom = 81.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_82mvx")
@@ -2155,13 +2145,16 @@ frame_progress = 0.788196
 [node name="Deckbuilder" type="Button" parent="Middle"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = 384.5
-offset_right = 727.5
-offset_bottom = 107.0
+anchor_bottom = 1.0
+offset_left = -171.5
+offset_top = -107.0
+offset_right = 171.5
 grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("2_n22yq")
 text = "Archives"
 
@@ -2180,10 +2173,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 400.5
-offset_top = 527.0
-offset_right = 711.5
-offset_bottom = 608.0
+offset_left = -155.5
+offset_top = -81.0
+offset_right = 155.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_82mvx")
@@ -2208,10 +2200,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 400.0
-offset_top = 507.0
-offset_right = 712.0
-offset_bottom = 608.0
+offset_left = -156.0
+offset_top = -101.0
+offset_right = 156.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Venture"
@@ -2229,10 +2220,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 556.0
-offset_top = 304.0
-offset_right = 556.0
-offset_bottom = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2339,22 +2326,13 @@ energy = 7.52
 texture = SubResource("GradientTexture2D_k41m1")
 texture_scale = 1.6
 
-[node name="Camera" parent="Middle" instance=ExtResource("10_v3w12")]
-layout_mode = 1
-offset_left = 556.0
-offset_top = 304.0
-offset_right = 556.0
-offset_bottom = 304.0
-
 [node name="ColorRect" type="ColorRect" parent="Middle"]
 material = SubResource("CanvasItemMaterial_pj8sw")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 84.0
-offset_top = 66.0
-offset_right = 44.0
-offset_bottom = 69.0
+offset_top = 71.0
+offset_bottom = 71.0
 grow_horizontal = 2
 pivot_offset = Vector2(496, 1)
 script = ExtResource("15_ebcku")
@@ -2362,15 +2340,20 @@ script = ExtResource("15_ebcku")
 [node name="ColorRect2" type="ColorRect" parent="Middle"]
 material = SubResource("CanvasItemMaterial_pj8sw")
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = 78.0
-offset_top = 580.0
-offset_right = 38.0
-offset_bottom = 583.0
+anchor_bottom = 1.0
+offset_top = -71.0
+offset_bottom = -71.0
 grow_horizontal = 2
+grow_vertical = 0
 pivot_offset = Vector2(500, 0)
 script = ExtResource("15_ebcku")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Middle"]
+stream = ExtResource("89_l8tx0")
+volume_db = 18.318
 
 [node name="Acount" type="Control" parent="."]
 visible = false
@@ -2452,13 +2435,8 @@ script = ExtResource("333_5f2wc")
 pulse = true
 fontSize = 40
 
-[connection signal="pressed" from="Right" to="." method="MiddleScreenRightButtonPressed"]
-[connection signal="pressed" from="Left" to="." method="MiddleScreenLeftButtonPressed"]
-[connection signal="mouse_entered" from="Middle/Battle" to="." method="BattleMouseEntered"]
-[connection signal="mouse_exited" from="Middle/Battle" to="." method="BattleMouseExited"]
-[connection signal="pressed" from="Middle/Battle" to="." method="loadBattlefield"]
-[connection signal="pressed" from="Middle/Deckbuilder" to="." method="loadDeckbuilder"]
-[connection signal="pressed" from="Middle/Shop" to="." method="loadShop"]
-[connection signal="mouse_entered" from="Middle/Account/AccountButton" to="." method="accountMouseEntered"]
-[connection signal="mouse_exited" from="Middle/Account/AccountButton" to="." method="accountMouseExited"]
-[connection signal="pressed" from="Middle/Account/AccountButton" to="." method="accountButton"]
+[connection signal="pressed" from="Right" to="." method="nextScreen"]
+[connection signal="pressed" from="Left" to="." method="previousScreen"]
+[connection signal="pressed" from="Middle/Battle" to="Middle" method="loadBattlefield"]
+[connection signal="pressed" from="Middle/Deckbuilder" to="Middle" method="loadDeckbuilder"]
+[connection signal="pressed" from="Middle/Shop" to="Middle" method="loadShop"]

@@ -88,3 +88,7 @@ func wikiButton() -> void:
 func initializeUser() -> void:
 	# For now enable all cards. In future this should come from the server.
 	UserInfo.loadUserData()
+
+
+func loadDeckBuilder() -> void:
+	pass # Replace with function body.

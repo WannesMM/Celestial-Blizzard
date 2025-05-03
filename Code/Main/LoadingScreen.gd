@@ -105,19 +105,20 @@ func startLoad(newScene: String = "BattleField", mode: String = "Normal"):
 		$Control.visible = false
 		$Tip.visible = false
 	
+	progressBar = $Control
+	progressBar.resetProgress()
+	
 	var fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
 	await fadeTween.finished
 	
-	progressBar = $Control
-	progressBar.resetProgress()
-	ResourceLoader.load_threaded_request(nextScene)
+	progressBar.tweenProgress(25)
 	
-	progressBar.tweenProgress(70)
+	ResourceLoader.load_threaded_request(nextScene)
 	
 	await GlobalSignals.loadingBlock
 	
-	progressBar.tweenProgress(90)
+	progressBar.tweenProgress(50)
 	
 	var scene: PackedScene = ResourceLoader.load_threaded_get(nextScene)
 	var instance = scene.instantiate()

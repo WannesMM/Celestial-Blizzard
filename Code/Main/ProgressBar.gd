@@ -25,7 +25,7 @@ func tweenProgress(amt: int):
 	if progressTween:
 		progressTween.kill()
 	progressTween = create_tween()
-	progressTween.tween_property(self,"progress",amt,2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	progressTween.tween_property(self,"progress",amt,0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
 	
 	if sizeTween:
 		sizeTween.kill()

@@ -1,15 +1,7 @@
 extends MultiMeshInstance3D
+# Attach this to a node (or the scene root)
+@export var tree_material: ShaderMaterial
 
-@export var area_size: Vector3 = Vector3(50.0, 0.0, 50.0)
-
-func _ready():
-	if multimesh == null:
-		return
-	for i in range(multimesh.instance_count):
-		var transform = Transform3D.IDENTITY
-		transform.origin = Vector3(
-			randf() * area_size.x - area_size.x / 2.0,
-			0, # Assuming you want trees at Y=0
-			randf() * area_size.z - area_size.z / 2.0
-		)
-		multimesh.set_instance_transform(i, transform)
+func _process(delta):
+	if tree_material:
+		tree_material.set_shader_parameter("wind_phase", Time.get_ticks_msec() / 1000.0)

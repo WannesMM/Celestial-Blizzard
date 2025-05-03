@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_ewy8q"]
 [ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="2_4d3k5"]
-[ext_resource type="PackedScene" uid="uid://c67fb3e8phe6n" path="res://Scenes/Environments/Setpieces/TreeSet.tscn" id="2_rqtm0"]
+[ext_resource type="PackedScene" uid="uid://c67fb3e8phe6n" path="res://Scenes/Environments/Setpieces/TreeSetPerformance.tscn" id="2_rqtm0"]
 [ext_resource type="Texture2D" uid="uid://cu0wwu5oes8wl" path="res://assets/Material/snow_01_1k/snow_01_ambient_occlusion_1k.png" id="3_bts7h"]
 [ext_resource type="Texture2D" uid="uid://cg81ykdty8wpf" path="res://assets/Material/snow_01_1k/snow_01_height_1k.png" id="4_yn5kl"]
 [ext_resource type="Texture2D" uid="uid://bw6cpklcb6b6e" path="res://assets/Material/snow_01_1k/snow_01_roughness_1k.png" id="6_e6l8f"]

@@ -85,7 +85,7 @@ func previousScreen():
 
 func openCurrentScreen():
 	var screen = screens[currentScreen]
-	$Node3D/Camera3D.animateRotation(screen.getRotation(),4)
+	$Node3D/Camera3D.animateRotation(screen.getRotation(),2)
 	screen.open()
 
 func closeCurrentScreen():
@@ -102,15 +102,14 @@ func openMainScreen():
 func closeMainScreen():
 	$Middle.visible = false
 	$Node3D/AnimatedLogo/GPUParticles3D2.emitting = false
-	create_tween().tween_property($Node3D/AnimatedLogo,"modulate:a",0,1)
+	create_tween().tween_property($Node3D/AnimatedLogo,"modulate:a",0,0.25)
 
 func openAccountScreen():
-	$Acount.position.x = -300
+	$Acount.position.x = -100
 	$Acount.modulate.a = 0
-	await Random.wait(1)
 	$Acount.visible = true
-	create_tween().tween_property($Acount,"position:x",0,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	create_tween().tween_property($Acount,"modulate:a",1,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	create_tween().tween_property($Acount,"position:x",0,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	create_tween().tween_property($Acount,"modulate:a",1,1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	$Acount/RichTextLabel.setDisplayText("Account")
 	$Acount/RichTextLabel.fadeIn()
 	$Acount/TitleBorder2/RichTextLabel2.setDisplayText("Nessa of Loch")
@@ -119,7 +118,7 @@ func openAccountScreen():
 	$Acount/TitleBorder2/RichTextLabel3.fadeIn()
 	
 func closeAccountScreen():
-	var tween = create_tween().tween_property($Acount,"position:x",-300,1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	create_tween().tween_property($Acount,"modulate:a",0,1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	var tween = create_tween().tween_property($Acount,"position:x",-100,1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	create_tween().tween_property($Acount,"modulate:a",0,0.25).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	await tween.finished
 	$Acount.visible = false

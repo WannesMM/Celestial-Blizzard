@@ -1,46 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bobmf4tohecn"]
+[gd_scene load_steps=4 format=3 uid="uid://bobmf4tohecn"]
 
 [ext_resource type="Script" path="res://Scenes/Battle/Battle.gd" id="1_ifpgi"]
 [ext_resource type="PackedScene" uid="uid://dg4dd53dv5m3" path="res://Scenes/Battle/battlefield.tscn" id="1_xlgde"]
 [ext_resource type="PackedScene" uid="uid://ct4x310t8u04p" path="res://Scenes/Main/camera.tscn" id="3_v7neh"]
-[ext_resource type="Script" path="res://Code/Engine/FirstPersonCamera.gd" id="4_v2hy8"]
-[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="5_cw3fk"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fc4ds"]
-emission_shape_scale = Vector3(4, 4, 0)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-angle_min = -362.0
-angle_max = 358.0
-inherit_velocity_ratio = 0.017
-spread = 180.0
-gravity = Vector3(-0.04, -0.075, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 1.09
-tangential_accel_min = -2.23517e-06
-tangential_accel_max = 0.0499978
-scale_min = 0.15
-scale_max = 0.25
-
-[sub_resource type="Gradient" id="Gradient_j0s6p"]
-colors = PackedColorArray(1, 1, 1, 0.745098, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jouxx"]
-gradient = SubResource("Gradient_j0s6p")
-fill = 1
-fill_from = Vector2(0.502674, 0.508021)
-fill_to = Vector2(0.508021, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44m4s"]
-transparency = 2
-alpha_scissor_threshold = 0.635
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_texture = SubResource("GradientTexture2D_jouxx")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_h2g1s"]
-material = SubResource("StandardMaterial3D_44m4s")
-size = Vector2(0.15, 0.15)
 
 [node name="Battle" type="Control" node_paths=PackedStringArray("battleField")]
 layout_mode = 3
@@ -64,23 +26,3 @@ layout_mode = 1
 
 [node name="Camera" parent="." instance=ExtResource("3_v7neh")]
 layout_mode = 1
-
-[node name="3d" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="3d"]
-transform = Transform3D(1, 0, 0, 0, 0.395, 0.918681, 0, -0.918681, 0.395, -0.760417, 15.2464, -14.1779)
-script = ExtResource("4_v2hy8")
-max_yaw = 0.22
-max_pitch = 0.192
-min_pitch = 0.077
-smoothing = 0.3
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="3d/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -0.922065, -0.387032, 0, 0.387032, -0.922065, 0, 0, 0)
-amount = 2000
-lifetime = 10.0
-trail_lifetime = 3.1
-process_material = SubResource("ParticleProcessMaterial_fc4ds")
-draw_pass_1 = SubResource("PlaneMesh_h2g1s")
-
-[node name="Environment" parent="3d" instance=ExtResource("5_cw3fk")]
