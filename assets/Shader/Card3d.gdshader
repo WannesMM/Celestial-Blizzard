@@ -1,39 +1,28 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back;
 
-uniform sampler2D albedo_tex;
-uniform sampler2D mask_tex;
+render_mode unshaded;
 
-uniform vec2 screen_mask_scale = vec2(1.0, 1.0);
-uniform vec2 screen_mask_offset = vec2(0.0, 0.0);
-
-varying vec4 world_position;
-
-void vertex() {
-    world_position = MODEL_MATRIX * vec4(VERTEX, 1.0);
-}
+uniform sampler2D albedo_texture : source_color;
+uniform float corner_radius : hint_range(0.0, 0.5) = 0.1;
+uniform float edge_softness : hint_range(0.0, 0.05) = 0.005;
 
 void fragment() {
-    // Project world position into clip space
-    vec4 clip_position = PROJECTION_MATRIX * VIEW_MATRIX * world_position;
-    
-    // Normalize to screen-space UV (0–1)
-    vec2 screen_uv = (clip_position.xy / clip_position.w) * 0.5 + 0.5;
-    
-    // Adjust for scale/offset if needed
-    screen_uv = screen_uv * screen_mask_scale + screen_mask_offset;
+    vec2 uv = UV;
+    vec4 tex_color = texture(albedo_texture, uv);
 
-    // Sample albedo and mask
-    vec4 tex_color = texture(albedo_tex, UV);
-    float mask_val = texture(mask_tex, screen_uv).r;
+    // Rounded corner mask
+    float r = corner_radius;
+    vec2 dist = abs(uv - vec2(0.5)) - vec2(0.5 - r);
+    float corner_dist = length(max(dist, 0.0));
+    float mask = 1.0 - smoothstep(r - edge_softness, r, corner_dist);
 
-    // Discard if outside the mask
-    if (mask_val < 0.5) {
+    // Set the output color (use ALBEDO for the base color)
+    ALBEDO = tex_color.rgb;
+    ALPHA = tex_color.a * mask;
+
+    if (ALPHA < 0.01) {
         discard;
     }
-
-    ALBEDO = tex_color.rgb;
-    ALPHA = tex_color.a;
 }
 
 

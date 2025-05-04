@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://dbc6bf6b361ma"]
+
+[ext_resource type="Texture2D" uid="uid://b1pmwbsxcmbbw" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0000_Layer1.png" id="1_nlfjw"]
+[ext_resource type="Texture2D" uid="uid://cii7u6t07qgad" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0001_Layer2.png" id="2_36h1x"]
+[ext_resource type="Texture2D" uid="uid://crwhw6042ycsj" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0002_Layer3.png" id="3_yquq7"]
+[ext_resource type="Texture2D" uid="uid://d02y1xjyxhn37" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0003_Layer4.png" id="4_c3a7c"]
+[ext_resource type="Texture2D" uid="uid://b5ytguyc8fju6" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0004_Layer5.png" id="5_omany"]
+[ext_resource type="Shader" path="res://assets/Shader/Card3d.gdshader" id="6_v40mg"]
+[ext_resource type="Texture2D" uid="uid://ckx2d6ueet882" path="res://assets/Cards/CardAssets/card fill small.png" id="7_sgj8k"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0vgd4"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d7m0p"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_v40mg")
+shader_parameter/corner_radius = 0.1
+shader_parameter/edge_softness = 0.0
+shader_parameter/albedo_texture = SubResource("ViewportTexture_0vgd4")
+
+[sub_resource type="Animation" id="Animation_hxet2"]
+resource_name = "CardAnimate"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/CardLayers:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s2f73"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/CardLayers:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2tws"]
+_data = {
+"CardAnimate": SubResource("Animation_hxet2"),
+"RESET": SubResource("Animation_s2f73")
+}
+
+[node name="CardVisual" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+size = Vector2i(512, 723)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.31957)
+
+[node name="CardLayers" type="Node3D" parent="SubViewport"]
+
+[node name="Layer1" type="Sprite3D" parent="SubViewport/CardLayers"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 2)
+texture = ExtResource("1_nlfjw")
+
+[node name="Layer2" type="Sprite3D" parent="SubViewport/CardLayers"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 1)
+texture = ExtResource("2_36h1x")
+
+[node name="Layer3" type="Sprite3D" parent="SubViewport/CardLayers"]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+texture = ExtResource("3_yquq7")
+
+[node name="Layer4" type="Sprite3D" parent="SubViewport/CardLayers"]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, -1)
+texture = ExtResource("4_c3a7c")
+
+[node name="Layer5" type="Sprite3D" parent="SubViewport/CardLayers"]
+transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, -2)
+texture = ExtResource("5_omany")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+material_override = SubResource("ShaderMaterial_d7m0p")
+texture = ExtResource("7_sgj8k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o2tws")
+}

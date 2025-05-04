@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0c8tsn3d23cw"
-path.s3tc="res://.godot/imported/Nessa.png-9e8daf4520916559669353ab821f6e57.s3tc.ctex"
-path.etc2="res://.godot/imported/Nessa.png-9e8daf4520916559669353ab821f6e57.etc2.ctex"
+uid="uid://d02y1xjyxhn37"
+path.s3tc="res://.godot/imported/Wolf-of-Towers_0003_Layer4.png-e7ffaef827849da5474f79d910672a54.s3tc.ctex"
+path.etc2="res://.godot/imported/Wolf-of-Towers_0003_Layer4.png-e7ffaef827849da5474f79d910672a54.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Cards/CharacterCard/Nessa.png"
-dest_files=["res://.godot/imported/Nessa.png-9e8daf4520916559669353ab821f6e57.s3tc.ctex", "res://.godot/imported/Nessa.png-9e8daf4520916559669353ab821f6e57.etc2.ctex"]
+source_file="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0003_Layer4.png"
+dest_files=["res://.godot/imported/Wolf-of-Towers_0003_Layer4.png-e7ffaef827849da5474f79d910672a54.s3tc.ctex", "res://.godot/imported/Wolf-of-Towers_0003_Layer4.png-e7ffaef827849da5474f79d910672a54.etc2.ctex"]
 
 [params]
 

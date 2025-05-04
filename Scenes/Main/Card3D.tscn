@@ -1,64 +1,43 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbc6bf6b361ma"]
+[gd_scene load_steps=9 format=3 uid="uid://br1ywjhxp8ktu"]
 
-[ext_resource type="Texture2D" uid="uid://mjui44k12ivm" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0004_the-curse-of-the-werewolf-01-am-fineartprints.png" id="1_udqk1"]
-[ext_resource type="Texture2D" uid="uid://bmfik61kb78na" path="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0002_Layer-1.png" id="3_s8om5"]
+[ext_resource type="PackedScene" uid="uid://dbc6bf6b361ma" path="res://Scenes/Cards/WolfOfTowers.tscn" id="1_3dbwg"]
+[ext_resource type="Shader" path="res://Scenes/Main/Parralax.gdshader" id="2_atw6s"]
+[ext_resource type="Texture2D" uid="uid://evc43ko84o4g" path="res://assets/Shader/Perlin 1 - 128x128.png" id="3_7wc07"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw1jl"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_texture = ExtResource("3_s8om5")
+[sub_resource type="Gradient" id="Gradient_2fs7p"]
+colors = PackedColorArray(1, 0, 0.449314, 1, 1, 0.0174558, 0.174861, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_jcy6v"]
-material = SubResource("StandardMaterial3D_nw1jl")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hm7sb"]
+gradient = SubResource("Gradient_2fs7p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q14e3"]
+render_priority = 0
+shader = ExtResource("2_atw6s")
+shader_parameter/depth_scale = 2.17
+shader_parameter/discard_boundaries = false
+shader_parameter/emission_energy = 0.925
+shader_parameter/uv1_scale = Vector2(1, 1)
+shader_parameter/uv1_offset = Vector2(0, 1.605)
+shader_parameter/texture_emission = ExtResource("3_7wc07")
+shader_parameter/emission_color = SubResource("GradientTexture2D_hm7sb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1ha2h"]
 size = Vector2(1, 1.412)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1ubp"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_texture = ExtResource("1_udqk1")
-
-[sub_resource type="QuadMesh" id="QuadMesh_qvhm6"]
-material = SubResource("StandardMaterial3D_g1ubp")
-size = Vector2(1, 1.412)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_t3lys"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cy6ie"]
-resource_local_to_scene = true
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_t3lys")
-
-[sub_resource type="QuadMesh" id="QuadMesh_kq7d2"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_cy6ie")
-size = Vector2(1, 1.412)
+[sub_resource type="TorusMesh" id="TorusMesh_ri5j1"]
+material = SubResource("ShaderMaterial_q14e3")
 
 [node name="Card3d" type="Node3D"]
 
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(512, 723)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport"]
-transform = Transform3D(0.855, 0, 0, 0, 0.855, 0, 0, 0, 0.855, 0, 0, 0)
-mesh = SubResource("QuadMesh_jcy6v")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport"]
-transform = Transform3D(1.285, 0, 0, 0, 1.285, 0, 0, 0, 1.285, 0, 0, -0.4)
-mesh = SubResource("QuadMesh_qvhm6")
-skeleton = NodePath("../..")
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.780849)
+[node name="CardVisual" parent="." instance=ExtResource("1_3dbwg")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.68848)
-mesh = SubResource("QuadMesh_kq7d2")
+transform = Transform3D(1.755, 0, 0, 0, 1.755, 0, 0, 0, 1.755, 0, 0, 0.0131951)
+visible = false
+material_override = SubResource("ShaderMaterial_q14e3")
+mesh = SubResource("QuadMesh_1ha2h")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75591)
+visible = false
+mesh = SubResource("TorusMesh_ri5j1")

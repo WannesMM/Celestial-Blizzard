@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmfik61kb78na"
-path.s3tc="res://.godot/imported/Wolf-of-Towers_0002_Layer-1.png-3ce84a66efc8ca229f23e5236b2af1cd.s3tc.ctex"
-path.etc2="res://.godot/imported/Wolf-of-Towers_0002_Layer-1.png-3ce84a66efc8ca229f23e5236b2af1cd.etc2.ctex"
+uid="uid://crwhw6042ycsj"
+path.s3tc="res://.godot/imported/Wolf-of-Towers_0002_Layer3.png-4194c25a00a2136bb3a9dd7bcc3163d2.s3tc.ctex"
+path.etc2="res://.godot/imported/Wolf-of-Towers_0002_Layer3.png-4194c25a00a2136bb3a9dd7bcc3163d2.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0002_Layer-1.png"
-dest_files=["res://.godot/imported/Wolf-of-Towers_0002_Layer-1.png-3ce84a66efc8ca229f23e5236b2af1cd.s3tc.ctex", "res://.godot/imported/Wolf-of-Towers_0002_Layer-1.png-3ce84a66efc8ca229f23e5236b2af1cd.etc2.ctex"]
+source_file="res://assets/Cards/NewCharacterCard/Wolf of towers/Wolf-of-Towers_0002_Layer3.png"
+dest_files=["res://.godot/imported/Wolf-of-Towers_0002_Layer3.png-4194c25a00a2136bb3a9dd7bcc3163d2.s3tc.ctex", "res://.godot/imported/Wolf-of-Towers_0002_Layer3.png-4194c25a00a2136bb3a9dd7bcc3163d2.etc2.ctex"]
 
 [params]
 
