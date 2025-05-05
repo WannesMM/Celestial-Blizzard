@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cqeqg13s6llw5"]
 
-[ext_resource type="Script" path="res://Code/Story/Story1-1.gd" id="1_ha1om"]
+[ext_resource type="Script" path="res://Code/Story/StoryEvents/Story1-1.gd" id="1_ha1om"]
 [ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="1_rpylp"]
 [ext_resource type="Script" path="res://Code/Engine/FirstPersonCamera.gd" id="2_6w461"]
 [ext_resource type="PackedScene" uid="uid://dq2wj0rwhyo78" path="res://Scenes/Main/AbstractDialogueSystem.tscn" id="2_wvqn5"]

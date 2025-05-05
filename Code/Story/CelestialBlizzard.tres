@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GameStatic" load_steps=3 format=3 uid="uid://gtssa331q8hb"]
+
+[ext_resource type="Script" path="res://Code/Story/GameStatic.gd" id="1_8rdx1"]
+[ext_resource type="Resource" uid="uid://b00y8l6qhhkrn" path="res://Code/Story/World/World_CelestialBlizzard.tres" id="2_1ncke"]
+
+[resource]
+script = ExtResource("1_8rdx1")
+worlds = Array[Resource]([ExtResource("2_1ncke")])

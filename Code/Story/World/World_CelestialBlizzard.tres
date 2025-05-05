@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WorldStatic" load_steps=4 format=3 uid="uid://b00y8l6qhhkrn"]
+
+[ext_resource type="Script" path="res://Code/Story/AreaStatic.gd" id="1_7lwxg"]
+[ext_resource type="Resource" uid="uid://dl51au3jh20xc" path="res://Code/Story/Areas/Area_PortForest.tres" id="2_0gia5"]
+[ext_resource type="Script" path="res://Code/Story/WorldStatic.gd" id="3_pbgsg"]
+
+[resource]
+script = ExtResource("3_pbgsg")
+id = "World_CelestialBlizzard"
+name = "Celestial Blizzard"
+areas = Array[ExtResource("1_7lwxg")]([ExtResource("2_0gia5")])

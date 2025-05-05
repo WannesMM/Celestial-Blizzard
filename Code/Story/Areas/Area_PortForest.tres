@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AreaStatic" load_steps=5 format=3 uid="uid://dl51au3jh20xc"]
+
+[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="1_c7d8v"]
+[ext_resource type="Script" path="res://Code/Story/AreaStatic.gd" id="2_534nc"]
+[ext_resource type="Script" path="res://Code/Story/StoryEventStatic.gd" id="3_e8hfv"]
+[ext_resource type="Resource" uid="uid://lbuor5faoaj2" path="res://Code/Story/StoryEvents/StoryEvent_PortForest_Intro.tres" id="4_v6shi"]
+
+[resource]
+script = ExtResource("2_534nc")
+id = "Area_PortForest"
+name = "Port Forest"
+environment = ExtResource("1_c7d8v")
+storyEvents = Array[ExtResource("3_e8hfv")]([ExtResource("4_v6shi")])

@@ -82,6 +82,7 @@ func titleSpecificLoad(mainInstance):
 	return false
 	
 func startUpSpecificLoad(instance):
+	UserInfo.loadStory()
 	if await checkConnection():
 		var load = titleSpecificLoad(instance)
 		return load

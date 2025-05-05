@@ -1,5 +1,4 @@
 extends Cutscene
-var followingCutscene = preload("res://Scenes/Cutscenes/Waking Up.tscn")
 
 func _ready() -> void:
 	play()
@@ -8,7 +7,7 @@ func play():
 	$AnimationPlayer.play("Intro")
 
 func nextScene():
-	get_tree().change_scene_to_packed(followingCutscene)
+	Random.callLoadingScreen("Title")
 
 func playWind():
 	AudioEngine.playAmbience("Wind",3,7)

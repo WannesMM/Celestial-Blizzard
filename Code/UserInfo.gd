@@ -1,5 +1,7 @@
 extends Node
 
+# Deck and Cards ---------------------------------------------------------------
+
 var deck = []
 var characters = []
 var enabledCards = []
@@ -169,3 +171,63 @@ func to_string_array(input: Array) -> Array[String]:
 		else:
 			result.append(str(item))  # or skip if strict
 	return result
+
+# Story and world -------------------------------------------------------------
+
+const SavePath := "user://SaveData.cfg"
+const GameStaticPath := "res://Code/Story/CelestialBlizzard.tres"
+
+var game: Game = Game.new()
+
+func loadStory():
+	var gameStatic: GameStatic = load(GameStaticPath)
+
+	game.staticGameData = gameStatic
+
+	var config: ConfigFile = ConfigFile.new()
+	var err = config.load(SavePath)
+	
+	for worldStatic: WorldStatic in gameStatic.worlds:
+		var world: World = World.new()
+		
+		game.worlds.append(world)
+		world.staticWorldData = worldStatic
+		
+		world.currentStoryAreaId = config.get_value("%s" % [worldStatic.id], "currentArea", "")
+		world.currentChapter = config.get_value("%s" % [worldStatic.id], "currentChapter", "")
+
+		for areaStatic: AreaStatic in worldStatic.areas:
+			var area: StoryArea = StoryArea.new()
+			
+			world.areas.append(area)
+			area.staticAreaData = areaStatic
+
+			var section := "%s/%s" % [worldStatic.id, areaStatic.id]
+			
+			area.activeEvents = config.get_value(section, "ActiveEvents", [])
+			
+	if err != OK:
+		print("No save file found. Starting new game.")
+		game.worlds[0].currentChapter = "Intro"
+		game.worlds[0].currentStoryAreaId = "Area_PortForest"
+
+func saveStory() -> void:
+	var config := ConfigFile.new()
+
+	for world: World in game.worlds:
+		var worldId: String = world.staticWorldData.id
+		
+		config.set_value("%s" % [worldId], "currentArea", world.currentStoryAreaId)
+		config.set_value("%s" % [worldId], "currentChapter", world.currentChaper)
+
+		for area in world.areas:
+			var areaId: String = area.staticAreaData.id
+			var section := "%s/%s" % [worldId, areaId]
+
+			config.set_value(section, "ActiveEvents", area.ActiveEvents)
+
+	var err = config.save(SavePath)
+	if err != OK:
+		print("Error saving game!")
+	else:
+		print("Game saved to %s" % SavePath)
