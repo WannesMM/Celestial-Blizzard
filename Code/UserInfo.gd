@@ -193,7 +193,7 @@ func loadStory():
 		game.worlds.append(world)
 		world.staticWorldData = worldStatic
 		
-		world.currentStoryAreaId = config.get_value("%s" % [worldStatic.id], "currentArea", "")
+		world.currentStoryArea = getAreaById(world, config.get_value("%s" % [worldStatic.id], "currentArea", ""))
 		world.currentChapter = config.get_value("%s" % [worldStatic.id], "currentChapter", "")
 
 		for areaStatic: AreaStatic in worldStatic.areas:
@@ -208,8 +208,9 @@ func loadStory():
 			
 	if err != OK:
 		print("No save file found. Starting new game.")
-		game.worlds[0].currentChapter = "Intro"
-		game.worlds[0].currentStoryAreaId = "Area_PortForest"
+		game.currentWorld = getWorldById("World_CelestialBlizzard")
+		game.currentWorld.currentChapter = "Intro"
+		game.currentWorld.currentStoryArea = getAreaById(getWorldById("World_CelestialBlizzard"),"Area_PortForest")
 
 func saveStory() -> void:
 	var config := ConfigFile.new()
@@ -217,7 +218,7 @@ func saveStory() -> void:
 	for world: World in game.worlds:
 		var worldId: String = world.staticWorldData.id
 		
-		config.set_value("%s" % [worldId], "currentArea", world.currentStoryAreaId)
+		config.set_value("%s" % [worldId], "currentArea", world.currentStoryArea.staticAreaData.id)
 		config.set_value("%s" % [worldId], "currentChapter", world.currentChaper)
 
 		for area in world.areas:
@@ -231,3 +232,16 @@ func saveStory() -> void:
 		print("Error saving game!")
 	else:
 		print("Game saved to %s" % SavePath)
+
+func getWorldById(id: String):
+	for world: World in game.worlds:
+		if world.staticWorldData.id == id:
+			return world
+	return null
+		
+func getAreaById(world: World, id: String):
+	for area: StoryArea in world.areas:
+		if area.staticAreaData.id == id:
+			return area
+	return null
+		

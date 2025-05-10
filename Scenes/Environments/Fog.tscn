@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://3hy6au4nfu14"]
+[gd_scene load_steps=18 format=3 uid="uid://3hy6au4nfu14"]
 
 [ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_6t63n"]
 [ext_resource type="PackedScene" uid="uid://c7r1iw8uvrxgw" path="res://Scenes/Environments/Setpieces/TreeSetSway.tscn" id="2_igpvr"]
 [ext_resource type="PackedScene" uid="uid://c67fb3e8phe6n" path="res://Scenes/Environments/Setpieces/TreeSetPerformance.tscn" id="3_ukeas"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="5_6kg8g"]
 [ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="7_6k0n4"]
+[ext_resource type="AudioStream" uid="uid://dkhlrva2hli8v" path="res://assets/Audio/Music/Story/Story2.mp3" id="7_p7e5y"]
 [ext_resource type="Texture2D" uid="uid://dyjfrg4rp44b5" path="res://assets/Material/AllSky_Night_MoonBurst Equirect.png" id="8_3tab8"]
 
 [sub_resource type="Curve" id="Curve_cmvqk"]
@@ -114,3 +115,7 @@ skeleton = NodePath("../..")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wt4ye")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_p7e5y")
+autoplay = true

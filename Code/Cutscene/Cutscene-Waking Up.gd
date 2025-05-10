@@ -10,4 +10,4 @@ func cinematicBars():
 	$CinematicBars.play()
 
 func nextScene():
-	Random.callLoadingScreen("Story", "Silent")
+	Random.callLoadingScreen("Title", "Silent")

@@ -5,17 +5,12 @@ var battleFieldPath: String = "res://Scenes/battlefield.tscn"
 
 func _ready() -> void:
 	initializeUser()
-	
-	$Control/TitleLight.modulate.a = 0
 
 	modulate.v = 0
-	$Account/SnowCrystal.modulate.a = 0
-	Random.wait(1)
 	var fadeTween = create_tween()
 	
-	$ColorRect.animateScale(Vector2(1,1))
-	$ColorRect2.animateScale(Vector2(1,1))
-	
+	$TitleScreen/ColorRect.animateScale(Vector2(1,1))
+	$TitleScreen/ColorRect2.animateScale(Vector2(1,1))
 	
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
 	await fadeTween.finished

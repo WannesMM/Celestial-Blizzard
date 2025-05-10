@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2uas6vberpol"]
+
+[ext_resource type="Script" path="res://Scenes/Area/AreaCode/Area_PortForest.gd" id="1_e22jt"]
+[ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="1_iujwp"]
+[ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="2_oomco"]
+
+[node name="AreaPortForest" type="Node3D"]
+script = ExtResource("1_e22jt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+rotation_edit_mode = 1
+script = ExtResource("1_iujwp")
+
+[node name="Environment" parent="." instance=ExtResource("2_oomco")]

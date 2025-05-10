@@ -1,6 +1,6 @@
 extends RichTextLabel
 
-@export var fontPath = "res://assets/Font/zh-cn.ttf"
+@export var fontPath = "res://assets/Font/baskerville bold bt.ttf"
 
 var displayText: String = "": set = setDisplayText
 

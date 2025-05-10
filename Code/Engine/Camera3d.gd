@@ -19,7 +19,7 @@ var idle = false
 func shimmerIdle():
 	idle = !idle
 	while idle:
-		var vtween = create_tween().tween_property(self,"v_offset", v_offset + 0.25,7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+		var vtween = create_tween().tween_property(self,"v_offset", v_offset + 0.11,7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		await vtween.finished
 		var vtween2 = create_tween().tween_property(self,"v_offset", 0,7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		await vtween2.finished

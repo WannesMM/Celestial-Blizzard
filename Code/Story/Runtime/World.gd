@@ -7,5 +7,5 @@ var staticWorldData: WorldStatic
 var areas: Array[StoryArea] = []
 var activeAreas: Array[StoryArea] = []
 
-var currentStoryAreaId: String
+var currentStoryArea: StoryArea
 var currentChapter: String
