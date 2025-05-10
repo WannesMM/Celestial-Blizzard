@@ -3,7 +3,7 @@ extends Control
 class_name TitleScreen
 
 func _ready() -> void:
-	loadEnvironment(preload("res://Scenes/Environments/Forest.tscn"))
+	loadEnvironment(preload("res://Scenes/Environments/Fog.tscn"))
 	audio()
 	openCurrentScreen()
 	$Node3D/Camera3D.shimmerIdle()

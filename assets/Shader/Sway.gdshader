@@ -1,17 +1,19 @@
 shader_type spatial;
-render_mode blend_mix, depth_prepass_alpha, cull_back;
+render_mode blend_mix, depth_prepass_alpha, cull_back, unshaded;
 
 uniform sampler2D albedo_texture : source_color;
 uniform vec3 scale = vec3(1.0);
 uniform float wind_strength : hint_range(0.1, 1.0, 0.02);
 uniform float wind_speed : hint_range(0.5, 2.0, 0.1);
-uniform float alpha_cutoff : hint_range(0.0, 1.0) = 0.5; // Added uniform
+uniform float alpha_cutoff : hint_range(0.0, 1.0) = 0.5;
+uniform vec4 albedo_color : source_color = vec4(1.0); // Color tint parameter
 
 void vertex() {
 	NORMAL = vec3(0.0, 1.0, 0.0);
 	VERTEX.x += sin(NODE_POSITION_WORLD.x + TIME * wind_speed + UV.y) * (1.0 - UV.y) * wind_strength;
 	VERTEX.z += cos(NODE_POSITION_WORLD.z + TIME * wind_speed + UV.y) * (1.0 - UV.y) * wind_strength;
 	VERTEX *= scale;
+
 	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(
 		vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0),
 		vec4(0.0, 1.0, 0.0, 0.0),
@@ -25,6 +27,7 @@ void fragment() {
 	if (tex.a < alpha_cutoff) {
 		discard;
 	}
-	ALBEDO = tex.rgb;
-	ALPHA = tex.a;
+	ALBEDO = tex.rgb * albedo_color.rgb;
+	ALPHA = tex.a * albedo_color.a;
 }
+
