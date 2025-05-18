@@ -26,21 +26,6 @@ func _process(delta: float) -> void:
 		ResourceLoader.load_threaded_get_status(nextScene,progress)
 		if progress[0] == 1:
 			GlobalSignals.loadingBlock.emit()
-	
-func getScenePath(newScene: String):
-	match newScene:
-		"BattleField":
-			return battleFieldScene
-		"DeckBuilder":
-			return deckBuilderScene
-		"Title":
-			return TitleScene
-		"Shop":
-			return shopScene
-		"StartUp":
-			return TitleScene
-		"Story":
-			return storyScene
 
 func specificLoad(newScene, instance):
 	match newScene:
@@ -82,7 +67,6 @@ func titleSpecificLoad(mainInstance):
 	return false
 	
 func startUpSpecificLoad(instance):
-	UserInfo.loadStory()
 	if await checkConnection():
 		var load = titleSpecificLoad(instance)
 		return load
@@ -98,37 +82,27 @@ func checkConnection():
 			reloadConnection()
 			return false
 	return true
+
+enum LoadMode {Blank, Hint, Portrait}
 	
-func startLoad(newScene: String = "BattleField", mode: String = "Normal"):
-	nextScene = getScenePath(newScene)
-	
-	if mode == "Silent":
-		$Control.visible = false
-		$Tip.visible = false
-	
+func startLoad(newScene: String = "res://Scenes/Main/MainScreen.tscn", mode: LoadMode = LoadMode.Blank):
 	progressBar = $Control
 	progressBar.resetProgress()
+	
+	progressBar.tweenProgress(75)
 	
 	var fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
 	await fadeTween.finished
 	
-	progressBar.tweenProgress(25)
+	ResourceLoader.load_threaded_request(newScene)
 	
-	ResourceLoader.load_threaded_request(nextScene)
+	while ResourceLoader.load_threaded_get_status(newScene) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		await get_tree().process_frame
 	
-	await GlobalSignals.loadingBlock
-	
-	progressBar.tweenProgress(50)
-	
-	var scene: PackedScene = ResourceLoader.load_threaded_get(nextScene)
-	var instance = scene.instantiate()
-	
-	print("Scene specific load")
 	progressBar.tweenProgress(100)
-	if await specificLoad(newScene, instance):
-		await GlobalSignals.loadComplete
-	print("Loading complete")
+	var scene: PackedScene = ResourceLoader.load_threaded_get(newScene)
+	var instance = scene.instantiate()
 	
 	var loadingScene: LoadingScreen = get_tree().current_scene  # Get current scene
 	

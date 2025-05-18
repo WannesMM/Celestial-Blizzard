@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://lbuor5faoaj2"]
+[gd_resource type="Resource" script_class="StoryEventStatic" load_steps=2 format=3 uid="uid://lbuor5faoaj2"]
 
 [ext_resource type="Script" path="res://Code/Story/StoryEventStatic.gd" id="1_57vv3"]
 
 [resource]
 script = ExtResource("1_57vv3")
-dialogue = "PortForest_Intro"
+type = 1
+id = "StoryEvent_PortForest_Intro"
+eventSequenceLink = "res://Code/Story/EventSequences/EventSequence_Portforest_Intro.tres"

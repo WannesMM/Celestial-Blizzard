@@ -3,15 +3,22 @@ extends Control
 class_name MainScreen
 
 func _ready() -> void:
-	loadEnvironment(load(UserInfo.game.currentWorld.currentStoryArea.staticAreaData.environment))
+	loadEnvironment()
 	openCurrentScreen()
 	$MainUI/LaunchSFX.play()
-	$MainUI/Camera3D.shimmerIdle()
+	area.camera.shimmerIdle()
 	
 var area: Area
 	
-func loadEnvironment(environment: PackedScene):
+func loadEnvironment():
+	var staticAreaData: AreaStatic = UserInfo.game.currentWorld.currentStoryArea.getStaticAreaData()
+	var environment = load(staticAreaData.environment)
 	area = environment.instantiate()
+	
+	area.areaId = staticAreaData.id
+	area.worldId = UserInfo.game.currentWorld.getStaticWorldData().id
+	area.storyArea = UserInfo.game.currentWorld.currentStoryArea
+	
 	$StoryUI/Area.add_child(area)
 
 func MiddleScreenLeftButtonPressed() -> void:
@@ -78,7 +85,7 @@ func previousScreen():
 
 func openCurrentScreen():
 	var screen = screens[currentScreen]
-	$MainUI/Camera3D.animateRotation(screen.getRotation(),2)
+	area.camera.animateRotation(screen.getRotation(),2)
 	screen.open()
 
 func closeCurrentScreen():
@@ -112,7 +119,7 @@ func openAccountScreen():
 	
 func closeAccountScreen():
 	var tween = create_tween().tween_property($MainUI/AccountScreen,"position:x",-100,1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	create_tween().tween_property($MainUI/AccountScreen,"modulate:a",0,0.25).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	create_tween().tween_property($MainUI/TitleScreen/Node3D/AnimatedLogo,"modulate:a",0,0.25).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	await tween.finished
 	$MainUI/AccountScreen.visible = false
 
@@ -120,8 +127,9 @@ func TitleButtonPressed() -> void:
 	$MainUI/Right.disabled = true
 	$MainUI/Left.disabled = true
 	var tween = create_tween().tween_property($MainUI, "modulate:a", 0, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
+	create_tween().tween_property($MainUI/TitleScreen/Node3D/AnimatedLogo, "modulate:a", 0, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
+	create_tween().tween_property($MainUI/TitleScreen/Node3D/AnimatedLogo/Label3D, "modulate:a", 0, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
 	await tween.finished
 	$MainUI.visible = false
-	$MainUI/Camera3D.current = false
-	area.story()
+	area.triggerAutoEvents()
 	

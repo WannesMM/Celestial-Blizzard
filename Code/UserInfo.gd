@@ -175,23 +175,20 @@ func to_string_array(input: Array) -> Array[String]:
 # Story and world -------------------------------------------------------------
 
 const SavePath := "user://SaveData.cfg"
-const GameStaticPath := "res://Code/Story/CelestialBlizzard.tres"
 
 var game: Game = Game.new()
 
 func loadStory():
-	var gameStatic: GameStatic = load(GameStaticPath)
-
-	game.staticGameData = gameStatic
-
 	var config: ConfigFile = ConfigFile.new()
 	var err = config.load(SavePath)
+	
+	var gameStatic: GameStatic = game.getStaticGameData()
 	
 	for worldStatic: WorldStatic in gameStatic.worlds:
 		var world: World = World.new()
 		
 		game.worlds.append(world)
-		world.staticWorldData = worldStatic
+		world.staticWorldDataLink = worldStatic.resource_path
 		
 		world.currentStoryArea = getAreaById(world, config.get_value("%s" % [worldStatic.id], "currentArea", ""))
 		world.currentChapter = config.get_value("%s" % [worldStatic.id], "currentChapter", "")
@@ -200,7 +197,7 @@ func loadStory():
 			var area: StoryArea = StoryArea.new()
 			
 			world.areas.append(area)
-			area.staticAreaData = areaStatic
+			area.staticAreaDataLink = areaStatic.resource_path
 
 			var section := "%s/%s" % [worldStatic.id, areaStatic.id]
 			
@@ -211,6 +208,8 @@ func loadStory():
 		game.currentWorld = getWorldById("World_CelestialBlizzard")
 		game.currentWorld.currentChapter = "Intro"
 		game.currentWorld.currentStoryArea = getAreaById(getWorldById("World_CelestialBlizzard"),"Area_PortForest")
+		
+		game.currentWorld.currentStoryArea.activeEvents.append(load("res://Code/Story/StoryEvents/StoryEvent_PortForest_Intro.tres"))
 
 func saveStory() -> void:
 	var config := ConfigFile.new()
@@ -235,13 +234,43 @@ func saveStory() -> void:
 
 func getWorldById(id: String):
 	for world: World in game.worlds:
-		if world.staticWorldData.id == id:
+		if world.getStaticWorldData().id == id:
 			return world
 	return null
 		
 func getAreaById(world: World, id: String):
 	for area: StoryArea in world.areas:
-		if area.staticAreaData.id == id:
+		if area.getStaticAreaData().id == id:
 			return area
 	return null
 		
+#Event System-------------------------------------------------------------------
+
+var currentEvent: StoryEventStatic
+var currentEventProgress: int
+
+func registerEvent(event: StoryEventStatic):
+	currentEvent = event
+	currentEventProgress = 0
+	
+func startEvent(event: StoryEventStatic):
+	registerEvent(event)
+	var eventSequence: EventSequenceStatic = load(event.eventSequenceLink)
+	
+	executeActions(eventSequence)
+
+func executeActions(eventSequence: EventSequenceStatic):
+	while currentEventProgress != -1:
+		var eventAction: EventActionStatic = eventSequence.eventSequence[UserInfo.currentEventProgress]
+		
+		if eventAction.nextId < eventSequence.eventSequence.size():
+			currentEventProgress = eventAction.nextId
+		else:
+			currentEventProgress = -1
+		
+		executeAction(eventAction)
+		
+func executeAction(eventAction: EventActionStatic):
+	if eventAction is EventActionCutscene:
+			Load.callLoadingScreen(eventAction.cutsceneLink)
+	

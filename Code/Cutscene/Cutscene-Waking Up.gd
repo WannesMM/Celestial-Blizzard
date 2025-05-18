@@ -10,4 +10,4 @@ func cinematicBars():
 	$CinematicBars.play()
 
 func nextScene():
-	Random.callLoadingScreen("Title", "Silent")
+	Load.callLoadingScreen("res://Scenes/Area/Area_PortForest.tscn")

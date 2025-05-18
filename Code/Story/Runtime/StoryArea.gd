@@ -2,8 +2,17 @@ extends Node
 
 class_name StoryArea
 
-var staticAreaData: AreaStatic
+var staticAreaDataLink: String
 
-var events: Array[StoryEvent] = []
+#Events ------------------------------------------------------------------------
+
+var events: Array = []
 var activeEvents: Array = []
-var completedEvents: Array[StoryEvent] = []
+var completedEvents: Array = []
+
+#Area---------------------------------------------------------------------------
+
+var amtVisited: int
+
+func getStaticAreaData() -> AreaStatic:
+	return load(staticAreaDataLink)

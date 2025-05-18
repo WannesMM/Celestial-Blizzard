@@ -1,4 +1,4 @@
-[gd_scene load_steps=424 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=423 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="Script" path="res://Code/Main/MainUI/MainScreen.gd" id="1_nglne"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="4_vdxj1"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="5_bc87f"]
 [ext_resource type="Texture2D" uid="uid://3xn2crhjpn7k" path="res://assets/Cards/CardAssets/Card shatter/Card_Shatter-3.png" id="7_ioo6v"]
-[ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="8_jir33"]
 [ext_resource type="Texture2D" uid="uid://bvwabuchkl274" path="res://assets/Animated/Logo/Main/Main_00000.png" id="12_2x4br"]
 [ext_resource type="Texture2D" uid="uid://3i0c0lo22y0m" path="res://assets/Animated/Logo/Main/Main_00001.png" id="13_m1rna"]
 [ext_resource type="Texture2D" uid="uid://c386eapnu82f1" path="res://assets/Animated/Logo/Main/Main_00002.png" id="14_sc1fd"]
@@ -2334,12 +2333,6 @@ fontSize = 40
 [node name="LaunchSFX" type="AudioStreamPlayer" parent="MainUI"]
 stream = ExtResource("90_nwodv")
 volume_db = 2.363
-
-[node name="Camera3D" type="Camera3D" parent="MainUI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-rotation_edit_mode = 1
-current = true
-script = ExtResource("8_jir33")
 
 [node name="StoryUI" type="Control" parent="."]
 anchors_preset = 0

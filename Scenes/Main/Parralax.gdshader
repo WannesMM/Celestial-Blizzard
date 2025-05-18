@@ -67,7 +67,7 @@ void vertex() {
 	);
 }
 
-varying vec3 view_dir; 
+varying vec3 view_dir;
 void fragment() {
 	view_dir = normalize(normalize(-VERTEX) * TBN);
 	vec2 base_uv = UV;
@@ -79,7 +79,7 @@ void fragment() {
 			discard;
 		}
 	}
-	
+
 	vec3 emission_tex = texture(texture_emission, parallax_uv).rgb;
 	vec3 color_tex = texture(emission_color,vec2(COLOR_TO_FLOAT(emission_tex), 0.0)).rgb;
 

@@ -4,3 +4,6 @@ class_name Cutscene
 
 func play():
 	pass
+
+func nextScene():
+	pass
