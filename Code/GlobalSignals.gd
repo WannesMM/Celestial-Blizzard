@@ -10,3 +10,6 @@ signal choiceMessage(buttonMessage: String)
 
 #TextInputMessage
 signal textInputMessage(textInput: String)
+
+#EventSequence
+signal eventActionComplete

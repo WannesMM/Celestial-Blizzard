@@ -6,4 +6,4 @@ func play():
 	pass
 
 func nextScene():
-	pass
+	GlobalSignals.eventActionComplete.emit()

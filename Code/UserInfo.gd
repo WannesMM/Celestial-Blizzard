@@ -248,6 +248,7 @@ func getAreaById(world: World, id: String):
 
 var currentEvent: StoryEventStatic
 var currentEventProgress: int
+var eventSequence: EventSequenceStatic
 
 func registerEvent(event: StoryEventStatic):
 	currentEvent = event
@@ -255,22 +256,21 @@ func registerEvent(event: StoryEventStatic):
 	
 func startEvent(event: StoryEventStatic):
 	registerEvent(event)
-	var eventSequence: EventSequenceStatic = load(event.eventSequenceLink)
-	
-	executeActions(eventSequence)
+	eventSequence = load(event.eventSequenceLink)
 
-func executeActions(eventSequence: EventSequenceStatic):
-	while currentEventProgress != -1:
-		var eventAction: EventActionStatic = eventSequence.eventSequence[UserInfo.currentEventProgress]
-		
-		if eventAction.nextId < eventSequence.eventSequence.size():
-			currentEventProgress = eventAction.nextId
-		else:
-			currentEventProgress = -1
-		
-		executeAction(eventAction)
-		
-func executeAction(eventAction: EventActionStatic):
-	if eventAction is EventActionCutscene:
-			Load.callLoadingScreen(eventAction.cutsceneLink)
+func executeActions():
+	var eventAction: EventActionStatic = eventSequence.eventSequence[UserInfo.currentEventProgress]
 	
+	currentEventProgress = eventAction.nextId
+	if currentEventProgress == -1:
+		currentEvent = null
+		currentEventProgress = 0
+		eventSequence = null
+		print("Event sequence concluded")
+		
+	return eventAction
+	
+func isEventActive() -> bool:
+	if currentEvent:
+		return true
+	return false

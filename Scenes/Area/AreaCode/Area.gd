@@ -12,7 +12,10 @@ var storyArea: StoryArea
 func triggerEvents():
 	storyArea.amtVisited += 1
 	
-	triggerAutoEvents()
+	if !UserInfo.isEventActive():
+		triggerAutoEvents()
+	
+	continueEvent()
 	
 	camera.shimmerIdle()
 
@@ -21,4 +24,13 @@ func triggerAutoEvents():
 		if event.type == 1:
 			UserInfo.startEvent(event)
 			return
-	
+
+func executeAction():
+	var eventAction: EventActionStatic = UserInfo.executeActions()
+	if eventAction is EventActionCutscene:
+		Load.callLoadingScreen(eventAction.cutsceneLink)
+
+func continueEvent():
+	while UserInfo.isEventActive():
+		executeAction()
+		await GlobalSignals.eventActionComplete

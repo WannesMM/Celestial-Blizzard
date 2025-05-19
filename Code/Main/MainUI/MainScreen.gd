@@ -131,5 +131,5 @@ func TitleButtonPressed() -> void:
 	create_tween().tween_property($MainUI/TitleScreen/Node3D/AnimatedLogo/Label3D, "modulate:a", 0, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
 	await tween.finished
 	$MainUI.visible = false
-	area.triggerAutoEvents()
+	area.triggerEvents()
 	
