@@ -1,8 +1,5 @@
 extends Cutscene
 
-func _ready() -> void:
-	play()
-
 func play():
 	super.play()
 	$AnimationPlayer.play("Waking Up")
@@ -12,4 +9,4 @@ func cinematicBars():
 
 func nextScene():
 	super.nextScene()
-	Load.callLoadingScreen("res://Scenes/Area/Area_PortForest.tscn")
+	Load.callLoadingScreen("res://Scenes/Main/MainScreen.tscn")

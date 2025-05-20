@@ -206,10 +206,10 @@ func loadStory():
 	if err != OK:
 		print("No save file found. Starting new game.")
 		game.currentWorld = getWorldById("World_CelestialBlizzard")
-		game.currentWorld.currentChapter = "Intro"
-		game.currentWorld.currentStoryArea = getAreaById(getWorldById("World_CelestialBlizzard"),"Area_PortForest")
+		game.currentWorld.currentChapter = "New Entry"
+		game.currentWorld.currentStoryArea = getAreaById(getWorldById("World_CelestialBlizzard"),"Area_MirageWorld")
 		
-		game.currentWorld.currentStoryArea.activeEvents.append(load("res://Code/Story/StoryEvents/StoryEvent_PortForest_Intro.tres"))
+		getAreaById(getWorldById("World_CelestialBlizzard"),"Area_PortForest").activeEvents.append(load("res://Code/Story/StoryEvents/StoryEvent_PortForest_Intro.tres"))
 
 func saveStory() -> void:
 	var config := ConfigFile.new()
@@ -249,23 +249,24 @@ func getAreaById(world: World, id: String):
 var currentEvent: StoryEventStatic
 var currentEventProgress: int
 var eventSequence: EventSequenceStatic
+var eventArea: StoryArea
 
-func registerEvent(event: StoryEventStatic):
+func registerEvent(event: StoryEventStatic, eventArea: StoryArea):
 	currentEvent = event
 	currentEventProgress = 0
-	
-func startEvent(event: StoryEventStatic):
-	registerEvent(event)
+	self.eventArea = eventArea
 	eventSequence = load(event.eventSequenceLink)
-
+	
 func executeActions():
 	var eventAction: EventActionStatic = eventSequence.eventSequence[UserInfo.currentEventProgress]
 	
 	currentEventProgress = eventAction.nextId
 	if currentEventProgress == -1:
+		eventArea.endEvent(currentEvent)
 		currentEvent = null
 		currentEventProgress = 0
 		eventSequence = null
+		eventArea = null
 		print("Event sequence concluded")
 		
 	return eventAction
@@ -274,3 +275,10 @@ func isEventActive() -> bool:
 	if currentEvent:
 		return true
 	return false
+
+var showMainScreen: bool = true
+
+func travelToArea(world: String, area: String):
+	game.currentWorld = getWorldById(world)
+	game.currentWorld.currentStoryArea = getAreaById(game.currentWorld,area)
+	Load.callLoadingScreen("res://Scenes/Main/MainScreen.tscn")

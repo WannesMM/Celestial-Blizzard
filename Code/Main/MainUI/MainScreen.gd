@@ -4,12 +4,16 @@ class_name MainScreen
 
 func _ready() -> void:
 	loadEnvironment()
-	openCurrentScreen()
-	$MainUI/LaunchSFX.play()
-	area.camera.shimmerIdle()
+	$MainUI/TitleScreen/Node3D/AnimatedLogo/Label3D.text = UserInfo.game.currentWorld.currentChapter
+	if !UserInfo.showMainScreen:
+		enterStory()
+	else:
+		openCurrentScreen()
+		UserInfo.showMainScreen = false
+		$MainUI/LaunchSFX.play()
 	
 var area: Area
-	
+
 func loadEnvironment():
 	var staticAreaData: AreaStatic = UserInfo.game.currentWorld.currentStoryArea.getStaticAreaData()
 	var environment = load(staticAreaData.environment)
@@ -84,6 +88,7 @@ func previousScreen():
 		$Left.visible = false
 
 func openCurrentScreen():
+	var tween = create_tween().tween_property($MainUI, "modulate:a", 1, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
 	var screen = screens[currentScreen]
 	area.camera.animateRotation(screen.getRotation(),2)
 	screen.open()
@@ -97,7 +102,8 @@ func closeCurrentScreen():
 func openMainScreen():
 	$MainUI/TitleScreen.visible = true
 	$MainUI/TitleScreen/Node3D/AnimatedLogo/GPUParticles3D2.emitting = true
-	create_tween().tween_property($Node3D/AnimatedLogo,"modulate:a",1,1)
+	create_tween().tween_property($MainUI/TitleScreen/Node3D/AnimatedLogo,"modulate:a",1,1)
+	create_tween().tween_property($MainUI/TitleScreen/Node3D/AnimatedLogo/Label3D,"modulate:a",1,1)
 
 func closeMainScreen():
 	$Middle.visible = false
@@ -124,6 +130,9 @@ func closeAccountScreen():
 	$MainUI/AccountScreen.visible = false
 
 func TitleButtonPressed() -> void:
+	enterStory()
+	
+func enterStory():
 	$MainUI/Right.disabled = true
 	$MainUI/Left.disabled = true
 	var tween = create_tween().tween_property($MainUI, "modulate:a", 0, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
@@ -132,4 +141,3 @@ func TitleButtonPressed() -> void:
 	await tween.finished
 	$MainUI.visible = false
 	area.triggerEvents()
-	

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://o71sqlwj5pk8"
+path="res://.godot/imported/Spirit - Serenity.mp3-150accb02a11da35cdb28d6b9ce24659.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Music/Story/Spirit - Serenity.mp3"
+dest_files=["res://.godot/imported/Spirit - Serenity.mp3-150accb02a11da35cdb28d6b9ce24659.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

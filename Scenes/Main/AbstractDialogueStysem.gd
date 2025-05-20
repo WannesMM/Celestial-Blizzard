@@ -7,7 +7,8 @@ var currentLine: Dictionary
 
 func proceed():
 	AudioEngine.playSFX("TextProceed")
-	nextDialogue()
+	GlobalSignals.eventActionComplete.emit()
+	#nextDialogue()
 
 func startDialogue(chapter: String):
 	var fadeTween = create_tween()
@@ -70,7 +71,8 @@ func setTextBox(dialogue: String):
 	$TextBox.fadeIn()
 	
 func setName(name: String):
-	$CharacterName.setText(name)
+	$TextBox.setDisplayText(name)
+	$TextBox.fadeIn()
 
 # DialogueManager --------------------------------------------------------------
 
@@ -79,7 +81,8 @@ func setName(name: String):
 var dialogueData = {}
 
 func _ready() -> void:
-	modulate.a = 0
+	#modulate.a = 0
+	pass
 
 func loadDialogue(part: String):
 	if FileAccess.file_exists(filePath):

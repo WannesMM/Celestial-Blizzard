@@ -30,3 +30,5 @@ func setDisplayText(newText: String):
 	displayText = newText
 	generateText(displayText)
 	
+func modulateText(value: float, duration: float = 1):
+	await create_tween().tween_property(self,"modulate:a",value,duration).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO).finished

@@ -1,19 +1,33 @@
-[gd_resource type="Resource" script_class="EventSequenceStatic" load_steps=6 format=3 uid="uid://bqcfr52lvouhc"]
+[gd_resource type="Resource" script_class="EventSequenceStatic" load_steps=9 format=3 uid="uid://bqcfr52lvouhc"]
 
 [ext_resource type="Script" path="res://Code/Story/EventActions/EventActionStatic.gd" id="1_yfbvu"]
 [ext_resource type="Script" path="res://Code/Story/EventActions/EventActionCutscene.gd" id="2_6isdj"]
 [ext_resource type="Script" path="res://Code/Story/EventSequenceStatic.gd" id="2_mtssd"]
+[ext_resource type="Script" path="res://Code/Story/EventActions/EventActionDialogue.gd" id="3_6jtkl"]
 
 [sub_resource type="Resource" id="Resource_t4bq8"]
 script = ExtResource("2_6isdj")
 cutsceneLink = "res://Scenes/Cutscenes/Waking Up.tscn"
 nextId = 1
 
-[sub_resource type="Resource" id="Resource_be6ye"]
-script = ExtResource("2_6isdj")
-cutsceneLink = "res://Scenes/Cutscenes/Waking Up.tscn"
+[sub_resource type="Resource" id="Resource_u2htk"]
+script = ExtResource("3_6jtkl")
+characterName = "You"
+dialogue = "It's freezing, where am I?"
+nextId = 2
+
+[sub_resource type="Resource" id="Resource_sclh2"]
+script = ExtResource("3_6jtkl")
+characterName = "You longername"
+dialogue = "The Tower, the Hatred, the Mask... It's all fading."
+nextId = 3
+
+[sub_resource type="Resource" id="Resource_wtc7m"]
+script = ExtResource("3_6jtkl")
+characterName = "You"
+dialogue = "It's storming, I should find shelter somewhere..."
 nextId = -1
 
 [resource]
 script = ExtResource("2_mtssd")
-eventSequence = Array[ExtResource("1_yfbvu")]([SubResource("Resource_t4bq8"), SubResource("Resource_be6ye")])
+eventSequence = Array[ExtResource("1_yfbvu")]([SubResource("Resource_t4bq8"), SubResource("Resource_u2htk"), SubResource("Resource_sclh2"), SubResource("Resource_wtc7m")])

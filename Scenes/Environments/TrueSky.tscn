@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://rk4rmcc6udnc"]
+[gd_scene load_steps=19 format=3 uid="uid://rk4rmcc6udnc"]
 
 [ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_lbcxs"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_s72qo"]
 [ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="4_x2030"]
 [ext_resource type="Script" path="res://Code/Engine/World.gd" id="5_1uvle"]
+[ext_resource type="AudioStream" uid="uid://o71sqlwj5pk8" path="res://assets/Audio/Music/Story/Spirit - Serenity.mp3" id="5_njglj"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yd1to"]
 emission_shape = 3
@@ -35,6 +36,43 @@ lightmap_size_hint = Vector2i(10, 10)
 material = SubResource("StandardMaterial3D_4c3l8")
 uv2_padding = 0.0
 
+[sub_resource type="Curve" id="Curve_n0rn3"]
+_data = [Vector2(0, 0.402756), 0.0, 0.0, 0, 0, Vector2(0.390335, 0.721286), 0.0, 0.0, 0, 0, Vector2(0.565056, 0.502297), 0.0, 0.0, 0, 0, Vector2(0.732342, 0.980092), 0.0, 0.0, 0, 0, Vector2(1, 0.372894), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_43pak"]
+curve = SubResource("Curve_n0rn3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uvtth"]
+emission_shape_scale = Vector3(4, 4, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -362.0
+angle_max = 358.0
+inherit_velocity_ratio = 0.017
+spread = 180.0
+gravity = Vector3(-1.095, -0.97, 0)
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 2.62
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_43pak")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j4uh"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_s72qo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uk36m"]
+material = SubResource("StandardMaterial3D_2j4uh")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="Gradient" id="Gradient_qcc4d"]
+colors = PackedColorArray(0.561098, 0.188026, 0, 1, 1, 0.763061, 0.820672, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e1jxx"]
+gradient = SubResource("Gradient_qcc4d")
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6ljp4"]
 panorama = ExtResource("4_x2030")
 
@@ -44,28 +82,39 @@ sky_material = SubResource("PanoramaSkyMaterial_6ljp4")
 [sub_resource type="Environment" id="Environment_bqfwy"]
 background_mode = 2
 sky = SubResource("Sky_1our6")
-sky_rotation = Vector3(3.68264, -0.432842, 0)
 ambient_light_color = Color(0.360366, 0.389623, 0.80549, 1)
 ambient_light_energy = 3.53
 glow_enabled = true
-glow_intensity = 1.29
-glow_strength = 1.67
-glow_bloom = 0.27
+glow_bloom = 0.04
 fog_enabled = true
 fog_light_color = Color(0.0944922, 0.142084, 0.230469, 1)
 fog_density = 0.0733
 fog_aerial_perspective = 0.535
+adjustment_enabled = true
+adjustment_contrast = 1.86
+adjustment_saturation = 2.85
+adjustment_color_correction = SubResource("GradientTexture2D_e1jxx")
 
 [node name="TrueSky" type="Node3D"]
 script = ExtResource("1_lbcxs")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.00383973, -0.999993, 0, 0.999993, -0.00383973, 0, 0.367824, 1.47864)
+visible = false
 amount = 25
 lifetime = 7.0
 trail_lifetime = 4.96
 process_material = SubResource("ParticleProcessMaterial_yd1to")
 draw_pass_1 = SubResource("PlaneMesh_dgu04")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0231231, -0.999732, 0, 0.999732, 0.0231231, 0, 2.66373, 0.209722)
+amount = 100
+lifetime = 2.24
+fixed_fps = 24
+trail_lifetime = 3.1
+process_material = SubResource("ParticleProcessMaterial_uvtth")
+draw_pass_1 = SubResource("PlaneMesh_uk36m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.97901, 0.203812, 0, -0.203812, 0.97901, 0, 1.24618, 0.27871)
@@ -81,3 +130,8 @@ shadow_blur = 2.456
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bqfwy")
 script = ExtResource("5_1uvle")
+rotateS = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_njglj")
+autoplay = true

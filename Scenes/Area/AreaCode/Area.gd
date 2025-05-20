@@ -9,6 +9,15 @@ class_name Area
 @export var camera: Camera3d
 var storyArea: StoryArea
 
+var dialogueSystem: DialogueSystem
+
+func _ready() -> void:
+	var scene: PackedScene = load("res://Scenes/Main/AbstractDialogueSystem.tscn")
+	dialogueSystem = scene.instantiate()
+	add_child(dialogueSystem)
+	dialogueSystem.visible = false
+	camera.shimmerIdle()
+
 func triggerEvents():
 	storyArea.amtVisited += 1
 	
@@ -22,15 +31,20 @@ func triggerEvents():
 func triggerAutoEvents():
 	for event: StoryEventStatic in storyArea.activeEvents:
 		if event.type == 1:
-			UserInfo.startEvent(event)
+			UserInfo.registerEvent(event, storyArea)
 			return
 
 func executeAction():
 	var eventAction: EventActionStatic = UserInfo.executeActions()
 	if eventAction is EventActionCutscene:
 		Load.callLoadingScreen(eventAction.cutsceneLink)
-
+	elif eventAction is EventActionDialogue:
+		dialogueSystem.visible = true
+		dialogueSystem.setDialogue(eventAction.dialogue,eventAction.characterName)
+		
 func continueEvent():
 	while UserInfo.isEventActive():
 		executeAction()
 		await GlobalSignals.eventActionComplete
+		dialogueSystem.visible = false
+	

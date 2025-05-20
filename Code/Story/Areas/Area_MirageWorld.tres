@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AreaStatic" load_steps=3 format=3 uid="uid://dcqdx4j3yvpbn"]
+
+[ext_resource type="Script" path="res://Code/Story/AreaStatic.gd" id="1_xjvrf"]
+[ext_resource type="Script" path="res://Code/Story/StoryEventStatic.gd" id="2_4cdyt"]
+
+[resource]
+script = ExtResource("1_xjvrf")
+id = "Area_MirageWorld"
+name = "Mirage World"
+environment = "res://Scenes/Area/Area_MirageWorld.tscn"
+storyEvents = Array[ExtResource("2_4cdyt")]([])
