@@ -18,6 +18,8 @@ func _ready() -> void:
 	dialogueSystem.visible = false
 	camera.shimmerIdle()
 
+# EventSystem ------------------------------------------------------------------
+
 func triggerEvents():
 	storyArea.amtVisited += 1
 	
@@ -48,3 +50,10 @@ func continueEvent():
 		await GlobalSignals.eventActionComplete
 		dialogueSystem.visible = false
 	
+# Music ------------------------------------------------------------------------
+
+@export var audioTracks: Array[AudioTrack]
+
+func playMusic():
+	for audioTrack: AudioTrack in audioTracks:
+		AudioEngine.playTrack(audioTrack)

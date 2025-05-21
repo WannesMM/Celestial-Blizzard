@@ -2,4 +2,7 @@ extends Node3D
 
 class_name Env
 
-@export var baseCameraPosition: Vector3 = Vector3.ZERO
+@export var audioTracks: Array[AudioTrack]
+
+func _ready() -> void:
+	AudioEngine.playTracks(audioTracks)

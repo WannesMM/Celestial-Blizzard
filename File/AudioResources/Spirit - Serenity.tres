@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioTrack" load_steps=3 format=3 uid="uid://cthe0ijnrr8fv"]
+
+[ext_resource type="Script" path="res://Code/Engine/Audio/AudioTrack.gd" id="1_rji72"]
+[ext_resource type="AudioStream" uid="uid://o71sqlwj5pk8" path="res://assets/Audio/Music/Story/Spirit - Serenity.mp3" id="2_tvfsu"]
+
+[resource]
+script = ExtResource("1_rji72")
+track = ExtResource("2_tvfsu")
+trackName = "Spirit - Serenity"
+audioType = 0
+volume = 0.0

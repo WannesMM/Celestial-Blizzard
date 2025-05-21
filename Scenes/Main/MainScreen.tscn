@@ -1,8 +1,9 @@
-[gd_scene load_steps=423 format=3 uid="uid://cb2gpixlyhhxu"]
+[gd_scene load_steps=428 format=3 uid="uid://cb2gpixlyhhxu"]
 
 [ext_resource type="Script" path="res://Code/Main/Main.gd" id="1_0rkip"]
 [ext_resource type="Script" path="res://Code/Main/MainUI/MainScreen.gd" id="1_nglne"]
 [ext_resource type="FontFile" uid="uid://rhn3wt06rvrw" path="res://assets/Font/Baskerville Bold.otf" id="2_82mvx"]
+[ext_resource type="Resource" uid="uid://dbras5tp52kl5" path="res://File/AudioResources/CelestialBlizzardLogo.tres" id="2_bswpw"]
 [ext_resource type="Theme" uid="uid://d2w1aa0rw0nno" path="res://assets/Theme/panelTheme.tres" id="2_n22yq"]
 [ext_resource type="Script" path="res://Scenes/Main/Lighting.gd" id="4_vdxj1"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="5_bc87f"]
@@ -319,7 +320,10 @@
 [ext_resource type="Texture2D" uid="uid://b5oxpet08uvrw" path="res://assets/Animated/Nessa/Only Nessa/Only Nessa_00232.png" id="325_2ojv1"]
 [ext_resource type="Texture2D" uid="uid://dxkp0renn8mto" path="res://assets/Animated/Nessa/Only Nessa/Only Nessa_00233.png" id="326_wryo3"]
 [ext_resource type="Texture2D" uid="uid://b4qdhirt58iea" path="res://assets/Animated/Nessa/Only Nessa/Only Nessa_00234.png" id="327_6bpub"]
+[ext_resource type="StyleBox" uid="uid://b0xx3equtq2ef" path="res://assets/Theme/ButtonHover.tres" id="327_wtwxr"]
+[ext_resource type="StyleBox" uid="uid://chand3p8jxn7v" path="res://assets/Theme/Button.tres" id="328_aw66k"]
 [ext_resource type="Texture2D" uid="uid://cpv4g7b2nitcg" path="res://assets/Animated/Nessa/Only Nessa/Only Nessa_00235.png" id="328_ia6vo"]
+[ext_resource type="Texture2D" uid="uid://c7wkk0mkilfyc" path="res://assets/ArrowLeft.png" id="329_fiu6p"]
 [ext_resource type="Texture2D" uid="uid://bgemtwr21vxdc" path="res://assets/Animated/Nessa/Only Nessa/Only Nessa_00236.png" id="329_pb8ks"]
 [ext_resource type="Texture2D" uid="uid://lw0dx5tsascn" path="res://assets/Animated/Nessa/Only Nessa/Only Nessa_00237.png" id="330_yec6i"]
 [ext_resource type="Texture2D" uid="uid://0pciqtrinafg" path="res://assets/Animated/Nessa/Only Nessa/Only Nessa_00238.png" id="331_a1rls"]
@@ -1970,6 +1974,8 @@ corner_radius_bottom_left = 21
 shadow_color = Color(0, 0, 0, 0.207843)
 anti_aliasing_size = 1.54
 
+[sub_resource type="Theme" id="Theme_c3yni"]
+
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1979,6 +1985,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_nglne")
+CelestialBlizzardLogoAudio = ExtResource("2_bswpw")
 
 [node name="MainUI" type="Control" parent="."]
 layout_mode = 1
@@ -2349,6 +2356,18 @@ mouse_filter = 1
 
 [node name="Area" type="Node3D" parent="StoryUI"]
 
+[node name="Button" type="Button" parent="StoryUI"]
+offset_left = 23.0
+offset_top = 593.0
+offset_right = 61.0
+offset_bottom = 631.0
+theme = SubResource("Theme_c3yni")
+theme_override_styles/hover = ExtResource("327_wtwxr")
+theme_override_styles/normal = ExtResource("328_aw66k")
+icon = ExtResource("329_fiu6p")
+expand_icon = true
+
 [connection signal="pressed" from="MainUI/Right" to="." method="nextScreen"]
 [connection signal="pressed" from="MainUI/Left" to="." method="previousScreen"]
 [connection signal="pressed" from="MainUI/TitleScreen/Center/MiddleButton" to="." method="TitleButtonPressed"]
+[connection signal="pressed" from="StoryUI/Button" to="." method="returnPressed"]

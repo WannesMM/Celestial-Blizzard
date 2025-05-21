@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Spirit - Serenity.mp3-150accb02a11da35cdb28d6
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

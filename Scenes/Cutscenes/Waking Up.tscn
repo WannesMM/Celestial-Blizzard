@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://deaerv647xkrr"]
+[gd_scene load_steps=34 format=3 uid="uid://deaerv647xkrr"]
 
 [ext_resource type="Script" path="res://Code/Cutscene/Cutscene-Waking Up.gd" id="1_ukdi2"]
 [ext_resource type="PackedScene" uid="uid://bxomdgywf7vue" path="res://Scenes/Environments/Forest.tscn" id="1_xmewl"]
@@ -22,9 +22,22 @@
 [ext_resource type="Texture2D" uid="uid://b52wfht15rcq0" path="res://assets/Animated/Harsh fog/Untitled_Artwork-15.png" id="20_ew8ha"]
 [ext_resource type="Texture2D" uid="uid://ihtwqlcxj647" path="res://assets/Animated/Harsh fog/Untitled_Artwork-16.png" id="21_6qjaq"]
 [ext_resource type="Texture2D" uid="uid://b5eyp0vki2hf5" path="res://assets/Animated/Harsh fog/Untitled_Artwork-17.png" id="22_clx4w"]
+[ext_resource type="Shader" path="res://assets/Shader/Blur.gdshader" id="23_wv1d2"]
 
 [sub_resource type="Animation" id="Animation_a1lbj"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:material:shader_parameter/blur_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ail63"]
 resource_name = "Waking Up"
@@ -121,6 +134,18 @@ tracks/5/keys = {
 "args": [],
 "method": &"nextScene"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect2:material:shader_parameter/blur_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 18.0667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7g580"]
@@ -224,6 +249,15 @@ animations = [{
 "speed": 11.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s5qpy"]
+shader = ExtResource("23_wv1d2")
+shader_parameter/blur_radius = 1
+shader_parameter/blur_scale = 0.0
+shader_parameter/darkness = 1.2
+shader_parameter/fade_direction = 0
+shader_parameter/fade_cutoff = 1.0
+shader_parameter/fade_intensity = 0.1
+
 [node name="WakingUp" type="Node3D"]
 script = ExtResource("1_ukdi2")
 
@@ -248,7 +282,6 @@ omni_range = 10.924
 omni_attenuation = 0.063
 
 [node name="Story" parent="." instance=ExtResource("1_xmewl")]
-baseCameraPosition = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.37601, 0.926616, 0, -0.926616, 0.37601, 0, 4.19248, 0)
@@ -284,3 +317,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_s5qpy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

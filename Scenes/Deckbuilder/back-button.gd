@@ -7,4 +7,4 @@ func _ready() -> void:
 	
 func _button_pressed():
 	UserInfo.saveUserData()
-	Random.callLoadingScreen("Title")
+	Load.callLoadingScreen("res://Scenes/Main/MainScreen.tscn")

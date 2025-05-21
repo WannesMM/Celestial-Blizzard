@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://rk4rmcc6udnc"]
+[gd_scene load_steps=18 format=3 uid="uid://rk4rmcc6udnc"]
 
 [ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_lbcxs"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="3_s72qo"]
 [ext_resource type="Texture2D" uid="uid://dlm3u5io4168l" path="res://assets/Material/kloppenheim_07_puresky_1k.exr" id="4_x2030"]
 [ext_resource type="Script" path="res://Code/Engine/World.gd" id="5_1uvle"]
-[ext_resource type="AudioStream" uid="uid://o71sqlwj5pk8" path="res://assets/Audio/Music/Story/Spirit - Serenity.mp3" id="5_njglj"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yd1to"]
 emission_shape = 3
@@ -131,7 +130,3 @@ shadow_blur = 2.456
 environment = SubResource("Environment_bqfwy")
 script = ExtResource("5_1uvle")
 rotateS = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_njglj")
-autoplay = true

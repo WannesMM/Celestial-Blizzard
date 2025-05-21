@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxomdgywf7vue"]
+[gd_scene load_steps=19 format=3 uid="uid://bxomdgywf7vue"]
 
 [ext_resource type="Texture2D" uid="uid://toapyjjgal4y" path="res://assets/Material/snow_01_1k/snow_01_color_1k.png" id="1_8ctnr"]
 [ext_resource type="Script" path="res://Code/Engine/Environment.gd" id="1_22dne"]
 [ext_resource type="PackedScene" uid="uid://c7r1iw8uvrxgw" path="res://Scenes/Environments/Setpieces/TreeSetSway.tscn" id="2_3hrjo"]
+[ext_resource type="Script" path="res://Code/Engine/Audio/AudioTrack.gd" id="2_a1k1i"]
 [ext_resource type="PackedScene" uid="uid://c67fb3e8phe6n" path="res://Scenes/Environments/Setpieces/TreeSetPerformance.tscn" id="2_wko1r"]
-[ext_resource type="AudioStream" uid="uid://dmjf4qh22xn6y" path="res://assets/Audio/Ambience/Ambience_Leaves.mp3" id="8_8yhxv"]
+[ext_resource type="Resource" uid="uid://b3rl4seghjyyq" path="res://File/AudioResources/Leaves.tres" id="3_jfuyn"]
+[ext_resource type="Resource" uid="uid://bvp4yn7d8iuus" path="res://File/AudioResources/Wind1.tres" id="4_gf63d"]
 [ext_resource type="Environment" uid="uid://cacpsh4ftsnjp" path="res://Scenes/Environments/Setpieces/Lighting_PortForest.tres" id="8_y0e5t"]
-[ext_resource type="AudioStream" uid="uid://c3f8ubk257oqb" path="res://assets/Audio/Ambience/Wind.mp3" id="9_molg8"]
 [ext_resource type="Texture2D" uid="uid://dq33xye472ubn" path="res://assets/Setpieces/snowCrystal.png" id="13_ferhv"]
 [ext_resource type="Texture2D" uid="uid://btvbhgtutqkl3" path="res://assets/Setpieces/Mountain backdrop.png" id="22_n1v6b"]
 
@@ -63,6 +64,7 @@ size = Vector2(20, 20)
 
 [node name="Environment" type="Node3D"]
 script = ExtResource("1_22dne")
+audioTracks = Array[ExtResource("2_a1k1i")]([ExtResource("3_jfuyn"), ExtResource("4_gf63d")])
 
 [node name="World" type="Node3D" parent="."]
 
@@ -101,11 +103,3 @@ skeleton = NodePath("../..")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("8_y0e5t")
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_8yhxv")
-autoplay = true
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_molg8")
-autoplay = true

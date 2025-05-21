@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpxp01fibc4jm"]
+[gd_scene load_steps=6 format=3 uid="uid://bpxp01fibc4jm"]
 
 [ext_resource type="PackedScene" uid="uid://rk4rmcc6udnc" path="res://Scenes/Environments/TrueSky.tscn" id="1_qm043"]
 [ext_resource type="Script" path="res://Scenes/Area/AreaCode/Area_MirageWorld.gd" id="1_waqkw"]
+[ext_resource type="Script" path="res://Code/Engine/Audio/AudioTrack.gd" id="2_78pad"]
+[ext_resource type="Resource" uid="uid://cthe0ijnrr8fv" path="res://File/AudioResources/Spirit - Serenity.tres" id="3_328bc"]
 [ext_resource type="Script" path="res://Code/Engine/Camera3d.gd" id="3_l3pj1"]
 
 [node name="Area_MirageWorld" type="Node3D" node_paths=PackedStringArray("environement", "camera")]
 script = ExtResource("1_waqkw")
 environement = NodePath("TrueSky")
 camera = NodePath("Camera3D")
+audioTracks = Array[ExtResource("2_78pad")]([ExtResource("3_328bc")])
 
 [node name="TrueSky" parent="." instance=ExtResource("1_qm043")]
 

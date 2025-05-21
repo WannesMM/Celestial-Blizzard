@@ -59,7 +59,6 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "sdfsdfsdfsdf"
 script = ExtResource("3_b8j2f")
-pulse = true
 
 [node name="TextBox" type="RichTextLabel" parent="."]
 material = SubResource("CanvasItemMaterial_brpv7")
@@ -75,7 +74,6 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "sdfsdfsdfsdf"
 script = ExtResource("3_b8j2f")
-pulse = true
 fontSize = 19
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

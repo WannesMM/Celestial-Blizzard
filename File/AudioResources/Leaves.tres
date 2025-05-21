@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioTrack" load_steps=3 format=3 uid="uid://b3rl4seghjyyq"]
+
+[ext_resource type="Script" path="res://Code/Engine/Audio/AudioTrack.gd" id="1_dc8un"]
+[ext_resource type="AudioStream" uid="uid://dmjf4qh22xn6y" path="res://assets/Audio/Ambience/Ambience_Leaves.mp3" id="2_4ygvh"]
+
+[resource]
+script = ExtResource("1_dc8un")
+track = ExtResource("2_4ygvh")
+trackName = "Leaves"
+audioType = 2
+volume = -5.0

@@ -2,6 +2,8 @@ extends Control
 
 class_name MainScreen
 
+@export var CelestialBlizzardLogoAudio: AudioTrack
+
 func _ready() -> void:
 	loadEnvironment()
 	$MainUI/TitleScreen/Node3D/AnimatedLogo/Label3D.text = UserInfo.game.currentWorld.currentChapter
@@ -10,9 +12,14 @@ func _ready() -> void:
 	else:
 		openCurrentScreen()
 		UserInfo.showMainScreen = false
-		$MainUI/LaunchSFX.play()
+		playAudio()
 	
 var area: Area
+
+func playAudio():
+	AudioEngine.playTrack(CelestialBlizzardLogoAudio)
+	await Random.wait(4)
+	area.playMusic()
 
 func loadEnvironment():
 	var staticAreaData: AreaStatic = UserInfo.game.currentWorld.currentStoryArea.getStaticAreaData()
@@ -141,3 +148,9 @@ func enterStory():
 	await tween.finished
 	$MainUI.visible = false
 	area.triggerEvents()
+	
+func returnPressed() -> void:
+	$MainUI/Right.disabled = false
+	$MainUI/Left.disabled = false
+	var tween = create_tween().tween_property($MainUI, "modulate:a", 1, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
+	openCurrentScreen()

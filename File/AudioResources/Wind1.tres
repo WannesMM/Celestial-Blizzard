@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioTrack" load_steps=3 format=3 uid="uid://bvp4yn7d8iuus"]
+
+[ext_resource type="Script" path="res://Code/Engine/Audio/AudioTrack.gd" id="1_je0ss"]
+[ext_resource type="AudioStream" uid="uid://c3f8ubk257oqb" path="res://assets/Audio/Ambience/Wind.mp3" id="2_deylr"]
+
+[resource]
+script = ExtResource("1_je0ss")
+track = ExtResource("2_deylr")
+trackName = "Wind"
+audioType = 2
+volume = -10.0

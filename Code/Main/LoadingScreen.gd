@@ -104,14 +104,13 @@ func startLoad(newScene: String = "res://Scenes/Main/MainScreen.tscn", mode: Loa
 	while ResourceLoader.load_threaded_get_status(newScene) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		await get_tree().process_frame
 	
+	AudioEngine.removeAllTracks()
+	
 	progressBar.tweenProgress(100)
 	var scene: PackedScene = ResourceLoader.load_threaded_get(newScene)
 	var instance = scene.instantiate()
 	
 	var loadingScene: LoadingScreen = get_tree().current_scene  # Get current scene
-	
-	AudioEngine.stopAudio(1)
-	AudioEngine.stopAudio(2)
 	
 	Load.fadeOverlay(1)
 	

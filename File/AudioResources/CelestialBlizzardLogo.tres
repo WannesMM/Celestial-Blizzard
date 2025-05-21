@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioTrack" load_steps=3 format=3 uid="uid://dbras5tp52kl5"]
+
+[ext_resource type="Script" path="res://Code/Engine/Audio/AudioTrack.gd" id="1_jurs0"]
+[ext_resource type="AudioStream" uid="uid://w3nr2nti4rcf" path="res://assets/Audio/Sound effects/SFX_CelestialBlizzardLogo.mp3" id="2_qtlcd"]
+
+[resource]
+script = ExtResource("1_jurs0")
+track = ExtResource("2_qtlcd")
+trackName = "Celestial Blizzard"
+audioType = 1
+volume = -5.0
