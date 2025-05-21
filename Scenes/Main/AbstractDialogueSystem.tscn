@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq2wj0rwhyo78"]
+[gd_scene load_steps=9 format=3 uid="uid://dq2wj0rwhyo78"]
 
 [ext_resource type="Script" path="res://Scenes/Main/AbstractDialogueStysem.gd" id="1_nyhah"]
 [ext_resource type="Script" path="res://Code/Engine/TextEngine.gd" id="3_b8j2f"]
@@ -11,6 +11,17 @@ light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brpv7"]
 light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uhkpn"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_u5gq4"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7lag4"]
+gradient = SubResource("Gradient_u5gq4")
+width = 84
+height = 544
 
 [node name="DialogueSystem" type="Control"]
 material = SubResource("CanvasItemMaterial_gcdlh")
@@ -38,12 +49,17 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -181.0
-offset_bottom = -123.0
+offset_left = 1.0
+offset_top = -133.0
+offset_right = 1.0
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 bbcode_enabled = true
+text = "sdfsdfsdfsdf"
 script = ExtResource("3_b8j2f")
+pulse = true
 
 [node name="TextBox" type="RichTextLabel" parent="."]
 material = SubResource("CanvasItemMaterial_brpv7")
@@ -52,11 +68,21 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -121.0
+offset_top = -92.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 bbcode_enabled = true
+text = "sdfsdfsdfsdf"
 script = ExtResource("3_b8j2f")
-fontSize = 17
+pulse = true
+fontSize = 19
 
-[connection signal="pressed" from="Continue" to="." method="proceed"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_uhkpn")
+position = Vector2(576, 653)
+rotation = -1.57079
+scale = Vector2(4.10938, 4.23438)
+texture = SubResource("GradientTexture2D_7lag4")
+
+[connection signal="pressed" from="Continue" to="." method="next"]

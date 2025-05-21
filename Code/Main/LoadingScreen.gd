@@ -85,11 +85,15 @@ func checkConnection():
 
 enum LoadMode {Blank, Hint, Portrait}
 	
-func startLoad(newScene: String = "res://Scenes/Main/MainScreen.tscn", mode: LoadMode = LoadMode.Blank):
+func startLoad(newScene: String = "res://Scenes/Main/MainScreen.tscn", mode: LoadMode = LoadMode.Hint):
 	progressBar = $Control
 	progressBar.resetProgress()
 	
 	progressBar.tweenProgress(75)
+	
+	Load.fadeOverlay(0)
+	
+	changeVisualsLoadMode(mode)
 	
 	var fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 1, 1)
@@ -109,6 +113,8 @@ func startLoad(newScene: String = "res://Scenes/Main/MainScreen.tscn", mode: Loa
 	AudioEngine.stopAudio(1)
 	AudioEngine.stopAudio(2)
 	
+	Load.fadeOverlay(1)
+	
 	fadeTween = create_tween()
 	fadeTween.tween_property(self, "modulate:v", 0, 1)
 	await fadeTween.finished
@@ -116,6 +122,8 @@ func startLoad(newScene: String = "res://Scenes/Main/MainScreen.tscn", mode: Loa
 	# Add new scene to tree
 	get_tree().root.add_child(instance)
 	get_tree().current_scene = instance
+	
+	Load.fadeOverlay(0,2.5)
 	
 	# Remove old scene
 	get_tree().root.remove_child(loadingScene)
@@ -136,6 +144,12 @@ func reloadConnection():
 	await fadeTween.finished
 	
 	Random.callLoadingScreen("StartUp")
+
+func changeVisualsLoadMode(mode: LoadMode):
+	match mode:
+		LoadMode.Blank:
+			$Control.modulate.a = 0
+			$Tip.modulate.a = 0
 
 var tips = [
 	"Torinn Inn was the first card made for Celestial TCG, and Celestial Blizzard",

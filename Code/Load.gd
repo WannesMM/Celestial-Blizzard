@@ -3,12 +3,30 @@ extends Node
 #LoadingScreen------------------------------------------------------------------
 
 var loadingScene = "res://Scenes/Main/LoadingScreen.tscn"
+var fadeRect: ColorRect
 
-func callLoadingScreen(toLoad: String, mode: int = 0):
+func _ready() -> void:
+	fadeRect = ColorRect.new()
+	fadeRect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	fadeRect.z_index = 100
+	fadeRect.modulate.a = 0
+	setOverlayColor(Color.BLACK)
+	add_child(fadeRect)
+
+func fadeOverlay(value: float, duration: float = 1):
+	await create_tween().tween_property(fadeRect,"modulate:a", value, duration).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO).finished
+
+func setOverlayColor(color: Color):
+	fadeRect.color = color
+
+func callLoadingScreen(toLoad: String, mode: int = 1):
+	await fadeOverlay(1)
+	
 	var scene: PackedScene = load(loadingScene)
 	var instance = scene.instantiate()
 	
 	var current_scene = get_tree().current_scene  # Get current scene
+	
 	get_tree().root.add_child(instance)
 	get_tree().current_scene = instance
 	instance.startLoad(toLoad, mode)

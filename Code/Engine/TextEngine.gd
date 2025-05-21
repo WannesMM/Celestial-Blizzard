@@ -9,9 +9,9 @@ var displayText: String = "": set = setDisplayText
 @export var fontSize: int = 24
 
 var fade: int = 100: set = setFade
-func fadeIn():
+func fadeIn(duration: float = 3):
 	fade = -100
-	create_tween().tween_property(self,"fade",125,3)
+	create_tween().tween_property(self,"fade",125,duration)
 	
 func setFade(newFade: int):
 	#AudioEngine.playSFXmp3("SFX_Text")
