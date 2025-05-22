@@ -23,7 +23,7 @@ func _ready() -> void:
 func triggerEvents():
 	storyArea.amtVisited += 1
 	
-	if !UserInfo.isEventActive():
+	if !Data.isEventActive():
 		triggerAutoEvents()
 	
 	continueEvent()
@@ -33,11 +33,11 @@ func triggerEvents():
 func triggerAutoEvents():
 	for event: StoryEventStatic in storyArea.activeEvents:
 		if event.type == 1:
-			UserInfo.registerEvent(event, storyArea)
+			Data.registerEvent(event, storyArea)
 			return
 
 func executeAction():
-	var eventAction: EventActionStatic = UserInfo.executeActions()
+	var eventAction: EventActionStatic = Data.executeActions()
 	if eventAction is EventActionCutscene:
 		Load.callLoadingScreen(eventAction.cutsceneLink)
 	elif eventAction is EventActionDialogue:
@@ -45,7 +45,7 @@ func executeAction():
 		dialogueSystem.setDialogue(eventAction.dialogue,eventAction.characterName)
 		
 func continueEvent():
-	while UserInfo.isEventActive():
+	while Data.isEventActive():
 		executeAction()
 		await GlobalSignals.eventActionComplete
 		dialogueSystem.visible = false

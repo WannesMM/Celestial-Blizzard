@@ -176,21 +176,19 @@ func to_string_array(input: Array) -> Array[String]:
 
 const SavePath := "user://SaveData.cfg"
 
-var game: Game = Game.new()
-
 func loadStory():
 	var config: ConfigFile = ConfigFile.new()
 	var err = config.load(SavePath)
 	
-	var gameStatic: GameStatic = game.getStaticGameData()
+	var gameStatic: GameStatic = Data.game.getStaticGameData()
 	
 	for worldStatic: WorldStatic in gameStatic.worlds:
 		var world: World = World.new()
 		
-		game.worlds.append(world)
+		Data.game.worlds.append(world)
 		world.staticWorldDataLink = worldStatic.resource_path
 		
-		world.currentStoryArea = getAreaById(world, config.get_value("%s" % [worldStatic.id], "currentArea", ""))
+		world.currentStoryArea = Data.getAreaById(world, config.get_value("%s" % [worldStatic.id], "currentArea", ""))
 		world.currentChapter = config.get_value("%s" % [worldStatic.id], "currentChapter", "")
 
 		for areaStatic: AreaStatic in worldStatic.areas:
@@ -205,16 +203,16 @@ func loadStory():
 			
 	if err != OK:
 		print("No save file found. Starting new game.")
-		game.currentWorld = getWorldById("World_CelestialBlizzard")
-		game.currentWorld.currentChapter = "New Entry"
-		game.currentWorld.currentStoryArea = getAreaById(getWorldById("World_CelestialBlizzard"),"Area_MirageWorld")
+		Data.game.currentWorld = Data.getWorldById("World_CelestialBlizzard")
+		Data.game.currentWorld.currentChapter = "New Entry"
+		Data.game.currentWorld.currentStoryArea = Data.getAreaById(Data.getWorldById("World_CelestialBlizzard"),"Area_MirageWorld")
 		
-		getAreaById(getWorldById("World_CelestialBlizzard"),"Area_PortForest").activeEvents.append(load("res://Code/Story/StoryEvents/StoryEvent_PortForest_Intro.tres"))
+		Data.getAreaById(Data.getWorldById("World_CelestialBlizzard"),"Area_PortForest").activeEvents.append(load("res://Code/Story/StoryEvents/StoryEvent_PortForest_Intro.tres"))
 
 func saveStory() -> void:
 	var config := ConfigFile.new()
 
-	for world: World in game.worlds:
+	for world: World in Data.game.worlds:
 		var worldId: String = world.staticWorldData.id
 		
 		config.set_value("%s" % [worldId], "currentArea", world.currentStoryArea.staticAreaData.id)
@@ -231,54 +229,3 @@ func saveStory() -> void:
 		print("Error saving game!")
 	else:
 		print("Game saved to %s" % SavePath)
-
-func getWorldById(id: String):
-	for world: World in game.worlds:
-		if world.getStaticWorldData().id == id:
-			return world
-	return null
-		
-func getAreaById(world: World, id: String):
-	for area: StoryArea in world.areas:
-		if area.getStaticAreaData().id == id:
-			return area
-	return null
-		
-#Event System-------------------------------------------------------------------
-
-var currentEvent: StoryEventStatic
-var currentEventProgress: int
-var eventSequence: EventSequenceStatic
-var eventArea: StoryArea
-
-func registerEvent(event: StoryEventStatic, eventArea: StoryArea):
-	currentEvent = event
-	currentEventProgress = 0
-	self.eventArea = eventArea
-	eventSequence = load(event.eventSequenceLink)
-	
-func executeActions():
-	var eventAction: EventActionStatic = eventSequence.eventSequence[UserInfo.currentEventProgress]
-	
-	currentEventProgress = eventAction.nextId
-	if currentEventProgress == -1:
-		eventArea.endEvent(currentEvent)
-		currentEvent = null
-		currentEventProgress = 0
-		eventSequence = null
-		eventArea = null
-		print("Event sequence concluded")
-		
-	return eventAction
-	
-func isEventActive() -> bool:
-	if currentEvent:
-		return true
-	return false
-
-var showMainScreen: bool = true
-
-func travelToArea(world: String, area: String):
-	game.currentWorld = getWorldById(world)
-	game.currentWorld.currentStoryArea = getAreaById(game.currentWorld,area)
-	Load.callLoadingScreen("res://Scenes/Main/MainScreen.tscn")

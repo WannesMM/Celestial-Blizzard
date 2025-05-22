@@ -2357,6 +2357,7 @@ mouse_filter = 1
 [node name="Area" type="Node3D" parent="StoryUI"]
 
 [node name="Button" type="Button" parent="StoryUI"]
+layout_mode = 0
 offset_left = 23.0
 offset_top = 593.0
 offset_right = 61.0

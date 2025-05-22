@@ -6,12 +6,12 @@ class_name MainScreen
 
 func _ready() -> void:
 	loadEnvironment()
-	$MainUI/TitleScreen/Node3D/AnimatedLogo/Label3D.text = UserInfo.game.currentWorld.currentChapter
-	if !UserInfo.showMainScreen:
+	$MainUI/TitleScreen/Node3D/AnimatedLogo/Label3D.text = Data.game.currentWorld.currentChapter
+	if !Data.showMainScreen:
 		enterStory()
 	else:
 		openCurrentScreen()
-		UserInfo.showMainScreen = false
+		Data.showMainScreen = false
 		playAudio()
 	
 var area: Area
@@ -22,13 +22,13 @@ func playAudio():
 	area.playMusic()
 
 func loadEnvironment():
-	var staticAreaData: AreaStatic = UserInfo.game.currentWorld.currentStoryArea.getStaticAreaData()
+	var staticAreaData: AreaStatic = Data.game.currentWorld.currentStoryArea.getStaticAreaData()
 	var environment = load(staticAreaData.environment)
 	area = environment.instantiate()
 	
 	area.areaId = staticAreaData.id
-	area.worldId = UserInfo.game.currentWorld.getStaticWorldData().id
-	area.storyArea = UserInfo.game.currentWorld.currentStoryArea
+	area.worldId = Data.game.currentWorld.getStaticWorldData().id
+	area.storyArea = Data.game.currentWorld.currentStoryArea
 	
 	$StoryUI/Area.add_child(area)
 
